@@ -1,0 +1,79 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Obeo. 
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ *      Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.umlgen.reverse.c.activity.util;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.eclipse.cdt.core.dom.ast.IASTBreakStatement;
+import org.eclipse.cdt.core.dom.ast.IASTCaseStatement;
+import org.eclipse.cdt.core.dom.ast.IASTDefaultStatement;
+import org.eclipse.cdt.core.dom.ast.IASTNode;
+import org.eclipse.cdt.core.dom.ast.IASTReturnStatement;
+import org.eclipse.cdt.core.dom.ast.IASTSwitchStatement;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
+public class ASTUtilities {
+	static public boolean hasDefaultStatement(IASTSwitchStatement stmt) {
+		if (stmt.getBody() == null) {
+			return false;
+		}
+		final Predicate<IASTNode> breakStatement = new Predicate<IASTNode>() {
+			public boolean apply(IASTNode node) {
+				return node instanceof IASTDefaultStatement;
+			}
+		};
+		List<IASTNode> nodes = Arrays.asList(stmt.getBody().getChildren());
+		return Iterables.any(nodes, breakStatement);
+	}
+
+	static public boolean hasBreakStatement(List<IASTNode> nodes) {
+		final Predicate<IASTNode> hasBreakStatement = new Predicate<IASTNode>() {
+			public boolean apply(IASTNode node) {
+				return node instanceof IASTBreakStatement;
+			}
+		};
+		return Iterables.any(nodes, hasBreakStatement);
+	}
+
+	static public boolean hasReturnStatement(List<IASTNode> nodes) {
+		final Predicate<IASTNode> hasReturnStatement = new Predicate<IASTNode>() {
+			public boolean apply(IASTNode node) {
+				return node instanceof IASTReturnStatement;
+			}
+		};
+		return Iterables.any(nodes, hasReturnStatement);
+	}
+
+	static public List<List<IASTNode>> getStatementsGroupedByClause(
+			IASTSwitchStatement switchStmt) {
+		List<List<IASTNode>> groups = Lists.newArrayList();
+
+		if (switchStmt.getBody() != null) {
+			IASTNode[] nodes = switchStmt.getBody().getChildren();
+			List<IASTNode> group = null;
+			for (IASTNode astNode : nodes) {
+				if (astNode instanceof IASTCaseStatement
+						|| astNode instanceof IASTDefaultStatement) {
+					// When we meet a Case or default statement we create a new
+					// group of statements
+					group = Lists.newArrayList();
+					groups.add(group);
+				}
+				group.add(astNode);
+			}
+		}
+		return groups;
+	}
+}

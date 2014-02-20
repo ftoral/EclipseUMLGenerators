@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            objectClass="org.eclipse.core.resources.IFile"
+            name="Uml2C"
+            nameFilter="*.uml"
+            class="org.eclipse.umlgen.gen.c.properties.CodeGenerationPropertyPage"
+            id="org.eclipse.umlgen.gen.c.properties.codeGenerationPropertyPage">
+      </page>
+   </extension>
+
+</plugin>

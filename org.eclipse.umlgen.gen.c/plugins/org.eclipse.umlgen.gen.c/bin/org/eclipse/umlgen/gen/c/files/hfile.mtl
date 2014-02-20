@@ -1,0 +1,62 @@
+[comment encoding = UTF-8 /]
+[module hfile('http://www.eclipse.org/uml2/3.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::umlgen::gen::c::files::common /]
+[import org::eclipse::umlgen::gen::c::files::structural::comments /]
+[import org::eclipse::umlgen::gen::c::files::structural::typedef /]
+[import org::eclipse::umlgen::gen::c::files::structural::enum /]
+[import org::eclipse::umlgen::gen::c::files::structural::struct /]
+[import org::eclipse::umlgen::gen::c::files::structural::macros /]
+[import org::eclipse::umlgen::gen::c::files::structural::operation /]
+[import org::eclipse::umlgen::gen::c::files::structural::property /]
+[import org::eclipse::umlgen::gen::c::files::structural::fallthrough /]
+[import org::eclipse::umlgen::gen::c::files::structural::dataTypeQueries /]
+
+[template public hfile(c : Classifier) post (trim())]
+[let kind : String = 'H'/]
+[let generatedComment : String = getComment()]
+[if (generatedComment.size() > 0)]
+[generatedComment.format()/]
+[/if]
+[/let]
+
+[if c.IfNDefConditionAnnotation()->notEmpty()]
+#ifndef [hheaderDefine()/]
+#define [hheaderDefine()/]
+[/if]
+
+[comment]Includes[/comment]
+[c.genIncludes('H')/]
+
+[comment]Macro declaration : focus on private Macro typed properties[/comment]
+[for (macroDecl : Property | c.eContents(Property)->select(isPublic() and type.isMacro()))] 
+[let generated : String = macroDecl.gen()][macroDecl.addComment(generated)/][/let]
+
+[/for]
+[comment]DataType and subtypes (Enumeration)[/comment]
+[for (type : DataType | c.eContents(DataType)->select(isPublic()))]
+[let generated : String = type.gen()][type.addComment(generated)/][/let]
+
+[/for]
+[comment]Property[/comment]
+[for (property : Property | c.eContents(Property)->reject(isPrivate() or not type.isValidType()))] 
+[let generated : String = property.gen('H')][property.addComment(generated)/][/let]
+
+[/for]
+[comment]Operation[/comment]
+[for (opDecl : Operation | c.eContents(Operation)->select(isPublic()))]
+[opDecl.gen('H')/]
+
+[/for]
+[if c.IfNDefConditionAnnotation()->notEmpty()]
+#endif
+[/if]
+[/template]
+
+[template public hheaderDefine(c : Classifier) post (trim())]
+[if c.IfNDefConditionAnnotation()->isEmpty()]
+__[c.name.toUpper().replaceAll('-', '_')/]_H__
+[else]
+[c.IfNDefConditionAnnotation()->first()/]
+[/if]
+[/template]
+

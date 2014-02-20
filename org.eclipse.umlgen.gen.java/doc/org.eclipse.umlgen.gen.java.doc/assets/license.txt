@@ -1,0 +1,34 @@
+******************************************************************************************************
+The following images are covered by 
+Copyright (c) 2012, 2014 Obeo and others.
+All rights reserved. They are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ 
+assets/img/class.png
+assets/img/designer.png
+assets/img/launch.png
+assets/img/manifest.png
+assets/img/tree.png
+******************************************************************************************************
+
+******************************************************************************************************
+The following files are from Bootstrap 2.0.1 from Twitter Javascript and CSS.
+Available under the Apache License v2.0.
+
+assets/css/bootstrap.css
+assets/css/docs.css
+assets/js/bootstrap/bootstrap.js
+
+CQ 6309 has been completed and approved in the context of Eclipse Acceleo project for that:
+https://dev.eclipse.org/ipzilla/show_bug.cgi?id=6309 
+******************************************************************************************************
+
+******************************************************************************************************
+The following file is from JQuery plugin version 1.7.1 under the MIT licence, available here: 
+http://jquery.org/license.
+
+assets/js/jquery/jquery-1.7.1.js
+
+CQ 6308 has been completed and approved in the context of Eclipse Acceleo project for that:
+https://dev.eclipse.org/ipzilla/show_bug.cgi?id=6308 
+******************************************************************************************************

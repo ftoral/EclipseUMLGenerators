@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eclipse.umlgen.gen.java.feature_2.0.2.qualifier.jar" id="org.eclipse.umlgen.gen.java.feature" version="2.0.2.qualifier">
+      <category name="org.eclipse.umlgen.category"/>
+   </feature>
+   <feature url="features/org.eclipse.umlgen.gen.java.ui.feature_2.0.2.qualifier.jar" id="org.eclipse.umlgen.gen.java.ui.feature" version="2.0.2.qualifier">
+      <category name="org.eclipse.umlgen.category"/>
+   </feature>
+   <category-def name="org.eclipse.umlgen.category" label="Eclipse UML Generators">
+      <description>
+         The plugins available under this category are generators based on Acceleo 3.
+      </description>
+   </category-def>
+</site>

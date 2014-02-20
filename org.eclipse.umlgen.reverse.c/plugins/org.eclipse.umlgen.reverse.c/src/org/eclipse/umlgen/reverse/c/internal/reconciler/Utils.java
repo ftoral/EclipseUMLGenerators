@@ -1,0 +1,52 @@
+package org.eclipse.umlgen.reverse.c.internal.reconciler;
+
+import java.util.Collection;
+import java.util.Set;
+
+import com.google.common.base.Function;
+import com.google.common.base.Functions;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
+
+public class Utils
+{
+    public static <T> Collection<T> inLeftOnly(T[] left, T[] right)
+    {
+    	// FIXME MIGRATION use of Google API
+    	return null;
+    	//return inLeftOnly(ImmutableList.of(left), ImmutableList.of(right), Functions.identity());
+    }
+
+    public static <T, X> Collection<T> inLeftOnly(T[] left, T[] right, Function<? super T, X> function)
+    {
+    	// FIXME MIGRATION use of Google API
+    	return null;
+    	//return inLeftOnly(ImmutableList.of(left), ImmutableList.of(right), function);
+    }
+
+    public static <X, T> Collection<T> inLeftOnly(Collection<T> left, Collection<T> right) 
+    {
+        return inLeftOnly(left, right, Functions.identity());
+    }
+    
+    public static <X, T> Collection<T> inLeftOnly(Collection<T> left, Collection<T> right, final Function<? super T, X> function)
+    {
+        Set<X> leftSet = ImmutableSet.copyOf(Iterables.transform(left, function));
+        Set<X> rigthSet = ImmutableSet.copyOf(Iterables.transform(right, function));
+
+        Set<X> intersection = Sets.intersection(leftSet, rigthSet);
+        final Set<X> inLeftOnlyAfterFunction = Sets.difference(leftSet, intersection);
+
+        return Collections2.filter(left, new Predicate<T>()
+        {
+            public boolean apply(T input)
+            {
+                return inLeftOnlyAfterFunction.contains(function.apply(input));
+            }
+        });
+    }
+
+}

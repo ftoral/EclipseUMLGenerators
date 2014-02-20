@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.eclipse.umlgen.gen.c.builder"
+         name="UML2C Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="false"
+            hasNature="false"
+            isConfigurable="false">
+         <run
+               class="org.eclipse.umlgen.gen.c.builder.UML2CBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="org.eclipse.umlgen.gen.c.nature"
+         name="UML2C Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.eclipse.umlgen.gen.c.builder.UML2CNature">
+         </run>
+      </runtime>
+   </extension>
+
+</plugin>

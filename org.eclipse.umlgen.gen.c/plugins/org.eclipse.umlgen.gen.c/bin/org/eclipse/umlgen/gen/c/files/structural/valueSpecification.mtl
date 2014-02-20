@@ -1,0 +1,23 @@
+[comment encoding = UTF-8 /]
+[module valueSpecification('http://www.eclipse.org/uml2/3.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::umlgen::gen::c::files::activity::generators /]
+
+[template public serialize (valueSpecification : ValueSpecification) ]
+[stringValue()/]
+[/template]
+
+[template public serialize (expression : OpaqueExpression) ]
+[_body->at(language->indexOf('C'))/]
+[/template]
+
+[comment]Activity diagram is not present : take the content of the body attribute[/comment]
+[template public serialize(behavior : OpaqueBehavior) ? (eContents(Activity)->isEmpty())]
+[_body->at(language->indexOf('C'))/]
+[/template]
+
+[comment]Activity diagram is generated, navigate nodes to reconstitute the whole code[/comment]
+[template public serialize(behavior : OpaqueBehavior) ? (eContents(Activity)->notEmpty())]
+{
+	[eContents(Activity)->any(name = behavior.name).node->filter(InitialNode).gen()/]
+}
+[/template]

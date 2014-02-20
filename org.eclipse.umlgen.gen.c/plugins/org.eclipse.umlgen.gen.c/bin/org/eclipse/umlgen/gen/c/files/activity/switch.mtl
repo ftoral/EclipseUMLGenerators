@@ -1,0 +1,30 @@
+[comment encoding = UTF-8 /]
+[module switch('http://www.eclipse.org/uml2/3.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::umlgen::gen::c::files::activity::generators /]
+[import org::eclipse::umlgen::gen::c::files::activity::services /]
+[import org::eclipse::umlgen::gen::c::files::activity::comments /]
+
+[template public generate (switch : ConditionalNode) ]
+[commentBefore()/]
+[switch.name/] {[commentSameLine()/]
+[switch.firstClause().generate()/]
+[commentLastLine()/]
+}
+[/template]
+
+[template private generate (clause : Clause) post (trim())]
+[commentBefore()/]
+[clause.decider.eContainer(OpaqueAction).name/] :[commentSameLine()/][clause.clauseBody()/]
+[clause.successorClause.generate()/]
+[commentLastLine()/]
+[/template]
+
+[template private clauseBody(clause : Clause)]
+[if (not clause.usesFallthrough())]
+
+	[clause._body.gen()/][/if]
+[/template]
+
+[query private firstClause(switch : ConditionalNode) : Clause =
+	switch.clause->any(predecessorClause->isEmpty()) 
+/]

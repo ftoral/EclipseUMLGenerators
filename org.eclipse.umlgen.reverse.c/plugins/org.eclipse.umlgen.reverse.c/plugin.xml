@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.eclipse.umlgen.reverse.c.syncNature"
+         name="C2UML Sync Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.umlgen.reverse.c.internal.bundle.EarlyStartup">
+      </startup>
+   </extension>
+
+</plugin>

@@ -1,0 +1,52 @@
+package org.eclipse.umlgen.reverse.c.activity.test;
+
+import org.junit.Test;
+import org.eclipse.umlgen.reverse.c.activity.test.utils.AbstractTest;
+
+public class TestForLoop extends AbstractTest {
+
+	@Test
+	public void emptyFor1() {
+		testCFile("forLoop/empty/emptyFor1.c", false);
+	}
+
+	@Test
+	public void emptyFor2() {
+		testCFile("forLoop/empty/emptyFor2.c", false);
+	}
+
+	@Test
+	public void emptyFor3() {
+		testCFile("forLoop/empty/emptyFor3.c", false);
+	}
+
+	@Test
+	public void simpleFor1() {
+		testCFile("forLoop/simple/simpleFor1.c", false);
+	}
+
+	@Test
+	public void simpleFor2() {
+		testCFile("forLoop/simple/simpleFor2.c", false);
+	}
+
+	@Test
+	public void nestedFor1() {
+		testCFile("forLoop/nested/nestedFor1.c", false);
+	}
+
+	@Test
+	public void nestedFor2() {
+		testCFile("forLoop/nested/nestedFor2.c", false);
+	}
+
+	@Test
+	public void nestedFor3() {
+		testCFile("forLoop/nested/nestedFor3.c", false);
+	}
+
+	@Test
+	public void nestedFor4() {
+		testCFile("forLoop/nested/nestedFor4.c", false);
+	}
+}
