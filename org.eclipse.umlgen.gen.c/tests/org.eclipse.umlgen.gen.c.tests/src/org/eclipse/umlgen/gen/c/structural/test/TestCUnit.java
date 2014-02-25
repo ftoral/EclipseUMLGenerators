@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
-import java.io.IOException;
-
-import org.junit.Test;
 import org.eclipse.umlgen.gen.c.structural.test.util.AbstractTest;
+import org.junit.Test;
 
 public class TestCUnit extends AbstractTest {
 

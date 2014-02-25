@@ -15,9 +15,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
-import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
-import org.eclipse.umlgen.gen.java.ui.utils.UML2JavaMessages;
-import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -32,6 +29,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
+import org.eclipse.umlgen.gen.java.ui.utils.UML2JavaMessages;
+import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The component tab of the launch configuration.

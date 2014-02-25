@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestCUnit;
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestComment;
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestCommentInline;
@@ -39,6 +36,9 @@ import org.eclipse.umlgen.reverse.c.structural.test.addition.TestTypeDefEnumName
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestTypeDefFunction;
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestTypeDefStruct;
 import org.eclipse.umlgen.reverse.c.structural.test.addition.TestTypeDefStructNamed;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(value = {

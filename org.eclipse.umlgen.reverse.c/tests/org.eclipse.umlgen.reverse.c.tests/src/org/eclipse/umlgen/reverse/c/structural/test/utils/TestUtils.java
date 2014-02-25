@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.utils;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableMap;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,9 +50,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
 
 public class TestUtils {
 

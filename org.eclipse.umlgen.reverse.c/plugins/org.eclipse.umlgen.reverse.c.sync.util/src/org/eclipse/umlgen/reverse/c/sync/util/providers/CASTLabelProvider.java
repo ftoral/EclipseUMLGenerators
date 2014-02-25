@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.sync.util.providers;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+
 import java.util.Arrays;
 
 import org.eclipse.cdt.core.dom.ast.IASTName;
@@ -17,9 +20,6 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.internal.ui.CPluginImages;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 
 @SuppressWarnings("restriction")
 public class CASTLabelProvider extends LabelProvider {

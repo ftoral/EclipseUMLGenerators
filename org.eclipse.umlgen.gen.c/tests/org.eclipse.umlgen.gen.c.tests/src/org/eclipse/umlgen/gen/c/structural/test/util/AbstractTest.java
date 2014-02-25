@@ -21,13 +21,10 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import org.eclipse.acceleo.engine.AcceleoEnginePlugin;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.junit.BeforeClass;
 import org.eclipse.umlgen.gen.c.files.Generate;
 
 public class AbstractTest {

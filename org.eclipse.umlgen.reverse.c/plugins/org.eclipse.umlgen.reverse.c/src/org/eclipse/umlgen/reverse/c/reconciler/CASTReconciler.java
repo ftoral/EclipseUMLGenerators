@@ -11,6 +11,8 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.reconciler;
 
+import com.google.common.base.Function;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -53,13 +55,8 @@ import org.eclipse.umlgen.reverse.c.internal.reconciler.BindingResolver;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.CFileReconciler;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.HFileReconciler;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler;
-import org.eclipse.umlgen.reverse.c.internal.reconciler.SameFileLocation;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.Utils;
 import org.eclipse.umlgen.reverse.c.util.ASTUtil;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableList;
 
 /**
  * This reconciler is registered when the plugin starts. It is in charge of

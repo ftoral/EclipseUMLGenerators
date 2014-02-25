@@ -32,9 +32,6 @@ import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.util.Policy;
-import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
-import org.eclipse.umlgen.gen.java.ui.utils.UML2JavaMessages;
-import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -51,6 +48,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog;
+import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
+import org.eclipse.umlgen.gen.java.ui.utils.UML2JavaMessages;
+import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The UML to Java launch configuration tab.

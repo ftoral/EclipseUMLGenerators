@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.builder;
 
+import com.google.common.collect.Lists;
+
 import java.util.List;
 
 import org.eclipse.cdt.core.dom.ast.IASTCaseStatement;
@@ -30,8 +32,6 @@ import org.eclipse.umlgen.reverse.c.activity.beans.ActivityNodesPins;
 import org.eclipse.umlgen.reverse.c.activity.comments.CommentBuilder;
 import org.eclipse.umlgen.reverse.c.activity.util.ASTUtilities;
 import org.eclipse.umlgen.reverse.c.activity.util.UMLActivityFactory;
-
-import com.google.common.collect.Lists;
 
 public class SwitchStatementBuilder extends AbstractBuilder {
 

@@ -49,9 +49,9 @@ import org.eclipse.jdt.launching.environments.IExecutionEnvironmentsManager;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 import org.eclipse.text.edits.MalformedTreeException;
 import org.eclipse.text.edits.TextEdit;
+import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * Services for workspace related operations.

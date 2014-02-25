@@ -29,12 +29,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
-import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.umlgen.gen.java.ui.UML2JavaUIActivator;
+import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The shortcut launcher for UML to Java launch configurations.

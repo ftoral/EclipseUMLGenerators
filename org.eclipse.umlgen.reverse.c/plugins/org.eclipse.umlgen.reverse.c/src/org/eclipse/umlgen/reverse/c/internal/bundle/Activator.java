@@ -17,9 +17,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.BundleContext;
 import org.eclipse.umlgen.reverse.c.listener.UMLModelChangeListener;
 import org.eclipse.umlgen.reverse.c.reconciler.CASTReconciler;
+import org.osgi.framework.BundleContext;
 
 public class Activator extends Plugin
 {

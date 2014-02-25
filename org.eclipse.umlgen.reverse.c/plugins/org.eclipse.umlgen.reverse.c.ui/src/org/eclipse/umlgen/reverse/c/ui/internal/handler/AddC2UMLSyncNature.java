@@ -22,6 +22,8 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.umlgen.gen.c.builder.UML2CBuilder;
+import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
 import org.eclipse.umlgen.reverse.c.BundleConstants;
 import org.eclipse.umlgen.reverse.c.StructuralBuilder;
 import org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature;
@@ -29,8 +31,6 @@ import org.eclipse.umlgen.reverse.c.resource.PreferenceStoreManager;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 import org.eclipse.umlgen.reverse.c.ui.internal.widgets.QuestionDialog;
-import org.eclipse.umlgen.gen.c.builder.UML2CBuilder;
-import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
 
 /**
  * Handler adding the <b>org.eclipse.umlgen.reverse.c.syncNature</b> to the

@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.beans;
 
+import com.google.common.collect.Maps;
+
 import java.util.Map;
 
 import org.eclipse.umlgen.reverse.c.BundleConstants;
-
-import com.google.common.collect.Maps;
 
 public class CommentInfo {
 	private static final int BEFORE = 0;

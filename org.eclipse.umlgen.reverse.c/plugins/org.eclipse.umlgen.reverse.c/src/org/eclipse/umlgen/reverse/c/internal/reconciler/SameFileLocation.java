@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.internal.reconciler;
 
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
+
 import org.eclipse.cdt.core.dom.ast.IASTFileLocation;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
-
-import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
 
 public final class SameFileLocation implements Predicate<IASTNode>
 {

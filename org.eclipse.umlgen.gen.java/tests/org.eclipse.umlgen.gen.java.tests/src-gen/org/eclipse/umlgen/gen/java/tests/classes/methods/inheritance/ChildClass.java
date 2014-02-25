@@ -4,7 +4,6 @@
  */
 package org.eclipse.umlgen.gen.java.tests.classes.methods.inheritance;
 
-import org.eclipse.umlgen.gen.java.tests.classes.methods.inheritance.AbstractParentClass;
 // Start of user code (user defined imports)
 
 // End of user code

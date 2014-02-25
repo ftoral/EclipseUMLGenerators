@@ -31,8 +31,8 @@ import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.umlgen.gen.java.services.UML2JavaConfigurationHolder;
 
 /**
  * Entry point of the 'Workflow' generation module.

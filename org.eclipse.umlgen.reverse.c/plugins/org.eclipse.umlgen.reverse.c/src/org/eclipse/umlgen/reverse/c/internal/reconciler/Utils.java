@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.internal.reconciler;
 
-import java.util.Collection;
-import java.util.Set;
-
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
@@ -20,6 +17,9 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
+
+import java.util.Collection;
+import java.util.Set;
 
 public class Utils
 {

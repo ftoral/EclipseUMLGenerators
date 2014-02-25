@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.comments;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +27,6 @@ import org.eclipse.cdt.core.dom.ast.IASTStatement;
 import org.eclipse.cdt.core.dom.ast.IASTSwitchStatement;
 import org.eclipse.cdt.core.dom.ast.IASTWhileStatement;
 import org.eclipse.umlgen.reverse.c.activity.beans.CommentInfo;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 public class CommentsReconciler {
 	private Map<IASTNode, NodeLocationInfo> nodesLocationInfo = Maps

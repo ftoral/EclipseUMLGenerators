@@ -47,10 +47,6 @@ import org.eclipse.umlgen.reverse.c.event.CommentAdded;
 import org.eclipse.umlgen.reverse.c.event.CommentRemoved;
 import org.eclipse.umlgen.reverse.c.event.FunctionBodyChanged;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
-import org.eclipse.umlgen.reverse.c.internal.reconciler.SameFileLocation;
-
-import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableList;
 
 /**
  * @author clecamus

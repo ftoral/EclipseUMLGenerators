@@ -34,8 +34,8 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 import org.eclipse.umlgen.gen.c.files.Generate;
+import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 public class GenerateCCodeFromUML extends AbstractHandler {
 

@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.BundleContext;
 import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
+import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle

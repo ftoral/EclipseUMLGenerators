@@ -24,10 +24,10 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.umlgen.reverse.c.activity.UMLActivityBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.eclipse.umlgen.reverse.c.activity.UMLActivityBuilder;
 
 public abstract class AbstractTest {
 

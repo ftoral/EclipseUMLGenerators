@@ -17,9 +17,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
 import org.eclipse.umlgen.reverse.c.BundleConstants;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
-import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
 
 /**
  * Handler removing the <b>org.eclipse.umlgen.reverse.c.syncNature</b> to the

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
-import org.junit.Test;
 import org.eclipse.umlgen.gen.c.structural.test.util.AbstractTest;
+import org.junit.Test;
 
 public class TestTypeDef extends AbstractTest {
 

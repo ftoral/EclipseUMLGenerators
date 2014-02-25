@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.activity.test;
 
-import org.junit.Test;
 import org.eclipse.umlgen.gen.c.activity.test.util.AbstractTest;
+import org.junit.Test;
 
 public class TestBreakInLoop extends AbstractTest {
 	@Test

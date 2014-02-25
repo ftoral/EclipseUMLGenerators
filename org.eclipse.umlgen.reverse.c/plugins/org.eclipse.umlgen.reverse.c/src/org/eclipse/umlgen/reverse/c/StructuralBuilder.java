@@ -62,13 +62,9 @@ import org.eclipse.umlgen.reverse.c.internal.reconciler.BindingResolver;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.CFileReconciler;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.HFileReconciler;
 import org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler;
-import org.eclipse.umlgen.reverse.c.internal.reconciler.SameFileLocation;
 import org.eclipse.umlgen.reverse.c.listener.UMLModelChangeListener;
 import org.eclipse.umlgen.reverse.c.reconciler.ASTCommentReconciler;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
-
-import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableList;
 
 public class StructuralBuilder {
 	private UMLModelChangeListener umlModelChangeListener;

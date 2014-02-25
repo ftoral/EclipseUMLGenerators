@@ -4,10 +4,9 @@
  */
 package org.eclipse.umlgen.gen.java.tests.classes.methods;
 
-import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 // Start of user code (user defined imports)
 
 // End of user code

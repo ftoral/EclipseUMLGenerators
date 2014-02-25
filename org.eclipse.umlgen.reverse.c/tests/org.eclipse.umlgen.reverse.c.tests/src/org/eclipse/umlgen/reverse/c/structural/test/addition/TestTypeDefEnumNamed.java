@@ -20,8 +20,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.editors.text.TextEditor;
-import org.junit.Test;
 import org.eclipse.umlgen.reverse.c.structural.test.utils.AbstractTest;
+import org.junit.Test;
 
 public class TestTypeDefEnumNamed extends AbstractTest {
 	@Test
