@@ -1,6 +1,0 @@
-[comment encoding = UTF-8 /]
-[module fallthrough('http://www.eclipse.org/uml2/3.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')/]
-
-[template public gen(e : NamedElement)]
-// TODO: implement gen for [e.eClass().ePackage.name/]::[e.eClass().name/] (seen as NamedElement)
-[/template]

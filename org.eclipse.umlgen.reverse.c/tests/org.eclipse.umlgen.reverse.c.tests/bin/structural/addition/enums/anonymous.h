@@ -1,5 +1,0 @@
-enum {
-	red,
-	green,
-	blue
-};
