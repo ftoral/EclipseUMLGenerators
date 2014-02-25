@@ -1,14 +1,14 @@
-/***********************************************************************************************************************
+/*******************************************************************************
  * Copyright (c) 2010 Communication & Systems.
- * 
- * All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse
- * Public License v1.0 which accompanies this distribution, and is available at
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: Mikael Barbero (Obeo) - initial API and implementation
- *               Sebastien GABEL (CS) - Bug fix on deconfigure project
- * 
- **********************************************************************************************************************/
+ * Contributors:
+ *     Mikael Barbero (Obeo) - initial API and implementation
+ *     Sebastien Gabel (CS) - Bug fix on deconfigure project
+ *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.resource;
 
 import org.eclipse.cdt.core.model.CoreModel;
@@ -35,7 +35,7 @@ import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
  * dedicated <b>org.eclipse.umlgen.reverse.c.builder</b> builder to the current
  * project nature.
  * 
- * @author <a href="mailto:mikael.barbero@obeo.fr">Mickael BARBERO</a>
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael BARBERO</a>
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public class C2UMLSyncNature implements IProjectNature {

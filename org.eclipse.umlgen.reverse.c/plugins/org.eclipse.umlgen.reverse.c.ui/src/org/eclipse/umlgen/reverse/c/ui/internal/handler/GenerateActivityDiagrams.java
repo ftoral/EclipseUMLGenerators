@@ -1,13 +1,13 @@
-/***********************************************************************************************************************
- * Copyright (c) 2010-2011 Communication & Systems.
- * 
- * All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse
- * Public License v1.0 which accompanies this distribution, and is available at
+/*******************************************************************************
+ * Copyright (c) 2010, 2011 Communication & Systems.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: Sebastien GABEL (CS) - initial API and implementation
- * 
- **********************************************************************************************************************/
+ * Contributors:
+ *     Sebastien GABEL (CS) - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.ui.internal.handler;
 
 import java.lang.reflect.InvocationTargetException;

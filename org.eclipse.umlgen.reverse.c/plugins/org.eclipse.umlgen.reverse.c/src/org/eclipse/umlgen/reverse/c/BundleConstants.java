@@ -1,14 +1,16 @@
-/***********************************************************************************************************************
+/*******************************************************************************
  * Copyright (c) 2010 Communication & Systems.
- * 
- * All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse
- * Public License v1.0 which accompanies this distribution, and is available at
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: Christophe Le Camus (CS) Mikael Barbero (Obeo) Sebastien GABEL (CS) Stephane Thibaudeau (Obeo)
- * 
- **********************************************************************************************************************/
-
+ * Contributors:
+ *     Christophe Le Camus (CS) - initial API and implementation
+ *     Mikael Barbero (Obeo) - evolutions
+ *     Sebastien GABEL (CS) - evolutions
+ *     Stephane Thibaudeau (Obeo) - evolutions
+ *******************************************************************************/
 package org.eclipse.umlgen.reverse.c;
 
 import org.eclipse.uml2.uml.OpaqueAction;
