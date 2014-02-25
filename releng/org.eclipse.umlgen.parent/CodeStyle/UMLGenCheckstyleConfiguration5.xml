@@ -5,9 +5,8 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Acceleo Checkstyle 5
-    Description: 
-Acceleo Checkstyle 5 Configuration
+    Checkstyle-Configuration: Eclipse UML Generators Checkstyle 5
+    Description: Eclipse UML Generators Checkstyle 5 Configuration
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
