@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -12,9 +12,8 @@ package org.eclipse.umlgen.reverse.c.event;
 
 /**
  * Abstract representation of an event related to a Ifndef.
- * 
+ *
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public abstract class IfndefEvent extends CModelChangedEvent {
 
@@ -28,8 +27,7 @@ public abstract class IfndefEvent extends CModelChangedEvent {
 		this.condition = new String(condition);
 	}
 
-	public static abstract class Builder<T extends IfndefEvent> extends
-			CModelChangedEvent.Builder<T> {
+	public static abstract class Builder<T extends IfndefEvent> extends CModelChangedEvent.Builder<T> {
 		public Builder<T> setCondition(char[] condition) {
 			getEvent().setCondition(condition);
 			return this;

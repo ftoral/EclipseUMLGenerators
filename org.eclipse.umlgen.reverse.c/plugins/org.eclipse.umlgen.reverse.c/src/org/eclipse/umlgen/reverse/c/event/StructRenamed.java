@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -14,10 +14,9 @@ import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 /**
  * Event related to renaming of a structure.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class StructRenamed extends StructEvent {
 	/**
@@ -30,7 +29,7 @@ public class StructRenamed extends StructEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<StructRenamed> builder() {

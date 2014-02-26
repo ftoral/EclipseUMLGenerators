@@ -4,18 +4,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
 /**
- * Abstract representation of an event related to a definition of a simple of
- * composite type.
- * 
+ * Abstract representation of an event related to a definition of a simple of composite type.
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
- * @since 4.2.0
  */
 public abstract class AbstractNamedEvent extends CModelChangedEvent {
 
@@ -39,8 +37,7 @@ public abstract class AbstractNamedEvent extends CModelChangedEvent {
 		this.previousName = previousName;
 	}
 
-	public static abstract class Builder<T extends AbstractNamedEvent> extends
-			CModelChangedEvent.Builder<T> {
+	public static abstract class Builder<T extends AbstractNamedEvent> extends CModelChangedEvent.Builder<T> {
 		public Builder<T> currentName(String currentName) {
 			getEvent().setCurrentName(currentName);
 			return this;

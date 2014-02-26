@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     	Mikael BARBERO (Obeo) - initial API and implementation
  * 		Christophe LE CAMUS (CS) - Major evolution
@@ -16,10 +16,9 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 
 /**
  * Abstract representation of an event related to a type def enumeration.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public abstract class TypeDefEnumerationEvent extends EnumerationEvent {
 
@@ -43,8 +42,7 @@ public abstract class TypeDefEnumerationEvent extends EnumerationEvent {
 		this.source = source;
 	}
 
-	public static abstract class Builder<T extends TypeDefEnumerationEvent>
-			extends EnumerationEvent.Builder<T> {
+	public static abstract class Builder<T extends TypeDefEnumerationEvent> extends EnumerationEvent.Builder<T> {
 
 		public Builder<T> setRedefinedEnumeration(String name) {
 			getEvent().setRedefinedEnumerationName(name);

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -23,12 +23,10 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
- * Set of utility methods to handles {@link Resource resource} and
- * {@link ResourceSet resource set}
- * 
- * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaël barbero</a>
+ * Set of utility methods to handles {@link Resource resource} and {@link ResourceSet resource set}
+ *
+ * @author <a href="mailto:mikael.barbero@obeo.fr">Mikaï¿½l barbero</a>
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
- * @since 0.1.0
  */
 public final class EResources {
 
@@ -42,9 +40,9 @@ public final class EResources {
 	}
 
 	/**
-	 * Attaches the given {@link EObject} to a new resource created in a new
-	 * {@link ResourceSet} with the given URI.
-	 * 
+	 * Attaches the given {@link EObject} to a new resource created in a new {@link ResourceSet} with the
+	 * given URI.
+	 *
 	 * @param resourceURI
 	 *            URI of the new resource to create.
 	 * @param root
@@ -58,14 +56,11 @@ public final class EResources {
 	}
 
 	/**
-	 * This will create a {@link Resource} given the model extension it is
-	 * intended for.
-	 * 
+	 * This will create a {@link Resource} given the model extension it is intended for.
+	 *
 	 * @param modelURI
-	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is
-	 *            stored.
-	 * @return The {@link Resource} given the model extension it is intended
-	 *         for.
+	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
+	 * @return The {@link Resource} given the model extension it is intended for.
 	 */
 	public static Resource createResource(URI modelURI) {
 		// return new OrderedXMIResourceImpl(modelURI);
@@ -73,36 +68,29 @@ public final class EResources {
 	}
 
 	/**
-	 * This will create a {@link Resource} given the model extension it is
-	 * intended for and a ResourceSet.
-	 * 
+	 * This will create a {@link Resource} given the model extension it is intended for and a ResourceSet.
+	 *
 	 * @param modelURI
-	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is
-	 *            stored.
+	 *            {@link org.eclipse.emf.common.util.URI URI} where the model is stored.
 	 * @param resourceSet
 	 *            The {@link ResourceSet} to load the model in.
-	 * @return The {@link Resource} given the model extension it is intended
-	 *         for.
+	 * @return The {@link Resource} given the model extension it is intended for.
 	 */
 	public static Resource createResource(URI modelURI, ResourceSet resourceSet) {
 		String fileExtension = modelURI.fileExtension();
-		if ((fileExtension == null) || (fileExtension.length() == 0)) {
+		if (fileExtension == null || fileExtension.length() == 0) {
 			fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
 		}
 
-		final Resource.Factory.Registry registry = resourceSet
-				.getResourceFactoryRegistry();
-		Object resourceFactory = registry.getExtensionToFactoryMap().get(
-				fileExtension);
+		final Resource.Factory.Registry registry = resourceSet.getResourceFactoryRegistry();
+		Object resourceFactory = registry.getExtensionToFactoryMap().get(fileExtension);
 		if (resourceFactory == null) {
-			resourceFactory = Resource.Factory.Registry.INSTANCE
-					.getExtensionToFactoryMap().get(fileExtension);
+			resourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap()
+					.get(fileExtension);
 			if (resourceFactory != null) {
-				registry.getExtensionToFactoryMap().put(fileExtension,
-						resourceFactory);
+				registry.getExtensionToFactoryMap().put(fileExtension, resourceFactory);
 			} else {
-				registry.getExtensionToFactoryMap().put(fileExtension,
-						new XMIResourceFactoryImpl());
+				registry.getExtensionToFactoryMap().put(fileExtension, new XMIResourceFactoryImpl());
 			}
 		}
 
@@ -111,24 +99,22 @@ public final class EResources {
 
 	/**
 	 * Serializes the given EObjet as a String.
-	 * 
+	 *
 	 * @param root
 	 *            Root of the objects to be serialized.
 	 * @return The given EObjet serialized as a String.
 	 * @throws IOException
-	 *             Thrown if an I/O operation has failed or been interrupted
-	 *             during the saving process.
+	 *             Thrown if an I/O operation has failed or been interrupted during the saving process.
 	 */
 	public static String serialize(EObject root) throws IOException {
 		// Copies the root to avoid modifying it
 		final EObject copyRoot = EcoreUtil.copy(root);
 		// Should not throw ClassCast since uri calls for an xml resource
-		final XMLResource resource = (XMLResource) EResources.attachResource(
-				URI.createFileURI("resource.orderedxmi"), copyRoot); //$NON-NLS-1$
+		final XMLResource resource = (XMLResource)EResources.attachResource(URI
+				.createFileURI("resource.orderedxmi"), copyRoot); //$NON-NLS-1$
 		resource.getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING,
 				System.getProperty(EResources.FILE_ENCODING));
-		resource.getDefaultSaveOptions().put(XMLResource.OPTION_SKIP_ESCAPE,
-				Boolean.TRUE);
+		resource.getDefaultSaveOptions().put(XMLResource.OPTION_SKIP_ESCAPE, Boolean.TRUE);
 
 		final StringWriter writer = new StringWriter();
 		resource.save(writer, null);

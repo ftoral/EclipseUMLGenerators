@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -15,10 +15,9 @@ import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 /**
  * Event related to an addition of an array.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class TypeDefArrayAdded extends TypeDefArrayEvent {
 	/**
@@ -30,21 +29,20 @@ public class TypeDefArrayAdded extends TypeDefArrayEvent {
 		super.notifyChanges(manager);
 
 		// handle dimension
-		StringExpression expr = myTypeDef.getNameExpression() == null ? myTypeDef
-				.createNameExpression("dimension", null) : myTypeDef
-				.getNameExpression();
+		StringExpression expr = myTypeDef.getNameExpression() == null ? myTypeDef.createNameExpression(
+				"dimension", null) : myTypeDef.getNameExpression();
 
-		// Updates the value in all cases.
-		StringBuilder sb = new StringBuilder();
-		for (String dim : getDimensions()) {
-			sb = sb.append("[" + dim + "]");
-		}
-		expr.setSymbol(sb.toString());
+				// Updates the value in all cases.
+				StringBuilder sb = new StringBuilder();
+				for (String dim : getDimensions()) {
+					sb = sb.append("[" + dim + "]");
+				}
+				expr.setSymbol(sb.toString());
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<TypeDefArrayAdded> builder() {

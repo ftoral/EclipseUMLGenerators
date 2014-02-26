@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -20,10 +20,9 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to a deletion of an include declaration.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class IncludeRemoved extends IncludeEvent {
 	/**
@@ -31,10 +30,8 @@ public class IncludeRemoved extends IncludeEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier unitClass = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		String usageName = new Path(getCurrentName()).removeFileExtension()
-				.toString();
+		Classifier unitClass = ModelUtil.findClassifierInPackage(manager.getSourcePackage(), getUnitName());
+		String usageName = new Path(getCurrentName()).removeFileExtension().toString();
 		Dependency usage = unitClass.getClientDependency(usageName);
 		if (usage != null) {
 			if (ModelUtil.isRemovable(usage)) {
@@ -42,11 +39,9 @@ public class IncludeRemoved extends IncludeEvent {
 				usage.destroy();
 			} else {
 				// decrease the visibility
-				ModelUtil.setVisibility(usage, getTranslationUnit(),
-						EventType.REMOVE);
+				ModelUtil.setVisibility(usage, getTranslationUnit(), EventType.REMOVE);
 			}
-			if (ModelUtil.isNotReferencedAnymore(usage.getSupplier(usage
-					.getName()))) {
+			if (ModelUtil.isNotReferencedAnymore(usage.getSupplier(usage.getName()))) {
 				usage.getSupplier(usage.getName()).destroy();
 			}
 		}
@@ -54,7 +49,7 @@ public class IncludeRemoved extends IncludeEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<IncludeRemoved> builder() {

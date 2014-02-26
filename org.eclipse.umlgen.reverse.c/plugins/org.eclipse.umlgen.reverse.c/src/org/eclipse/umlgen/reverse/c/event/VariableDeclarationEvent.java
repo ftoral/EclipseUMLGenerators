@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -12,10 +12,9 @@ package org.eclipse.umlgen.reverse.c.event;
 
 /**
  * Abstract representation of an event related to a variable declaration.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public abstract class VariableDeclarationEvent extends AbstractTypedEvent {
 	private boolean isStatic;
@@ -78,8 +77,7 @@ public abstract class VariableDeclarationEvent extends AbstractTypedEvent {
 		this.initializationExpression = expression;
 	}
 
-	public abstract static class Builder<T extends VariableDeclarationEvent>
-			extends AbstractTypedEvent.Builder<T> {
+	public abstract static class Builder<T extends VariableDeclarationEvent> extends AbstractTypedEvent.Builder<T> {
 
 		public Builder<T> setIsStatic(boolean isStatic) {
 			getEvent().setIsStatic(isStatic);

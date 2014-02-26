@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--
+   Copyright (c) 2012, 2014 Topcased and others.
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+   
+   Contributors:
+		Pierre Gaufillet (Airbus) - initial implementation and API
+		Cedric Notot (Obeo) - changes for migration to Eclipse/PolarSys and move of Acceleo Maven repository
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
-    <artifactId>org.topcased.releng.tycho.parent</artifactId>
-    <groupId>topcased</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../org.topcased.releng.tycho.parent</relativePath>
+    <groupId>org.eclipse.umlgen</groupId>
+    <artifactId>org.eclipse.umlgen.parent</artifactId>
+    <version>0.9.0.qualifier</version>
+    <relativePath>../../../releng/org.eclipse.umlgen.parent</relativePath>
   </parent>
-  <artifactId>org.eclipse.umlgen.gen.c.builder</artifactId>
-  <version>4.0.2-SNAPSHOT</version>
+
+  <artifactId>org.eclipse.umlgen.gen.java.ui</artifactId>
+  <version>0.9.0.qualifier</version>
   <packaging>eclipse-plugin</packaging>
+
+  <name>Eclipse UML2 to C Generator Builder</name>
+
+  <!-- workaround for https://issues.sonatype.org/browse/TYCHO-168 -->
+  <build>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

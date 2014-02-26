@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -24,9 +24,8 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to an addition of an include declaration.
- * 
+ *
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class IncludeAdded extends IncludeEvent {
 
@@ -37,33 +36,28 @@ public class IncludeAdded extends IncludeEvent {
 	public void notifyChanges(ModelManager manager) {
 		// Check the classifier is already created into the UML model and
 		// creates it if needed
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		String includedLibraryName = new Path(getCurrentName())
-				.removeFileExtension().toString();
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
+		String includedLibraryName = new Path(getCurrentName()).removeFileExtension().toString();
 
 		// test if a dependency already exists into the model before creating
 		// it.
-		Usage usage = ModelUtil.findUsage(matchingClassifier,
-				includedLibraryName);
+		Usage usage = ModelUtil.findUsage(matchingClassifier, includedLibraryName);
 		if (usage == null) {
 			// try to retrieve a classifier (means Class or Interface) into the
 			// src package
-			Classifier distantDependency = (Classifier) manager
-					.getSourcePackage().getPackagedElement(includedLibraryName,
-							false, UMLPackage.Literals.CLASSIFIER, false);
+			Classifier distantDependency = (Classifier)manager.getSourcePackage().getPackagedElement(
+					includedLibraryName, false, UMLPackage.Literals.CLASSIFIER, false);
 
 			// distantDependency not found means we need to create an interface
 			// into Libs package
 			// whereas standard libraries are considered to be included as
 			// "< libraryName >" but is not already the
 			// case.
-			if (distantDependency == null
-					|| (distantDependency instanceof Class && VisibilityKind.PRIVATE_LITERAL
-							.equals(distantDependency.getVisibility()))) {
-				distantDependency = (Interface) manager.getLibsPackage()
-						.getPackagedElement(includedLibraryName, false,
-								UMLPackage.Literals.INTERFACE, true);
+			if (distantDependency == null || distantDependency instanceof Class
+					&& VisibilityKind.PRIVATE_LITERAL.equals(distantDependency.getVisibility())) {
+				distantDependency = (Interface)manager.getLibsPackage().getPackagedElement(
+						includedLibraryName, false, UMLPackage.Literals.INTERFACE, true);
 			}
 
 			// the usage is created, the name is set with the name of the
@@ -85,7 +79,7 @@ public class IncludeAdded extends IncludeEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<IncludeAdded> builder() {

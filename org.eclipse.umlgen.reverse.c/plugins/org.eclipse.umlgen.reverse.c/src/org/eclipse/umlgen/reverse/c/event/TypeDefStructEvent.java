@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -14,10 +14,9 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 
 /**
  * Abstract representation of an event related to a structure.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public abstract class TypeDefStructEvent extends StructEvent {
 
@@ -41,8 +40,7 @@ public abstract class TypeDefStructEvent extends StructEvent {
 		this.source = source;
 	}
 
-	public static abstract class Builder<T extends TypeDefStructEvent> extends
-			StructEvent.Builder<T> {
+	public static abstract class Builder<T extends TypeDefStructEvent> extends StructEvent.Builder<T> {
 
 		public Builder<T> setRedefinedStruct(String name) {
 			getEvent().setRedefinedStructName(name);

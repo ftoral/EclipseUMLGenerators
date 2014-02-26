@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * 	   Christophe Le Camus (CS) - initial API and implementation 
+ * 	   Christophe Le Camus (CS) - initial API and implementation
  *     Sebastien Gabel (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -20,10 +20,9 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to deletion of a structure.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class TypeDefStructRemoved extends TypeDefStructEvent {
 
@@ -32,25 +31,23 @@ public class TypeDefStructRemoved extends TypeDefStructEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		DataType localType = ModelUtil.findDataTypeInClassifier(
-				matchingClassifier, getCurrentName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
+		DataType localType = ModelUtil.findDataTypeInClassifier(matchingClassifier, getCurrentName());
 
 		if (localType != null) {
 			if (ModelUtil.isRemovable(localType)) {
 				DiagramUtil.removeGraphicalRepresentation(localType, manager);
 				localType.destroy();
 			} else {
-				ModelUtil.setVisibility(localType, getTranslationUnit(),
-						EventType.REMOVE);
+				ModelUtil.setVisibility(localType, getTranslationUnit(), EventType.REMOVE);
 			}
 		}
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<TypeDefStructRemoved> builder() {

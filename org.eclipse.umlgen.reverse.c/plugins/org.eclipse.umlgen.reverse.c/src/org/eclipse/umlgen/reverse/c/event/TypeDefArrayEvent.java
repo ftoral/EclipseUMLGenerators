@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -14,10 +14,9 @@ import java.util.Collection;
 
 /**
  * Abstract representation of an event related to an array.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public abstract class TypeDefArrayEvent extends TypeDefEvent {
 	private Collection<String> dimensions;
@@ -30,8 +29,7 @@ public abstract class TypeDefArrayEvent extends TypeDefEvent {
 		dimensions = dim;
 	}
 
-	public static abstract class Builder<T extends TypeDefArrayEvent> extends
-			TypeDefEvent.Builder<T> {
+	public static abstract class Builder<T extends TypeDefArrayEvent> extends TypeDefEvent.Builder<T> {
 		public Builder<T> setDimensions(Collection<String> dim) {
 			getEvent().setDimensions(dim);
 			return this;

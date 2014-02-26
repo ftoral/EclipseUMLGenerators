@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.umlgen.gen.c"
       label="Uml2cfeature Feature"
-      version="0.6.0"
+      version="0.9.0"
       provider-name="Eclipse"
       os="aix,hpux,linux,macosx,qnx,solaris,win32"
       ws="carbon,gtk,motif,photon,win32"

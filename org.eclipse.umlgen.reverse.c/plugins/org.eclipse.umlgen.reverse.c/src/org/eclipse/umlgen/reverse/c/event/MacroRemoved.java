@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -19,10 +19,9 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to a deletion of a macro.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class MacroRemoved extends MacroEvent {
 	/**
@@ -30,25 +29,23 @@ public class MacroRemoved extends MacroEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		Property attribute = matchingClassifier.getAttribute(getCurrentName(),
-				null);
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
+		Property attribute = matchingClassifier.getAttribute(getCurrentName(), null);
 
 		if (attribute != null) {
 			if (ModelUtil.isRemovable(attribute)) {
 				DiagramUtil.removeGraphicalRepresentation(attribute, manager);
 				attribute.destroy();
 			} else {
-				ModelUtil.setVisibility(attribute, getTranslationUnit(),
-						EventType.REMOVE);
+				ModelUtil.setVisibility(attribute, getTranslationUnit(), EventType.REMOVE);
 			}
 		}
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<MacroRemoved> builder() {

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -21,10 +21,9 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to addition of a type definition of a structure.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
 public class TypeDefStructAdded extends TypeDefStructEvent {
 
@@ -34,19 +33,17 @@ public class TypeDefStructAdded extends TypeDefStructEvent {
 	@Override
 	public void notifyChanges(ModelManager manager) {
 		// Retrieves the created data type or create it if not existing
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		DataType myTypeDef = ModelUtil.findDataTypeRedefinitionInClassifier(
-				matchingClassifier, getCurrentName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
+		DataType myTypeDef = ModelUtil.findDataTypeRedefinitionInClassifier(matchingClassifier,
+				getCurrentName());
 		if (myTypeDef == null) {
 			if (matchingClassifier instanceof Class) {
-				myTypeDef = (DataType) ((Class) matchingClassifier)
-						.createNestedClassifier(getCurrentName(),
-								UMLPackage.Literals.DATA_TYPE);
+				myTypeDef = (DataType)((Class)matchingClassifier).createNestedClassifier(getCurrentName(),
+						UMLPackage.Literals.DATA_TYPE);
 			} else if (matchingClassifier instanceof Interface) {
-				myTypeDef = (DataType) ((Interface) matchingClassifier)
-						.createNestedClassifier(getCurrentName(),
-								UMLPackage.Literals.DATA_TYPE);
+				myTypeDef = (DataType)((Interface)matchingClassifier).createNestedClassifier(
+						getCurrentName(), UMLPackage.Literals.DATA_TYPE);
 			}
 		}
 
@@ -54,51 +51,42 @@ public class TypeDefStructAdded extends TypeDefStructEvent {
 		ModelUtil.setVisibility(myTypeDef, getTranslationUnit(), EventType.ADD);
 
 		// Destroy previous existing type in type pck
-		DataType existingType = manager
-				.findDataTypeInTypesPck(getCurrentName());
+		DataType existingType = manager.findDataTypeInTypesPck(getCurrentName());
 		if (existingType != null && myTypeDef != null) {
 			ModelUtil.redefineType(existingType, myTypeDef);
 			existingType.destroy();
 		}
 
-		String redefinedStructureName = ModelUtil.computeAnonymousTypeName(
-				getUnitName(), getRedefinedStructName(), getSource());
-		DataType redefinedStructure = ModelUtil.findDataTypeInClassifier(
-				matchingClassifier, redefinedStructureName);
+		String redefinedStructureName = ModelUtil.computeAnonymousTypeName(getUnitName(),
+				getRedefinedStructName(), getSource());
+		DataType redefinedStructure = ModelUtil.findDataTypeInClassifier(matchingClassifier,
+				redefinedStructureName);
 		myTypeDef.getRedefinedClassifiers().add(redefinedStructure);
 
 		// re-order the elements => redefined type is placed before the defined
 		// type
 		if (matchingClassifier instanceof Class) {
-			Class theClass = (Class) matchingClassifier;
-			int redefinedIndex = theClass.getNestedClassifiers().indexOf(
-					myTypeDef);
+			Class theClass = (Class)matchingClassifier;
+			int redefinedIndex = theClass.getNestedClassifiers().indexOf(myTypeDef);
 			int previousIndex = redefinedIndex - 1;
-			Classifier previousClassifier = theClass.getNestedClassifiers()
-					.get(previousIndex);
-			if (!previousClassifier.getRedefinedClassifiers().contains(
-					redefinedStructure)) {
-				theClass.getNestedClassifiers().move(previousIndex,
-						redefinedStructure);
+			Classifier previousClassifier = theClass.getNestedClassifiers().get(previousIndex);
+			if (!previousClassifier.getRedefinedClassifiers().contains(redefinedStructure)) {
+				theClass.getNestedClassifiers().move(previousIndex, redefinedStructure);
 			}
 		} else if (matchingClassifier instanceof Interface) {
-			Interface theInterface = (Interface) matchingClassifier;
-			int redefinedIndex = theInterface.getNestedClassifiers().indexOf(
-					myTypeDef);
+			Interface theInterface = (Interface)matchingClassifier;
+			int redefinedIndex = theInterface.getNestedClassifiers().indexOf(myTypeDef);
 			int previousIndex = redefinedIndex - 1;
-			Classifier previousClassifier = theInterface.getNestedClassifiers()
-					.get(previousIndex);
-			if (!previousClassifier.getRedefinedClassifiers().contains(
-					redefinedStructure)) {
-				theInterface.getNestedClassifiers().move(previousIndex,
-						redefinedStructure);
+			Classifier previousClassifier = theInterface.getNestedClassifiers().get(previousIndex);
+			if (!previousClassifier.getRedefinedClassifiers().contains(redefinedStructure)) {
+				theInterface.getNestedClassifiers().move(previousIndex, redefinedStructure);
 			}
 		}
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<TypeDefStructAdded> builder() {

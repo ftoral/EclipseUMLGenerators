@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -32,33 +32,28 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to addition of a type definition for a function declaration.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
- * @since 4.0.0
  */
-public class TypeDefFunctionDeclarationAdded extends
-		TypeDefFunctionDeclarationEvent {
+public class TypeDefFunctionDeclarationAdded extends TypeDefFunctionDeclarationEvent {
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
 		DataType existingType = manager.findDataType(getCurrentName());
-		DataType myfonctionType = ModelUtil
-				.findDataTypeRedefinitionInClassifier(matchingClassifier,
-						getCurrentName());
+		DataType myfonctionType = ModelUtil.findDataTypeRedefinitionInClassifier(matchingClassifier,
+				getCurrentName());
 		if (myfonctionType == null) {
 			if (matchingClassifier instanceof Class) {
-				myfonctionType = (DataType) ((Class) matchingClassifier)
-						.createNestedClassifier(getCurrentName(),
-								UMLPackage.Literals.DATA_TYPE);
+				myfonctionType = (DataType)((Class)matchingClassifier).createNestedClassifier(
+						getCurrentName(), UMLPackage.Literals.DATA_TYPE);
 			} else if (matchingClassifier instanceof Interface) {
-				myfonctionType = (DataType) ((Interface) matchingClassifier)
-						.createNestedClassifier(getCurrentName(),
-								UMLPackage.Literals.DATA_TYPE);
+				myfonctionType = (DataType)((Interface)matchingClassifier).createNestedClassifier(
+						getCurrentName(), UMLPackage.Literals.DATA_TYPE);
 			}
 		}
 
@@ -72,10 +67,8 @@ public class TypeDefFunctionDeclarationAdded extends
 		initializeParameters(manager, matchingClassifier, namesList, typesList);
 
 		if (myfonctionType.getOperation(getCurrentName(), null, null) == null) {
-			Operation operation = myfonctionType.createOwnedOperation(
-					getCurrentName(), namesList, typesList);
-			ModelUtil.setVisibility(operation, getTranslationUnit(),
-					EventType.ADD);
+			Operation operation = myfonctionType.createOwnedOperation(getCurrentName(), namesList, typesList);
+			ModelUtil.setVisibility(operation, getTranslationUnit(), EventType.ADD);
 
 			// Modify parameters
 			modifyParameters(operation, getParameters());
@@ -85,13 +78,12 @@ public class TypeDefFunctionDeclarationAdded extends
 			operation.createReturnResult(null, myType);
 		}
 
-		ModelUtil.setVisibility(myfonctionType, getTranslationUnit(),
-				EventType.ADD);
+		ModelUtil.setVisibility(myfonctionType, getTranslationUnit(), EventType.ADD);
 	}
 
 	/**
 	 * Initializes the list or parameters.
-	 * 
+	 *
 	 * @param manager
 	 *            The current model manager
 	 * @param matchingClassifier
@@ -101,9 +93,8 @@ public class TypeDefFunctionDeclarationAdded extends
 	 * @param types
 	 *            The ordered list of UML parameter types
 	 */
-	private void initializeParameters(ModelManager manager,
-			Classifier matchingClassifier, EList<String> names,
-			EList<Type> types) {
+	private void initializeParameters(ModelManager manager, Classifier matchingClassifier,
+			EList<String> names, EList<Type> types) {
 		for (FunctionParameter aParameter : getParameters()) {
 			names.add(aParameter.getName());
 			Type realType = manager.getDataType(aParameter.getType());
@@ -114,7 +105,7 @@ public class TypeDefFunctionDeclarationAdded extends
 
 	/**
 	 * Modifies the list of parameters for a given operation.
-	 * 
+	 *
 	 * @param function
 	 *            The function behvior
 	 * @param names
@@ -124,11 +115,9 @@ public class TypeDefFunctionDeclarationAdded extends
 	 * @param directions
 	 *            The list of the direction of each parameter (in, in/out, out)
 	 */
-	private void modifyParameters(Operation operation,
-			List<FunctionParameter> parameters) {
+	private void modifyParameters(Operation operation, List<FunctionParameter> parameters) {
 		for (FunctionParameter aParam : parameters) {
-			Parameter parameter = operation.getOwnedParameter(aParam.getName(),
-					aParam.getUMLType());
+			Parameter parameter = operation.getOwnedParameter(aParam.getName(), aParam.getUMLType());
 
 			if (!aParam.isConst() && aParam.isPointer()) {
 				parameter.setDirection(ParameterDirectionKind.INOUT_LITERAL);
@@ -136,11 +125,9 @@ public class TypeDefFunctionDeclarationAdded extends
 				parameter.setDirection(ParameterDirectionKind.IN_LITERAL);
 			}
 			if (aParam.getInitilizer() != null) {
-				OpaqueExpression defaultExpression = (OpaqueExpression) parameter
-						.createDefaultValue("default", null,
-								UMLPackage.Literals.OPAQUE_EXPRESSION);
-				defaultExpression.getLanguages()
-						.add(BundleConstants.C_LANGUAGE);
+				OpaqueExpression defaultExpression = (OpaqueExpression)parameter.createDefaultValue(
+						"default", null, UMLPackage.Literals.OPAQUE_EXPRESSION);
+				defaultExpression.getLanguages().add(BundleConstants.C_LANGUAGE);
 				defaultExpression.getBodies().add(aParam.getInitilizer());
 			}
 		}
@@ -148,7 +135,7 @@ public class TypeDefFunctionDeclarationAdded extends
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<TypeDefFunctionDeclarationAdded> builder() {
