@@ -71,15 +71,15 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 /]
 
 [query public getRelativePath(e : NamedElement, s : String) : String = 
-	invoke('org.eclipse.c2uml.util.AnnotationUtil', 'getRelativePath(org.eclipse.uml2.uml.NamedElement, java.lang.String)', Sequence{e,s})
+	invoke('org.eclipse.umlgen.reverse.c.util.AnnotationUtil', 'getRelativePath(org.eclipse.uml2.uml.NamedElement, java.lang.String)', Sequence{e,s})
 /]
 
 [query public format(s : String) : String =
-	invoke('org.eclipse.c2uml.util.CommentFormatter', 'wrap(java.lang.String)', Sequence{s})
+	invoke('org.eclipse.umlgen.reverse.c.util.CommentFormatter', 'wrap(java.lang.String)', Sequence{s})
 /]
 
 [query public formatInLine(s : String) : String =
-	invoke('org.eclipse.c2uml.util.CommentFormatter', 'wrapInLine(java.lang.String)', Sequence{s})
+	invoke('org.eclipse.umlgen.reverse.c.util.CommentFormatter', 'wrapInLine(java.lang.String)', Sequence{s})
 /]
 
 [query public getSourcePackageName(e : NamedElement) : String = 
