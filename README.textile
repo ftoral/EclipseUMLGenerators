@@ -6,4 +6,4 @@ Code generation uses Acceleo. It is incremental and can be extended thanks to it
 
 In most cases, these generators do not need to rely on a profile and use the native structure of UML.
 
-These plugins are released under the EPL Open-Souce License.
+These plugins are released under the EPL Open-Source License.
