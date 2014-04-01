@@ -1,0 +1,46 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2012 Obeo, CNES
+ * All rights reserved.  This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 1.0
+ * 
+ * You can apply any license to the files generated with this module and Acceleo.
+ * 
+ * Original contributors : Obeo
+ *   Contributors : 
+ * 	 Obeo - Cedric Notot
+[/comment]
+
+[module stringServices('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[query public getMaxLength(arg0 : Sequence(String)) : Integer
+	= invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'getMaxLength(java.util.List)', Sequence{arg0}) /]
+
+[template public insertBefore(arg0 : String, arg1 : String) post(trim())]
+[invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'insertBefore(java.lang.String, java.lang.String)', Sequence{arg0, arg1})/]
+[/template]
+
+[**
+ * Returns the current date.
+ */]
+[template public getShortDate(traceabilityContext : OclAny) post(trim())]
+[invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'getShortDate()', Sequence{})/]
+[/template]
+
+[**
+ * Returns the current date.
+ */]
+[template public addQuotes(arg0 : String) post(trim())]
+[invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'addQuotes(java.lang.String)', Sequence{arg0})/]
+[/template]
+
+
+[**
+ * Returns the current date.
+ * it comes from uml2java: services/commonServices
+ */]
+[template public getTime(traceabilityContext : OclAny) post(trim())]
+[invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'getTime()', Sequence{})/]
+[/template]
+
+

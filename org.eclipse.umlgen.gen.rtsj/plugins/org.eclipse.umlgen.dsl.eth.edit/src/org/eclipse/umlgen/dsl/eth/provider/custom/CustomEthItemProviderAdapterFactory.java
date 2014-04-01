@@ -1,0 +1,39 @@
+/**
+ * Copyright (c) 2012 Obeo, CNES
+ * All rights reserved.  This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 1.0.
+ * You can apply any license to the files generated with this template
+ * and Acceleo.
+ * 
+ * Original contributors : Obeo
+ * Contributors : 
+ * Obeo - Cedric Notot
+ */
+package org.eclipse.umlgen.dsl.eth.provider.custom;
+
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.umlgen.dsl.eth.provider.EthItemProviderAdapterFactory;
+
+/**
+ * Specific factory to specialize item providers of containers and ethernet configurations.
+ * @author cnotot
+ *
+ */
+public class CustomEthItemProviderAdapterFactory extends EthItemProviderAdapterFactory {
+	
+	@Override
+	public Adapter createContainerAdapter() {
+		if (containerItemProvider == null) {
+			containerItemProvider = new CustomContainerItemProvider(this);
+		}
+		return containerItemProvider;
+	}
+	
+	@Override
+	public Adapter createEthernetConfAdapter() {
+		if (ethernetConfItemProvider == null) {
+			ethernetConfItemProvider = new CustomEthernetConfItemProvider(this);
+		}
+		return ethernetConfItemProvider;
+	}
+}

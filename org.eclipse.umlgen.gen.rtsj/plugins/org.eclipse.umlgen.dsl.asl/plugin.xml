@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ /**
+  * Copyright (c) 2012 Obeo, CNES
+  * All rights reserved.  This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License 1.0
+  *
+  * You can apply any license to the files generated with this template
+  * and Acceleo.
+  *
+  * Original contributors : Obeo
+  * Contributors : 
+  * Obeo - Cedric Notot
+  */
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/umlgen/dsl/asl"
+            class="org.eclipse.umlgen.dsl.asl.AslPackage"
+            genModel="model/asl.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="asl"
+            class="org.eclipse.umlgen.dsl.asl.util.AslResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated asl -->
+      <package
+            uri="http://www.eclipse.org/umlgen/dsl/conf"
+            class="org.eclipse.umlgen.dsl.asl.configurations.ConfigurationsPackage"
+            genModel="model/asl.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated asl -->
+      <parser
+            type="configurations"
+            class="org.eclipse.umlgen.dsl.asl.configurations.util.ConfigurationsResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

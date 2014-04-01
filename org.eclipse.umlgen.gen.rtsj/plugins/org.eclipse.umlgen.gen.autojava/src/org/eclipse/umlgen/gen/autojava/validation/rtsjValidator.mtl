@@ -1,0 +1,38 @@
+[comment encoding = UTF-8 /]
+[comment]
+ * Copyright (c) 2012 Obeo, CNES
+ * All rights reserved.  This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 1.0
+ * 
+ * You can apply any license to the files generated with this module and Acceleo.
+ * 
+ * Original contributors : Obeo
+ *   Contributors : 
+ * 	 Obeo - Cedric Notot
+[/comment]
+
+[module rtsjValidator('http://www.eclipse.org/uml2/4.0.0/UML')]
+
+[import org::eclipse::umlgen::gen::autojava::validation::rtsjRules /]
+[import org::eclipse::umlgen::gen::autojava::validation::validator /]
+
+[comment To perform the validation, retrieve all elements and check each of them /]
+[template public doValidate(aModel : Model) post (trim())]
+[if (getProperty('validator.genOutput') = 'true')]
+[validate()/]
+[checkDefaultValue()/]
+[checkArraySize()/]
+[checkAsynchronousPort()/]
+[checkAperiodicAndSporadicInfo()/]
+[checkMessageForAsynchronousInterface()/]
+[checkRoot()/]
+[checkExclusiveThreadInfo()/]
+[checkExclusivePortInfo()/]
+[checkExclusiveBufferInfo()/]
+[checkPortConnection()/]
+[checkPortInterface()/]
+[checkExclusivePseudostate()/]
+[checkPortInfoWithAsynchronousInterface()/]
+[checkAsynchronousInterfaceWithSignal()/]
+[/if]
+[/template]

@@ -1,0 +1,3 @@
+h1. Welcome to UML Autojava/RTSJ Generation
+
+These plugins are released under the EPL Open-Souce License.

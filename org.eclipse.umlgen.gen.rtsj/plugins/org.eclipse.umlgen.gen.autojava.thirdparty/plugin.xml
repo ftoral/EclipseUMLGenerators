@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://RTSJ_PROFILE/"
+            target="platform:/plugin/org.eclipse.umlgen.gen.autojava.thirdparty/profile/">
+      </mapping>
+   </extension>
+   <extension
+         point="org.eclipse.uml2.uml.dynamic_package">
+      <profile
+            location="pathmap://RTSJ_PROFILE/rtsj.uml#_0"
+            uri="http://www.eclipse.org/umlgen/profile/rtsj">
+      </profile>
+   </extension>
+
+</plugin>
