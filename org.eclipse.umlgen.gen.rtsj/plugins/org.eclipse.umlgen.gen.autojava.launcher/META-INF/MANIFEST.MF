@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Acceleo UML to Autojava components Module IDE Plug-in
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.umlgen.gen.autojava.launcher;singleton:=true
 Bundle-Version: 2.1.6.qualifier
 Bundle-Activator: org.eclipse.umlgen.gen.autojava.launcher.Activator
-Bundle-Vendor: Eclipse Modeling Project
+Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

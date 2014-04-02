@@ -11,14 +11,10 @@
 package org.eclipse.umlgen.gen.autojava.main;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-import java.util.ResourceBundle;
 
 import org.eclipse.acceleo.common.internal.utils.workspace.AcceleoWorkspaceUtil;
 import org.eclipse.acceleo.common.utils.ModelUtils;
@@ -37,8 +33,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.osgi.framework.Bundle;
-import org.eclipse.umlgen.dsl.asl.AslPackage;
-import org.eclipse.umlgen.dsl.eth.EthPackage;
 
 /**
  * Entry point of the 'Uml2autojava' generation module.
@@ -52,7 +46,7 @@ public class Uml2autojava extends AbstractAcceleoGenerator {
 	private boolean devMode = true;
 
 	/** Absolute path to a decorator model */
-	private final String DEV_MODE_DECORATOR_PATH = ""; //"D:\\DONNEES\\Topcased\\Topcased-5.2.0\\workspace\\Model_LV_AGATA_ONE_2.5.0_RTSJ_Eth_temp\\Models\\Test.eth"; //FIXME debug "D:\\Dev\\Cnes\\RTSJ\\eclipse\\workspace\\Test\\model\\My.eth";
+	private final String DEV_MODE_DECORATOR_PATH = ""; // absolute path to eth file.
 
 	/**
 	 * The name of the module.
