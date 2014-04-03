@@ -49,7 +49,6 @@
 [template public genType(aParameter : TypedElement) post(trim())]
 [/template]
 
-[comment it comes from uml2java: common/type /]
 [template public genType(aProperty : Property) post(trim())]
 [if (upper = 1)]
 	[genTypeName()/]
@@ -62,7 +61,6 @@
 [/if]
 [/template]
 
-[comment it comes from uml2java: common/type /]
 [template public genType(aParameter : Parameter) post(trim())]
 [if (upper = 1)]
 	[genTypeName()/]
@@ -78,7 +76,6 @@
 [comment return if it is a string /]
 [query public isString(aType : Type) : Boolean = name = 'String' or name = 'EString' /]
 
-[comment it comes from uml2java: common/type /]
 [template public genReturn(anOperation : Operation) post(trim())]
 [if (anOperation.ownedParameter->select(param : Parameter | param.direction = ParameterDirectionKind::return)-> size() > 0)]
 [anOperation.ownedParameter->select(param : Parameter | param.direction = ParameterDirectionKind::return)->first().genType()/]
@@ -87,7 +84,6 @@ void
 [/if]
 [/template]
 
-[comment it comes from uml2java: common/type /]
 [template protected genCollectionType(aMultiplicityElement : MultiplicityElement) post(trim())]
 [if (not aMultiplicityElement.isOrdered.oclIsUndefined() and aMultiplicityElement.isOrdered)]
     [if (aMultiplicityElement.isUnique)]
@@ -104,47 +100,37 @@ void
 [/if]
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getOrderedUniqueCollectionClass(anElement : Element) post(trim())]
 [anElement.getOrderedUniqueCollectionClassPath().tokenize('.')->last()/]	
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getOrderedNotUniqueCollectionClass(anElement : Element) post(trim())]
 [anElement.getOrderedNotUniqueCollectionClassPath().tokenize('.')->last()/]	
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getNotOrderedUniqueCollectionClass(anElement : Element) post(trim())]
 [anElement.getNotOrderedUniqueCollectionClassPath().tokenize('.')->last()/]	
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getNotOrderedNotUniqueCollectionClass(anElement : Element) post(trim())]
 [anElement.getNotOrderedNotUniqueCollectionClassPath().tokenize('.')->last()/]	
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getOrderedUniqueCollectionClassPath(anElement : Element) post(trim())]
 [getProperty('tuple.ordered.unique.class')/]
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getOrderedNotUniqueCollectionClassPath(anElement : Element) post(trim())]
 [getProperty('tuple.ordered.notUnique.class')/]
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getNotOrderedUniqueCollectionClassPath(anElement : Element) post(trim())]
 [getProperty('tuple.notOrdered.unique.class')/]
 [/template]
 
-[comment it comes from uml2java: common/properties /]
 [template protected getNotOrderedNotUniqueCollectionClassPath(anElement : Element) post(trim())]
 [getProperty('tuple.notOrdered.notUnique.class')/]
 [/template]
 
-[comment return if it is an array. Return a boolean value representing the need to generate arrays instead of collections for multiple attributes and parameters.
-it comes from uml2java: common/properties /]
+[comment return if it is an array. Return a boolean value representing the need to generate arrays instead of collections for multiple attributes and parameters./]
 [query protected isArray(anElement : Element) : Boolean = getProperty('tuple.genArrays') = 'true' /]
-

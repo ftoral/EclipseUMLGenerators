@@ -12,7 +12,6 @@
 
 [**
  * The documentation of the module request.
- * it comes from uml2java: request/request
  * @author Stephane Begaudeau - Obeo
  */]
 [module request('http://www.eclipse.org/uml2/4.0.0/UML')/]
@@ -46,6 +45,7 @@
 [**
  * Returns all the properties corresponding to navigable ends of the outgoing 
  * associations for the given class.
+ * it comes from /org.eclipse.umlgen.gen.java/src/org/eclipse/umlgen/gen/java/request/request.mtl#reqOutgoingNavigableOwnedEnd(Class)
  * @param aClass The class.
  */]
 [query public getOutgoingNavigableOwnedEnd(aClass : Class) : Set(Property)
@@ -53,10 +53,12 @@
       ->union(getOtherAssociationsNavigableOwnedEnd(aClass))->asOrderedSet()
 /]
 
+[comment it comes from /org.eclipse.umlgen.gen.java/src/org/eclipse/umlgen/gen/java/request/request.mtl#reqSelfAssociationsNavigableOwnedEnd(Class) /]
 [query protected getSelfAssociationsNavigableOwnedEnd(aClass : Class) : Set(Property)
    = aClass.getAssociations()->select(ownedEnd.type->asSet()->size() = 1).navigableOwnedEnd->asOrderedSet()
 /]
 
+[comment it comes from /org.eclipse.umlgen.gen.java/src/org/eclipse/umlgen/gen/java/request/request.mtl#reqOtherAssociationsNavigableOwnedEnd(Class) /]
 [query protected getOtherAssociationsNavigableOwnedEnd(aClass : Class) : Set(Property)
    = aClass.getAssociations()->select(navigableOwnedEnd->select(type <> aClass)->size() = 1).navigableOwnedEnd->select(type <> aClass)->asOrderedSet()
 /]

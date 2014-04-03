@@ -36,7 +36,6 @@
 
 [**
  * Returns the current date.
- * it comes from uml2java: services/commonServices
  */]
 [template public getTime(traceabilityContext : OclAny) post(trim())]
 [invoke('org.eclipse.umlgen.gen.autojava.services.StringServices', 'getTime()', Sequence{})/]

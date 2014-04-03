@@ -12,7 +12,6 @@
 
 [**
  * The documentation of the module validator.
- * it comes from uml2java: validator/validator
  * @author Stephane Begaudeau - Obeo
  */]
 [module validator('http://www.eclipse.org/uml2/4.0.0/UML')]

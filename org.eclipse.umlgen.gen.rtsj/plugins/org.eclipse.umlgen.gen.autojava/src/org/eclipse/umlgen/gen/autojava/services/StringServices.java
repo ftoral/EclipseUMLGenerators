@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Cedric Notot (Obeo) - initial API and implementation
  *******************************************************************************/
@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class StringServices {
-	
+
 	public String insertBefore(String receiver, String string) {
 		return string + receiver;
 	}
-	
+
 	public int getMaxLength(List<String> receiver) {
 		int reference = 0;
 		final Iterator<String> values = receiver.iterator();
@@ -33,24 +33,26 @@ public class StringServices {
 		}
 		return reference;
 	}
-	
+
 	/**
 	 * Returns the current time.<br>
-	 * 
-	 * <br>it comes from uml2java: services/CommonServices#getTime()
-	 * 
+	 * <br>
+	 * it comes from
+	 * /org.eclipse.umlgen.gen.java/src/org/eclipse/umlgen/gen/java/services/CommonServices.java#reqTime()
+	 *
 	 * @return The current time.
 	 */
 	public static String getTime() {
 		Date date = new Date();
 		return DateFormat.getTimeInstance(DateFormat.LONG).format(date);
 	}
-	
+
 	/**
-	 * Gets the date in a short format : 06/08/07
-	 * 
-	 * <br><br>it comes from uml2java: services/CommonServices#getShortDate()
-	 * 
+	 * Gets the date in a short format : 06/08/07 <br>
+	 * <br>
+	 * it is inspired from
+	 * /org.eclipse.umlgen.gen.java/src/org/eclipse/umlgen/gen/java/services/CommonServices.java#reqDate()
+	 *
 	 * @return String representing the short format date
 	 */
 	public static String getShortDate() {
@@ -59,17 +61,15 @@ public class StringServices {
 		DateFormat dateFormatShort = DateFormat.getDateInstance(DateFormat.SHORT, locale);
 		return dateFormatShort.format(date);
 	}
-	
+
 	/**
 	 * Surrounds the value with double quote if is not done (abcd to "abcd")<br/>
-	 * Replace double quote with \" (ab"cd to "ab\"cd")<br/> Remove simple quote
-	 * starting and ending in value ('abcd' to "abcd")<br/> Usefull for default string value.
-	 * 
-	 * <br><br>it comes from uml2java: services/CommonServices#addQuotes(String)
-	 * 
+	 * Replace double quote with \" (ab"cd to "ab\"cd")<br/>
+	 * Remove simple quote starting and ending in value ('abcd' to "abcd")<br/>
+	 * Usefull for default string value. <br>
+	 *
 	 * @param value
 	 *            the value
-	 * 
 	 * @return the string
 	 */
 	public static String addQuotes(String value) {
