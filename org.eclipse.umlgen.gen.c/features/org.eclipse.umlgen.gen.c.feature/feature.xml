@@ -33,12 +33,9 @@
    </license>
 
    <requires>
-      <import plugin="fr.obeo.acceleo.gen"/>
       <import plugin="org.eclipse.uml2.uml"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.resources"/>
-      <import plugin="fr.obeo.acceleo.chain"/>
-      <import plugin="fr.obeo.acceleo.chain.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
    </requires>
 
