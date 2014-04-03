@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 Communication & Systems.
+ * Copyright (c) 2011, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -17,9 +17,8 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  * Section allowing to specify a conditional inclusion (#ifndef).<br>
  * This section is available from a {@link org.eclipse.uml2.uml.Class} or a
  * {@link org.eclipse.uml2.uml.Interface}.<br>
- * 
  * Creation : 15 february 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 // FIXME MIGRATION reference to org.topcased.tabbedproperties

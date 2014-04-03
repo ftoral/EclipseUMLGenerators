@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
@@ -58,10 +58,8 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Handler launching the C code reverse operation.
- * 
- * Creation : 10 may 2010<br>
- * 
+ * Handler launching the C code reverse operation. Creation : 10 may 2010<br>
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
@@ -76,24 +74,18 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		ISelection selection = HandlerUtil.getCurrentSelectionChecked(event);
 
 		if (selection != null && selection instanceof IStructuredSelection) {
-			final Object obj = ((IStructuredSelection) selection)
-					.getFirstElement();
-			IResource model = ResourcesPlugin
-					.getWorkspace()
-					.getRoot()
-					.findMember(
-							((EObject) obj).eResource().getURI()
-									.toPlatformString(true));
+			final Object obj = ((IStructuredSelection)selection).getFirstElement();
+			IResource model = ResourcesPlugin.getWorkspace().getRoot().findMember(
+					((EObject)obj).eResource().getURI().toPlatformString(true));
 			int numberOfFunctions = 1;
 			if (obj instanceof Class) {
-				numberOfFunctions = ((Class) obj).getOwnedBehaviors().size();
+				numberOfFunctions = ((Class)obj).getOwnedBehaviors().size();
 			}
 			if (obj instanceof Package) {
 				numberOfFunctions = 0;
-				for (NamedElement elt : ((Package) obj).getMembers()) {
+				for (NamedElement elt : ((Package)obj).getMembers()) {
 					if (elt instanceof Class) {
-						numberOfFunctions = numberOfFunctions
-								+ ((Class) elt).getOwnedBehaviors().size();
+						numberOfFunctions = numberOfFunctions + ((Class)elt).getOwnedBehaviors().size();
 					}
 				}
 			}
@@ -101,22 +93,20 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 			// create a ModelManager for these purposes
 			final ModelManager mm = new ModelManager(model);
 			try {
-				ProjectUtil.removeFromBuildSpec(mm.getProject(),
-						BundleConstants.UML2C_BUILDER_ID);
+				ProjectUtil.removeFromBuildSpec(mm.getProject(), BundleConstants.UML2C_BUILDER_ID);
 			} catch (CoreException e1) {
 				Activator.log(e1);
 			}
 			if (obj instanceof EObject) {
-				ProgressMonitorDialog dialog = new ProgressMonitorDialog(
-						Display.getCurrent().getActiveShell());
+				ProgressMonitorDialog dialog = new ProgressMonitorDialog(Display.getCurrent()
+						.getActiveShell());
 				try {
 					dialog.run(true, true, new IRunnableWithProgress() {
-						public void run(IProgressMonitor monitor)
-								throws InvocationTargetException,
+						public void run(IProgressMonitor monitor) throws InvocationTargetException,
 								InterruptedException {
 							monitor.beginTask(
 									Messages.getString("GenerateActivityDiagrams.JobTitle"), totalOfWork); //$NON-NLS-1$
-							generate((EObject) obj, mm, monitor);
+							generate((EObject)obj, mm, monitor);
 							monitor.done();
 						}
 					});
@@ -130,8 +120,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 					IProject project = mm.getProject();
 					mm.dispose();
 					try {
-						ProjectUtil.addToBuildSpec(project,
-								BundleConstants.UML2C_BUILDER_ID);
+						ProjectUtil.addToBuildSpec(project, BundleConstants.UML2C_BUILDER_ID);
 					} catch (CoreException ce) {
 						Activator.log(ce);
 					}
@@ -146,17 +135,17 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		try {
 			if (EcoreUtil.isAncestor(srcArtefactPack, obj)) {
 				if (obj instanceof Package) {
-					generate((Package) obj, mm, monitor);
+					generate((Package)obj, mm, monitor);
 				} else if (obj instanceof OpaqueBehavior) {
-					generate((OpaqueBehavior) obj, mm, monitor);
+					generate((OpaqueBehavior)obj, mm, monitor);
 					monitor.worked(1);
 				} else if (obj instanceof Activity) {
-					generate((Activity) obj, mm, monitor);
+					generate((Activity)obj, mm, monitor);
 					monitor.worked(1);
 				} else if (obj instanceof Class) {
-					generate((Class) obj, mm, monitor);
+					generate((Class)obj, mm, monitor);
 				} else if (obj instanceof Operation) {
-					generate((Operation) obj, mm, monitor);
+					generate((Operation)obj, mm, monitor);
 					monitor.worked(1);
 				}
 			}
@@ -171,8 +160,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		}
 	}
 
-	private void generate(Package pack, ModelManager mm,
-			IProgressMonitor monitor) throws CoreException {
+	private void generate(Package pack, ModelManager mm, IProgressMonitor monitor) throws CoreException {
 		// try to remove existing Markers from this model object
 		// FIXME reference to org.topcased.facilities
 		// EMFMarkerUtil.removeMarkerFor(pack);
@@ -180,86 +168,79 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		for (Iterator<EObject> it = pack.eAllContents(); it.hasNext();) {
 			EObject current = it.next();
 			if (current instanceof OpaqueBehavior) {
-				generate((OpaqueBehavior) current, mm, monitor);
+				generate((OpaqueBehavior)current, mm, monitor);
 				monitor.worked(1);
 			}
 		}
 	}
 
-	private void generate(Class pack, ModelManager mm, IProgressMonitor monitor)
+	private void generate(Class pack, ModelManager mm, IProgressMonitor monitor) throws CoreException {
+		// try to remove existing Markers from this model object
+		// FIXME reference to org.topcased.facilities
+		// EMFMarkerUtil.removeMarkerFor(pack);
+
+		for (Iterator<EObject> it = pack.eAllContents(); it.hasNext();) {
+			EObject current = it.next();
+			if (current instanceof OpaqueBehavior) {
+				generate((OpaqueBehavior)current, mm, monitor);
+				monitor.worked(1);
+			}
+		}
+	}
+
+	private void generate(final Operation operation, ModelManager mm, IProgressMonitor monitor)
 			throws CoreException {
-		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
-		// EMFMarkerUtil.removeMarkerFor(pack);
-
-		for (Iterator<EObject> it = pack.eAllContents(); it.hasNext();) {
-			EObject current = it.next();
-			if (current instanceof OpaqueBehavior) {
-				generate((OpaqueBehavior) current, mm, monitor);
-				monitor.worked(1);
-			}
-		}
-	}
-
-	private void generate(final Operation operation, ModelManager mm,
-			IProgressMonitor monitor) throws CoreException {
 		// try to remove existing Markers from this model object
 		// FIXME reference to org.topcased.facilities
 		// EMFMarkerUtil.removeMarkerFor(operation);
 
-		Behavior behavior = operation.getClass_().getOwnedBehavior(
-				operation.getName());
-		if (behavior instanceof OpaqueBehavior
-				&& behavior.getSpecification() == operation) {
-			generate((OpaqueBehavior) behavior, mm, monitor);
+		Behavior behavior = operation.getClass_().getOwnedBehavior(operation.getName());
+		if (behavior instanceof OpaqueBehavior && behavior.getSpecification() == operation) {
+			generate((OpaqueBehavior)behavior, mm, monitor);
 		} else {
 			Display.getDefault().syncExec(new Runnable() {
 				public void run() {
-					String title = String.format(
-							Messages.getString("GenerateActivityDiagrams.OperationTitle"), operation.getName()); //$NON-NLS-1$
+					String title = String.format(Messages
+							.getString("GenerateActivityDiagrams.OperationTitle"), operation.getName()); //$NON-NLS-1$
 					String msg = String.format(
 							Messages.getString("GenerateActivityDiagrams.OperationMsg"), operation.getName()); //$NON-NLS-1$
-					MessageDialog.openWarning(Display.getDefault()
-							.getActiveShell(), title, msg);
+					MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
 					Activator.log(msg, IStatus.WARNING);
 				}
 			});
 		}
 	}
 
-	private void generate(final Activity activity, ModelManager mm,
-			IProgressMonitor monitor) throws CoreException {
+	private void generate(final Activity activity, ModelManager mm, IProgressMonitor monitor)
+			throws CoreException {
 		// try to remove existing Markers from this model object
 		// FIXME reference to org.topcased.facilities
 		// EMFMarkerUtil.removeMarkerFor(activity);
 
 		BehavioredClassifier behavioredClassifier = activity.getContext();
 
-		String activityName = activity.getName() != null ? activity.getName()
-				: ""; //$NON-NLS-1$
+		String activityName = activity.getName() != null ? activity.getName() : ""; //$NON-NLS-1$
 		String behavioredClassifierName = behavioredClassifier.getName() != null ? behavioredClassifier
 				.getName() : ""; //$NON-NLS-1$
 
-		if (behavioredClassifier instanceof OpaqueBehavior
-				&& behavioredClassifierName.equals(activityName)) {
-			generate((OpaqueBehavior) behavioredClassifier, mm, monitor);
-		} else {
-			Display.getDefault().syncExec(new Runnable() {
-				public void run() {
-					String title = String.format(
-							Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
-					String msg = String.format(
-							Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
-					MessageDialog.openWarning(Display.getDefault()
-							.getActiveShell(), title, msg);
-					Activator.log(msg, IStatus.WARNING);
+				if (behavioredClassifier instanceof OpaqueBehavior && behavioredClassifierName.equals(activityName)) {
+					generate((OpaqueBehavior)behavioredClassifier, mm, monitor);
+				} else {
+					Display.getDefault().syncExec(new Runnable() {
+						public void run() {
+							String title = String.format(
+									Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
+							String msg = String.format(
+									Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
+							MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
+							Activator.log(msg, IStatus.WARNING);
+						}
+					});
 				}
-			});
-		}
 	}
 
-	private void generate(OpaqueBehavior behavior, ModelManager mm,
-			IProgressMonitor monitor) throws CoreException {
+	private void generate(OpaqueBehavior behavior, ModelManager mm, IProgressMonitor monitor)
+			throws CoreException {
 		// try to remove existing Markers from this model object
 		// FIXME reference to org.topcased.facilities
 		// EMFMarkerUtil.removeMarkerFor(behavior);
@@ -268,28 +249,22 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 			EAnnotation eAnnotation = behavior.getContext().getEAnnotation(
 					AnnotationConstants.REVERSE_PROCESS);
 			if (eAnnotation != null) {
-				IPath relativePath = new Path(mm.getProject().getLocation()
-						.toString()).append(eAnnotation.getDetails().get(
-						AnnotationConstants.C_FILENAME));
-				ITranslationUnit tu = CoreModelUtil
-						.findTranslationUnitForLocation(relativePath,
-								mm.getCProject());
+				IPath relativePath = new Path(mm.getProject().getLocation().toString()).append(eAnnotation
+						.getDetails().get(AnnotationConstants.C_FILENAME));
+				ITranslationUnit tu = CoreModelUtil.findTranslationUnitForLocation(relativePath, mm
+						.getCProject());
 				IASTTranslationUnit ast = tu.getAST();
 				IASTDeclaration[] declarations = ast.getDeclarations();
-				for (int i = 0; i < declarations.length; i++) {
-					if (declarations[i] instanceof IASTFunctionDefinition) {
-						IASTFunctionDefinition functionDefinition = (IASTFunctionDefinition) declarations[i];
-						if (functionDefinition.getDeclarator().getName()
-								.toString().equals(behavior.getName())) {
-							Activity activity = UMLActivityBuilder
-									.build(functionDefinition);
-							Behavior previousActivity = behavior
-									.getOwnedBehavior(activity.getName(),
-											false,
-											UMLPackage.Literals.ACTIVITY, false);
+				for (IASTDeclaration declaration : declarations) {
+					if (declaration instanceof IASTFunctionDefinition) {
+						IASTFunctionDefinition functionDefinition = (IASTFunctionDefinition)declaration;
+						if (functionDefinition.getDeclarator().getName().toString()
+								.equals(behavior.getName())) {
+							Activity activity = UMLActivityBuilder.build(functionDefinition);
+							Behavior previousActivity = behavior.getOwnedBehavior(activity.getName(), false,
+									UMLPackage.Literals.ACTIVITY, false);
 							if (previousActivity != null) {
-								behavior.getOwnedBehaviors().remove(
-										previousActivity);
+								behavior.getOwnedBehaviors().remove(previousActivity);
 							}
 							behavior.getOwnedBehaviors().add(activity);
 
@@ -323,13 +298,11 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 
 	}
 
-	private void generate(ModelManager manager, IProgressMonitor monitor)
-			throws CoreException {
-		for (Iterator<EObject> it = manager.getSourcePackage().eAllContents(); it
-				.hasNext();) {
+	private void generate(ModelManager manager, IProgressMonitor monitor) throws CoreException {
+		for (Iterator<EObject> it = manager.getSourcePackage().eAllContents(); it.hasNext();) {
 			EObject current = it.next();
 			if (current instanceof OpaqueBehavior) {
-				generate((OpaqueBehavior) current, manager, monitor);
+				generate((OpaqueBehavior)current, manager, monitor);
 			}
 		}
 	}

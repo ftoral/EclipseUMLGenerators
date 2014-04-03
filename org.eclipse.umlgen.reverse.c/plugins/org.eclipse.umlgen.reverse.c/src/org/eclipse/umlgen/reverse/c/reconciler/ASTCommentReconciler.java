@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Christophe LE CAMUS (CS) - initial API and implementation
  *     Sebastien GABEL (CS) - evolutions
@@ -50,7 +50,6 @@ import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 
 /**
  * @author clecamus
- * 
  */
 public class ASTCommentReconciler extends AbstractReconciler {
 
@@ -66,11 +65,9 @@ public class ASTCommentReconciler extends AbstractReconciler {
 
 	private IASTTranslationUnit newAst;
 
-	public void reconcile(ITranslationUnit originalUnit,
-			ITranslationUnit newUnit) throws CoreException {
+	public void reconcile(ITranslationUnit originalUnit, ITranslationUnit newUnit) throws CoreException {
 		originalAst = originalUnit.getAST();
-		IASTDeclaration[] originalDecls = originalAst
-				.getDeclarations(includeInactiveNodes);
+		IASTDeclaration[] originalDecls = originalAst.getDeclarations(includeInactiveNodes);
 
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTDeclaration> originalDeclsFiltered =
@@ -82,13 +79,11 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		this.reconcile(newUnit, originalUnit, originalDecls);
 	}
 
-	public void reconcile(ITranslationUnit newUnit,
-			ITranslationUnit originalUnit, IASTDeclaration[] originalDecls)
-			throws CoreException {
+	public void reconcile(ITranslationUnit newUnit, ITranslationUnit originalUnit,
+			IASTDeclaration[] originalDecls) throws CoreException {
 		// fill the maps with considered typed elements
 		newAst = newUnit.getAST();
-		IASTDeclaration[] newDecls = newAst
-				.getDeclarations(includeInactiveNodes);
+		IASTDeclaration[] newDecls = newAst.getDeclarations(includeInactiveNodes);
 
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTDeclaration> newDeclsFiltered =
@@ -123,21 +118,18 @@ public class ASTCommentReconciler extends AbstractReconciler {
 						body = computeStartOfComment(newMap, comment).concat(
 								computeEndOfComment(newMap, comment, parent));
 						if (body.trim().length() > 0) {
-							event = CommentAdded.builder().setBody(body)
-									.setParent(parent).setSource(comment)
+							event = CommentAdded.builder().setBody(body).setParent(parent).setSource(comment)
 									.translationUnit(newUnit).build();
 						}
 					} else {
 						if (parent instanceof IASTFunctionDefinition
-								&& comment.getFileLocation().getNodeOffset() < parent
-										.getFileLocation().getNodeOffset()) {
-							body = computeStartOfComment(newMap, comment)
-									.concat(computeEndOfComment(newMap,
-											comment, parent));
+								&& comment.getFileLocation().getNodeOffset() < parent.getFileLocation()
+										.getNodeOffset()) {
+							body = computeStartOfComment(newMap, comment).concat(
+									computeEndOfComment(newMap, comment, parent));
 							if (body.trim().length() > 0) {
-								event = CommentAdded.builder().setBody(body)
-										.setParent(parent).setSource(comment)
-										.translationUnit(newUnit).build();
+								event = CommentAdded.builder().setBody(body).setParent(parent).setSource(
+										comment).translationUnit(newUnit).build();
 							}
 						}
 					}
@@ -147,69 +139,51 @@ public class ASTCommentReconciler extends AbstractReconciler {
 			} else {
 				try {
 					if (addOrRemove && oldComment != null) {
-						oldparent = findParentOfComment(originalMap,
-								originalAst, oldComment);
+						oldparent = findParentOfComment(originalMap, originalAst, oldComment);
 						if (!(oldparent instanceof IASTFunctionDefinition)
 								&& !(parent instanceof IASTInitializerList)) {
-							body = computeStartOfComment(originalMap,
-									oldComment).concat(
-									computeEndOfComment(originalMap,
-											oldComment, parent));
+							body = computeStartOfComment(originalMap, oldComment).concat(
+											computeEndOfComment(originalMap, oldComment, parent));
 							if (body.trim().length() > 0) {
-								event = CommentRemoved.builder().setBody(body)
-										.setParent(oldparent)
-										.setSource(oldComment)
-										.translationUnit(newUnit).build();
+								event = CommentRemoved.builder().setBody(body).setParent(oldparent)
+										.setSource(oldComment).translationUnit(newUnit).build();
 							}
 						}
 					} else {
 						if (!addOrRemove && comment != null) {
-							oldparent = findParentOfComment(originalMap,
-									originalAst, oldComment);
-							parent = findParentOfComment(newMap, newAst,
-									comment);
+							oldparent = findParentOfComment(originalMap, originalAst, oldComment);
+							parent = findParentOfComment(newMap, newAst, comment);
 							if (!(oldparent instanceof IASTFunctionDefinition)
 									&& !(parent instanceof IASTInitializerList)) {
 								// deletion of old comment
-								body = computeStartOfComment(originalMap,
-										oldComment).concat(
-										computeEndOfComment(originalMap,
-												oldComment, parent));
+								body = computeStartOfComment(originalMap, oldComment).concat(
+												computeEndOfComment(originalMap, oldComment, parent));
 								if (body.trim().length() > 0) {
-									event = CommentRemoved.builder()
-											.setBody(body).setParent(oldparent)
-											.setSource(oldComment)
-											.translationUnit(originalUnit)
-											.build();
+									event = CommentRemoved.builder().setBody(body).setParent(oldparent)
+											.setSource(oldComment).translationUnit(originalUnit).build();
 									notifyListeners(event, false);
 								}
 							}
 							if (!(parent instanceof IASTFunctionDefinition)
 									&& !(parent instanceof IASTInitializerList)) {
 								// addition of the new Comment
-								body = computeStartOfComment(newMap, comment)
-										.concat(computeEndOfComment(newMap,
-												comment, parent));
+								body = computeStartOfComment(newMap, comment).concat(
+										computeEndOfComment(newMap, comment, parent));
 								if (body.trim().length() > 0) {
-									event = CommentAdded.builder()
-											.setBody(body).setParent(parent)
-											.setSource(comment)
-											.translationUnit(newUnit).build();
+									event = CommentAdded.builder().setBody(body).setParent(parent).setSource(
+											comment).translationUnit(newUnit).build();
 								}
 							} else {
 								if (parent instanceof IASTFunctionDefinition) {
-									String newbody = ((IASTFunctionDefinition) parent)
-											.getBody().getRawSignature();
-									String oldBody = ((IASTFunctionDefinition) oldparent)
-											.getBody().getRawSignature();
-									String currentName = (((IASTFunctionDefinition) parent)
-											.getDeclarator()).getName()
-											.toString();
-									event = FunctionBodyChanged.builder()
-											.setBody(newbody)
-											.setOldBody(oldBody)
-											.currentName(currentName)
-											.translationUnit(newUnit).build();
+									String newbody = ((IASTFunctionDefinition)parent).getBody()
+											.getRawSignature();
+									String oldBody = ((IASTFunctionDefinition)oldparent).getBody()
+											.getRawSignature();
+									String currentName = ((IASTFunctionDefinition)parent).getDeclarator()
+											.getName().toString();
+									event = FunctionBodyChanged.builder().setBody(newbody)
+											.setOldBody(oldBody).currentName(currentName).translationUnit(
+													newUnit).build();
 								}
 							}
 						}
@@ -228,8 +202,7 @@ public class ASTCommentReconciler extends AbstractReconciler {
 					comment = findCommentAdded(originalMap, newMap);
 				}
 				if (comment == null && oldComment != null) {
-					originalMap = removeCommentsFrom(originalMap, oldComment,
-							parent);
+					originalMap = removeCommentsFrom(originalMap, oldComment, parent);
 					oldComment = findCommentRemoved(originalMap, newMap);
 				}
 			} catch (Exception e) {
@@ -240,23 +213,20 @@ public class ASTCommentReconciler extends AbstractReconciler {
 
 	private boolean isBeforeOrInsideParent(IASTComment comment, IASTNode parent) {
 		// is before
-		if (comment.getFileLocation().getNodeOffset() < parent
-				.getFileLocation().getNodeOffset()) {
+		if (comment.getFileLocation().getNodeOffset() < parent.getFileLocation().getNodeOffset()) {
 			return true;
 		}
 		// is on the same line before the parent
-		if (comment.getFileLocation().getStartingLineNumber() == parent
-				.getFileLocation().getStartingLineNumber()) {
+		if (comment.getFileLocation().getStartingLineNumber() == parent.getFileLocation()
+				.getStartingLineNumber()) {
 			return true;
 		}
 		// is on the same line after the parent
-		if (comment.getFileLocation().getEndingLineNumber() == parent
-				.getFileLocation().getEndingLineNumber()) {
+		if (comment.getFileLocation().getEndingLineNumber() == parent.getFileLocation().getEndingLineNumber()) {
 			return true;
 		}
 		// is inside
-		if (comment.getFileLocation().getNodeOffset() < parent
-				.getFileLocation().getNodeOffset()
+		if (comment.getFileLocation().getNodeOffset() < parent.getFileLocation().getNodeOffset()
 				+ parent.getFileLocation().getNodeLength()) {
 			return true;
 		}
@@ -266,31 +236,27 @@ public class ASTCommentReconciler extends AbstractReconciler {
 
 	/**
 	 * Remove the current comment and the immediate following ones
-	 * 
+	 *
 	 * @return : cleaned TreeMap
 	 */
-	private TreeMap<Integer, IASTNode> removeCommentsFrom(
-			TreeMap<Integer, IASTNode> treeMap, IASTComment comment,
-			IASTNode parent) {
+	private TreeMap<Integer, IASTNode> removeCommentsFrom(TreeMap<Integer, IASTNode> treeMap,
+			IASTComment comment, IASTNode parent) {
 		boolean notEnd = true;
 		Iterator<Integer> iterator = treeMap.keySet().iterator();
 		Map<Integer, Integer> removalMap = new HashMap<Integer, Integer>();
 		while (iterator.hasNext() && notEnd) {
 			Integer integer = iterator.next();
 			if (integer.intValue() > 0
-					&& integer.intValue() <= comment.getFileLocation()
-							.getNodeOffset() + decalage) {
+					&& integer.intValue() <= comment.getFileLocation().getNodeOffset() + decalage) {
 				if (treeMap.get(integer) instanceof IASTComment) {
 					if (isBeforeOrInsideParent(comment, parent)) {
 						removalMap.put(integer, integer);
 					}
 				}
 			}
-			if (integer.intValue() > comment.getFileLocation().getNodeOffset()
-					+ decalage) {
+			if (integer.intValue() > comment.getFileLocation().getNodeOffset() + decalage) {
 				if (treeMap.get(integer) instanceof IASTComment) {
-					if (isBeforeOrInsideParent(
-							(IASTComment) treeMap.get(integer), parent)) {
+					if (isBeforeOrInsideParent((IASTComment)treeMap.get(integer), parent)) {
 						removalMap.put(integer, integer);
 					} else {
 						notEnd = false;
@@ -300,30 +266,25 @@ public class ASTCommentReconciler extends AbstractReconciler {
 				}
 			}
 		}
-		for (Iterator<Integer> it = removalMap.keySet().iterator(); it
-				.hasNext();) {
-			treeMap.remove(it.next());
+		for (Integer integer : removalMap.keySet()) {
+			treeMap.remove(integer);
 		}
 		return treeMap;
 	}
 
-	public String computeStartOfComment(TreeMap<Integer, IASTNode> map,
-			IASTComment comment) {
+	public String computeStartOfComment(TreeMap<Integer, IASTNode> map, IASTComment comment) {
 		StringBuilder returnString = new StringBuilder();
-		for (Iterator<Integer> iterator = map.keySet().iterator(); iterator
-				.hasNext();) {
-			Object element = map.get(iterator.next());
+		for (Integer integer : map.keySet()) {
+			Object element = map.get(integer);
 			if (element instanceof IASTComment) {
-				IASTComment currentComment = (IASTComment) element;
+				IASTComment currentComment = (IASTComment)element;
 				if (currentComment != comment) {
-					if (currentComment.getFileLocation().getNodeOffset() < comment
-							.getFileLocation().getNodeOffset()) {
-						returnString = returnString
-								.append(new String(((IASTComment) element)
-										.getComment())).append(
-										BundleConstants.LINE_SEPARATOR);
-					} else if (currentComment.getFileLocation().getNodeOffset() == comment
-							.getFileLocation().getNodeOffset()) {
+					if (currentComment.getFileLocation().getNodeOffset() < comment.getFileLocation()
+							.getNodeOffset()) {
+						returnString = returnString.append(new String(((IASTComment)element).getComment()))
+								.append(BundleConstants.LINE_SEPARATOR);
+					} else if (currentComment.getFileLocation().getNodeOffset() == comment.getFileLocation()
+							.getNodeOffset()) {
 						return returnString.toString();
 					}
 				}
@@ -332,34 +293,30 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		return returnString.toString();
 	}
 
-	public String computeEndOfComment(TreeMap<Integer, IASTNode> map,
-			IASTComment comment, IASTNode parent) {
+	public String computeEndOfComment(TreeMap<Integer, IASTNode> map, IASTComment comment, IASTNode parent) {
 		StringBuilder returnString = new StringBuilder();
 		boolean notReached = true;
 		boolean notEnd = true;
 
-		for (Iterator<Integer> iterator = map.keySet().iterator(); iterator
-				.hasNext() && (notReached || notEnd);) {
+		for (Iterator<Integer> iterator = map.keySet().iterator(); iterator.hasNext()
+				&& (notReached || notEnd);) {
 			Integer key = iterator.next();
 			IASTNode element = map.get(key);
 
 			if (element instanceof IASTComment) {
 				if (parent instanceof IASTTranslationUnit
 						|| element instanceof IASTTranslationUnit
-						|| element.getFileLocation().getEndingLineNumber() <= parent
-								.getFileLocation().getStartingLineNumber()) {
+						|| element.getFileLocation().getEndingLineNumber() <= parent.getFileLocation()
+								.getStartingLineNumber()) {
 					// we must have reached the comment to concat the following
 					// comments ...
 					if (!notReached) {
-						returnString = returnString
-								.append(new String(((IASTComment) element)
-										.getComment())).append(
-										BundleConstants.LINE_SEPARATOR);
+						returnString = returnString.append(new String(((IASTComment)element).getComment()))
+								.append(BundleConstants.LINE_SEPARATOR);
 					}
 					// check if have reach the starting comment
-					if (((IASTComment) element) == comment) {
-						returnString = returnString.append(new String(
-								((IASTComment) element).getComment()));
+					if ((IASTComment)element == comment) {
+						returnString = returnString.append(new String(((IASTComment)element).getComment()));
 						notReached = false;
 					}
 				} else if (!notReached) {
@@ -385,21 +342,20 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		boolean endOfCompare = false;
 
 		while (iterator.hasNext()
-				&& followingNode.getFileLocation().getNodeOffset() < comment
-						.getFileLocation().getNodeOffset()) {
+				&& followingNode.getFileLocation().getNodeOffset() < comment.getFileLocation()
+						.getNodeOffset()) {
 			Integer key = iterator.next();
 			Object element = map.get(key);
 			if (!endOfCompare) {
 				if (!(element instanceof IASTComment)) {
 					if (key.intValue() > 0) {
-						if (((IASTNode) element).getFileLocation()
-								.getNodeOffset() > comment.getFileLocation()
+						if (((IASTNode)element).getFileLocation().getNodeOffset() > comment.getFileLocation()
 								.getNodeOffset()) {
-							followingNode = (IASTNode) element;
+							followingNode = (IASTNode)element;
 							endOfCompare = true;
 						} else {
-							previousNode = (IASTNode) element;
-							followingNode = (IASTNode) element;
+							previousNode = (IASTNode)element;
+							followingNode = (IASTNode)element;
 						}
 					}
 				}
@@ -412,37 +368,31 @@ public class ASTCommentReconciler extends AbstractReconciler {
 			return astTranslationUnitNode;
 		} else {
 			if (previousNode instanceof IASTParameterDeclaration) {
-				if ((previousNode.getFileLocation().getStartingLineNumber() == comment
-						.getFileLocation().getStartingLineNumber() || previousNode
-						.getFileLocation().getEndingLineNumber() == comment
-						.getFileLocation().getEndingLineNumber())) {
+				if (previousNode.getFileLocation().getStartingLineNumber() == comment.getFileLocation()
+						.getStartingLineNumber()
+						|| previousNode.getFileLocation().getEndingLineNumber() == comment.getFileLocation()
+								.getEndingLineNumber()) {
 					return previousNode;
 				} else {
-					if (comment.getFileLocation().getNodeOffset() > previousNode
-							.getParent().getFileLocation().getNodeOffset()
-							&& comment.getFileLocation().getNodeOffset() < previousNode
-									.getParent().getFileLocation()
-									.getNodeOffset()
-									+ previousNode.getParent()
-											.getFileLocation().getNodeLength()) {
+					if (comment.getFileLocation().getNodeOffset() > previousNode.getParent()
+							.getFileLocation().getNodeOffset()
+							&& comment.getFileLocation().getNodeOffset() < previousNode.getParent()
+									.getFileLocation().getNodeOffset()
+							+ previousNode.getParent().getFileLocation().getNodeLength()) {
 						if (previousNode.getParent() instanceof IASTFunctionDeclarator) {
-							return ((IASTFunctionDeclarator) previousNode
-									.getParent()).getParent();
+							return ((IASTFunctionDeclarator)previousNode.getParent()).getParent();
 						}
 					} else {
 						// The comment is the parent of the parameter
 						if (previousNode.getParent() instanceof IASTFunctionDeclarator) {
-							IASTNode parentParameter = ((IASTFunctionDeclarator) previousNode
-									.getParent()).getParent();
-							if (comment.getFileLocation().getNodeOffset() > parentParameter
+							IASTNode parentParameter = ((IASTFunctionDeclarator)previousNode.getParent())
+									.getParent();
+							if (comment.getFileLocation().getNodeOffset() > parentParameter.getFileLocation()
+									.getNodeOffset()
+									&& comment.getFileLocation().getNodeOffset() < parentParameter
 									.getFileLocation().getNodeOffset()
-									&& comment.getFileLocation()
-											.getNodeOffset() < parentParameter
-											.getFileLocation().getNodeOffset()
-											+ parentParameter.getFileLocation()
-													.getNodeLength()) {
-								return ((IASTFunctionDeclarator) previousNode
-										.getParent()).getParent();
+									+ parentParameter.getFileLocation().getNodeLength()) {
+								return ((IASTFunctionDeclarator)previousNode.getParent()).getParent();
 							}
 						}
 						return followingNode;
@@ -462,13 +412,13 @@ public class ASTCommentReconciler extends AbstractReconciler {
 					return astTranslationUnitNode;
 				}
 				// in line comments
-				if (previousNode.getFileLocation().getStartingLineNumber() == comment
-						.getFileLocation().getStartingLineNumber()
-						&& previousNode.getFileLocation().getEndingLineNumber() == comment
-								.getFileLocation().getEndingLineNumber()) {
+				if (previousNode.getFileLocation().getStartingLineNumber() == comment.getFileLocation()
+						.getStartingLineNumber()
+						&& previousNode.getFileLocation().getEndingLineNumber() == comment.getFileLocation()
+								.getEndingLineNumber()) {
 					// is after the node but on the same line
-					if (previousNode.getFileLocation().getNodeOffset() <= comment
-							.getFileLocation().getNodeOffset()) {
+					if (previousNode.getFileLocation().getNodeOffset() <= comment.getFileLocation()
+							.getNodeOffset()) {
 						return previousNode;
 					} else {
 						// is before the node on the same line
@@ -476,19 +426,17 @@ public class ASTCommentReconciler extends AbstractReconciler {
 					}
 				}
 				if (previousNode instanceof IASTSimpleDeclaration) {
-					if (((IASTSimpleDeclaration) previousNode)
-							.getDeclSpecifier() instanceof IASTEnumerationSpecifier) {
+					if (((IASTSimpleDeclaration)previousNode).getDeclSpecifier() instanceof IASTEnumerationSpecifier) {
 						if (comment.getFileLocation().getStartingLineNumber() == previousNode
 								.getFileLocation().getEndingLineNumber()) {
 							return previousNode;
 						}
-						if (comment.getFileLocation().getNodeOffset() < previousNode
-								.getFileLocation().getNodeOffset()
-								+ previousNode.getFileLocation()
-										.getNodeLength()) {
+						if (comment.getFileLocation().getNodeOffset() < previousNode.getFileLocation()
+								.getNodeOffset()
+								+ previousNode.getFileLocation().getNodeLength()) {
 							return getParentEnumerator(
-									(IASTEnumerationSpecifier) ((IASTSimpleDeclaration) previousNode)
-											.getDeclSpecifier(), comment);
+									(IASTEnumerationSpecifier)((IASTSimpleDeclaration)previousNode)
+									.getDeclSpecifier(), comment);
 						}
 					}
 				}
@@ -503,18 +451,17 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		return null;
 	}
 
-	private IASTEnumerator getParentEnumerator(
-			IASTEnumerationSpecifier enumeration, IASTComment comment) {
+	private IASTEnumerator getParentEnumerator(IASTEnumerationSpecifier enumeration, IASTComment comment) {
 		for (IASTEnumerator enumLiteral : enumeration.getEnumerators()) {
 			if (enumLiteral != null) {
-				if ((enumLiteral.getFileLocation().getStartingLineNumber() == comment
-						.getFileLocation().getStartingLineNumber())
-						&& (enumLiteral.getFileLocation().getEndingLineNumber() == comment
-								.getFileLocation().getEndingLineNumber())) {
+				if (enumLiteral.getFileLocation().getStartingLineNumber() == comment.getFileLocation()
+						.getStartingLineNumber()
+						&& enumLiteral.getFileLocation().getEndingLineNumber() == comment.getFileLocation()
+								.getEndingLineNumber()) {
 					return enumLiteral;
 				}
-				if (enumLiteral.getFileLocation().getStartingLineNumber() > comment
-						.getFileLocation().getEndingLineNumber()) {
+				if (enumLiteral.getFileLocation().getStartingLineNumber() > comment.getFileLocation()
+						.getEndingLineNumber()) {
 					return enumLiteral;
 				}
 			}
@@ -527,8 +474,7 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		return findCommentAdded(newMap, oldMap);
 	}
 
-	private IASTComment findCommentAdded(TreeMap<Integer, IASTNode> oldMap,
-			TreeMap<Integer, IASTNode> newMap) {
+	private IASTComment findCommentAdded(TreeMap<Integer, IASTNode> oldMap, TreeMap<Integer, IASTNode> newMap) {
 		Object oldKey = null;
 		IASTNode element = null;
 		IASTNode oldElement = null;
@@ -538,8 +484,7 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		StringBuilder newComment = null;
 		StringBuilder oldComment = null;
 
-		for (Iterator<Integer> newIterator = newMap.keySet().iterator(); newIterator
-				.hasNext() && !found;) {
+		for (Iterator<Integer> newIterator = newMap.keySet().iterator(); newIterator.hasNext() && !found;) {
 			found = false;
 			index = newIterator.next();
 			element = newMap.get(index);
@@ -551,11 +496,9 @@ public class ASTCommentReconciler extends AbstractReconciler {
 				if (element instanceof IASTComment) {
 					// concat the comment to compare eventually repetitions of
 					// comment
-					newComment = newComment.append(new String(
-							((IASTComment) element).getComment()));
+					newComment = newComment.append(new String(((IASTComment)element).getComment()));
 
-					Iterator<Integer> originalIterator = oldMap.keySet()
-							.iterator();
+					Iterator<Integer> originalIterator = oldMap.keySet().iterator();
 					IASTNode fromOldElement = null;
 					while (originalIterator.hasNext() && index != null) {
 						oldKey = originalIterator.next();
@@ -567,30 +510,23 @@ public class ASTCommentReconciler extends AbstractReconciler {
 							// we add a comment at the beginning of the file
 							if (fromNode instanceof IASTTranslationUnit
 									&& fromOldElement instanceof IASTTranslationUnit) {
-								if (element.getRawSignature().equals(
-										oldElement.getRawSignature())) {
+								if (element.getRawSignature().equals(oldElement.getRawSignature())) {
 									index = null;
 								} else {
-									if (oldElement.getFileLocation()
-											.getNodeOffset() >= element
+									if (oldElement.getFileLocation().getNodeOffset() >= element
 											.getFileLocation().getNodeOffset()) {
-										return (IASTComment) newMap.get(index);
+										return (IASTComment)newMap.get(index);
 									}
 								}
 							}
-							if (fromOldElement != null
-									&& fromNode != null
-									&& fromOldElement.getRawSignature().equals(
-											fromNode.getRawSignature())) {
+							if (fromOldElement != null && fromNode != null
+									&& fromOldElement.getRawSignature().equals(fromNode.getRawSignature())) {
 								// concat the comment to compare eventually
 								// repetitions of comment
-								oldComment = oldComment
-										.append(new String(
-												((IASTComment) oldElement)
-														.getComment()));
+								oldComment = oldComment.append(new String(((IASTComment)oldElement)
+										.getComment()));
 
-								if (oldComment.toString().equals(
-										newComment.toString())) {
+								if (oldComment.toString().equals(newComment.toString())) {
 									index = null;
 								}
 							} else {
@@ -600,16 +536,13 @@ public class ASTCommentReconciler extends AbstractReconciler {
 
 								// concat the comment to compare eventually
 								// repetitions of comment
-								oldComment = oldComment
-										.append(new String(
-												((IASTComment) oldElement)
-														.getComment()));
+								oldComment = oldComment.append(new String(((IASTComment)oldElement)
+										.getComment()));
 
 								if (fromOldElement instanceof IASTTranslationUnit
 										&& fromNode instanceof IASTTranslationUnit
 										&& oldElement instanceof IASTComment) {
-									if (oldComment.toString().equals(
-											newComment.toString())) {
+									if (oldComment.toString().equals(newComment.toString())) {
 										index = null;
 									}
 								}
@@ -623,25 +556,23 @@ public class ASTCommentReconciler extends AbstractReconciler {
 			}
 		}
 		if (found) {
-			return (IASTComment) newMap.get(index);
+			return (IASTComment)newMap.get(index);
 		}
 		return null;
 	}
 
 	/**
-	 * 
 	 * @param map
-	 *            : TreeMap<Integer, IASTNode> pre initailized with the (new
-	 *            Integer(0), aTranslationUnit) objects
+	 *            : TreeMap<Integer, IASTNode> pre initailized with the (new Integer(0), aTranslationUnit)
+	 *            objects
 	 * @param declarations
 	 *            : the declarations of aTranslationUnit
 	 * @return : the map with all considered objects
 	 */
-	public TreeMap<Integer, IASTNode> fillMap(ITranslationUnit tu,
-			Collection<IASTDeclaration> declarations) throws CoreException {
+	public TreeMap<Integer, IASTNode> fillMap(ITranslationUnit tu, Collection<IASTDeclaration> declarations)
+			throws CoreException {
 		IASTTranslationUnit astTU = tu.getAST();
-		IASTTranslationUnit emptyAst = astTU.getASTNodeFactory()
-				.newTranslationUnit(null);
+		IASTTranslationUnit emptyAst = astTU.getASTNodeFactory().newTranslationUnit(null);
 		TreeMap<Integer, IASTNode> map = new TreeMap<Integer, IASTNode>();
 		map.put(0, emptyAst);
 
@@ -655,13 +586,11 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		Collection<IASTComment> originalCommentsFiltered = Collections.EMPTY_LIST;
 
 		for (IASTComment originalComment : originalCommentsFiltered) {
-			map.put(originalComment.getFileLocation().getNodeOffset()
-					+ decalage, originalComment);
+			map.put(originalComment.getFileLocation().getNodeOffset() + decalage, originalComment);
 		}
 
 		/* fill map with all pre-processor statements encountered into the file */
-		IASTPreprocessorStatement[] originalPreProcessorStatements = astTU
-				.getAllPreprocessorStatements();
+		IASTPreprocessorStatement[] originalPreProcessorStatements = astTU.getAllPreprocessorStatements();
 
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTPreprocessorStatement>
@@ -671,52 +600,39 @@ public class ASTCommentReconciler extends AbstractReconciler {
 		Collection<IASTPreprocessorStatement> originalPreProcessorStatementsFiltered = Collections.EMPTY_LIST;
 
 		for (IASTPreprocessorStatement originalPreProcessorStatement : originalPreProcessorStatementsFiltered) {
-			map.put(originalPreProcessorStatement.getFileLocation()
-					.getNodeOffset() + decalage, originalPreProcessorStatement);
+			map.put(originalPreProcessorStatement.getFileLocation().getNodeOffset() + decalage,
+					originalPreProcessorStatement);
 		}
 
 		IASTNode[] children = null;
 		/* fill map with declarations found inside the file */
 		for (IASTDeclaration declaration : declarations) {
-			map.put(new Integer(declaration.getFileLocation().getNodeOffset()
-					+ decalage), declaration);
+			map.put(new Integer(declaration.getFileLocation().getNodeOffset() + decalage), declaration);
 
-			if (declaration instanceof IASTFunctionDefinition
-					|| declaration instanceof IASTSimpleDeclaration) {
+			if (declaration instanceof IASTFunctionDefinition || declaration instanceof IASTSimpleDeclaration) {
 				if (declaration instanceof IASTFunctionDefinition) {
-					children = ((IASTFunctionDefinition) declaration)
-							.getDeclarator().getChildren();
+					children = ((IASTFunctionDefinition)declaration).getDeclarator().getChildren();
 				} else if (declaration instanceof IASTSimpleDeclaration) {
-					IASTDeclSpecifier specifier = ((IASTSimpleDeclaration) declaration)
-							.getDeclSpecifier();
+					IASTDeclSpecifier specifier = ((IASTSimpleDeclaration)declaration).getDeclSpecifier();
 					if (specifier instanceof IASTEnumerationSpecifier) {
-						children = ((IASTEnumerationSpecifier) specifier)
-								.getEnumerators();
+						children = ((IASTEnumerationSpecifier)specifier).getEnumerators();
 					} else if (specifier instanceof IASTCompositeTypeSpecifier) {
-						children = ((IASTCompositeTypeSpecifier) specifier)
-								.getMembers();
+						children = ((IASTCompositeTypeSpecifier)specifier).getMembers();
 					} else if (specifier instanceof IASTElaboratedTypeSpecifier) {
-						children = ((IASTElaboratedTypeSpecifier) specifier)
-								.getChildren();
-					} else if (((IASTSimpleDeclaration) declaration)
-							.getDeclarators().length > 0) {
-						IASTDeclarator declarator = ((IASTSimpleDeclaration) declaration)
-								.getDeclarators()[0];
+						children = ((IASTElaboratedTypeSpecifier)specifier).getChildren();
+					} else if (((IASTSimpleDeclaration)declaration).getDeclarators().length > 0) {
+						IASTDeclarator declarator = ((IASTSimpleDeclaration)declaration).getDeclarators()[0];
 						if (declarator instanceof IASTFunctionDeclarator) {
 							children = declarator.getChildren();
 						} else if (declarator instanceof IASTArrayDeclarator) {
-							IASTInitializer initializer = declarator
-									.getInitializer();
+							IASTInitializer initializer = declarator.getInitializer();
 							if (initializer != null) {
-								IASTNode[] initializerLists = initializer
-										.getChildren();
+								IASTNode[] initializerLists = initializer.getChildren();
 								for (IASTNode initializerList : initializerLists) {
 									if (initializerList instanceof IASTInitializerList) {
-										for (IASTNode init : ((IASTInitializerList) initializerList)
+										for (IASTNode init : ((IASTInitializerList)initializerList)
 												.getChildren()) {
-											map.put(init.getFileLocation()
-													.getNodeOffset() + decalage,
-													init);
+											map.put(init.getFileLocation().getNodeOffset() + decalage, init);
 										}
 									}
 								}
@@ -730,8 +646,7 @@ public class ASTCommentReconciler extends AbstractReconciler {
 					for (IASTNode child : children) {
 						if (!(child instanceof IASTName)) {
 							if (child instanceof IASTParameterDeclaration) {
-								map.put(child.getFileLocation().getNodeOffset()
-										+ decalage, child);
+								map.put(child.getFileLocation().getNodeOffset() + decalage, child);
 							}
 						}
 					}

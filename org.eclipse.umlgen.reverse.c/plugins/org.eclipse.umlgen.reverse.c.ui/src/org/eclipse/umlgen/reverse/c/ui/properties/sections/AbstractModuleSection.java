@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 Communication & Systems.
+ * Copyright (c) 2011, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -30,19 +30,16 @@ import org.eclipse.umlgen.reverse.c.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section allowing to specify information related to a C module (module or
- * header).<br>
+ * Section allowing to specify information related to a C module (module or header).<br>
  * This information will be used by the Acceleo generator.<br>
  * This section is available from a {@link org.eclipse.uml2.uml.Class} or an
  * {@link org.eclipse.uml2.uml.Interface}.<br>
- * 
  * Creation : 04 february 2011<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 // FIXME MIGRATION reference to org.topcased.tabbedproperties
-public abstract class AbstractModuleSection extends
-		AbstractStringPropertySection {
+public abstract class AbstractModuleSection extends AbstractStringPropertySection {
 	/**
 	 * @return A constant representing the key of the details entry
 	 */
@@ -50,14 +47,13 @@ public abstract class AbstractModuleSection extends
 
 	/**
 	 * Gets the eAnnotation attached to the model element.
-	 * 
+	 *
 	 * @return The annotation or null if no annotation is attached
 	 */
 	protected EAnnotation getEAnnotation() {
 		EObject eObj = getEObject();
 		if (eObj instanceof EModelElement) {
-			return UML2Util.getEAnnotation((EModelElement) eObj,
-					AnnotationConstants.REVERSE_PROCESS, false);
+			return UML2Util.getEAnnotation((EModelElement)eObj, AnnotationConstants.REVERSE_PROCESS, false);
 		}
 		return null;
 	}
@@ -80,25 +76,18 @@ public abstract class AbstractModuleSection extends
 				// test if the eAnnotation already exists
 				if (eAnnotation == null) {
 					// create the annotation with the entry
-					eAnnotation = UML2Util.createEAnnotation(null,
-							AnnotationConstants.REVERSE_PROCESS);
-					eAnnotation.getDetails().put(getKeyDetailsEntry(),
-							newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							getEObject(), EcorePackage.eINSTANCE
-									.getEModelElement_EAnnotations(),
-							eAnnotation);
+					eAnnotation = UML2Util.createEAnnotation(null, AnnotationConstants.REVERSE_PROCESS);
+					eAnnotation.getDetails().put(getKeyDetailsEntry(), newValue.toString());
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, getEObject(),
+							EcorePackage.eINSTANCE.getEModelElement_EAnnotations(), eAnnotation);
 				} else {
 					// create only the entry within the current eAnnotation
-					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl) EcoreFactory.eINSTANCE
-							.create(EcorePackage.eINSTANCE
-									.getEStringToStringMapEntry());
+					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl)EcoreFactory.eINSTANCE
+							.create(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
 					newEntry.setTypedKey(getKeyDetailsEntry());
 					newEntry.setTypedValue(newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							eAnnotation,
-							EcorePackage.eINSTANCE.getEAnnotation_Details(),
-							newEntry);
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, eAnnotation,
+							EcorePackage.eINSTANCE.getEAnnotation_Details(), newEntry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.creation")); //$NON-NLS-1$
 
@@ -107,11 +96,9 @@ public abstract class AbstractModuleSection extends
 			else if (!"".equals(oldValue) && !"".equals(newValue)) //$NON-NLS-1$ //$NON-NLS-2$
 			{
 				Entry<String, String> entry = eAnnotation.getDetails().get(
-						eAnnotation.getDetails().indexOfKey(
-								getKeyDetailsEntry()));
-				cmd = (AbstractCommand) SetCommand.create(editingDomain, entry,
-						EcorePackage.eINSTANCE
-								.getEStringToStringMapEntry_Value(), newValue);
+						eAnnotation.getDetails().indexOfKey(getKeyDetailsEntry()));
+				cmd = (AbstractCommand)SetCommand.create(editingDomain, entry, EcorePackage.eINSTANCE
+						.getEStringToStringMapEntry_Value(), newValue);
 				cmd.setLabel(Messages.getString("Metadata.cmd.modification")); //$NON-NLS-1$
 			}
 			// 3 - The eAnnotation and all its attached information need to be
@@ -121,15 +108,12 @@ public abstract class AbstractModuleSection extends
 				if (eAnnotation.getDetails().size() == 1) {
 					// the entry we want to remove is the last one, so the
 					// entire eAnnotation is removed
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							getEAnnotation());
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, getEAnnotation());
 				} else {
 					// here, only the entry is removed from the eAnnotation
 					Entry<String, String> entry = eAnnotation.getDetails().get(
-							eAnnotation.getDetails().indexOfKey(
-									getKeyDetailsEntry()));
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							entry);
+							eAnnotation.getDetails().indexOfKey(getKeyDetailsEntry()));
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, entry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.deletion")); //$NON-NLS-1$
 			}
@@ -154,10 +138,9 @@ public abstract class AbstractModuleSection extends
 	@Override
 	@SuppressWarnings("unchecked")
 	protected String getFeatureAsString() {
-		EMap<String, String> map = getEAnnotation() == null ? null
-				: (EMap<String, String>) getEAnnotation().eGet(getFeature());
-		if (map == null || map.isEmpty()
-				|| !map.containsKey(getKeyDetailsEntry())) {
+		EMap<String, String> map = getEAnnotation() == null ? null : (EMap<String, String>)getEAnnotation()
+				.eGet(getFeature());
+		if (map == null || map.isEmpty() || !map.containsKey(getKeyDetailsEntry())) {
 			return ""; //$NON-NLS-1$
 		}
 		return map.get(getKeyDetailsEntry());

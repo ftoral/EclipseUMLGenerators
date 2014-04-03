@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * 	   Obeo 					- initial API and implementation
- *     Christophe Le Camus (CS) - initial API and implementation 
+ *     Christophe Le Camus (CS) - initial API and implementation
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -16,9 +16,8 @@ import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 /**
- * Represents the hightest event level. All instantiated events inherit this
- * abstract class.
- * 
+ * Represents the hightest event level. All instantiated events inherit this abstract class.
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public abstract class CModelChangedEvent {
@@ -33,8 +32,7 @@ public abstract class CModelChangedEvent {
 	}
 
 	public String getUnitName() {
-		return getTranslationUnit().getPath().removeFileExtension()
-				.lastSegment();
+		return getTranslationUnit().getPath().removeFileExtension().lastSegment();
 	}
 
 	public abstract static class Builder<T extends CModelChangedEvent> {
@@ -52,7 +50,7 @@ public abstract class CModelChangedEvent {
 
 	/**
 	 * Notify changes accordingly to the kind of event received.
-	 * 
+	 *
 	 * @param manager
 	 *            The model manager
 	 */

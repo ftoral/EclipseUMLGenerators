@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
@@ -28,45 +28,39 @@ import org.eclipse.umlgen.reverse.c.AnnotationConstants;
 
 /**
  * Utility class helping to work with annotations and detail entries.<br>
- * 
  * Creation : 18 november 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public final class AnnotationUtil {
 
 	/**
 	 * Gets the reverse annotation or creates a new one if necessary.
-	 * 
+	 *
 	 * @param element
 	 *            An UML element to annotate
 	 * @return The new reverse annotation
 	 */
 	private static EAnnotation getReverseAnnotation(Element element) {
-		return UML2Util.getEAnnotation(element,
-				AnnotationConstants.REVERSE_PROCESS, true);
+		return UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
 	}
 
-	private static void removeDetailEntry(EAnnotation annotation,
-			String entryKey) {
+	private static void removeDetailEntry(EAnnotation annotation, String entryKey) {
 		annotation.getDetails().removeKey(entryKey);
 	}
 
 	static boolean isSameTypeBetweenCandHUnits(Element element) {
-		EAnnotation reverseAnnotation = element
-				.getEAnnotation(AnnotationConstants.REVERSE_PROCESS);
+		EAnnotation reverseAnnotation = element.getEAnnotation(AnnotationConstants.REVERSE_PROCESS);
 		if (reverseAnnotation != null) {
-			return reverseAnnotation.getDetails().containsKey(
-					AnnotationConstants.C_FILENAME)
-					&& !reverseAnnotation.getDetails().containsKey(
-							AnnotationConstants.H_FILENAME);
+			return reverseAnnotation.getDetails().containsKey(AnnotationConstants.C_FILENAME)
+					&& !reverseAnnotation.getDetails().containsKey(AnnotationConstants.H_FILENAME);
 		}
 		return false;
 	}
 
 	/**
 	 * Gets the documentation annotation or creates a new one if necessary.
-	 * 
+	 *
 	 * @param element
 	 *            An UML element to annotate
 	 * @return The new documentation annotation
@@ -81,70 +75,57 @@ public final class AnnotationUtil {
 	public static void removeEAnnotations(Element element, ITranslationUnit tu) {
 		EAnnotation reverse = getReverseAnnotation(element);
 		if (tu.isHeaderUnit()) {
-			AnnotationUtil.removeDetailEntry(reverse,
-					AnnotationConstants.H_FILENAME);
+			AnnotationUtil.removeDetailEntry(reverse, AnnotationConstants.H_FILENAME);
 		} else {
-			AnnotationUtil.removeDetailEntry(reverse,
-					AnnotationConstants.C_FILENAME);
+			AnnotationUtil.removeDetailEntry(reverse, AnnotationConstants.C_FILENAME);
 		}
 	}
 
 	/**
-	 * Sets the origin file in the reverse annotation. Create the reverse
-	 * annotation if does not exist.
-	 * 
+	 * Sets the origin file in the reverse annotation. Create the reverse annotation if does not exist.
+	 *
 	 * @param classifier
 	 *            A classifier of our model.
 	 * @param tu
 	 *            The translation unit
-	 * @return The reverse annotation containing one or several details entry
-	 *         whose the file name.
+	 * @return The reverse annotation containing one or several details entry whose the file name.
 	 */
-	public static EAnnotation setFileLocationDetailEntry(Classifier classifier,
-			ITranslationUnit tu) {
+	public static EAnnotation setFileLocationDetailEntry(Classifier classifier, ITranslationUnit tu) {
 		EAnnotation annotation = getReverseAnnotation(classifier);
 		String value = tu.getPath().removeFirstSegments(1).toString();
 		annotation.getDetails().put(
-				tu.isHeaderUnit() ? AnnotationConstants.H_FILENAME
-						: AnnotationConstants.C_FILENAME, value);
+				tu.isHeaderUnit() ? AnnotationConstants.H_FILENAME : AnnotationConstants.C_FILENAME, value);
 		return annotation;
 	}
 
 	/**
-	 * Sets the <b>'IFNDEF'</b> detail entry to the reverse annotation of a
-	 * {@link Classifier}.
-	 * 
+	 * Sets the <b>'IFNDEF'</b> detail entry to the reverse annotation of a {@link Classifier}.
+	 *
 	 * @param classifier
 	 *            A classifier to tag
 	 * @param condition
 	 *            The ifndef condition.
 	 */
-	public static void setIfndefConditionDetailEntry(Classifier classifier,
-			String condition) {
+	public static void setIfndefConditionDetailEntry(Classifier classifier, String condition) {
 		EAnnotation reverseAnnotation = getReverseAnnotation(classifier);
-		reverseAnnotation.getDetails().put(
-				AnnotationConstants.IFNDEF_CONDITION, condition);
+		reverseAnnotation.getDetails().put(AnnotationConstants.IFNDEF_CONDITION, condition);
 	}
 
 	/**
-	 * Sets the <b>'REGISTER'</b> detail entry to the reverse annotation of a
-	 * {@link Property}.
-	 * 
+	 * Sets the <b>'REGISTER'</b> detail entry to the reverse annotation of a {@link Property}.
+	 *
 	 * @param property
 	 *            A property to tag
 	 * @param isRegister
 	 *            a boolean indicating if the object is register or not
 	 */
-	public static void setRegisterDetailEntry(Property property,
-			boolean isRegister) {
+	public static void setRegisterDetailEntry(Property property, boolean isRegister) {
 		EAnnotation reverseAnnotation = getReverseAnnotation(property);
 		if (isRegister) {
 			// this annotation is only added if the extern is set to true
-			reverseAnnotation.getDetails().put(AnnotationConstants.REGISTER,
-					"true"); //$NON-NLS-1$
+			reverseAnnotation.getDetails().put(AnnotationConstants.REGISTER, "true"); //$NON-NLS-1$
 		} else {
-			reverseAnnotation.getDetails().removeKey(
-					AnnotationConstants.REGISTER);
+			reverseAnnotation.getDetails().removeKey(AnnotationConstants.REGISTER);
 		}
 		if (reverseAnnotation.getDetails().isEmpty()) {
 			property.getEAnnotations().remove(reverseAnnotation);
@@ -152,24 +133,20 @@ public final class AnnotationUtil {
 	}
 
 	/**
-	 * Sets the <b>'VOLATILE'</b> detail entry to the reverse annotation of a
-	 * {@link Property}.
-	 * 
+	 * Sets the <b>'VOLATILE'</b> detail entry to the reverse annotation of a {@link Property}.
+	 *
 	 * @param property
 	 *            A property to tag
 	 * @param isVolatile
 	 *            a boolean indicating if the object is volatile or not
 	 */
-	public static void setVolatileDetailEntry(Property property,
-			boolean isVolatile) {
+	public static void setVolatileDetailEntry(Property property, boolean isVolatile) {
 		EAnnotation reverseAnnotation = getReverseAnnotation(property);
 		if (isVolatile) {
 			// this annotation is only added if the extern is set to true
-			reverseAnnotation.getDetails().put(AnnotationConstants.VOLATILE,
-					"true"); //$NON-NLS-1$
+			reverseAnnotation.getDetails().put(AnnotationConstants.VOLATILE, "true"); //$NON-NLS-1$
 		} else {
-			reverseAnnotation.getDetails().removeKey(
-					AnnotationConstants.VOLATILE);
+			reverseAnnotation.getDetails().removeKey(AnnotationConstants.VOLATILE);
 		}
 		if (reverseAnnotation.getDetails().isEmpty()) {
 			property.getEAnnotations().remove(reverseAnnotation);
@@ -177,9 +154,9 @@ public final class AnnotationUtil {
 	}
 
 	/**
-	 * Sets the <b>'STD_LIBRARY'</b> detail entry into the reverse annotation
-	 * meaning that the usage is local or external.
-	 * 
+	 * Sets the <b>'STD_LIBRARY'</b> detail entry into the reverse annotation meaning that the usage is local
+	 * or external.
+	 *
 	 * @param usage
 	 *            The usage to tag
 	 * @param status
@@ -188,11 +165,9 @@ public final class AnnotationUtil {
 	public static void setLibraryDetailEntry(Usage usage, boolean status) {
 		EAnnotation reverseAnnotation = getReverseAnnotation(usage);
 		if (status) {
-			reverseAnnotation.getDetails().put(AnnotationConstants.STD_LIBRARY,
-					"true"); //$NON-NLS-1$
+			reverseAnnotation.getDetails().put(AnnotationConstants.STD_LIBRARY, "true"); //$NON-NLS-1$
 		} else {
-			reverseAnnotation.getDetails().removeKey(
-					AnnotationConstants.STD_LIBRARY);
+			reverseAnnotation.getDetails().removeKey(AnnotationConstants.STD_LIBRARY);
 		}
 		if (reverseAnnotation.getDetails().isEmpty()) {
 			usage.getEAnnotations().remove(reverseAnnotation);
@@ -201,7 +176,7 @@ public final class AnnotationUtil {
 
 	/**
 	 * Called by the generator to re-build the entire relative path.
-	 * 
+	 *
 	 * @param elt
 	 *            A named element
 	 * @param key
@@ -215,8 +190,7 @@ public final class AnnotationUtil {
 		{
 			URI uri = EcoreUtil.getURI(elt);
 			String relativePath = uri.toPlatformString(true);
-			IResource rsc = ResourcesPlugin.getWorkspace().getRoot()
-					.findMember(new Path(relativePath));
+			IResource rsc = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(relativePath));
 			IProject project = rsc.getProject();
 			return project.getFullPath().append(value).toString();
 		}

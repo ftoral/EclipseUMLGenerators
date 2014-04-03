@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
@@ -26,61 +26,56 @@ import org.eclipse.umlgen.reverse.c.util.ASTUtil;
 /**
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-public class CFileReconciler extends AbstractFileReconciler
-{
+public class CFileReconciler extends AbstractFileReconciler {
 
-    /**
-     * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#addElement(org.eclipse.cdt.core.dom.ast.IASTPreprocessorIfndefStatement,
-     *      org.eclipse.cdt.core.model.ITranslationUnit)
-     */
-    public CModelChangedEvent addElement(IASTPreprocessorIfndefStatement statementAdded, ITranslationUnit translationUnit)
-    {
-        return null;
-    }
+	/**
+	 * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#addElement(org.eclipse.cdt.core.dom.ast.IASTPreprocessorIfndefStatement,
+	 *      org.eclipse.cdt.core.model.ITranslationUnit)
+	 */
+	public CModelChangedEvent addElement(IASTPreprocessorIfndefStatement statementAdded,
+			ITranslationUnit translationUnit) {
+		return null;
+	}
 
-    /**
-     * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#addElement(org.eclipse.cdt.core.dom.ast.IASTFunctionDefinition,
-     *      org.eclipse.cdt.core.model.IFunction)
-     */
-    public CModelChangedEvent addElement(IASTFunctionDefinition functionDef, IFunction element)
-    {
-    	if (functionDef == null)
-    	{
-    		return null ;
-    	}
-        List<FunctionParameter> parameters = ASTUtil.collectParameterInformation(functionDef.getDeclarator());
-        String returnType = element.getReturnType();
-        String body = functionDef.getBody().getRawSignature();
-        boolean isStatic = false;
-        try
-        {
-            isStatic = element.isStatic();
-        }
-        catch (CModelException e)
-        {
-            // do nothing
-        }
-        return FunctionDefinitionAdded.builder().setBody(body).isStatic(isStatic).setReturnType(returnType).setParameters(parameters).currentName(element.getElementName()).translationUnit(
-                element.getTranslationUnit()).build();
-    }
+	/**
+	 * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#addElement(org.eclipse.cdt.core.dom.ast.IASTFunctionDefinition,
+	 *      org.eclipse.cdt.core.model.IFunction)
+	 */
+	public CModelChangedEvent addElement(IASTFunctionDefinition functionDef, IFunction element) {
+		if (functionDef == null) {
+			return null;
+		}
+		List<FunctionParameter> parameters = ASTUtil.collectParameterInformation(functionDef.getDeclarator());
+		String returnType = element.getReturnType();
+		String body = functionDef.getBody().getRawSignature();
+		boolean isStatic = false;
+		try {
+			isStatic = element.isStatic();
+		} catch (CModelException e) {
+			// do nothing
+		}
+		return FunctionDefinitionAdded.builder().setBody(body).isStatic(isStatic).setReturnType(returnType)
+				.setParameters(parameters).currentName(element.getElementName()).translationUnit(
+						element.getTranslationUnit()).build();
+	}
 
-    /**
-     * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#removeElement(org.eclipse.cdt.core.dom.ast.IASTFunctionDefinition,
-     *      org.eclipse.cdt.core.model.IFunction)
-     */
-    public CModelChangedEvent removeElement(IASTFunctionDefinition element, IFunction originalFunction)
-    {
-        List<FunctionParameter> parameters = ASTUtil.collectParameterInformation(element.getDeclarator());
-        return FunctionDefinitionRemoved.builder().setParameters(parameters).setReturnType(originalFunction.getReturnType()).currentName(originalFunction.getElementName()).translationUnit(
-                originalFunction.getTranslationUnit()).build();
-    }
+	/**
+	 * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#removeElement(org.eclipse.cdt.core.dom.ast.IASTFunctionDefinition,
+	 *      org.eclipse.cdt.core.model.IFunction)
+	 */
+	public CModelChangedEvent removeElement(IASTFunctionDefinition element, IFunction originalFunction) {
+		List<FunctionParameter> parameters = ASTUtil.collectParameterInformation(element.getDeclarator());
+		return FunctionDefinitionRemoved.builder().setParameters(parameters).setReturnType(
+				originalFunction.getReturnType()).currentName(originalFunction.getElementName())
+				.translationUnit(originalFunction.getTranslationUnit()).build();
+	}
 
-    /**
-     * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#removeElement(org.eclipse.cdt.core.dom.ast.IASTPreprocessorIfndefStatement,
-     *      org.eclipse.cdt.core.model.ITranslationUnit)
-     */
-    public CModelChangedEvent removeElement(IASTPreprocessorIfndefStatement statementAdded, ITranslationUnit translationUnit)
-    {
-        return null;
-    }
+	/**
+	 * @see org.eclipse.umlgen.reverse.c.internal.reconciler.IFileReconciler#removeElement(org.eclipse.cdt.core.dom.ast.IASTPreprocessorIfndefStatement,
+	 *      org.eclipse.cdt.core.model.ITranslationUnit)
+	 */
+	public CModelChangedEvent removeElement(IASTPreprocessorIfndefStatement statementAdded,
+			ITranslationUnit translationUnit) {
+		return null;
+	}
 }

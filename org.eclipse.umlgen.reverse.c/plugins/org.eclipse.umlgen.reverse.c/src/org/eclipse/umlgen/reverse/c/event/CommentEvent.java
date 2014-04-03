@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2010 Communication & Systems.
+ * Copyright (c) 2010, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS) - initial API and implementation 
+ *     Christophe Le Camus (CS) - initial API and implementation
  *     Sebastien Gabel (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -51,12 +51,11 @@ public abstract class CommentEvent extends CModelChangedEvent {
 
 	public String getKey() {
 		if (!(parent instanceof IASTTranslationUnit)) {
-			if (source.getFileLocation().getStartingLineNumber() == source
-					.getFileLocation().getEndingLineNumber()) {
-				if (source.getFileLocation().getStartingLineNumber() == parent
-						.getFileLocation().getStartingLineNumber()) {
-					if (source.getFileLocation().getNodeOffset() < parent
-							.getFileLocation().getNodeOffset()) {
+			if (source.getFileLocation().getStartingLineNumber() == source.getFileLocation()
+					.getEndingLineNumber()) {
+				if (source.getFileLocation().getStartingLineNumber() == parent.getFileLocation()
+						.getStartingLineNumber()) {
+					if (source.getFileLocation().getNodeOffset() < parent.getFileLocation().getNodeOffset()) {
 						return getTranslationUnit().isHeaderUnit() ? AnnotationConstants.H_INLINE_BEFORE
 								: AnnotationConstants.C_INLINE_BEFORE;
 					} else {
@@ -72,8 +71,7 @@ public abstract class CommentEvent extends CModelChangedEvent {
 		// return IAnnotationConstants.DOCUMENTATION_KEY;
 	}
 
-	public abstract static class Builder<T extends CommentEvent> extends
-			CModelChangedEvent.Builder<CommentEvent> {
+	public abstract static class Builder<T extends CommentEvent> extends CModelChangedEvent.Builder<CommentEvent> {
 
 		public Builder<T> setBody(String body) {
 			getEvent().setBody(body);

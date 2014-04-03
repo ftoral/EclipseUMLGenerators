@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2007 Topcased and others.
+ * Copyright (c) 2007, 2014 Topcased contributors and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation     
+ *
+ * Contributors:
+ *      Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.properties;
 
@@ -29,7 +29,7 @@ import org.eclipse.ui.dialogs.PropertyPage;
 
 /**
  * Property page for common properties of code generators.
- * 
+ *
  * @author awalrawens
  */
 public class CodeGenerationPropertyPage extends PropertyPage {
@@ -82,7 +82,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 
 	/**
 	 * Create and initialize widget on the property page
-	 * 
+	 *
 	 * @param parent
 	 *            is the composite
 	 */
@@ -140,8 +140,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		data.width = 266;
 		authorText.setLayoutData(data);
 
-		genAuthorButton.addMouseListener(new CheckboxListener(genAuthorButton,
-				authorText));
+		genAuthorButton.addMouseListener(new CheckboxListener(genAuthorButton, authorText));
 
 		// Header : check box + label + text
 		genHeaderButton = new Button(parent, SWT.CHECK);
@@ -160,8 +159,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		data.top = new FormAttachment(genHeaderButton, 5);
 		headerLabel.setLayoutData(data);
 
-		headerText = new Text(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL
-				| SWT.BORDER);
+		headerText = new Text(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
 		data = new FormData();
 		data.left = new FormAttachment(headerLabel, 15);
 		data.width = 250;
@@ -169,8 +167,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		data.top = new FormAttachment(genHeaderButton, 5);
 		headerText.setLayoutData(data);
 
-		genHeaderButton.addMouseListener(new CheckboxListener(genHeaderButton,
-				headerText));
+		genHeaderButton.addMouseListener(new CheckboxListener(genHeaderButton, headerText));
 
 		// Generate accessors
 		genAccessorsButton = new Button(parent, SWT.CHECK);
@@ -201,8 +198,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 
 		// Topcased checkstyle
 		useTopcasedChkstButton = new Button(parent, SWT.CHECK);
-		useTopcasedChkstButton
-				.setText("Generate code conform to Topcased coding style");
+		useTopcasedChkstButton.setText("Generate code conform to Topcased coding style");
 		data = new FormData();
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(100, -5);
@@ -229,30 +225,24 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 
 		/* 2. Set current values */
 
-		IResource model = (IResource) getElement();
+		IResource model = (IResource)getElement();
 
 		try {
-			outputText.setText(CodeGenerationProperties
-					.getOutputPathProperty(model));
+			outputText.setText(CodeGenerationProperties.getOutputPathProperty(model));
 		} catch (CoreException e) {
-			outputText.setText(CodeGenerationProperties
-					.getDefaultOutputPathProperty(model));
+			outputText.setText(CodeGenerationProperties.getDefaultOutputPathProperty(model));
 		}
 
 		try {
-			genAuthorButton.setSelection(CodeGenerationProperties
-					.getGenAuthorProperty(model));
+			genAuthorButton.setSelection(CodeGenerationProperties.getGenAuthorProperty(model));
 		} catch (CoreException e) {
-			genAuthorButton.setSelection(CodeGenerationProperties
-					.getDefaultGenAuthorProperty());
+			genAuthorButton.setSelection(CodeGenerationProperties.getDefaultGenAuthorProperty());
 		}
 
 		try {
-			authorText.setText(CodeGenerationProperties
-					.getAuthorNameProperty(model));
+			authorText.setText(CodeGenerationProperties.getAuthorNameProperty(model));
 		} catch (CoreException e) {
-			authorText.setText(CodeGenerationProperties
-					.getDefaultAuthorNameProperty());
+			authorText.setText(CodeGenerationProperties.getDefaultAuthorNameProperty());
 		}
 
 		if (genAuthorButton.getSelection()) {
@@ -262,19 +252,15 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		}
 
 		try {
-			genHeaderButton.setSelection(CodeGenerationProperties
-					.getGenHeaderProperty(model));
+			genHeaderButton.setSelection(CodeGenerationProperties.getGenHeaderProperty(model));
 		} catch (CoreException e) {
-			genHeaderButton.setSelection(CodeGenerationProperties
-					.getDefaultGenHeaderProperty());
+			genHeaderButton.setSelection(CodeGenerationProperties.getDefaultGenHeaderProperty());
 		}
 
 		try {
-			headerText.setText(CodeGenerationProperties
-					.getHeaderProperty(model));
+			headerText.setText(CodeGenerationProperties.getHeaderProperty(model));
 		} catch (CoreException e) {
-			headerText.setText(CodeGenerationProperties
-					.getDefaultHeaderProperty());
+			headerText.setText(CodeGenerationProperties.getDefaultHeaderProperty());
 		}
 
 		if (genHeaderButton.getSelection()) {
@@ -284,51 +270,40 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		}
 
 		try {
-			genAccessorsButton.setSelection(CodeGenerationProperties
-					.getGenAccessorsProperty(model));
+			genAccessorsButton.setSelection(CodeGenerationProperties.getGenAccessorsProperty(model));
 		} catch (CoreException e) {
-			genAccessorsButton.setSelection(CodeGenerationProperties
-					.getDefaultGenAccessorsProperty());
+			genAccessorsButton.setSelection(CodeGenerationProperties.getDefaultGenAccessorsProperty());
 		}
 
 		try {
-			genArrayMethodsButton.setSelection(CodeGenerationProperties
-					.getGenArrayMethodsProperty(model));
+			genArrayMethodsButton.setSelection(CodeGenerationProperties.getGenArrayMethodsProperty(model));
 		} catch (CoreException e) {
-			genArrayMethodsButton.setSelection(CodeGenerationProperties
-					.getDefaultGenArrayMethodsProperty());
+			genArrayMethodsButton.setSelection(CodeGenerationProperties.getDefaultGenArrayMethodsProperty());
 		}
 
 		try {
-			genMainButton.setSelection(CodeGenerationProperties
-					.getGenMainProperty(model));
+			genMainButton.setSelection(CodeGenerationProperties.getGenMainProperty(model));
 		} catch (CoreException e) {
-			genMainButton.setSelection(CodeGenerationProperties
-					.getDefaultGenMainProperty());
+			genMainButton.setSelection(CodeGenerationProperties.getDefaultGenMainProperty());
 		}
 
 		try {
-			useTopcasedChkstButton.setSelection(CodeGenerationProperties
-					.getUseTopcasedChkstProperty(model));
+			useTopcasedChkstButton.setSelection(CodeGenerationProperties.getUseTopcasedChkstProperty(model));
 		} catch (CoreException e) {
-			useTopcasedChkstButton.setSelection(CodeGenerationProperties
-					.getDefaultUseTopcasedChkstProperty());
+			useTopcasedChkstButton
+			.setSelection(CodeGenerationProperties.getDefaultUseTopcasedChkstProperty());
 		}
 
 		try {
-			stopIfWarningButton.setSelection(CodeGenerationProperties
-					.getStopIfWarningProperty(model));
+			stopIfWarningButton.setSelection(CodeGenerationProperties.getStopIfWarningProperty(model));
 		} catch (CoreException e) {
-			stopIfWarningButton.setSelection(CodeGenerationProperties
-					.getDefaultStopIfWarningProperty());
+			stopIfWarningButton.setSelection(CodeGenerationProperties.getDefaultStopIfWarningProperty());
 		}
 
 		try {
-			forceStaticButton.setSelection(CodeGenerationProperties
-					.getForceStaticProperty(model));
+			forceStaticButton.setSelection(CodeGenerationProperties.getForceStaticProperty(model));
 		} catch (CoreException e) {
-			forceStaticButton.setSelection(CodeGenerationProperties
-					.getDefaultForceStaticProperty());
+			forceStaticButton.setSelection(CodeGenerationProperties.getDefaultForceStaticProperty());
 		}
 	}
 
@@ -349,67 +324,45 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 	}
 
 	/**
-	 * Initialize every widget to a default value. Event executed when the
-	 * Defaults button is pressed.
+	 * Initialize every widget to a default value. Event executed when the Defaults button is pressed.
 	 */
 	@Override
 	protected void performDefaults() {
-		genAuthorButton.setSelection(CodeGenerationProperties
-				.getDefaultGenAuthorProperty());
-		genHeaderButton.setSelection(CodeGenerationProperties
-				.getDefaultGenHeaderProperty());
-		genAccessorsButton.setSelection(CodeGenerationProperties
-				.getDefaultGenAccessorsProperty());
-		genArrayMethodsButton.setSelection(CodeGenerationProperties
-				.getDefaultGenArrayMethodsProperty());
-		genMainButton.setSelection(CodeGenerationProperties
-				.getDefaultGenMainProperty());
-		useTopcasedChkstButton.setSelection(CodeGenerationProperties
-				.getDefaultUseTopcasedChkstProperty());
-		stopIfWarningButton.setSelection(CodeGenerationProperties
-				.getDefaultStopIfWarningProperty());
-		forceStaticButton.setSelection(CodeGenerationProperties
-				.getDefaultForceStaticProperty());
-		authorText.setText(CodeGenerationProperties
-				.getDefaultAuthorNameProperty());
+		genAuthorButton.setSelection(CodeGenerationProperties.getDefaultGenAuthorProperty());
+		genHeaderButton.setSelection(CodeGenerationProperties.getDefaultGenHeaderProperty());
+		genAccessorsButton.setSelection(CodeGenerationProperties.getDefaultGenAccessorsProperty());
+		genArrayMethodsButton.setSelection(CodeGenerationProperties.getDefaultGenArrayMethodsProperty());
+		genMainButton.setSelection(CodeGenerationProperties.getDefaultGenMainProperty());
+		useTopcasedChkstButton.setSelection(CodeGenerationProperties.getDefaultUseTopcasedChkstProperty());
+		stopIfWarningButton.setSelection(CodeGenerationProperties.getDefaultStopIfWarningProperty());
+		forceStaticButton.setSelection(CodeGenerationProperties.getDefaultForceStaticProperty());
+		authorText.setText(CodeGenerationProperties.getDefaultAuthorNameProperty());
 		authorText.setEnabled(genAuthorButton.getSelection());
 		headerText.setText(CodeGenerationProperties.getDefaultHeaderProperty());
 		headerText.setEnabled(genHeaderButton.getSelection());
-		outputText.setText(CodeGenerationProperties
-				.getDefaultOutputPathProperty((IResource) getElement()));
+		outputText.setText(CodeGenerationProperties.getDefaultOutputPathProperty((IResource)getElement()));
 	}
 
 	/**
-	 * All properties are saved by Eclipse. Event executed when validating the
-	 * property page.
+	 * All properties are saved by Eclipse. Event executed when validating the property page.
 	 */
 	@Override
 	public boolean performOk() {
 		// store the value in the owner text field
 		try {
-			IResource model = (IResource) getElement();
-			CodeGenerationProperties.setGenAuthorProperty(model,
-					genAuthorButton.getSelection());
-			CodeGenerationProperties.setGenHeaderProperty(model,
-					genHeaderButton.getSelection());
-			CodeGenerationProperties.setGenAccessorsProperty(model,
-					genAccessorsButton.getSelection());
-			CodeGenerationProperties.setGenArrayMethodsProperty(model,
-					genArrayMethodsButton.getSelection());
-			CodeGenerationProperties.setGenMainProperty(model,
-					genMainButton.getSelection());
-			CodeGenerationProperties.setUseTopcasedChkstProperty(model,
-					useTopcasedChkstButton.getSelection());
-			CodeGenerationProperties.setStopIfWarningProperty(model,
-					stopIfWarningButton.getSelection());
-			CodeGenerationProperties.setForceStaticProperty(model,
-					forceStaticButton.getSelection());
-			CodeGenerationProperties.setAuthorNameProperty(model,
-					authorText.getText());
-			CodeGenerationProperties.setHeaderProperty(model,
-					headerText.getText());
-			CodeGenerationProperties.setOutputPathProperty(model,
-					outputText.getText());
+			IResource model = (IResource)getElement();
+			CodeGenerationProperties.setGenAuthorProperty(model, genAuthorButton.getSelection());
+			CodeGenerationProperties.setGenHeaderProperty(model, genHeaderButton.getSelection());
+			CodeGenerationProperties.setGenAccessorsProperty(model, genAccessorsButton.getSelection());
+			CodeGenerationProperties.setGenArrayMethodsProperty(model, genArrayMethodsButton.getSelection());
+			CodeGenerationProperties.setGenMainProperty(model, genMainButton.getSelection());
+			CodeGenerationProperties
+			.setUseTopcasedChkstProperty(model, useTopcasedChkstButton.getSelection());
+			CodeGenerationProperties.setStopIfWarningProperty(model, stopIfWarningButton.getSelection());
+			CodeGenerationProperties.setForceStaticProperty(model, forceStaticButton.getSelection());
+			CodeGenerationProperties.setAuthorNameProperty(model, authorText.getText());
+			CodeGenerationProperties.setHeaderProperty(model, headerText.getText());
+			CodeGenerationProperties.setOutputPathProperty(model, outputText.getText());
 		} catch (CoreException e) {
 			return false;
 		}
@@ -418,8 +371,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 	}
 
 	/**
-	 * Mouse listener for the "browse" button. Opens an Eclipse dialog for
-	 * selecting the output folder.
+	 * Mouse listener for the "browse" button. Opens an Eclipse dialog for selecting the output folder.
 	 */
 	private class BrowseButtonListener implements MouseListener {
 
@@ -437,13 +389,13 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		}
 
 		public void mouseDown(org.eclipse.swt.events.MouseEvent arg0) {
-			ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-					getShell(), null, true, "Select output :");
+			ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), null, true,
+					"Select output :");
 			dialog.open();
 			Object[] objects = dialog.getResult();
 			if (objects != null && objects.length == 1) {
 				if (objects[0] instanceof IPath) {
-					IPath p = (IPath) objects[0];
+					IPath p = (IPath)objects[0];
 					if (p.segmentCount() > 0) {
 						String s = p.toPortableString();
 						outputText.setText(s);
@@ -459,8 +411,8 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 	}
 
 	/**
-	 * Mouse listener for a check box button linked to a text field (author,
-	 * header). Enables/Disables the linked text field.
+	 * Mouse listener for a check box button linked to a text field (author, header). Enables/Disables the
+	 * linked text field.
 	 */
 	private class CheckboxListener implements MouseListener {
 

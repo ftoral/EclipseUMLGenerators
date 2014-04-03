@@ -1,15 +1,13 @@
-/**
- * Copyright (c) 2009 Obeo, CNES
-  All rights reserved.  This program and the accompanying materials
-  are made available under the terms of the Eclipse Public License 1.0
-  
-  You can apply any license to the files generated with this template
-  and Acceleo.
-  
-  Original contributors : Obeo
-  Contributors : 
- * Obeo - Nathalie Lepine
- */
+/*******************************************************************************
+ * Copyright (c) 2009, 2014 Obeo, CNES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Nathalie Lepine (Obeo) - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.umlgen.gen.autojava.services;
 
 import java.util.ArrayList;

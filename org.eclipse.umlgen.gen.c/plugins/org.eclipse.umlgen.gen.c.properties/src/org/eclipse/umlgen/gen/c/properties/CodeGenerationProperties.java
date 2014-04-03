@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2007 Topcased and others.
+ * Copyright (c) 2007, 2014 Topcased contributors and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation     
+ *
+ * Contributors:
+ *      Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.properties;
 
@@ -21,54 +21,47 @@ import org.eclipse.core.runtime.QualifiedName;
 public class CodeGenerationProperties {
 
 	/** Key for property "Generate author" */
-	private static final QualifiedName GEN_AUTHOR_PROPERTY = new QualifiedName(
-			"", "PROPERTY_GEN_AUTHOR");
+	private static final QualifiedName GEN_AUTHOR_PROPERTY = new QualifiedName("", "PROPERTY_GEN_AUTHOR");
 
 	/** Key for property "Generate header" */
-	private static final QualifiedName GEN_HEADER_PROPERTY = new QualifiedName(
-			"", "PROPERTY_GEN_HEADER");
+	private static final QualifiedName GEN_HEADER_PROPERTY = new QualifiedName("", "PROPERTY_GEN_HEADER");
 
 	/** Key for property "Generate Accessors" */
-	private static final QualifiedName GEN_ACCESSORS_PROPERTY = new QualifiedName(
-			"", "PROPERTY_GEN_ACCESSORS");
+	private static final QualifiedName GEN_ACCESSORS_PROPERTY = new QualifiedName("",
+			"PROPERTY_GEN_ACCESSORS");
 
 	/** Key for property "Generate add/remove item for arrays" */
-	private static final QualifiedName GEN_ARRAY_METHODS_PROPERTY = new QualifiedName(
-			"", "PROPERTY_GEN_ARRAY_METHODS");
+	private static final QualifiedName GEN_ARRAY_METHODS_PROPERTY = new QualifiedName("",
+			"PROPERTY_GEN_ARRAY_METHODS");
 
 	/** Key for property "Generate <Main> method" */
-	private static final QualifiedName GEN_MAIN_PROPERTY = new QualifiedName(
-			"", "PROPERTY_GEN_MAIN");
+	private static final QualifiedName GEN_MAIN_PROPERTY = new QualifiedName("", "PROPERTY_GEN_MAIN");
 
 	/** Key for property "Generate code conform to Topcased coding style" */
-	private static final QualifiedName USE_TOPCASED_CHKST_PROPERTY = new QualifiedName(
-			"", "PROPERTY_USE_TOPCASED_CHKST");
+	private static final QualifiedName USE_TOPCASED_CHKST_PROPERTY = new QualifiedName("",
+			"PROPERTY_USE_TOPCASED_CHKST");
 
 	/** Key for property "Author Name" */
-	private static final QualifiedName AUTHOR_NAME_PROPERTY = new QualifiedName(
-			"", "PROPERTY_AUTHOR_NAME");
+	private static final QualifiedName AUTHOR_NAME_PROPERTY = new QualifiedName("", "PROPERTY_AUTHOR_NAME");
 
 	/** Key for property "Header" */
-	private static final QualifiedName HEADER_TEXT_PROPERTY = new QualifiedName(
-			"", "PROPERTY_HEADER_TEXT");
+	private static final QualifiedName HEADER_TEXT_PROPERTY = new QualifiedName("", "PROPERTY_HEADER_TEXT");
 
 	/** Key for property "Output Folder" */
-	private static final QualifiedName OUTPUT_PATH_PROPERTY = new QualifiedName(
-			"", "PROPERTY_OUTPUT_PATH");
+	private static final QualifiedName OUTPUT_PATH_PROPERTY = new QualifiedName("", "PROPERTY_OUTPUT_PATH");
 
 	/** Key for property "Make all static" */
-	private static final QualifiedName FORCE_STATIC_PROPERTY = new QualifiedName(
-			"", "PROPERTY_FORCE_STATIC");
+	private static final QualifiedName FORCE_STATIC_PROPERTY = new QualifiedName("", "PROPERTY_FORCE_STATIC");
 
 	/** Key for property "Stop if warning" */
-	private static final QualifiedName STOP_IF_WARNING_PROPERTY = new QualifiedName(
-			"", "STOP_IF_WARNING_PROPERTY");
+	private static final QualifiedName STOP_IF_WARNING_PROPERTY = new QualifiedName("",
+			"STOP_IF_WARNING_PROPERTY");
 
 	/* String property "Output Folder" */
 
 	/**
 	 * Returns the default value for the property "Output Folder"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Output Folder"
 	 */
@@ -77,33 +70,24 @@ public class CodeGenerationProperties {
 		IPath modelPath = model.getLocation();
 		modelPath = modelPath.removeLastSegments(1);
 		IPath workspacePath = model.getWorkspace().getRoot().getLocation();
-		if (modelPath.removeFirstSegments(workspacePath.segmentCount())
-				.getDevice() != null) {
-			s = modelPath
-					.removeFirstSegments(workspacePath.segmentCount())
-					.toString()
-					.substring(
-							modelPath
-									.removeFirstSegments(
-											workspacePath.segmentCount())
-									.getDevice().toString().length());
+		if (modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice() != null) {
+			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString().substring(
+					modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice().toString()
+					.length());
 		} else {
-			s = modelPath.removeFirstSegments(workspacePath.segmentCount())
-					.toString();
+			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString();
 		}
 		return '/' + s;
 	}
 
 	/**
-	 * Returns the value of the property "Output Folder" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Output Folder" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Output Folder"
 	 * @throws CoreException
 	 */
-	public static String getOutputPathProperty(IResource model)
-			throws CoreException {
+	public static String getOutputPathProperty(IResource model) throws CoreException {
 		String value = model.getPersistentProperty(OUTPUT_PATH_PROPERTY);
 		if (value == null) {
 			value = getDefaultOutputPathProperty(model);
@@ -112,15 +96,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Output Folder" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Output Folder" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setOutputPathProperty(IResource model, String value)
-			throws CoreException {
+	protected static void setOutputPathProperty(IResource model, String value) throws CoreException {
 		model.setPersistentProperty(OUTPUT_PATH_PROPERTY, value);
 	}
 
@@ -128,7 +110,7 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Returns the default value for the property "Author Name"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Author Name"
 	 */
@@ -137,15 +119,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Author Name" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Author Name" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Author Name"
 	 * @throws CoreException
 	 */
-	public static String getAuthorNameProperty(IResource model)
-			throws CoreException {
+	public static String getAuthorNameProperty(IResource model) throws CoreException {
 		String value = model.getPersistentProperty(AUTHOR_NAME_PROPERTY);
 		if (value == null) {
 			value = getDefaultAuthorNameProperty();
@@ -155,13 +135,12 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Sets the value of the property "Author Name" for this <code>model</code>
-	 * 
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setAuthorNameProperty(IResource model, String value)
-			throws CoreException {
+	protected static void setAuthorNameProperty(IResource model, String value) throws CoreException {
 		model.setPersistentProperty(AUTHOR_NAME_PROPERTY, value);
 	}
 
@@ -169,14 +148,14 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Returns the default value for the property "Header"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Header"
 	 */
 	protected static String getDefaultHeaderProperty() {
 		StringBuffer sbHeader = new StringBuffer(
 				"/*******************************************************************************\n");
-		sbHeader.append(" * Copyright (c) 2007 Topcased. All rights reserved. This program\n");
+		sbHeader.append(" * Copyright (c) 2007, 2014 Topcased. All rights reserved. This program\n");
 		sbHeader.append(" * and the accompanying materials are made available under the terms of the\n");
 		sbHeader.append(" * Eclipse Public License v1.0 which accompanies this distribution, and is\n");
 		sbHeader.append(" * available at http://www.eclipse.org/legal/epl-v10.html\n");
@@ -188,13 +167,12 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Returns the value of the property "Header" for this <code>model</code>
-	 * 
+	 *
 	 * @param model
 	 * @return the value of the property "Header"
 	 * @throws CoreException
 	 */
-	public static String getHeaderProperty(IResource model)
-			throws CoreException {
+	public static String getHeaderProperty(IResource model) throws CoreException {
 		String value = model.getPersistentProperty(HEADER_TEXT_PROPERTY);
 		if (value == null) {
 			value = getDefaultHeaderProperty();
@@ -204,13 +182,12 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Sets the value of the property "Header" for this <code>model</code>
-	 * 
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setHeaderProperty(IResource model, String value)
-			throws CoreException {
+	protected static void setHeaderProperty(IResource model, String value) throws CoreException {
 		model.setPersistentProperty(HEADER_TEXT_PROPERTY, value);
 	}
 
@@ -218,7 +195,7 @@ public class CodeGenerationProperties {
 
 	/**
 	 * Returns the default value for the property "Generate author"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Generate author"
 	 */
@@ -227,15 +204,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Generate author" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Generate author" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Generate author"
 	 * @throws CoreException
 	 */
-	public static boolean getGenAuthorProperty(IResource model)
-			throws CoreException {
+	public static boolean getGenAuthorProperty(IResource model) throws CoreException {
 		boolean value;
 		String stringValue = model.getPersistentProperty(GEN_AUTHOR_PROPERTY);
 		if (stringValue == null) {
@@ -249,24 +224,21 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate author" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Generate author" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setGenAuthorProperty(IResource model, boolean value)
-			throws CoreException {
-		model.setPersistentProperty(GEN_AUTHOR_PROPERTY,
-				Boolean.toString(value));
+	protected static void setGenAuthorProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(GEN_AUTHOR_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Generate header" */
 
 	/**
 	 * Returns the default value for the property "Generate header"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Generate header"
 	 */
@@ -275,15 +247,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Generate header" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Generate header" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Generate header"
 	 * @throws CoreException
 	 */
-	public static boolean getGenHeaderProperty(IResource model)
-			throws CoreException {
+	public static boolean getGenHeaderProperty(IResource model) throws CoreException {
 		boolean value;
 		String stringValue = model.getPersistentProperty(GEN_HEADER_PROPERTY);
 		if (stringValue == null) {
@@ -297,24 +267,21 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate header" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Generate header" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setGenHeaderProperty(IResource model, boolean value)
-			throws CoreException {
-		model.setPersistentProperty(GEN_HEADER_PROPERTY,
-				Boolean.toString(value));
+	protected static void setGenHeaderProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(GEN_HEADER_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Generate accessors" */
 
 	/**
 	 * Returns the default value for the property "Generate accessors"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Generate accessors"
 	 */
@@ -323,18 +290,15 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Generate accessors" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Generate accessors" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Generate accessors"
 	 * @throws CoreException
 	 */
-	public static boolean getGenAccessorsProperty(IResource model)
-			throws CoreException {
+	public static boolean getGenAccessorsProperty(IResource model) throws CoreException {
 		boolean value;
-		String stringValue = model
-				.getPersistentProperty(GEN_ACCESSORS_PROPERTY);
+		String stringValue = model.getPersistentProperty(GEN_ACCESSORS_PROPERTY);
 		if (stringValue == null) {
 			value = getDefaultGenAccessorsProperty();
 		} else if (stringValue.equals(Boolean.TRUE.toString())) {
@@ -346,46 +310,38 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate accessors" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Generate accessors" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setGenAccessorsProperty(IResource model, boolean value)
-			throws CoreException {
-		model.setPersistentProperty(GEN_ACCESSORS_PROPERTY,
-				Boolean.toString(value));
+	protected static void setGenAccessorsProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(GEN_ACCESSORS_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Generate add/remove item for arrays" */
 
 	/**
-	 * Returns the default value for the property
-	 * "Generate add/remove item for arrays"
-	 * 
+	 * Returns the default value for the property "Generate add/remove item for arrays"
+	 *
 	 * @param model
-	 * @return the default value for the property
-	 *         "Generate add/remove item for arrays"
+	 * @return the default value for the property "Generate add/remove item for arrays"
 	 */
 	protected static boolean getDefaultGenArrayMethodsProperty() {
 		return true;
 	}
 
 	/**
-	 * Returns the value of the property "Generate add/remove item for arrays"
-	 * for this <code>model</code>
-	 * 
+	 * Returns the value of the property "Generate add/remove item for arrays" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Generate add/remove item for arrays""
 	 * @throws CoreException
 	 */
-	public static boolean getGenArrayMethodsProperty(IResource model)
-			throws CoreException {
+	public static boolean getGenArrayMethodsProperty(IResource model) throws CoreException {
 		boolean value;
-		String stringValue = model
-				.getPersistentProperty(GEN_ARRAY_METHODS_PROPERTY);
+		String stringValue = model.getPersistentProperty(GEN_ARRAY_METHODS_PROPERTY);
 		if (stringValue == null) {
 			value = getDefaultGenArrayMethodsProperty();
 		} else if (stringValue.equals(Boolean.TRUE.toString())) {
@@ -397,24 +353,21 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate add/remove item for arrays" for
-	 * this <code>model</code>
-	 * 
+	 * Sets the value of the property "Generate add/remove item for arrays" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setGenArrayMethodsProperty(IResource model,
-			boolean value) throws CoreException {
-		model.setPersistentProperty(GEN_ARRAY_METHODS_PROPERTY,
-				Boolean.toString(value));
+	protected static void setGenArrayMethodsProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(GEN_ARRAY_METHODS_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Generate <Main> method" */
 
 	/**
 	 * Returns the default value for the property "Generate <Main> method"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Generate <Main> method"
 	 */
@@ -423,15 +376,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Generate <Main> method" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Generate <Main> method" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Generate <Main> method""
 	 * @throws CoreException
 	 */
-	public static boolean getGenMainProperty(IResource model)
-			throws CoreException {
+	public static boolean getGenMainProperty(IResource model) throws CoreException {
 		boolean value;
 		String stringValue = model.getPersistentProperty(GEN_MAIN_PROPERTY);
 		if (stringValue == null) {
@@ -445,47 +396,39 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate <Main> method" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Generate <Main> method" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setGenMainProperty(IResource model, boolean value)
-			throws CoreException {
+	protected static void setGenMainProperty(IResource model, boolean value) throws CoreException {
 		model.setPersistentProperty(GEN_MAIN_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Generate code conform to Topcased coding style" */
 
 	/**
-	 * Returns the default value for the property
-	 * "Generate code conform to Topcased coding style"
-	 * 
+	 * Returns the default value for the property "Generate code conform to Topcased coding style"
+	 *
 	 * @param model
-	 * @return the default value for the property
-	 *         "Generate code conform to Topcased coding style"
+	 * @return the default value for the property "Generate code conform to Topcased coding style"
 	 */
 	protected static boolean getDefaultUseTopcasedChkstProperty() {
 		return true;
 	}
 
 	/**
-	 * Returns the value of the property
-	 * "Generate code conform to Topcased coding style" for this
+	 * Returns the value of the property "Generate code conform to Topcased coding style" for this
 	 * <code>model</code>
-	 * 
+	 *
 	 * @param model
-	 * @return the value of the property
-	 *         "Generate code conform to Topcased coding style""
+	 * @return the value of the property "Generate code conform to Topcased coding style""
 	 * @throws CoreException
 	 */
-	public static boolean getUseTopcasedChkstProperty(IResource model)
-			throws CoreException {
+	public static boolean getUseTopcasedChkstProperty(IResource model) throws CoreException {
 		boolean value;
-		String stringValue = model
-				.getPersistentProperty(USE_TOPCASED_CHKST_PROPERTY);
+		String stringValue = model.getPersistentProperty(USE_TOPCASED_CHKST_PROPERTY);
 		if (stringValue == null) {
 			value = getDefaultUseTopcasedChkstProperty();
 		} else if (stringValue.equals(Boolean.TRUE.toString())) {
@@ -497,25 +440,22 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property
-	 * "Generate code conform to Topcased coding style" for this
+	 * Sets the value of the property "Generate code conform to Topcased coding style" for this
 	 * <code>model</code>
-	 * 
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setUseTopcasedChkstProperty(IResource model,
-			boolean value) throws CoreException {
-		model.setPersistentProperty(USE_TOPCASED_CHKST_PROPERTY,
-				Boolean.toString(value));
+	protected static void setUseTopcasedChkstProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(USE_TOPCASED_CHKST_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Make all static" */
 
 	/**
 	 * Returns the default value for the property "Make all static"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Make all static"
 	 */
@@ -524,15 +464,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Make all static" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Make all static" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Make all static""
 	 * @throws CoreException
 	 */
-	public static boolean getForceStaticProperty(IResource model)
-			throws CoreException {
+	public static boolean getForceStaticProperty(IResource model) throws CoreException {
 		boolean value;
 		String stringValue = model.getPersistentProperty(FORCE_STATIC_PROPERTY);
 		if (stringValue == null) {
@@ -546,24 +484,21 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Make all static" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Make all static" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setForceStaticProperty(IResource model, boolean value)
-			throws CoreException {
-		model.setPersistentProperty(FORCE_STATIC_PROPERTY,
-				Boolean.toString(value));
+	protected static void setForceStaticProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(FORCE_STATIC_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Stop if warning" */
 
 	/**
 	 * Returns the default value for the property "Stop if warning"
-	 * 
+	 *
 	 * @param model
 	 * @return the default value for the property "Stop if warning"
 	 */
@@ -572,18 +507,15 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Returns the value of the property "Stop if warning" for this
-	 * <code>model</code>
-	 * 
+	 * Returns the value of the property "Stop if warning" for this <code>model</code>
+	 *
 	 * @param model
 	 * @return the value of the property "Stop if warning""
 	 * @throws CoreException
 	 */
-	public static boolean getStopIfWarningProperty(IResource model)
-			throws CoreException {
+	public static boolean getStopIfWarningProperty(IResource model) throws CoreException {
 		boolean value;
-		String stringValue = model
-				.getPersistentProperty(STOP_IF_WARNING_PROPERTY);
+		String stringValue = model.getPersistentProperty(STOP_IF_WARNING_PROPERTY);
 		if (stringValue == null) {
 			value = getDefaultStopIfWarningProperty();
 		} else if (stringValue.equals(Boolean.TRUE.toString())) {
@@ -595,16 +527,13 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Stop if warning" for this
-	 * <code>model</code>
-	 * 
+	 * Sets the value of the property "Stop if warning" for this <code>model</code>
+	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setStopIfWarningProperty(IResource model,
-			boolean value) throws CoreException {
-		model.setPersistentProperty(STOP_IF_WARNING_PROPERTY,
-				Boolean.toString(value));
+	protected static void setStopIfWarningProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(STOP_IF_WARNING_PROPERTY, Boolean.toString(value));
 	}
 }

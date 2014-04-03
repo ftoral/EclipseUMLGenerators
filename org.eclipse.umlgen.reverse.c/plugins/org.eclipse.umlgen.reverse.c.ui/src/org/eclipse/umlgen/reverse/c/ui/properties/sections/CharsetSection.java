@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 Communication & Systems.
+ * Copyright (c) 2011, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -34,13 +34,11 @@ import org.eclipse.umlgen.reverse.c.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section allowing to specify the charset from a combo list where all known
- * platform charsets are presented.<br>
+ * Section allowing to specify the charset from a combo list where all known platform charsets are presented.<br>
  * The charset will be used by the Acceleo generator.<br>
  * This section is available from the root model element {@link Model}.<br>
- * 
  * Creation : 04 february 2011<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 // FIXME MIGRATION reference to org.topcased.tabbedproperties
@@ -63,14 +61,13 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 
 	/**
 	 * Gets the eAnnotation attached to the model element.
-	 * 
+	 *
 	 * @return The annotation or null if no annotation is attached
 	 */
 	protected EAnnotation getEAnnotation() {
 		EObject eObj = getEObject();
 		if (eObj instanceof EModelElement) {
-			return UML2Util.getEAnnotation((EModelElement) eObj,
-					AnnotationConstants.REVERSE_PROCESS, false);
+			return UML2Util.getEAnnotation((EModelElement)eObj, AnnotationConstants.REVERSE_PROCESS, false);
 		}
 		return null;
 	}
@@ -93,26 +90,18 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 				// test if the eAnnotation already exists
 				if (eAnnotation == null) {
 					// create the annotation with the entry
-					eAnnotation = UML2Util.createEAnnotation(null,
-							AnnotationConstants.REVERSE_PROCESS);
-					eAnnotation.getDetails().put(
-							AnnotationConstants.PROJECT_CHARSET,
-							newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							getEObject(), EcorePackage.eINSTANCE
-									.getEModelElement_EAnnotations(),
-							eAnnotation);
+					eAnnotation = UML2Util.createEAnnotation(null, AnnotationConstants.REVERSE_PROCESS);
+					eAnnotation.getDetails().put(AnnotationConstants.PROJECT_CHARSET, newValue.toString());
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, getEObject(),
+							EcorePackage.eINSTANCE.getEModelElement_EAnnotations(), eAnnotation);
 				} else {
 					// create only the entry within the current eAnnotation
-					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl) EcoreFactory.eINSTANCE
-							.create(EcorePackage.eINSTANCE
-									.getEStringToStringMapEntry());
+					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl)EcoreFactory.eINSTANCE
+							.create(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
 					newEntry.setTypedKey(AnnotationConstants.PROJECT_CHARSET);
 					newEntry.setTypedValue(newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							eAnnotation,
-							EcorePackage.eINSTANCE.getEAnnotation_Details(),
-							newEntry);
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, eAnnotation,
+							EcorePackage.eINSTANCE.getEAnnotation_Details(), newEntry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.creation")); //$NON-NLS-1$
 
@@ -121,11 +110,9 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 			else if (!"".equals(oldValue) && !"".equals(newValue)) //$NON-NLS-1$ //$NON-NLS-2$
 			{
 				Entry<String, String> entry = eAnnotation.getDetails().get(
-						eAnnotation.getDetails().indexOfKey(
-								AnnotationConstants.PROJECT_CHARSET));
-				cmd = (AbstractCommand) SetCommand.create(editingDomain, entry,
-						EcorePackage.eINSTANCE
-								.getEStringToStringMapEntry_Value(), newValue);
+						eAnnotation.getDetails().indexOfKey(AnnotationConstants.PROJECT_CHARSET));
+				cmd = (AbstractCommand)SetCommand.create(editingDomain, entry, EcorePackage.eINSTANCE
+						.getEStringToStringMapEntry_Value(), newValue);
 				cmd.setLabel(Messages.getString("Metadata.cmd.modification")); //$NON-NLS-1$
 			}
 			// 3 - The eAnnotation and all its attached information need to be
@@ -135,15 +122,12 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 				if (eAnnotation.getDetails().size() == 1) {
 					// the entry we want to remove is the last one, so the
 					// entire eAnnotation is removed
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							getEAnnotation());
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, getEAnnotation());
 				} else {
 					// here, only the entry is removed from the eAnnotation
 					Entry<String, String> entry = eAnnotation.getDetails().get(
-							eAnnotation.getDetails().indexOfKey(
-									AnnotationConstants.PROJECT_CHARSET));
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							entry);
+							eAnnotation.getDetails().indexOfKey(AnnotationConstants.PROJECT_CHARSET));
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, entry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.deletion")); //$NON-NLS-1$
 			}
@@ -160,8 +144,7 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected String[] getEnumerationFeatureValues() {
-		List<String> encodings = new ArrayList<String>(
-				IDEEncoding.getIDEEncodings());
+		List<String> encodings = new ArrayList<String>(IDEEncoding.getIDEEncodings());
 		encodings.add(0, ""); // this value means that the eannotation needs to be removed //$NON-NLS-1$
 		return encodings.toArray(new String[0]);
 	}
@@ -172,8 +155,8 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected String getFeatureAsText() {
-		EMap<String, String> map = getEAnnotation() == null ? null
-				: (EMap<String, String>) getEAnnotation().eGet(getFeature());
+		EMap<String, String> map = getEAnnotation() == null ? null : (EMap<String, String>)getEAnnotation()
+				.eGet(getFeature());
 		if (map == null || map.isEmpty()) {
 			return ""; //$NON-NLS-1$
 		}

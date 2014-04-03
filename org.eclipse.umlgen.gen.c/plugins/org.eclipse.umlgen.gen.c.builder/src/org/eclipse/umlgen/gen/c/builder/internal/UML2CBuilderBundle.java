@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010 Obeo and others.
+ * Copyright (c) 2010, 2014 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation     
+ *
+ * Contributors:
+ *      Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.builder.internal;
 
@@ -37,6 +37,7 @@ public class UML2CBuilderBundle extends Plugin {
 	 * (non-Javadoc)
 	 * @see org.eclipse.core.runtime.Plugins#start(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -46,6 +47,7 @@ public class UML2CBuilderBundle extends Plugin {
 	 * (non-Javadoc)
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -53,7 +55,7 @@ public class UML2CBuilderBundle extends Plugin {
 
 	/**
 	 * Log an exception into the Eclipse log file <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param e
 	 *            the exception to log
 	 * @generated
@@ -75,7 +77,7 @@ public class UML2CBuilderBundle extends Plugin {
 
 	/**
 	 * Log a message with given level into the Eclipse log file <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param message
 	 *            the message to log
 	 * @param level
@@ -90,7 +92,7 @@ public class UML2CBuilderBundle extends Plugin {
 
 	/**
 	 * Log a message with given level into the Eclipse log file <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param message
 	 *            the message to log
 	 * @param level
@@ -105,7 +107,7 @@ public class UML2CBuilderBundle extends Plugin {
 
 	/**
 	 * Log an IStatus <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param status
 	 *            the status to log
 	 * @generated
@@ -116,7 +118,7 @@ public class UML2CBuilderBundle extends Plugin {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the Plugin Id
 	 * @generated
 	 */

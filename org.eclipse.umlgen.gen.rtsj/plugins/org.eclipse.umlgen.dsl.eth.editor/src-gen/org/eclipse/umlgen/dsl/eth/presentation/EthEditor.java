@@ -1,14 +1,13 @@
-/**
- * Copyright (c) 2012 Obeo, CNES
- * All rights reserved.  This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 1.0.
- * You can apply any license to the files generated with this template
- * and Acceleo.
+/*******************************************************************************
+ * Copyright (c) 2012, 2014 Obeo, CNES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Original contributors : Obeo
- * Contributors : 
- * Obeo - Cedric Notot
- */
+ * Contributors:
+ *     Cedric Notot (Obeo) - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.umlgen.dsl.eth.presentation;
 
 
@@ -132,6 +131,7 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 import org.eclipse.umlgen.dsl.asl.configurations.provider.ConfigurationsItemProviderAdapterFactory;
+import org.eclipse.umlgen.dsl.asl.provider.AslItemProviderAdapterFactory;
 import org.eclipse.umlgen.dsl.asl.provider.custom.CustomAslItemProviderAdapterFactory;
 import org.eclipse.umlgen.dsl.eth.presentation.custom.CustomEthAdapterFactoryContentProvider;
 import org.eclipse.umlgen.dsl.eth.provider.custom.CustomEthItemProviderAdapterFactory;
@@ -151,7 +151,7 @@ public class EthEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String copyright = "Copyright (c) 2012 Obeo, CNES\r\nAll rights reserved.  This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License 1.0.\r\nYou can apply any license to the files generated with this template\r\nand Acceleo.\r\n\r\nOriginal contributors : Obeo\r\nContributors : \r\nObeo - Cedric Notot";
+	public static final String copyright = "Copyright (c) 2012, 2014 Obeo, CNES.\r\nAll rights reserved. This program and the accompanying materials \r\nare made available under the terms of the Eclipse Public License v1.0 \r\nwhich accompanies this distribution, and is available at \r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n  \r\nContributors:\r\n     Cedric Notot (Obeo) - initial API and implementation";
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.

@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 Communication & Systems.
+ * Copyright (c) 2011, 2014 Communication & Systems.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -29,14 +29,11 @@ import org.eclipse.umlgen.reverse.c.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section allowing to specify is a {@link Usage} represents or not a standard
- * library inlcusion.<br>
- * A standard library inclusion is exprimed using chevrons (e.g : <stdio.h>)
- * This information will be used by the Acceleo generator.<br>
- * 
- * 
+ * Section allowing to specify is a {@link Usage} represents or not a standard library inlcusion.<br>
+ * A standard library inclusion is exprimed using chevrons (e.g : <stdio.h>) This information will be used by
+ * the Acceleo generator.<br>
  * Creation : 04 february 2011<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 // FIXME MIGRATION reference to org.topcased.tabbedproperties
@@ -59,14 +56,13 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 
 	/**
 	 * Gets the eAnnotation attached to the model element.
-	 * 
+	 *
 	 * @return The annotation or null if no annotation is attached
 	 */
 	protected EAnnotation getEAnnotation() {
 		EObject eObj = getEObject();
 		if (eObj instanceof Usage) {
-			return UML2Util.getEAnnotation((Usage) eObj,
-					AnnotationConstants.REVERSE_PROCESS, false);
+			return UML2Util.getEAnnotation((Usage)eObj, AnnotationConstants.REVERSE_PROCESS, false);
 		}
 		return null;
 	}
@@ -91,26 +87,18 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 				// test if the eAnnotation already exists
 				if (eAnnotation == null) {
 					// create the annotation with the entry
-					eAnnotation = UML2Util.createEAnnotation(null,
-							AnnotationConstants.REVERSE_PROCESS);
-					eAnnotation.getDetails().put(
-							AnnotationConstants.STD_LIBRARY,
-							newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							getEObject(), EcorePackage.eINSTANCE
-									.getEModelElement_EAnnotations(),
-							eAnnotation);
+					eAnnotation = UML2Util.createEAnnotation(null, AnnotationConstants.REVERSE_PROCESS);
+					eAnnotation.getDetails().put(AnnotationConstants.STD_LIBRARY, newValue.toString());
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, getEObject(),
+							EcorePackage.eINSTANCE.getEModelElement_EAnnotations(), eAnnotation);
 				} else {
 					// create only the entry within the current eAnnotation
-					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl) EcoreFactory.eINSTANCE
-							.create(EcorePackage.eINSTANCE
-									.getEStringToStringMapEntry());
+					EStringToStringMapEntryImpl newEntry = (EStringToStringMapEntryImpl)EcoreFactory.eINSTANCE
+							.create(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
 					newEntry.setTypedKey(AnnotationConstants.STD_LIBRARY);
 					newEntry.setTypedValue(newValue.toString());
-					cmd = (AbstractCommand) AddCommand.create(editingDomain,
-							eAnnotation,
-							EcorePackage.eINSTANCE.getEAnnotation_Details(),
-							newEntry);
+					cmd = (AbstractCommand)AddCommand.create(editingDomain, eAnnotation,
+							EcorePackage.eINSTANCE.getEAnnotation_Details(), newEntry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.creation")); //$NON-NLS-1$
 
@@ -121,15 +109,12 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 				if (eAnnotation.getDetails().size() == 1) {
 					// the entry we want to remove is the last one, so the
 					// entire eAnnotation is removed
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							getEAnnotation());
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, getEAnnotation());
 				} else {
 					// here, only the entry is removed from the eAnnotation
 					Entry<String, String> entry = eAnnotation.getDetails().get(
-							eAnnotation.getDetails().indexOfKey(
-									AnnotationConstants.STD_LIBRARY));
-					cmd = (AbstractCommand) RemoveCommand.create(editingDomain,
-							entry);
+							eAnnotation.getDetails().indexOfKey(AnnotationConstants.STD_LIBRARY));
+					cmd = (AbstractCommand)RemoveCommand.create(editingDomain, entry);
 				}
 				cmd.setLabel(Messages.getString("Metadata.cmd.deletion")); //$NON-NLS-1$
 			}
@@ -146,10 +131,9 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean getFeatureValue() {
-		EMap<String, String> map = getEAnnotation() == null ? null
-				: (EMap<String, String>) getEAnnotation().eGet(getFeature());
-		if (map == null || map.isEmpty()
-				|| !map.containsKey(AnnotationConstants.STD_LIBRARY)) {
+		EMap<String, String> map = getEAnnotation() == null ? null : (EMap<String, String>)getEAnnotation()
+				.eGet(getFeature());
+		if (map == null || map.isEmpty() || !map.containsKey(AnnotationConstants.STD_LIBRARY)) {
 			return false;
 		}
 		return Boolean.parseBoolean(map.get(AnnotationConstants.STD_LIBRARY));

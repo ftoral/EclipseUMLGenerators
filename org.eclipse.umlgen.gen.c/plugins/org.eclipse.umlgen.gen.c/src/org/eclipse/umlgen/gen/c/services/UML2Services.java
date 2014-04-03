@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2010 Obeo and others.
+ * Copyright (c) 2010, 2014 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Mikael BARBERO (Obeo) - initial API and implementation
  *     Sebastien GABEL (CS) - evolution
@@ -39,7 +39,7 @@ public class UML2Services {
 
 	/**
 	 * Gets an <b>ordered collection</b> of dependencies.
-	 * 
+	 *
 	 * @param elt
 	 *            A named element representing the starting point.
 	 * @return A collection of dependencies (mainly uml:Usage)
@@ -50,7 +50,7 @@ public class UML2Services {
 
 	/**
 	 * Tries to return the qualified name of the sources package.
-	 * 
+	 *
 	 * @param elt
 	 *            A named element representing the starting point.
 	 * @return The qualified package name
@@ -58,11 +58,9 @@ public class UML2Services {
 	public static String getSourcePackageName(NamedElement elt) {
 		URI uri = EcoreUtil.getURI(elt);
 		String relativePath = uri.toPlatformString(true);
-		IResource rsc = ResourcesPlugin.getWorkspace().getRoot()
-				.findMember(new Path(relativePath));
+		IResource rsc = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(relativePath));
 		if (rsc != null) {
-			IPreferenceStore store = PreferenceStoreManager
-					.getPreferenceStore(rsc.getProject());
+			IPreferenceStore store = PreferenceStoreManager.getPreferenceStore(rsc.getProject());
 			return store.getString(BundleConstants.SRC_PCK_NAME);
 		}
 		return "";
@@ -80,7 +78,7 @@ public class UML2Services {
 		if (node.getOutgoings().size() > 0) {
 			for (ActivityEdge flow : node.getOutgoings()) {
 				if (flow.getTarget() instanceof MergeNode) {
-					return (MergeNode) flow.getTarget();
+					return (MergeNode)flow.getTarget();
 				}
 			}
 			for (ActivityEdge flow : node.getOutgoings()) {
@@ -104,25 +102,26 @@ public class UML2Services {
 	}
 
 	public static boolean isReferencedByClause(ActivityNode node) {
-		Collection<EStructuralFeature.Setting> references = new EcoreUtil.UsageCrossReferencer(
-				node.eResource()) {
+		Collection<EStructuralFeature.Setting> references = new EcoreUtil.UsageCrossReferencer(node
+				.eResource()) {
 			private static final long serialVersionUID = 1L;
 
-			protected boolean crossReference(EObject eObject,
-					EReference eReference, EObject referencedObj) {
+			@Override
+			protected boolean crossReference(EObject eObject, EReference eReference, EObject referencedObj) {
 				return super.crossReference(eObject, eReference, referencedObj)
 						&& eReference == UMLPackage.Literals.CLAUSE__BODY;
 			}
 
+			@Override
 			protected boolean containment(EObject eObject) {
 				return !(eObject instanceof OpaqueAction);
 			}
 
-			public Collection<EStructuralFeature.Setting> findUsage(
-					EObject eObject) {
+			@Override
+			public Collection<EStructuralFeature.Setting> findUsage(EObject eObject) {
 				return super.findUsage(eObject);
 			}
 		}.findUsage(node);
-		return (references.size() > 0);
+		return references.size() > 0;
 	}
 }
