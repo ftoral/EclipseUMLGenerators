@@ -38,7 +38,7 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public abstract class AbstractModuleSection extends AbstractStringPropertySection {
 	/**
 	 * @return A constant representing the key of the details entry
@@ -58,10 +58,6 @@ public abstract class AbstractModuleSection extends AbstractStringPropertySectio
 		return null;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#createCommand(java.lang.Object,
-	 *      java.lang.Object)
-	 */
 	@Override
 	protected void createCommand(Object oldValue, Object newValue) {
 		boolean equals = oldValue == null ? false : oldValue.equals(newValue);
@@ -124,17 +120,11 @@ public abstract class AbstractModuleSection extends AbstractStringPropertySectio
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return EcorePackage.eINSTANCE.getEAnnotation_Details();
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractStringPropertySection#getFeatureAsString()
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	protected String getFeatureAsString() {

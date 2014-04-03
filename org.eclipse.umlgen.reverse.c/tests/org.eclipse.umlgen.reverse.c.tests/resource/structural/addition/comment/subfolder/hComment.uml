@@ -2,14 +2,14 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_jkX1AG7wEd-88N7m26uLnA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_qxZoEHJAEd-49p7IoiQ7tA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_tJdf8G7wEd-88N7m26uLnA" name="file" clientDependency="_AclvsHSSEd-jSqR8VxN_-A">
-      <eAnnotations xmi:id="_umTY8G8SEd-88N7m26uLnA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_umTY8G8SEd-88N7m26uLnA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_u6bO0G8SEd-88N7m26uLnA" key="H_FILENAME" value="/testCommentInH/file.h"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_Uiy64HSQEd-jSqR8VxN_-A" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_Uiy64HSQEd-jSqR8VxN_-A" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_fFYI0HSQEd-jSqR8VxN_-A" key="documentation" value="/* mon comment de classe dans le fichier H */&#xD;&#xA;/* suite de mon comment de classe&#xD;&#xA; * hello&#xD;&#xA; */"/>
       </eAnnotations>
       <ownedOperation xmi:id="_meQkkXMUEd-dHq0pUKSRlw" name="monOperationPublique1" visibility="public">
-        <eAnnotations xmi:id="_1I0K0HSQEd-jSqR8VxN_-A" source="http://www.topcased.org/documentation">
+        <eAnnotations xmi:id="_1I0K0HSQEd-jSqR8VxN_-A" source="http://www.eclipse.org/umlgen/documentation">
           <details xmi:id="_1I0K0XSQEd-jSqR8VxN_-A" key="documentation" value="/* mon commentaire d'operation publique1 */"/>
         </eAnnotations>
         <ownedParameter xmi:id="_zSj9gHMUEd-dHq0pUKSRlw" name="k" type="_vOr4YHMUEd-dHq0pUKSRlw"/>
@@ -24,7 +24,7 @@
         <ownedParameter xmi:id="_Y6__VnSSEd-jSqR8VxN_-A" type="_vOr4YHMUEd-dHq0pUKSRlw" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:id="_ZY9GoHSSEd-jSqR8VxN_-A" name="monOperationPublique3" visibility="public">
-        <eAnnotations xmi:id="_ZY9GoXSSEd-jSqR8VxN_-A" source="http://www.topcased.org/documentation">
+        <eAnnotations xmi:id="_ZY9GoXSSEd-jSqR8VxN_-A" source="http://www.eclipse.org/umlgen/documentation">
           <details xmi:id="_ZY9GonSSEd-jSqR8VxN_-A" key="documentation" value="/* mon commentaire d'operation publique3 */"/>
         </eAnnotations>
         <ownedParameter xmi:id="_ZY9Go3SSEd-jSqR8VxN_-A" name="k" type="_vOr4YHMUEd-dHq0pUKSRlw"/>

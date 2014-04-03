@@ -2,14 +2,14 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_zdljsqt6Ed-3EPc-gXvmKw" name="simpleParameters">
-      <eAnnotations xmi:id="_zdljs6t6Ed-3EPc-gXvmKw" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_zdljs6t6Ed-3EPc-gXvmKw" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_zdljtKt6Ed-3EPc-gXvmKw" key="H_FILENAME" value="/testsimpleParametersH/simpleParameters.h"/>
       </eAnnotations>
       <ownedOperation xmi:id="_0J2MM6t6Ed-3EPc-gXvmKw" name="monOperationH" visibility="public">
         <eAnnotations xmi:id="_0J2MN6t6Ed-3EPc-gXvmKw" source="Extern">
           <details xmi:id="_0J2MOKt6Ed-3EPc-gXvmKw" key="Extern" value="true"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_0J2MOat6Ed-3EPc-gXvmKw" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_0J2MOat6Ed-3EPc-gXvmKw" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_0J2MOqt6Ed-3EPc-gXvmKw" key="H_FILENAME" value="/testsimpleParametersH/simpleParameters.h"/>
           <details xmi:id="_0J2MPKt6Ed-3EPc-gXvmKw" key="H_FILE_POSITION_DECLARATION" value="2"/>
         </eAnnotations>

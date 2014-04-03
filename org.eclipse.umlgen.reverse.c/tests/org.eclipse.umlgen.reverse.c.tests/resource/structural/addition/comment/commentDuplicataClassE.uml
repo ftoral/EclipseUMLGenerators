@@ -2,25 +2,25 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_a4D2W6uTEd-OKYOerM7ncA" name="commentDuplicataClass" visibility="private">
-      <eAnnotations xmi:id="_a4D2XKuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_a4D2XKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_a4D2XauTEd-OKYOerM7ncA" key="C_FILENAME" value="/testcommentDuplicataClassE/commentDuplicataClass.c"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_b567IKuTEd-OKYOerM7ncA" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_b567IKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_b567IauTEd-OKYOerM7ncA" key="C_FILENAME" value="/* mon comment de classe dans le fichier C */&#xA;/* suite de mon comment de classe&#xD;&#xA; * hello&#xD;&#xA; */&#xA;"/>
       </eAnnotations>
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_bITQ8KuTEd-OKYOerM7ncA" name="commentDuplicataClass">
-      <eAnnotations xmi:id="_bITQ8auTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_bITQ8auTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_bITQ8quTEd-OKYOerM7ncA" key="H_FILENAME" value="/testcommentDuplicataClassE/commentDuplicataClass.h"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_ccVrsKuTEd-OKYOerM7ncA" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_ccVrsKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_ccVrsauTEd-OKYOerM7ncA" key="H_FILENAME" value="/* mon commentaire de classe H */&#xA;"/>
       </eAnnotations>
       <ownedOperation xmi:id="_cbv10quTEd-OKYOerM7ncA" name="monOperationPublique1" visibility="public">
         <eAnnotations xmi:id="_cbv11quTEd-OKYOerM7ncA" source="Extern">
           <details xmi:id="_cbv116uTEd-OKYOerM7ncA" key="Extern" value="true"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_cbv12KuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_cbv12KuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_cbv12auTEd-OKYOerM7ncA" key="H_FILENAME" value="/testcommentDuplicataClassE/commentDuplicataClass.h"/>
           <details xmi:id="_cbv126uTEd-OKYOerM7ncA" key="H_FILE_POSITION_DECLARATION" value="37"/>
         </eAnnotations>

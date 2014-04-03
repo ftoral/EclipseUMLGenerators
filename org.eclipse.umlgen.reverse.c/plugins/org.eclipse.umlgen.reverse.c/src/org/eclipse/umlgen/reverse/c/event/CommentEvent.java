@@ -67,7 +67,7 @@ public abstract class CommentEvent extends CModelChangedEvent {
 		}
 
 		return null;
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// return IAnnotationConstants.DOCUMENTATION_KEY;
 	}
 

@@ -2,10 +2,10 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_fzREQI6UEd-xsOZm2kLlXA" name="commentClasse" visibility="private">
-      <eAnnotations xmi:id="_fzj_MI6UEd-xsOZm2kLlXA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_fzj_MI6UEd-xsOZm2kLlXA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_fzj_MY6UEd-xsOZm2kLlXA" key="C_FILENAME" value="/testcommentClasseC/commentClasse.c"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_gtOyII6UEd-xsOZm2kLlXA" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_gtOyII6UEd-xsOZm2kLlXA" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_gtOyIY6UEd-xsOZm2kLlXA" key="C_FILENAME" value="/* mon comment de classe dans le fichier C */&#xA;/* suite de mon comment de classe&#xD;&#xA; * hello&#xD;&#xA; */&#xA;"/>
       </eAnnotations>
     </packagedElement>

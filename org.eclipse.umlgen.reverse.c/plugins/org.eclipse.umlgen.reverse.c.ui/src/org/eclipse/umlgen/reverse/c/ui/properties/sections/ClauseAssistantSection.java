@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -18,23 +18,17 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * The section helps the user to create a consistent 'switch' structure.
- * 
- * Creation 18 june 2010<br>
- * 
+ * The section helps the user to create a consistent 'switch' structure. Creation 18 june 2010<br>
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class ClauseAssistantSection extends AbstractTabbedPropertySection {
 	private ClauseAssistantComposite assistant;
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#createWidgets(org.eclipse.swt.widgets.Composite)
-	 */
 	@Override
 	protected void createWidgets(Composite composite) {
-		assistant = new ClauseAssistantComposite(getWidgetFactory(), composite,
-				SWT.NONE);
+		assistant = new ClauseAssistantComposite(getWidgetFactory(), composite, SWT.NONE);
 	}
 
 	/**
@@ -43,15 +37,11 @@ public class ClauseAssistantSection extends AbstractTabbedPropertySection {
 	@Override
 	public void refresh() {
 		super.refresh();
-		EditingDomain editDomain = (EditingDomain) getPart().getAdapter(
-				EditingDomain.class);
+		EditingDomain editDomain = (EditingDomain)getPart().getAdapter(EditingDomain.class);
 		assistant.setEditingDomain(editDomain);
 		assistant.setParent(getEObject());
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#setSectionData(org.eclipse.swt.widgets.Composite)
-	 */
 	@Override
 	protected void setSectionData(Composite composite) {
 		FormData data = new FormData(SWT.DEFAULT, SWT.DEFAULT);
@@ -70,17 +60,11 @@ public class ClauseAssistantSection extends AbstractTabbedPropertySection {
 		return true;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return null;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return null;

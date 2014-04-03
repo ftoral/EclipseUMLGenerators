@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -27,19 +27,14 @@ import org.eclipse.umlgen.reverse.c.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section for adding an <i>Initialization</i> field to the edited
- * {@link LoopNode}.<br>
- * 
+ * Section for adding an <i>Initialization</i> field to the edited {@link LoopNode}.<br>
  * Creation : 21 june 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class LoopNodeInitializationSection extends AbstractLoopNodeSection {
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("LoopNode.Initialization"); //$NON-NLS-1$
@@ -50,14 +45,13 @@ public class LoopNodeInitializationSection extends AbstractLoopNodeSection {
 	 */
 	@Override
 	protected OpaqueAction getOpaqueAction() {
-		LoopNode loopNode = (LoopNode) getEObject();
+		LoopNode loopNode = (LoopNode)getEObject();
 		// Take the first one by default
-		ExecutableNode node = !loopNode.getSetupParts().isEmpty() ? loopNode
-				.getSetupParts().get(0) : null;
-		if (node instanceof OpaqueAction) {
-			return (OpaqueAction) node;
-		}
-		return null;
+		ExecutableNode node = !loopNode.getSetupParts().isEmpty() ? loopNode.getSetupParts().get(0) : null;
+				if (node instanceof OpaqueAction) {
+					return (OpaqueAction)node;
+				}
+				return null;
 	}
 
 	/**
@@ -79,15 +73,14 @@ public class LoopNodeInitializationSection extends AbstractLoopNodeSection {
 	@Override
 	protected void addOpaqueAction(OpaqueAction newObj, CompoundCommand cc) {
 		super.addOpaqueAction(newObj, cc);
-		cc.appendAndExecute(SetCommand.create(getEditingDomain(), getEObject(),
-				UMLPackage.eINSTANCE.getLoopNode_SetupPart(),
-				Collections.singletonList(newObj)));
+		cc.appendAndExecute(SetCommand.create(getEditingDomain(), getEObject(), UMLPackage.eINSTANCE
+				.getLoopNode_SetupPart(), Collections.singletonList(newObj)));
 	}
 
 	/**
-	 * Removes an {@link OpaqueAction} into the current {@link LoopNode} and
-	 * unset the reference <i>'setupPart'</i>.
-	 * 
+	 * Removes an {@link OpaqueAction} into the current {@link LoopNode} and unset the reference
+	 * <i>'setupPart'</i>.
+	 *
 	 * @param newObj
 	 *            The new object to add to the model
 	 */
@@ -99,9 +92,6 @@ public class LoopNodeInitializationSection extends AbstractLoopNodeSection {
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#handleModelChanged(org.eclipse.emf.common.notify.Notification)
-	 */
 	@Override
 	protected void handleModelChanged(Notification msg) {
 		if (msg.getEventType() == LoopNodeKindSection.UI_CHANGE_KIND) {
@@ -109,8 +99,7 @@ public class LoopNodeInitializationSection extends AbstractLoopNodeSection {
 				removeOpaqueExpression(getOpaqueAction());
 			}
 			refresh();
-			getButton().setEnabled(
-					msg.getNewStringValue().equals(LoopNodeKindSection.FOR));
+			getButton().setEnabled(msg.getNewStringValue().equals(LoopNodeKindSection.FOR));
 		}
 	}
 }

@@ -24,12 +24,9 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class HFileRelativePathSection extends AbstractModuleSection {
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("HFileRelativePathSection.label"); //$NON-NLS-1$
@@ -47,8 +44,6 @@ public class HFileRelativePathSection extends AbstractModuleSection {
 	 * ! SANITY CHECK ! When the focus is lost, we can check that the text value ends with the right
 	 * extension.<br>
 	 * This change is performed otherwise the generator will not produce anything.
-	 *
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#focusOut()
 	 */
 	@Override
 	protected void focusOut() {

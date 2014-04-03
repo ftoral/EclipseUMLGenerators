@@ -2,15 +2,15 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_vjfsoI9hEd-UA6wmogQBXg" name="operation" visibility="private">
-      <eAnnotations xmi:id="_vjynkI9hEd-UA6wmogQBXg" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_vjynkI9hEd-UA6wmogQBXg" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_vjynkY9hEd-UA6wmogQBXg" key="C_FILENAME" value="/testTypeDefFunctionC/operation.c"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_wZvYII9hEd-UA6wmogQBXg" name="destructor1" visibility="private">
-        <eAnnotations xmi:id="_wZ4iEI9hEd-UA6wmogQBXg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_wZ4iEI9hEd-UA6wmogQBXg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_wZ4iEY9hEd-UA6wmogQBXg" key="C_FILENAME" value="/testTypeDefFunctionC/operation.c"/>
         </eAnnotations>
         <ownedOperation xmi:id="_wZ4iE49hEd-UA6wmogQBXg" name="destructor1" visibility="private">
-          <eAnnotations xmi:id="_waLdAY9hEd-UA6wmogQBXg" source="http://www.topcased.org/reverse">
+          <eAnnotations xmi:id="_waLdAY9hEd-UA6wmogQBXg" source="http://www.eclipse.org/umlgen/reverse/c">
             <details xmi:id="_waLdAo9hEd-UA6wmogQBXg" key="C_FILENAME" value="/testTypeDefFunctionC/operation.c"/>
           </eAnnotations>
           <ownedParameter xmi:id="_waLdAI9hEd-UA6wmogQBXg" name="" type="_wZ4iEo9hEd-UA6wmogQBXg" direction="inout"/>
@@ -18,12 +18,12 @@
         </ownedOperation>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_waVOAI9hEd-UA6wmogQBXg" name="destructor2" visibility="private">
-        <eAnnotations xmi:id="_waVOAY9hEd-UA6wmogQBXg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_waVOAY9hEd-UA6wmogQBXg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_waVOAo9hEd-UA6wmogQBXg" key="C_FILE_POSITION_DECLARATION" value="37"/>
           <details xmi:id="_waVOA49hEd-UA6wmogQBXg" key="C_FILENAME" value="/testTypeDefFunctionC/operation.c"/>
         </eAnnotations>
         <ownedOperation xmi:id="_waVOBI9hEd-UA6wmogQBXg" name="destructor2" visibility="private">
-          <eAnnotations xmi:id="_waVOB49hEd-UA6wmogQBXg" source="http://www.topcased.org/reverse">
+          <eAnnotations xmi:id="_waVOB49hEd-UA6wmogQBXg" source="http://www.eclipse.org/umlgen/reverse/c">
             <details xmi:id="_waVOCI9hEd-UA6wmogQBXg" key="C_FILENAME" value="/testTypeDefFunctionC/operation.c"/>
           </eAnnotations>
           <ownedParameter xmi:id="_waVOBY9hEd-UA6wmogQBXg" name="" type="_wZ4iEo9hEd-UA6wmogQBXg" direction="inout"/>

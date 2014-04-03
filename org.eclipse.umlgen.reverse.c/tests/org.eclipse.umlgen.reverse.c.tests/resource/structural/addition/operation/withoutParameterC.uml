@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_ZQZpxo5uEd-6a-j_YKe7WQ" name="withoutParameter" visibility="private">
-      <eAnnotations xmi:id="_ZQ2VYI5uEd-6a-j_YKe7WQ" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_ZQ2VYI5uEd-6a-j_YKe7WQ" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_ZQ2VYY5uEd-6a-j_YKe7WQ" key="C_FILENAME" value="/testwithoutParameterC/withoutParameter.c"/>
       </eAnnotations>
       <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_aJd_cI5uEd-6a-j_YKe7WQ" name="acquisition" visibility="private">
-        <eAnnotations xmi:id="_aJnwcI5uEd-6a-j_YKe7WQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_aJnwcI5uEd-6a-j_YKe7WQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_aJnwcY5uEd-6a-j_YKe7WQ" key="C_FILENAME" value="/testwithoutParameterC/withoutParameter.c"/>
         </eAnnotations>
         <ownedParameter xmi:id="_aJxhcI5uEd-6a-j_YKe7WQ" name=" " type="_aJnwco5uEd-6a-j_YKe7WQ" direction="return"/>

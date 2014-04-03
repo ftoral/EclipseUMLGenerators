@@ -4,15 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS) - initial API and implementation 
+ *     Christophe Le Camus (CS) - initial API and implementation
  *     Sebastien Gabel (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
-
-import java.util.Iterator;
 
 import org.eclipse.cdt.core.dom.ast.IASTFunctionDeclarator;
 import org.eclipse.cdt.core.dom.ast.IASTFunctionDefinition;
@@ -44,8 +42,8 @@ public class CommentRemoved extends CommentEvent {
 	public void notifyChanges(ModelManager manager) {
 
 		IASTNode parent = getParent();
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
 
 		String detailsEntry = getKey();
 
@@ -57,77 +55,63 @@ public class CommentRemoved extends CommentEvent {
 
 		if (parent instanceof IASTFunctionDefinition) {
 			if (matchingClassifier instanceof Class) {
-				element = ((Class) matchingClassifier).getOwnedBehavior(
-						((IASTFunctionDefinition) getParent()).getDeclarator()
-								.getName().toString(), false,
-						UMLPackage.Literals.FUNCTION_BEHAVIOR, false);
+				element = ((Class)matchingClassifier).getOwnedBehavior(((IASTFunctionDefinition)getParent())
+						.getDeclarator().getName().toString(), false, UMLPackage.Literals.FUNCTION_BEHAVIOR,
+						false);
 			}
 		}
 		if (parent instanceof IASTFunctionDeclarator) {
 			if (matchingClassifier instanceof Class) {
-				element = ((Class) matchingClassifier).getOwnedBehavior(
-						((IASTFunctionDeclarator) getParent()).getName()
-								.toString(), false,
-						UMLPackage.Literals.OPERATION, false);
+				element = ((Class)matchingClassifier).getOwnedBehavior(((IASTFunctionDeclarator)getParent())
+						.getName().toString(), false, UMLPackage.Literals.OPERATION, false);
 			}
 		}
 
 		if (parent instanceof IASTSimpleDeclaration) {
-			String name = ((IASTSimpleDeclaration) getParent())
-					.getDeclarators()[0].getName().toString();
+			String name = ((IASTSimpleDeclaration)getParent()).getDeclarators()[0].getName().toString();
 			if (matchingClassifier instanceof Class) {
-				element = ((Class) matchingClassifier).getFeature(name);
+				element = ((Class)matchingClassifier).getFeature(name);
 
 				if (element == null) {
-					element = ((Class) matchingClassifier)
-							.getNestedClassifier(name);
+					element = ((Class)matchingClassifier).getNestedClassifier(name);
 				}
 			}
 			if (matchingClassifier instanceof Interface) {
-				element = ((Interface) matchingClassifier).getFeature(name);
+				element = ((Interface)matchingClassifier).getFeature(name);
 
 				if (element == null) {
-					element = ((Interface) matchingClassifier)
-							.getNestedClassifier(name);
+					element = ((Interface)matchingClassifier).getNestedClassifier(name);
 				}
 			}
 		}
 
 		if (parent instanceof IASTParameterDeclaration) {
 			IASTNode functionOrOperation = parent.getParent();
-			IASTParameterDeclaration myParameter = (IASTParameterDeclaration) parent;
+			IASTParameterDeclaration myParameter = (IASTParameterDeclaration)parent;
 			if (functionOrOperation instanceof IASTFunctionDeclarator) {
 				// this is the method
-				IASTFunctionDeclarator declarator = (IASTFunctionDeclarator) functionOrOperation;
+				IASTFunctionDeclarator declarator = (IASTFunctionDeclarator)functionOrOperation;
 				if (declarator.getParent() instanceof IASTFunctionDefinition) {
-					IASTFunctionDefinition function = (IASTFunctionDefinition) declarator
-							.getParent();
-					OpaqueBehavior fct = (OpaqueBehavior) ((Class) matchingClassifier)
-							.getOwnedBehavior(function.getDeclarator()
-									.getName().toString());
+					IASTFunctionDefinition function = (IASTFunctionDefinition)declarator.getParent();
+					OpaqueBehavior fct = (OpaqueBehavior)((Class)matchingClassifier)
+							.getOwnedBehavior(function.getDeclarator().getName().toString());
 					// The comment may concern a function that is declared in
 					// the .h but not added in this to the model
 					if (fct != null) {
 						for (Parameter parameter : fct.getOwnedParameters()) {
-							if (parameter.getName().equals(
-									myParameter.getDeclarator().getName()
-											.toString())) {
+							if (parameter.getName().equals(myParameter.getDeclarator().getName().toString())) {
 								element = parameter;
 							}
 						}
 					}
 				} else {
 					// the declaration of an operation
-					for (Element ownedElement : matchingClassifier
-							.getOwnedElements()) {
+					for (Element ownedElement : matchingClassifier.getOwnedElements()) {
 						if (ownedElement instanceof Operation) {
-							if (((Operation) ownedElement).getName().equals(
-									declarator.getName().toString())) {
-								for (Parameter parameter : ((Operation) ownedElement)
-										.getOwnedParameters()) {
+							if (((Operation)ownedElement).getName().equals(declarator.getName().toString())) {
+								for (Parameter parameter : ((Operation)ownedElement).getOwnedParameters()) {
 									if (parameter.getName().equals(
-											myParameter.getDeclarator()
-													.getName().toString())) {
+											myParameter.getDeclarator().getName().toString())) {
 										element = parameter;
 									}
 								}
@@ -140,21 +124,13 @@ public class CommentRemoved extends CommentEvent {
 
 		if (parent instanceof IASTPreprocessorStatement) {
 			if (parent instanceof IASTPreprocessorIncludeStatement) {
-				String elementName = ((IASTPreprocessorIncludeStatement) parent)
-						.getName().toString();
-				elementName = elementName
-						.substring(0, elementName.length() - 2);
-				EList<DirectedRelationship> list = matchingClassifier
-						.getSourceDirectedRelationships();
-				for (Iterator<DirectedRelationship> it = list.iterator(); it
-						.hasNext();) {
-					DirectedRelationship usage = it.next();
-					for (Iterator<Element> itElement = usage.getTargets()
-							.iterator(); itElement.hasNext();) {
-						Element anElement = itElement.next();
+				String elementName = ((IASTPreprocessorIncludeStatement)parent).getName().toString();
+				elementName = elementName.substring(0, elementName.length() - 2);
+				EList<DirectedRelationship> list = matchingClassifier.getSourceDirectedRelationships();
+				for (DirectedRelationship usage : list) {
+					for (Element anElement : usage.getTargets()) {
 						if (anElement instanceof Classifier) {
-							if (((Classifier) anElement).getName().compareTo(
-									elementName) == 0) {
+							if (((Classifier)anElement).getName().compareTo(elementName) == 0) {
 								element = usage;
 							}
 						}
@@ -163,15 +139,14 @@ public class CommentRemoved extends CommentEvent {
 				}
 			}
 			if (parent instanceof IASTPreprocessorMacroDefinition) {
-				String elementName = ((IASTPreprocessorMacroDefinition) parent)
-						.getName().toString();
+				String elementName = ((IASTPreprocessorMacroDefinition)parent).getName().toString();
 				element = matchingClassifier.getFeature(elementName);
 			}
 
 		}
 
 		if (element != null) {
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// EAnnotation annotation =
 			// element.getEAnnotation(IAnnotationConstants.DOCUMENTATION_SOURCE);
 			// if (annotation != null)
@@ -186,7 +161,7 @@ public class CommentRemoved extends CommentEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<CommentRemoved> builder() {

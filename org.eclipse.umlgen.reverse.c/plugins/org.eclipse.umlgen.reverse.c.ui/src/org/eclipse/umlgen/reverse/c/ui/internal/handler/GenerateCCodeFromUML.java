@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Christophe Le Camus (CS) - initial API and implementation 
+ *     Christophe Le Camus (CS) - initial API and implementation
  *     Mikael Barbero (Obeo) 	- evolutions
  *     Sebastien Gabel (CS)     - evolutions
  *******************************************************************************/
@@ -43,33 +43,29 @@ public class GenerateCCodeFromUML extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
-			IStructuredSelection selection = (IStructuredSelection) HandlerUtil
+			IStructuredSelection selection = (IStructuredSelection)HandlerUtil
 					.getCurrentSelectionChecked(event);
-			EObject selectedObject = (EObject) selection.getFirstElement();
+			EObject selectedObject = (EObject)selection.getFirstElement();
 
-			IResource model = ResourcesPlugin
-					.getWorkspace()
-					.getRoot()
-					.findMember(
-							selectedObject.eResource().getURI()
-									.toPlatformString(true));
+			IResource model = ResourcesPlugin.getWorkspace().getRoot().findMember(
+					selectedObject.eResource().getURI().toPlatformString(true));
 			manager = new ModelManager(model);
 
 			EClass eClass = selectedObject.eClass();
 			if (eClass == UMLPackage.Literals.ACTIVITY) {
-				caseActivity((Activity) selectedObject);
+				caseActivity((Activity)selectedObject);
 			} else if (eClass == UMLPackage.Literals.OPERATION) {
-				caseOperation((Operation) selectedObject);
+				caseOperation((Operation)selectedObject);
 			} else if (eClass == UMLPackage.Literals.CLASS) {
-				caseClass((Class) selectedObject);
+				caseClass((Class)selectedObject);
 			} else if (eClass == UMLPackage.Literals.INTERFACE) {
-				caseClass((Interface) selectedObject);
+				caseClass((Interface)selectedObject);
 			} else if (eClass == UMLPackage.Literals.PACKAGE) {
-				casePackage((Package) selectedObject);
+				casePackage((Package)selectedObject);
 			} else if (eClass == UMLPackage.Literals.OPAQUE_BEHAVIOR) {
-				caseOpaqueBehavior((OpaqueBehavior) selectedObject);
+				caseOpaqueBehavior((OpaqueBehavior)selectedObject);
 			}
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// else if (eClass == DiagramInterchangePackage.Literals.DIAGRAM)
 			// {
 			// caseDiagram((Diagram) selectedObject);
@@ -85,19 +81,18 @@ public class GenerateCCodeFromUML extends AbstractHandler {
 		}
 
 		return null; // *MUST* be null (cf.
-						// AbstractHandler.execute(ExecutionEvent))
+		// AbstractHandler.execute(ExecutionEvent))
 	}
 
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	// private void caseDiagram(Diagram selectedObject) throws
 	// ExecutionException
 	// {
 	// doGenerate(manager.getSourcePackage());
 	// }
 
-	private void caseOpaqueBehavior(OpaqueBehavior selectedObject)
-			throws ExecutionException {
-		caseClass((Class) selectedObject.eContainer());
+	private void caseOpaqueBehavior(OpaqueBehavior selectedObject) throws ExecutionException {
+		caseClass((Class)selectedObject.eContainer());
 	}
 
 	private void casePackage(Package selectedObject) throws ExecutionException {
@@ -106,15 +101,14 @@ public class GenerateCCodeFromUML extends AbstractHandler {
 
 	private void doGenerate(EObject eObject) throws ExecutionException {
 		try {
-			Generate gen = new Generate(eObject, ResourcesPlugin.getWorkspace()
-					.getRoot().getLocation().toFile(), Collections.emptyList());
+			Generate gen = new Generate(eObject, ResourcesPlugin.getWorkspace().getRoot().getLocation()
+					.toFile(), Collections.emptyList());
 			gen.doGenerate(new BasicMonitor());
 		} catch (IOException e) {
 			throw new ExecutionException(e.getMessage(), e);
 		}
 		try {
-			manager.getProject().refreshLocal(IResource.DEPTH_INFINITE,
-					new NullProgressMonitor());
+			manager.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (CoreException e) {
 			// it's ok to silently give up this exception
 		}
@@ -128,14 +122,12 @@ public class GenerateCCodeFromUML extends AbstractHandler {
 		doGenerate(selectedObject);
 	}
 
-	private void caseOperation(Operation selectedObject)
-			throws ExecutionException {
-		caseClass((Class) selectedObject.eContainer());
+	private void caseOperation(Operation selectedObject) throws ExecutionException {
+		caseClass((Class)selectedObject.eContainer());
 	}
 
-	private void caseActivity(Activity selectedObject)
-			throws ExecutionException {
-		caseClass((Class) selectedObject.eContainer().eContainer());
+	private void caseActivity(Activity selectedObject) throws ExecutionException {
+		caseClass((Class)selectedObject.eContainer().eContainer());
 	}
 
 }

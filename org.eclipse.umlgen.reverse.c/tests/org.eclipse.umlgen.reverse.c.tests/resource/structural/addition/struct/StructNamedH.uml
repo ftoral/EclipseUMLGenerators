@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_ilwfFqwjEd-K5cm9fuUnww" name="named">
-      <eAnnotations xmi:id="_ilwfF6wjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_ilwfF6wjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_ilwfGKwjEd-K5cm9fuUnww" key="H_FILENAME" value="/testStructNamedH/named.h"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_jRHvwKwjEd-K5cm9fuUnww" name="myStruct">
-        <eAnnotations xmi:id="_jRHvwawjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_jRHvwawjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_jRHvwqwjEd-K5cm9fuUnww" key="H_FILENAME" value="/testStructNamedH/named.h"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_jRHvxKwjEd-K5cm9fuUnww" name="a" type="_jRHvw6wjEd-K5cm9fuUnww"/>

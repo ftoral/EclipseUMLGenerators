@@ -2,12 +2,12 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_pMCSS6uTEd-OKYOerM7ncA" name="aFile">
-      <eAnnotations xmi:id="_pMCSTKuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_pMCSTKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_pMCSTauTEd-OKYOerM7ncA" key="H_FILENAME" value="/testincludeGuard2/aFile.h"/>
         <details xmi:id="_pzq5MKuTEd-OKYOerM7ncA" key="ifndef condition" value="AFILE_H__"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_p-ZigauTEd-OKYOerM7ncA" name="AFILE_H__" visibility="public" isStatic="true" type="_p-ZigKuTEd-OKYOerM7ncA" isReadOnly="true">
-        <eAnnotations xmi:id="_p-Zig6uTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_p-Zig6uTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_p-ZihKuTEd-OKYOerM7ncA" key="H_FILENAME" value="/testincludeGuard2/aFile.h"/>
           <details xmi:id="_p-ZihauTEd-OKYOerM7ncA" key="H_FILE_POSITION_DECLARATION" value="18"/>
         </eAnnotations>

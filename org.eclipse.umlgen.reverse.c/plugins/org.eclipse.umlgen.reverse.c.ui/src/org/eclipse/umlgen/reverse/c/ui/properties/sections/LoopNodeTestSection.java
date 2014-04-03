@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -26,16 +26,13 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
  * Section for adding a Test condition to a {@link LoopNode}.<br>
- * 
  * Creation : 20 may 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class LoopNodeTestSection extends AbstractLoopNodeSection {
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
+
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("LoopNode.Condition"); //$NON-NLS-1$
@@ -46,15 +43,14 @@ public class LoopNodeTestSection extends AbstractLoopNodeSection {
 	 */
 	@Override
 	protected OpaqueAction getOpaqueAction() {
-		LoopNode loopNode = (LoopNode) getEObject();
+		LoopNode loopNode = (LoopNode)getEObject();
 		// Take the first one by default
-		ExecutableNode testNode = !loopNode.getTests().isEmpty() ? loopNode
-				.getTests().get(0) : null;
+		ExecutableNode testNode = !loopNode.getTests().isEmpty() ? loopNode.getTests().get(0) : null;
 
-		if (testNode instanceof OpaqueAction) {
-			return (OpaqueAction) testNode;
-		}
-		return null;
+				if (testNode instanceof OpaqueAction) {
+					return (OpaqueAction)testNode;
+				}
+				return null;
 	}
 
 	/**
@@ -73,7 +69,7 @@ public class LoopNodeTestSection extends AbstractLoopNodeSection {
 		LiteralNull literalNull = UMLFactory.eINSTANCE.createLiteralNull();
 		pin.setUpperBound(literalNull);
 
-		LoopNode loop = (LoopNode) getEObject();
+		LoopNode loop = (LoopNode)getEObject();
 		loop.setDecider(pin);
 
 		return opaqueAction;
@@ -86,8 +82,7 @@ public class LoopNodeTestSection extends AbstractLoopNodeSection {
 	@Override
 	protected void addOpaqueAction(OpaqueAction newObj, CompoundCommand cc) {
 		super.addOpaqueAction(newObj, cc);
-		cc.appendIfCanExecute(SetCommand.create(getEditingDomain(),
-				getEObject(), UMLPackage.eINSTANCE.getLoopNode_Test(),
-				Collections.singletonList(newObj)));
+		cc.appendIfCanExecute(SetCommand.create(getEditingDomain(), getEObject(), UMLPackage.eINSTANCE
+				.getLoopNode_Test(), Collections.singletonList(newObj)));
 	}
 }

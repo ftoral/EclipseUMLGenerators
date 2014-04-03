@@ -2,7 +2,7 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_5cJoW6wjEd-K5cm9fuUnww" name="operation">
-      <eAnnotations xmi:id="_5cJoXKwjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_5cJoXKwjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_5cJoXawjEd-K5cm9fuUnww" key="H_FILENAME" value="/testRemovalOfOperationH/operation.h"/>
       </eAnnotations>
     </packagedElement>

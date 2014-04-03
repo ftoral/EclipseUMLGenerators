@@ -6,11 +6,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_WDwmwGmtEd-Hi4dLzjZ7BQ" name="Libs">
     <packagedElement xmi:type="uml:Interface" xmi:id="_Nvhq6ZC-Ed-yS-Ilhs-Ezg" name="namedWithVarDecl">
-      <eAnnotations xmi:id="_Nvhq6pC-Ed-yS-Ilhs-Ezg" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Nvhq6pC-Ed-yS-Ilhs-Ezg" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Nvhq65C-Ed-yS-Ilhs-Ezg" key="H_FILENAME" value="/testStructnamedWithVarDeclH/namedWithVarDecl.h"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_OjFOIJC-Ed-yS-Ilhs-Ezg" name="var1" visibility="public" type="_OfzQoJC-Ed-yS-Ilhs-Ezg">
-        <eAnnotations xmi:id="_OjFOIZC-Ed-yS-Ilhs-Ezg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_OjFOIZC-Ed-yS-Ilhs-Ezg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_OjO_IJC-Ed-yS-Ilhs-Ezg" key="H_FILE_POSITION_DECLARATION" value="48"/>
           <details xmi:id="_OjO_IZC-Ed-yS-Ilhs-Ezg" key="H_FILENAME" value="/testStructnamedWithVarDeclH/namedWithVarDecl.h"/>
         </eAnnotations>
@@ -25,7 +25,7 @@
         </eAnnotations>
       </ownedAttribute>
       <ownedAttribute xmi:id="_OlwusJC-Ed-yS-Ilhs-Ezg" name="var2" visibility="public" type="_OfzQoJC-Ed-yS-Ilhs-Ezg">
-        <eAnnotations xmi:id="_OlwusZC-Ed-yS-Ilhs-Ezg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_OlwusZC-Ed-yS-Ilhs-Ezg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_OlwuspC-Ed-yS-Ilhs-Ezg" key="H_FILE_POSITION_DECLARATION" value="54"/>
           <details xmi:id="_Olwus5C-Ed-yS-Ilhs-Ezg" key="H_FILENAME" value="/testStructnamedWithVarDeclH/namedWithVarDecl.h"/>
         </eAnnotations>
@@ -40,7 +40,7 @@
         </eAnnotations>
       </ownedAttribute>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_OfzQoJC-Ed-yS-Ilhs-Ezg" name="myStruct">
-        <eAnnotations xmi:id="_Of9BoJC-Ed-yS-Ilhs-Ezg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_Of9BoJC-Ed-yS-Ilhs-Ezg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Of9BoZC-Ed-yS-Ilhs-Ezg" key="H_FILENAME" value="/testStructnamedWithVarDeclH/namedWithVarDecl.h"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_Of9Bo5C-Ed-yS-Ilhs-Ezg" name="a" type="_Of9BopC-Ed-yS-Ilhs-Ezg"/>

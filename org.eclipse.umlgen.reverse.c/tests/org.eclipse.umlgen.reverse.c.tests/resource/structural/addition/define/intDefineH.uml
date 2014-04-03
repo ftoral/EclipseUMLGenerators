@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_mP-w26uTEd-OKYOerM7ncA" name="aFile">
-      <eAnnotations xmi:id="_mP-w3KuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_mP-w3KuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_mP-w3auTEd-OKYOerM7ncA" key="H_FILENAME" value="/testintDefineH/aFile.h"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_m3Uc0auTEd-OKYOerM7ncA" name="MY_DEFINE" visibility="public" isStatic="true" type="_m3Uc0KuTEd-OKYOerM7ncA" isReadOnly="true">
-        <eAnnotations xmi:id="_m3Uc06uTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_m3Uc06uTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_m3Uc1KuTEd-OKYOerM7ncA" key="H_FILENAME" value="/testintDefineH/aFile.h"/>
         </eAnnotations>
         <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_m3Uc0quTEd-OKYOerM7ncA" name="readOnlyValue">

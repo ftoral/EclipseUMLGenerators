@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -44,30 +44,28 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
  * Manages the customization for reverse C to UML.<br />
- * Two categories are suggested : the first one allows to specify UML/UMLDI
- * resources to synchronize, the second one enables to declare the different UML
- * packages on which classes will be placed.<br>
- * 
+ * Two categories are suggested : the first one allows to specify UML/UMLDI resources to synchronize, the
+ * second one enables to declare the different UML packages on which classes will be placed.<br>
  * Creation : 04 may 2010<br/>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.facilities
-public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
+// FIXME MIGRATION reference to facilities
+public class C2UMLPropertyPage extends AbstractPreferencePage {
 	private RadioGroupFieldEditor syncModeEditor;
 
-	// FIXME MIGRATION reference to org.topcased.facilities
+	// FIXME MIGRATION reference to facilities
 	// private ResourceFieldEditor diagramPath;
 
 	private StringFieldEditor modelPath;
 
-	// FIXME MIGRATION reference to org.topcased.facilities
+	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor srcPath;
 
-	// FIXME MIGRATION reference to org.topcased.facilities
+	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor typePath;
 
-	// FIXME MIGRATION reference to org.topcased.facilities
+	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor extPath;
 
 	private ResourceSet rscSet;
@@ -84,21 +82,17 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 	public C2UMLPropertyPage() {
 		rscSet = new ResourceSetImpl();
 
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// advancedLabelProvider = new
 		// QualifiedNameLabelProvider().createAdapterFactory();
 
-		defaultLabelProvider = new AdapterFactoryLabelProvider(
-				new UMLItemProviderAdapterFactory());
+		defaultLabelProvider = new AdapterFactoryLabelProvider(new UMLItemProviderAdapterFactory());
 	}
 
-	/**
-	 * @see org.topcased.facilities.preferences.AbstractTopcasedPreferencePage#setElement(org.eclipse.core.runtime.IAdaptable)
-	 */
 	@Override
 	public void setElement(IAdaptable element) {
 		super.setElement(element);
-		PreferenceStoreManager.setDefaultValues((IProject) getElement());
+		PreferenceStoreManager.setDefaultValues((IProject)getElement());
 	}
 
 	/**
@@ -108,8 +102,7 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 	protected Control createContents(Composite parent) {
 		// Main Composite
 		final Composite mainComposite = new Composite(parent, SWT.NONE);
-		mainComposite
-				.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		mainComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		final GridLayout layout = new GridLayout();
 		layout.marginHeight = 0;
 		layout.marginWidth = 0;
@@ -131,28 +124,23 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 	}
 
 	/**
-	 * Creates the first group on which synchronization policy is defined (from
-	 * C source or from UML model).
-	 * 
+	 * Creates the first group on which synchronization policy is defined (from C source or from UML model).
+	 *
 	 * @param parent
 	 *            The composite parent
 	 */
 	private void createSyncModeGroup(Composite parent) {
 		String[][] data = new String[2][2];
-		data[0] = new String[] {
-				Messages.getString("C2UMLPropertyPage.4"), BundleConstants.SYNC_SOURCE_VALUE }; //$NON-NLS-1$
-		data[1] = new String[] {
-				Messages.getString("C2UMLPropertyPage.5"), BundleConstants.SYNC_MODEL_VALUE }; //$NON-NLS-1$
-		syncModeEditor = new RadioGroupFieldEditor(
-				BundleConstants.SYNC_AT_STARTING,
-				Messages.getString("C2UMLPropertyPage.6"), 2, data, parent, true); //$NON-NLS-1$
+		data[0] = new String[] {Messages.getString("C2UMLPropertyPage.4"), BundleConstants.SYNC_SOURCE_VALUE }; //$NON-NLS-1$
+		data[1] = new String[] {Messages.getString("C2UMLPropertyPage.5"), BundleConstants.SYNC_MODEL_VALUE }; //$NON-NLS-1$
+		syncModeEditor = new RadioGroupFieldEditor(BundleConstants.SYNC_AT_STARTING, Messages
+				.getString("C2UMLPropertyPage.6"), 2, data, parent, true); //$NON-NLS-1$
 		syncModeEditor.setPreferenceStore(getPreferenceStore());
 	}
 
 	/**
-	 * Creates the second group on which access paths to models must be
-	 * specified.
-	 * 
+	 * Creates the second group on which access paths to models must be specified.
+	 *
 	 * @param parent
 	 *            The composite parent
 	 */
@@ -165,10 +153,9 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		// Composite for the diagram path
 		final Composite diagramComposite = new Composite(mainGroup, SWT.NONE);
 		diagramComposite.setLayout(new GridLayout());
-		diagramComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-				true, 0, 0));
+		diagramComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 0, 0));
 
-		// FIXME MIGRATION reference to org.topcased.facilities
+		// FIXME MIGRATION reference to facilities
 		// Access to UMLDI Model path
 		//        diagramPath = new ResourceFieldEditor(BundleConstants.UMLDI_MODEL_PATH, Messages.getString("C2UMLPropertyPage.1"), diagramComposite); //$NON-NLS-1$
 		// diagramPath.setPreferenceStore(getPreferenceStore());
@@ -190,7 +177,7 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		// {
 		// Resource rsc = rscSet.getResource(uri, true);
 		// EObject root = rsc.getContents().get(0);
-		// // FIXME MIGRATION reference to org.topcased.modeler
+		// // FIXME MIGRATION reference to modeler
 		// // if (root instanceof Diagrams)
 		// // {
 		// // EObject model = ((Diagrams) root).getModel();
@@ -210,12 +197,11 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		// Composite for the model path
 		final Composite modelComposite = new Composite(mainGroup, SWT.NONE);
 		modelComposite.setLayout(new GridLayout());
-		modelComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-				true, 0, 0));
+		modelComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 0, 0));
 
 		// Access to UML Model path
-		modelPath = new StringFieldEditor(BundleConstants.UML_MODEL_PATH,
-				Messages.getString("C2UMLPropertyPage.3"), modelComposite); //$NON-NLS-1$
+		modelPath = new StringFieldEditor(BundleConstants.UML_MODEL_PATH, Messages
+				.getString("C2UMLPropertyPage.3"), modelComposite); //$NON-NLS-1$
 		modelPath.setEnabled(false, modelComposite);
 		modelPath.getLabelControl(modelComposite).setEnabled(true);
 		modelPath.setPreferenceStore(getPreferenceStore());
@@ -232,8 +218,7 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 	}
 
 	/**
-	 * Resets the three bottom fields when the value of the UML model field
-	 * changes.
+	 * Resets the three bottom fields when the value of the UML model field changes.
 	 */
 	private void resetPathFields() {
 		srcPath.setStringValue(""); //$NON-NLS-1$
@@ -242,9 +227,8 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 	}
 
 	/**
-	 * Extracts all UML Packages contained into the semantic model, then this
-	 * collection is transformed into an array before being set to the different
-	 * eobject field editor.
+	 * Extracts all UML Packages contained into the semantic model, then this collection is transformed into
+	 * an array before being set to the different eobject field editor.
 	 */
 	private void extractPackagesFromModel() {
 		Collection<EObject> collection = new ArrayList<EObject>();
@@ -252,13 +236,11 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		try {
 			Resource model = rscSet.getResource(uri, true);
 			if (model != null) {
-				for (TreeIterator<EObject> iterator = EcoreUtil
-						.<EObject> getAllContents(model, false); iterator
+				for (TreeIterator<EObject> iterator = EcoreUtil.<EObject> getAllContents(model, false); iterator
 						.hasNext();) {
 					collection.add(iterator.next());
 				}
-				packages = EcoreUtil.getObjectsByType(collection,
-						UMLPackage.Literals.PACKAGE).toArray();
+				packages = EcoreUtil.getObjectsByType(collection, UMLPackage.Literals.PACKAGE).toArray();
 				srcPath.setCandidates(packages);
 				typePath.setCandidates(packages);
 				extPath.setCandidates(packages);
@@ -270,7 +252,7 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 
 	/**
 	 * Creates the settings group (bottom part).
-	 * 
+	 *
 	 * @param parent
 	 *            The composite parent
 	 */
@@ -278,29 +260,23 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		// Settings Group
 		final Group settingsGroup = new Group(parent, SWT.NONE);
 		settingsGroup.setLayout(new GridLayout());
-		settingsGroup
-				.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		settingsGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		settingsGroup.setText(Messages.getString("C2UMLPropertyPage.7")); //$NON-NLS-1$
 
 		// Intermediate composite to permit to get inner borders
-		final Composite intermediateComposite = new Composite(settingsGroup,
-				SWT.NONE);
+		final Composite intermediateComposite = new Composite(settingsGroup, SWT.NONE);
 		intermediateComposite.setLayout(new GridLayout());
-		intermediateComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
-				true, true));
+		intermediateComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-		srcPath = createPathFieldEditor(intermediateComposite,
-				BundleConstants.SRC_PCK_NAME,
-				Messages.getString("C2UMLPropertyPage.2")); //$NON-NLS-1$
-		typePath = createPathFieldEditor(intermediateComposite,
-				BundleConstants.TYPE_PCK_NAME,
-				Messages.getString("C2UMLPropertyPage.9")); //$NON-NLS-1$
-		extPath = createPathFieldEditor(intermediateComposite,
-				BundleConstants.EXT_PCK_NAME,
-				Messages.getString("C2UMLPropertyPage.10")); //$NON-NLS-1$
+		srcPath = createPathFieldEditor(intermediateComposite, BundleConstants.SRC_PCK_NAME, Messages
+				.getString("C2UMLPropertyPage.2")); //$NON-NLS-1$
+		typePath = createPathFieldEditor(intermediateComposite, BundleConstants.TYPE_PCK_NAME, Messages
+				.getString("C2UMLPropertyPage.9")); //$NON-NLS-1$
+		extPath = createPathFieldEditor(intermediateComposite, BundleConstants.EXT_PCK_NAME, Messages
+				.getString("C2UMLPropertyPage.10")); //$NON-NLS-1$
 	}
 
-	// FIXME MIGRATION reference to org.topcased.facilities
+	// FIXME MIGRATION reference to facilities
 	// /**
 	// * Creates the string button field editor for selecting one model element
 	// among a set.
@@ -379,9 +355,6 @@ public class C2UMLPropertyPage extends AbstractTopcasedPreferencePage {
 		super.performDefaults();
 	}
 
-	/**
-	 * @see org.topcased.facilities.preferences.AbstractTopcasedPreferencePage#getBundleId()
-	 */
 	@Override
 	protected String getBundleId() {
 		return BundleConstants.BUNDLE_ID;

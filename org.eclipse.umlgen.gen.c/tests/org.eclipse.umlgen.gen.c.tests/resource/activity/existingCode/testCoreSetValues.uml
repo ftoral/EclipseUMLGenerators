@@ -12,7 +12,7 @@
       <body>save = new->core.tm.translations;&#xA;new->core.tm.translations = old->core.tm.translations;&#xA;_XtMergeTranslations(new, save, XtTableReplace);</body>
     </node>
     <node xmi:type="uml:DecisionNode" xmi:id="_9LwnJXouEd-aebg4GsEJxw" name="if (XtIsRealized(old))" outgoing="_9LxOnnouEd-aebg4GsEJxw _9LxOpHouEd-aebg4GsEJxw" incoming="_9LxOp3ouEd-aebg4GsEJxw">
-      <eAnnotations xmi:id="_9LwnJnouEd-aebg4GsEJxw" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_9LwnJnouEd-aebg4GsEJxw" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_9LwnJ3ouEd-aebg4GsEJxw" key="COMMENT_BEFORE" value="/* Check everything that depends upon window being realized */"/>
       </eAnnotations>
     </node>
@@ -22,7 +22,7 @@
       <body>window_mask = 0;</body>
     </node>
     <node xmi:type="uml:DecisionNode" xmi:id="_9LwnKnouEd-aebg4GsEJxw" name="if (old->core.background_pixel != new->core.background_pixel&#xA;            &amp;&amp; new->core.background_pixmap == XtUnspecifiedPixmap)" outgoing="_9LwnWnouEd-aebg4GsEJxw _9LwnYHouEd-aebg4GsEJxw" incoming="_9LwnY3ouEd-aebg4GsEJxw">
-      <eAnnotations xmi:id="_9LwnK3ouEd-aebg4GsEJxw" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_9LwnK3ouEd-aebg4GsEJxw" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_9LwnLHouEd-aebg4GsEJxw" key="COMMENT_BEFORE" value="/* Check window attributes */"/>
       </eAnnotations>
     </node>

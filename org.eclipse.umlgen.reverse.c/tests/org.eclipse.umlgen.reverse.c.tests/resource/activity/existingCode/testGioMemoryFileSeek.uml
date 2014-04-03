@@ -80,7 +80,7 @@
       <clause xmi:id="_9GP1GXouEd-aebg4GsEJxw" test="_9GP1EXouEd-aebg4GsEJxw" body="_9GP1FHouEd-aebg4GsEJxw" predecessorClause="_9GP1GHouEd-aebg4GsEJxw" decider="_9GP1EnouEd-aebg4GsEJxw"/>
     </node>
     <node xmi:type="uml:DecisionNode" xmi:id="_9GP1GnouEd-aebg4GsEJxw" name="if (new_pos > self->len)" outgoing="_9GP1KXouEd-aebg4GsEJxw _9GP1LHouEd-aebg4GsEJxw" incoming="_9GP1L3ouEd-aebg4GsEJxw">
-      <eAnnotations xmi:id="_9GP1G3ouEd-aebg4GsEJxw" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_9GP1G3ouEd-aebg4GsEJxw" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_9GP1HHouEd-aebg4GsEJxw" key="COMMENT_BEFORE" value="/**&#xD;&#xA;   * on error, new_pos should be SIZE_T_MAX. On overflow it will either&#xD;&#xA;   * be greater than self->len, or will have wrapped around.&#xD;&#xA;   * TODO (ilewis): Detect wraparound and return an error.&#xD;&#xA;   */"/>
       </eAnnotations>
     </node>

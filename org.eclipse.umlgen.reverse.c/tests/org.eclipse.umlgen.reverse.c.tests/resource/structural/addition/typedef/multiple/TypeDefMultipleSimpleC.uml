@@ -2,16 +2,16 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_ejjCO49bEd-Yh-wzaQ9Ssw" name="simple" visibility="private">
-      <eAnnotations xmi:id="_ejjCPI9bEd-Yh-wzaQ9Ssw" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_ejjCPI9bEd-Yh-wzaQ9Ssw" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_ejjCPY9bEd-Yh-wzaQ9Ssw" key="C_FILENAME" value="/testTypeDefMultipleSimpleC/simple.c"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_fMG2MI9bEd-Yh-wzaQ9Ssw" name="sint" visibility="private" redefinedClassifier="_fMG2MY9bEd-Yh-wzaQ9Ssw">
-        <eAnnotations xmi:id="_fMG2Mo9bEd-Yh-wzaQ9Ssw" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_fMG2Mo9bEd-Yh-wzaQ9Ssw" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_fMG2M49bEd-Yh-wzaQ9Ssw" key="C_FILENAME" value="/testTypeDefMultipleSimpleC/simple.c"/>
         </eAnnotations>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_fMssEI9bEd-Yh-wzaQ9Ssw" name="s32" visibility="private" redefinedClassifier="_fMG2MY9bEd-Yh-wzaQ9Ssw">
-        <eAnnotations xmi:id="_fMssEY9bEd-Yh-wzaQ9Ssw" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_fMssEY9bEd-Yh-wzaQ9Ssw" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_fMssEo9bEd-Yh-wzaQ9Ssw" key="C_FILENAME" value="/testTypeDefMultipleSimpleC/simple.c"/>
         </eAnnotations>
       </nestedClassifier>

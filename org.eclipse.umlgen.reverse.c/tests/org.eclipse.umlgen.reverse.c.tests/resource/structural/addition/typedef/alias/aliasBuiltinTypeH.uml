@@ -2,16 +2,16 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_7rzWy6wjEd-K5cm9fuUnww" name="aliasBuiltin">
-      <eAnnotations xmi:id="_7rzWzKwjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_7rzWzKwjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_7rzWzawjEd-K5cm9fuUnww" key="H_FILENAME" value="/testaliasBuiltinTypeH/aliasBuiltin.h"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_8V0jUKwjEd-K5cm9fuUnww" name="String" redefinedClassifier="_8V0jUawjEd-K5cm9fuUnww">
-        <eAnnotations xmi:id="_8V0jUqwjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_8V0jUqwjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_8V0jU6wjEd-K5cm9fuUnww" key="H_FILENAME" value="/testaliasBuiltinTypeH/aliasBuiltin.h"/>
         </eAnnotations>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_8WbAQKwjEd-K5cm9fuUnww" name="uint" redefinedClassifier="_8WbAQawjEd-K5cm9fuUnww">
-        <eAnnotations xmi:id="_8WbAQqwjEd-K5cm9fuUnww" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_8WbAQqwjEd-K5cm9fuUnww" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_8WbAQ6wjEd-K5cm9fuUnww" key="H_FILE_POSITION_DECLARATION" value="22"/>
           <details xmi:id="_8WbARKwjEd-K5cm9fuUnww" key="H_FILENAME" value="/testaliasBuiltinTypeH/aliasBuiltin.h"/>
         </eAnnotations>

@@ -182,7 +182,7 @@
                   <with
                         variable="activeEditorId">
                      <equals
-                           value="org.topcased.modeler.uml.editor.UMLEditor"><!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+                           value="UMLEditor"><!-- FIXME MIGRATION reference to modeler -->   
                      </equals>
                   </with>
                </and>
@@ -236,12 +236,12 @@
                                     property="org.eclipse.umlgen.reverse.c.ui.objectType"
                                     value="org.eclipse.uml2.uml.OpaqueBehavior">
                               </test>
-                              <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+                              <!-- FIXME MIGRATION reference to modeler -->   
                               <test
-                                    args="org.topcased.modeler.uml.activitydiagram"
+                                    args="activitydiagram"
                                     forcePluginActivation="true"
                                     property="org.eclipse.umlgen.reverse.c.ui.objectType"
-                                    value="org.topcased.modeler.di.model.Diagram">
+                                    value="Diagram">
                               </test>
                            </or>
                         </iterate>
@@ -256,7 +256,7 @@
                   <with
                         variable="activeEditorId">
                      <equals
-                           value="org.topcased.modeler.uml.editor.UMLEditor"><!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+                           value="UMLEditor"><!-- FIXME MIGRATION reference to modeler -->   
                      </equals>
                   </with>
                </and>
@@ -266,9 +266,9 @@
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
-      <!-- FIXME MIGRATION reference to org.topcased.facilities -->   
+      <!-- FIXME MIGRATION reference to facilities -->   
       <page
-            category="org.topcased.facilities.preferences.property.TopcasedPreferencePage"
+            category="PreferencePage"
             class="org.eclipse.umlgen.reverse.c.ui.properties.C2UMLPropertyPage"
             id="org.eclipse.umlgen.reverse.c.BuilderPropertyPage"
             name="C to UML">
@@ -290,12 +290,12 @@
          </enabledWhen>
       </page>
    </extension>
-<!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+<!-- FIXME MIGRATION reference to modeler -->   
 <!--   <extension
-         point="org.topcased.modeler.templates">
+         point="templates">
       <template
-            di="templates/%name%.umldi"
-            editorId="org.topcased.modeler.uml.editor.UMLEditor"
+            di="templates/%name%.xxx"
+            editorId="UMLEditor"
             id="org.eclipse.umlgen.reverse.c.ui.template"
             isDiagram="false"
             model="templates/%name%.uml"
@@ -322,12 +322,12 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.topcased.modeler.editor.Modeler"><!-- FIXME MIGRATION reference to org.topcased.modeler -->   
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+            contributorId="Modeler"><!-- FIXME MIGRATION reference to modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertyTab
-               afterTab="org.topcased.modeler.modelTab"
+               afterTab="modelTab"
                category="model"
-               id="org.topcased.modeler.modelTab.metadataTab"
+               id=".metadataTab"
                indented="true"
                label="Metadata">
          </propertyTab>
@@ -336,100 +336,100 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.topcased.modeler.editor.Modeler"><!-- FIXME MIGRATION reference to org.topcased.modeler -->   
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+            contributorId="Modeler"><!-- FIXME MIGRATION reference to modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.internal.properties.sections.classifier.ClassifierElementsVisibilityPropertySection"
+               afterSection="ClassifierElementsVisibilityPropertySection"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.ConditionalNodeTestSection"
-               id="org.topcased.modeler.uml.conditionalNodeTest"
-               tab="org.topcased.modeler.modelTab">
+               id="conditionalNodeTest"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.ConditionalNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.conditionalNodeTestitionalNodeTest"
+               afterSection="conditionalNodeTestitionalNodeTest"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.ClauseAssistantSection"
-               id="org.topcased.modeler.uml.conditionalNodeAssistant"
-               tab="org.topcased.modeler.modelTab">
+               id="conditionalNodeAssistant"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.ConditionalNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.internal.properties.sections.classifier.ClassifierElementsVisibilityPropertySection"
+               afterSection="ClassifierElementsVisibilityPropertySection"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.LoopNodeKindSection"
-               id="org.topcased.modeler.uml.loopNodeKind"
-               tab="org.topcased.modeler.modelTab">
+               id="loopNodeKind"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.LoopNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.loopNodeKind"
+               afterSection="loopNodeKind"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.LoopNodeInitializationSection"
-               id="org.topcased.modeler.uml.loopNodeInitialization"
-               tab="org.topcased.modeler.modelTab">
+               id="loopNodeInitialization"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.LoopNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.loopNodeInitialization"
+               afterSection="loopNodeInitialization"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.LoopNodeTestSection"
-               id="org.topcased.modeler.uml.loopNodeCondition"
-               tab="org.topcased.modeler.modelTab">
+               id="loopNodeCondition"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.LoopNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.loopNodeCondition"
+               afterSection="loopNodeCondition"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.LoopNodeIterationSection"
-               id="org.topcased.modeler.uml.loopNodeIteration"
-               tab="org.topcased.modeler.modelTab">
+               id="loopNodeIteration"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.LoopNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
-               afterSection="org.topcased.modeler.uml.loopNodeIteration"
+               afterSection="loopNodeIteration"
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.LoopNodeBodyPartSection"
-               id="org.topcased.modeler.uml.loopNodeBodyPart"
-               tab="org.topcased.modeler.modelTab">
+               id="loopNodeBodyPart"
+               tab="modelTab">
             <input
                   type="org.eclipse.uml2.uml.LoopNode">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.CharsetSection"
-               id="org.topcased.modeler.uml.metadata.charset"
-               tab="org.topcased.modeler.modelTab.metadataTab">
+               id="charset"
+               tab="metadataTab">
             <input
                   type="org.eclipse.uml2.uml.Model">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.CFileRelativePathSection"
-               id="org.topcased.modeler.uml.metadata.cFileLocation"
-               tab="org.topcased.modeler.modelTab.metadataTab">
+               id="cFileLocation"
+               tab="metadataTab">
             <input
                   type="org.eclipse.uml2.uml.Class">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.HFileRelativePathSection"
-               id="org.topcased.modeler.uml.metadata.hFileLocation"
-               tab="org.topcased.modeler.modelTab.metadataTab">
+               id="hFileLocation"
+               tab="metadataTab">
             <input
                   type="org.eclipse.uml2.uml.Class">
             </input>
@@ -437,11 +437,11 @@
                   type="org.eclipse.uml2.uml.Interface">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.IfNDefSection"
-               id="org.topcased.modeler.uml.metadata.ifNDefCondition"
-               tab="org.topcased.modeler.modelTab.metadataTab">
+               id="ifNDefCondition"
+               tab="metadataTab">
             <input
                   type="org.eclipse.uml2.uml.Class">
             </input>
@@ -449,22 +449,22 @@
                   type="org.eclipse.uml2.uml.Interface">
             </input>
          </propertySection>
-         <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+         <!-- FIXME MIGRATION reference to modeler -->   
          <propertySection
                class="org.eclipse.umlgen.reverse.c.ui.properties.sections.StandardLibrarySection"
-               id="org.topcased.modeler.uml.metadata.stdLibraryInclusion"
-               tab="org.topcased.modeler.modelTab.metadataTab">
+               id="stdLibraryInclusion"
+               tab="metadataTab">
             <input
                   type="org.eclipse.uml2.uml.Usage">
             </input>
          </propertySection>
 	  </propertySections>         
    </extension>
-   <!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+   <!-- FIXME MIGRATION reference to modeler -->   
    <!-- <extension
-         point="org.topcased.modeler.uml.operationBodyLanguage">
+         point="operationBodyLanguage">
       <Language
-            bodyCompositeFactory="org.topcased.modeler.uml.internal.properties.sections.operation.behavior.DefaultBodyCompositeFactory"
+            bodyCompositeFactory="DefaultBodyCompositeFactory"
             name="C">
       </Language>
    </extension> -->

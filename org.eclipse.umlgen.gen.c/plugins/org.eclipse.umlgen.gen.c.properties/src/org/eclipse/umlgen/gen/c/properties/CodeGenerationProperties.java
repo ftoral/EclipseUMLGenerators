@@ -37,9 +37,8 @@ public class CodeGenerationProperties {
 	/** Key for property "Generate <Main> method" */
 	private static final QualifiedName GEN_MAIN_PROPERTY = new QualifiedName("", "PROPERTY_GEN_MAIN");
 
-	/** Key for property "Generate code conform to Topcased coding style" */
-	private static final QualifiedName USE_TOPCASED_CHKST_PROPERTY = new QualifiedName("",
-			"PROPERTY_USE_TOPCASED_CHKST");
+	/** Key for property "Generate code conform to coding style" */
+	private static final QualifiedName USE_CHKST_PROPERTY = new QualifiedName("", "PROPERTY_USE_CHKST");
 
 	/** Key for property "Author Name" */
 	private static final QualifiedName AUTHOR_NAME_PROPERTY = new QualifiedName("", "PROPERTY_AUTHOR_NAME");
@@ -73,7 +72,7 @@ public class CodeGenerationProperties {
 		if (modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice() != null) {
 			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString().substring(
 					modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice().toString()
-					.length());
+							.length());
 		} else {
 			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString();
 		}
@@ -155,12 +154,12 @@ public class CodeGenerationProperties {
 	protected static String getDefaultHeaderProperty() {
 		StringBuffer sbHeader = new StringBuffer(
 				"/*******************************************************************************\n");
-		sbHeader.append(" * Copyright (c) 2007, 2014 Topcased. All rights reserved. This program\n");
+		sbHeader.append(" * Copyright (c) XXXX TODO and others. All rights reserved. This program\n");
 		sbHeader.append(" * and the accompanying materials are made available under the terms of the\n");
 		sbHeader.append(" * Eclipse Public License v1.0 which accompanies this distribution, and is\n");
 		sbHeader.append(" * available at http://www.eclipse.org/legal/epl-v10.html\n");
 		sbHeader.append(" *\n");
-		sbHeader.append(" * Contributors: Topcased contributors and others - initial API and implementation\n");
+		sbHeader.append(" * Contributors: TODO - initial API and implementation\n");
 		sbHeader.append("*******************************************************************************/\n");
 		return sbHeader.toString();
 	}
@@ -406,31 +405,30 @@ public class CodeGenerationProperties {
 		model.setPersistentProperty(GEN_MAIN_PROPERTY, Boolean.toString(value));
 	}
 
-	/* Boolean property "Generate code conform to Topcased coding style" */
+	/* Boolean property "Generate code conform to coding style" */
 
 	/**
-	 * Returns the default value for the property "Generate code conform to Topcased coding style"
+	 * Returns the default value for the property "Generate code conform to coding style"
 	 *
 	 * @param model
-	 * @return the default value for the property "Generate code conform to Topcased coding style"
+	 * @return the default value for the property "Generate code conform to coding style"
 	 */
-	protected static boolean getDefaultUseTopcasedChkstProperty() {
+	protected static boolean getDefaultUseChkstProperty() {
 		return true;
 	}
 
 	/**
-	 * Returns the value of the property "Generate code conform to Topcased coding style" for this
-	 * <code>model</code>
+	 * Returns the value of the property "Generate code conform to coding style" for this <code>model</code>
 	 *
 	 * @param model
-	 * @return the value of the property "Generate code conform to Topcased coding style""
+	 * @return the value of the property "Generate code conform to coding style""
 	 * @throws CoreException
 	 */
-	public static boolean getUseTopcasedChkstProperty(IResource model) throws CoreException {
+	public static boolean getUseChkstProperty(IResource model) throws CoreException {
 		boolean value;
-		String stringValue = model.getPersistentProperty(USE_TOPCASED_CHKST_PROPERTY);
+		String stringValue = model.getPersistentProperty(USE_CHKST_PROPERTY);
 		if (stringValue == null) {
-			value = getDefaultUseTopcasedChkstProperty();
+			value = getDefaultUseChkstProperty();
 		} else if (stringValue.equals(Boolean.TRUE.toString())) {
 			value = true;
 		} else {
@@ -440,15 +438,14 @@ public class CodeGenerationProperties {
 	}
 
 	/**
-	 * Sets the value of the property "Generate code conform to Topcased coding style" for this
-	 * <code>model</code>
+	 * Sets the value of the property "Generate code conform to coding style" for this <code>model</code>
 	 *
 	 * @param model
 	 * @param value
 	 * @throws CoreException
 	 */
-	protected static void setUseTopcasedChkstProperty(IResource model, boolean value) throws CoreException {
-		model.setPersistentProperty(USE_TOPCASED_CHKST_PROPERTY, Boolean.toString(value));
+	protected static void setUseChkstProperty(IResource model, boolean value) throws CoreException {
+		model.setPersistentProperty(USE_CHKST_PROPERTY, Boolean.toString(value));
 	}
 
 	/* Boolean property "Make all static" */

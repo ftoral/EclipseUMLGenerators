@@ -66,7 +66,7 @@ public final class AnnotationUtil {
 	 * @return The new documentation annotation
 	 */
 	public static EAnnotation getDocumentationAnnotation(Element element) {
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// return UML2Util.getEAnnotation(element,
 		// IAnnotationConstants.DOCUMENTATION_SOURCE, true);
 		return null;

@@ -41,19 +41,14 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class CharsetSection extends AbstractEnumerationPropertySection {
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getLabelText()
-	 */
+
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("CharsetSection.label"); //$NON-NLS-1$
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return EcorePackage.eINSTANCE.getEAnnotation_Details();
@@ -72,10 +67,6 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 		return null;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#createCommand(java.lang.Object,
-	 *      java.lang.Object)
-	 */
 	@Override
 	protected void createCommand(Object oldValue, Object newValue) {
 		boolean equals = oldValue == null ? false : oldValue.equals(newValue);
@@ -138,9 +129,6 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractEnumerationPropertySection#getEnumerationFeatureValues()
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected String[] getEnumerationFeatureValues() {
@@ -149,9 +137,6 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 		return encodings.toArray(new String[0]);
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractEnumerationPropertySection#getFeatureAsText()
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected String getFeatureAsText() {
@@ -164,17 +149,11 @@ public class CharsetSection extends AbstractEnumerationPropertySection {
 				.get(AnnotationConstants.PROJECT_CHARSET) : "";
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractEnumerationPropertySection#getFeatureValue(int)
-	 */
 	@Override
 	protected Object getFeatureValue(int index) {
 		return getEnumerationFeatureValues()[index];
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractEnumerationPropertySection#getOldFeatureValue()
-	 */
 	@Override
 	protected Object getOldFeatureValue() {
 		return getFeatureAsText();

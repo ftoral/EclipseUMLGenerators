@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_C1cUa6ufEd-V-ORhC2tX4A" name="named">
-      <eAnnotations xmi:id="_C1cUbKufEd-V-ORhC2tX4A" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_C1cUbKufEd-V-ORhC2tX4A" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_C1cUbaufEd-V-ORhC2tX4A" key="H_FILENAME" value="/testnamedH/named.h"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_De3rEKufEd-V-ORhC2tX4A" name="colors">
-        <eAnnotations xmi:id="_De3rEaufEd-V-ORhC2tX4A" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_De3rEaufEd-V-ORhC2tX4A" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_De3rEqufEd-V-ORhC2tX4A" key="H_FILENAME" value="/testnamedH/named.h"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_De3rE6ufEd-V-ORhC2tX4A" name="red">

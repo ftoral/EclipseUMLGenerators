@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -26,24 +26,18 @@ import org.eclipse.umlgen.reverse.c.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section for setting the 'test' part of a {@link ConditionalNode}.
- * 
- * Creation : 16 june 2010<br>
- * 
+ * Section for setting the 'test' part of a {@link ConditionalNode}. Creation : 16 june 2010<br>
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class ConditionalNodeTestSection extends AbstractStringWithButtonSection {
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getFeatureAsString()
-	 */
 	@Override
 	protected String getFeatureAsString() {
 		OpaqueAction opaqueAction = getTestOpaqueAction();
 		if (opaqueAction != null) {
-			int index = opaqueAction.getLanguages().indexOf(
-					BundleConstants.C_LANGUAGE);
+			int index = opaqueAction.getLanguages().indexOf(BundleConstants.C_LANGUAGE);
 			if (index > -1) {
 				return opaqueAction.getBodies().get(index);
 			}
@@ -51,41 +45,27 @@ public class ConditionalNodeTestSection extends AbstractStringWithButtonSection 
 		return null;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return UMLPackage.eINSTANCE.getOpaqueAction_Body();
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#createCommand(java.lang.Object,
-	 *      java.lang.Object)
-	 */
 	@Override
 	protected void createCommand(Object oldValue, Object newValue) {
 		boolean equals = oldValue == null ? false : oldValue.equals(newValue);
 		if (!equals) {
 			EditingDomain editingDomain = getEditingDomain();
-			Command setCmd = SetCommand.create(editingDomain,
-					getTestOpaqueAction(), getFeature(),
+			Command setCmd = SetCommand.create(editingDomain, getTestOpaqueAction(), getFeature(),
 					Collections.singletonList(newValue));
 			editingDomain.getCommandStack().execute(setCmd);
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("ConditionalNode.Test"); //$NON-NLS-1$
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractStringWithButtonSection#createModelObject()
-	 */
 	@Override
 	protected void createModelObject() {
 		addOpaqueExpression(createNewOpaqueAction());
@@ -93,25 +73,22 @@ public class ConditionalNodeTestSection extends AbstractStringWithButtonSection 
 
 	/**
 	 * Gets the {@link OpaqueAction} named 'test'.
-	 * 
-	 * @return the corresponding or null if the opaque action does not still
-	 *         exist.
+	 *
+	 * @return the corresponding or null if the opaque action does not still exist.
 	 */
 	public OpaqueAction getTestOpaqueAction() {
-		ConditionalNode conditionalNode = (ConditionalNode) getEObject();
-		ActivityNode testNode = conditionalNode.getNode(Messages
-				.getString("ConditionalNode.test")); //$NON-NLS-1$
+		ConditionalNode conditionalNode = (ConditionalNode)getEObject();
+		ActivityNode testNode = conditionalNode.getNode(Messages.getString("ConditionalNode.test")); //$NON-NLS-1$
 
 		if (testNode instanceof OpaqueAction) {
-			return (OpaqueAction) testNode;
+			return (OpaqueAction)testNode;
 		}
 		return null;
 	}
 
 	/**
-	 * Creates a new opaque action named 'test' with a default C language and an
-	 * empty body.
-	 * 
+	 * Creates a new opaque action named 'test' with a default C language and an empty body.
+	 *
 	 * @return The newly opaque action
 	 */
 	private OpaqueAction createNewOpaqueAction() {
@@ -124,14 +101,14 @@ public class ConditionalNodeTestSection extends AbstractStringWithButtonSection 
 
 	/**
 	 * Add an {@link OpaqueAction} into the current {@link ConditionalNode}.
-	 * 
+	 *
 	 * @param newObj
 	 *            The new object to add to the model
 	 */
 	private void addOpaqueExpression(OpaqueAction newObj) {
 		EditingDomain editingDomain = getEditingDomain();
-		Command addCmd = AddCommand.create(editingDomain, getEObject(),
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Node(), newObj);
+		Command addCmd = AddCommand.create(editingDomain, getEObject(), UMLPackage.eINSTANCE
+				.getStructuredActivityNode_Node(), newObj);
 		editingDomain.getCommandStack().execute(addCmd);
 	}
 

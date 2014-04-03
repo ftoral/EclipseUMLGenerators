@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -14,19 +14,17 @@ import org.eclipse.core.expressions.PropertyTester;
 
 /**
  * Tests whether the <b>C2UML Sync</b> nature is set on the current C project.<br>
- * 
  * Creation : 10 may 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public class HasNaturePropertyTester extends PropertyTester {
 	/**
-	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object,
-	 *      java.lang.String, java.lang.Object[], java.lang.Object)
+	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String,
+	 *      java.lang.Object[], java.lang.Object)
 	 */
-	public boolean test(Object receiver, String property, Object[] args,
-			Object expectedValue) {
-		// FIXME MIGRATION reference to org.topcased.modeler
+	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+		// FIXME MIGRATION reference to modeler
 		// if (Modeler.getCurrentIFile() != null)
 		// {
 		// IFile file = Modeler.getCurrentIFile();

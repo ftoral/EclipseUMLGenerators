@@ -2,14 +2,14 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_ii8qp49AEd-lAYU3FUWlPA" name="extern6" visibility="private">
-      <eAnnotations xmi:id="_ii8qqI9AEd-lAYU3FUWlPA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_ii8qqI9AEd-lAYU3FUWlPA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_ii8qqY9AEd-lAYU3FUWlPA" key="C_FILENAME" value="/testextern6C/extern6.c"/>
       </eAnnotations>
       <ownedOperation xmi:id="_jLeqEY9AEd-lAYU3FUWlPA" name="f" visibility="private">
         <eAnnotations xmi:id="_jLeqEo9AEd-lAYU3FUWlPA" source="Extern">
           <details xmi:id="_jLeqE49AEd-lAYU3FUWlPA" key="Extern" value="true"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_jLeqFI9AEd-lAYU3FUWlPA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_jLeqFI9AEd-lAYU3FUWlPA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_jLeqFY9AEd-lAYU3FUWlPA" key="C_FILENAME" value="/testextern6C/extern6.c"/>
         </eAnnotations>
         <ownedParameter xmi:id="_jMFHAI9AEd-lAYU3FUWlPA" name=" " type="_jLeqEI9AEd-lAYU3FUWlPA" direction="return"/>

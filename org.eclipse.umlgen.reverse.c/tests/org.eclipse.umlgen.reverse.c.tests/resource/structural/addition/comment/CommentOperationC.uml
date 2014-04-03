@@ -2,18 +2,18 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_Y104mquTEd-OKYOerM7ncA" name="CommentOperation" visibility="private" clientDependency="_Zh7wEauTEd-OKYOerM7ncA">
-      <eAnnotations xmi:id="_Y104m6uTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Y104m6uTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Y104nKuTEd-OKYOerM7ncA" key="C_FILENAME" value="/testCommentOperationC/CommentOperation.c"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_ZjRM0KuTEd-OKYOerM7ncA" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_ZjRM0KuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_ZjRM0auTEd-OKYOerM7ncA" key="C_FILENAME" value="/* mon comment de classe dans le fichier C */&#xA;/* suite de mon comment de classe&#xD;&#xA; * hello&#xD;&#xA; */&#xA;"/>
       </eAnnotations>
       <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_Zihl86uTEd-OKYOerM7ncA" name="maFonction" visibility="private">
-        <eAnnotations xmi:id="_Zihl9KuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_Zihl9KuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Zihl9auTEd-OKYOerM7ncA" key="C_FILENAME" value="/testCommentOperationC/CommentOperation.c"/>
           <details xmi:id="_Zihl9quTEd-OKYOerM7ncA" key="C_FILE_POSITION_DECLARATION" value="152"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_Zj3pwKuTEd-OKYOerM7ncA" source="http://www.topcased.org/documentation">
+        <eAnnotations xmi:id="_Zj3pwKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/documentation">
           <details xmi:id="_Zj3pwauTEd-OKYOerM7ncA" key="C_FILENAME" value="/* mon commentaire de fonction */&#xA;"/>
         </eAnnotations>
         <ownedParameter xmi:id="_Zihl96uTEd-OKYOerM7ncA" name="k" type="_Zihl8KuTEd-OKYOerM7ncA"/>
@@ -27,11 +27,11 @@
         <eAnnotations xmi:id="_Zi0g5KuTEd-OKYOerM7ncA" source="Extern">
           <details xmi:id="_Zi0g5auTEd-OKYOerM7ncA" key="Extern" value="false"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_Zi0g5quTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_Zi0g5quTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Zi0g56uTEd-OKYOerM7ncA" key="C_FILENAME" value="/testCommentOperationC/CommentOperation.c"/>
           <details xmi:id="_Zi0g6auTEd-OKYOerM7ncA" key="C_FILE_POSITION_DECLARATION" value="248"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_ZkUVsKuTEd-OKYOerM7ncA" source="http://www.topcased.org/documentation">
+        <eAnnotations xmi:id="_ZkUVsKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/documentation">
           <details xmi:id="_ZkUVsauTEd-OKYOerM7ncA" key="C_FILENAME" value="/* mon commentaire d'operation */&#xA;"/>
         </eAnnotations>
         <ownedParameter xmi:id="_Zi0g4auTEd-OKYOerM7ncA" name="k" type="_Zihl8KuTEd-OKYOerM7ncA"/>
@@ -41,7 +41,7 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_Zh7wEauTEd-OKYOerM7ncA" name="stdio" visibility="private" supplier="_Zh7wEKuTEd-OKYOerM7ncA" client="_Y104mquTEd-OKYOerM7ncA">
-      <eAnnotations xmi:id="_Zh7wEquTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Zh7wEquTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Zh7wE6uTEd-OKYOerM7ncA" key="C_FILENAME" value="/testCommentOperationC/CommentOperation.c"/>
         <details xmi:id="_Zh7wFKuTEd-OKYOerM7ncA" key="C_FILE_POSITION_DECLARATION" value="97"/>
       </eAnnotations>

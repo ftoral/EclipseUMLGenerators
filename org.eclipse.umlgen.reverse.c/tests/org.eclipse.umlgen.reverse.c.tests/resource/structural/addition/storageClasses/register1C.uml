@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_kloUu49AEd-lAYU3FUWlPA" name="register1" visibility="private">
-      <eAnnotations xmi:id="_kloUvI9AEd-lAYU3FUWlPA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_kloUvI9AEd-lAYU3FUWlPA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_kloUvY9AEd-lAYU3FUWlPA" key="C_FILENAME" value="/testregister1C/register1.c"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_lPzSQY9AEd-lAYU3FUWlPA" name="c" visibility="private" type="_lPzSQI9AEd-lAYU3FUWlPA">
-        <eAnnotations xmi:id="_lPzSQo9AEd-lAYU3FUWlPA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_lPzSQo9AEd-lAYU3FUWlPA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_lPzSQ49AEd-lAYU3FUWlPA" key="C_FILE_POSITION_DECLARATION" value="13"/>
           <details xmi:id="_lPzSRI9AEd-lAYU3FUWlPA" key="C_FILENAME" value="/testregister1C/register1.c"/>
         </eAnnotations>

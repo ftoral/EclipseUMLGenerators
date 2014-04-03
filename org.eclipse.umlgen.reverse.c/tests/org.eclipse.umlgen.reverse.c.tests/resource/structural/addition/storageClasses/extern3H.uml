@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_kB9k26u5Ed-Od-rinnN02A" name="extern3">
-      <eAnnotations xmi:id="_kB9k3Ku5Ed-Od-rinnN02A" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_kB9k3Ku5Ed-Od-rinnN02A" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_kB9k3au5Ed-Od-rinnN02A" key="H_FILENAME" value="/testextern3H/extern3.h"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_ktB6QKu5Ed-Od-rinnN02A" name="a" visibility="public" type="_ksu_UKu5Ed-Od-rinnN02A">
-        <eAnnotations xmi:id="_ktB6Qau5Ed-Od-rinnN02A" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_ktB6Qau5Ed-Od-rinnN02A" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_ktB6Qqu5Ed-Od-rinnN02A" key="H_FILE_POSITION_DECLARATION" value="39"/>
           <details xmi:id="_ktB6Q6u5Ed-Od-rinnN02A" key="H_FILENAME" value="/testextern3H/extern3.h"/>
         </eAnnotations>
@@ -21,7 +21,7 @@
         </eAnnotations>
       </ownedAttribute>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_ksu_UKu5Ed-Od-rinnN02A" name="x">
-        <eAnnotations xmi:id="_ks4JQKu5Ed-Od-rinnN02A" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_ks4JQKu5Ed-Od-rinnN02A" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_ks4JQau5Ed-Od-rinnN02A" key="H_FILENAME" value="/testextern3H/extern3.h"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_ks4JQqu5Ed-Od-rinnN02A" name="a"/>

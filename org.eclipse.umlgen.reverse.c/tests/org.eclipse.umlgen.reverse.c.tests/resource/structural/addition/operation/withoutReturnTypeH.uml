@@ -2,7 +2,7 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_xcPXS6t6Ed-3EPc-gXvmKw" name="withoutReturnType">
-      <eAnnotations xmi:id="_xcPXTKt6Ed-3EPc-gXvmKw" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_xcPXTKt6Ed-3EPc-gXvmKw" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_xcPXTat6Ed-3EPc-gXvmKw" key="H_FILENAME" value="/testwithoutReturnTypeH/withoutReturnType.h"/>
       </eAnnotations>
     </packagedElement>

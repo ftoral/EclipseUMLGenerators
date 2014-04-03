@@ -2,12 +2,12 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_2dSr-6ueEd-V-ORhC2tX4A" name="file" clientDependency="_3G3zoaueEd-V-ORhC2tX4A">
-      <eAnnotations xmi:id="_2dSr_KueEd-V-ORhC2tX4A" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_2dSr_KueEd-V-ORhC2tX4A" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_2dSr_aueEd-V-ORhC2tX4A" key="H_FILENAME" value="/testincludesExtH/file.h"/>
       </eAnnotations>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_3G3zoaueEd-V-ORhC2tX4A" name="stdio" supplier="_3G3zoKueEd-V-ORhC2tX4A" client="_2dSr-6ueEd-V-ORhC2tX4A">
-      <eAnnotations xmi:id="_3G3zoqueEd-V-ORhC2tX4A" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_3G3zoqueEd-V-ORhC2tX4A" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_3G3zo6ueEd-V-ORhC2tX4A" key="H_FILENAME" value="/testincludesExtH/file.h"/>
       </eAnnotations>
     </packagedElement>

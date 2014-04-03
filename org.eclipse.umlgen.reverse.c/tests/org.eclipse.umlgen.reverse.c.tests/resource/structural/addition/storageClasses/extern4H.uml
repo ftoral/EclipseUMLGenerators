@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_TqbK-6uTEd-OKYOerM7ncA" name="extern4">
-      <eAnnotations xmi:id="_TqbK_KuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_TqbK_KuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_TqbK_auTEd-OKYOerM7ncA" key="H_FILENAME" value="/testextern4H/extern4.h"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_UVVvYauTEd-OKYOerM7ncA" name="a" visibility="public" type="_UVVvYKuTEd-OKYOerM7ncA">
-        <eAnnotations xmi:id="_UVVvYquTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_UVVvYquTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_UVVvY6uTEd-OKYOerM7ncA" key="H_FILE_POSITION_DECLARATION" value="11"/>
           <details xmi:id="_UVVvZKuTEd-OKYOerM7ncA" key="H_FILENAME" value="/testextern4H/extern4.h"/>
         </eAnnotations>

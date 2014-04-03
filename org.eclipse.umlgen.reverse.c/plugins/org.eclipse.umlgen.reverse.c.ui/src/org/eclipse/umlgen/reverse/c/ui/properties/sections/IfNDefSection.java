@@ -21,12 +21,9 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class IfNDefSection extends AbstractModuleSection {
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("IfNDefSection.label"); //$NON-NLS-1$

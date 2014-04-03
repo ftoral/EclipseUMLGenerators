@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Christophe Le Camus (CS) - initial API and implementation 
+ *     Christophe Le Camus (CS) - initial API and implementation
  *     Sebastien Gabel (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.resource;
@@ -46,9 +46,8 @@ import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
 import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 
 /**
- * The model manager is in charge of loading/unloading synchronized models when
- * it is necessary.
- * 
+ * The model manager is in charge of loading/unloading synchronized models when it is necessary.
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public class ModelManager {
@@ -75,7 +74,7 @@ public class ModelManager {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param rsc
 	 *            The resource from which the resource manager is invoked.
 	 */
@@ -117,8 +116,8 @@ public class ModelManager {
 		Display.getDefault().syncExec(new Runnable() {
 
 			public void run() {
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getPartService().addPartListener(editorPartListener);
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().addPartListener(
+						editorPartListener);
 			}
 		});
 	}
@@ -131,16 +130,14 @@ public class ModelManager {
 		Display.getDefault().syncExec(new Runnable() {
 
 			public void run() {
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getPartService()
-						.removePartListener(editorPartListener);
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(
+						editorPartListener);
 			}
 		});
 	}
 
 	protected void initializeModels() {
-		IPreferenceStore store = PreferenceStoreManager
-				.getPreferenceStore(project);
+		IPreferenceStore store = PreferenceStoreManager.getPreferenceStore(project);
 		String modelPath = store.getString(BundleConstants.UML_MODEL_PATH);
 		String diagramPath = store.getString(BundleConstants.UMLDI_MODEL_PATH);
 
@@ -158,8 +155,7 @@ public class ModelManager {
 	}
 
 	/**
-	 * Before loading other models into the resource srt, previous models must
-	 * be unloaded properly.
+	 * Before loading other models into the resource srt, previous models must be unloaded properly.
 	 */
 	protected void unloadPreviousModels() {
 		srcPackage = null;
@@ -187,8 +183,7 @@ public class ModelManager {
 	public void saveModels() {
 		Map<String, String> options = new HashMap<String, String>();
 		try {
-			options.put(XMLResource.OPTION_ENCODING,
-					project.getDefaultCharset(true));
+			options.put(XMLResource.OPTION_ENCODING, project.getDefaultCharset(true));
 			if (diResource != null) {
 				diResource.save(options);
 			}
@@ -196,21 +191,20 @@ public class ModelManager {
 				modelResource.save(options);
 			}
 		} catch (Exception e) {
-			Activator
-					.log(Messages.getString("ModelManager.error.msg") + e.getMessage(), IStatus.ERROR, e); //$NON-NLS-1$
+			Activator.log(Messages.getString("ModelManager.error.msg") + e.getMessage(), IStatus.ERROR, e); //$NON-NLS-1$
 		}
 	}
 
 	/**
 	 * Gets the <b>Model</b> model object.
-	 * 
+	 *
 	 * @return The Model element representing the root of the semantic model.
 	 */
 	public Model getUMLModel() {
-		return (Model) model;
+		return (Model)model;
 	}
 
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	// /**
 	// * Gets the <b>Diagrams</b> model object.
 	// *
@@ -224,7 +218,7 @@ public class ModelManager {
 
 	/**
 	 * Gets the current {@link IProject} on which we are working.
-	 * 
+	 *
 	 * @return the Eclipse project
 	 */
 	public IProject getProject() {
@@ -233,12 +227,11 @@ public class ModelManager {
 
 	/**
 	 * Gets the current C project
-	 * 
+	 *
 	 * @return the C project
 	 */
 	public ICProject getCProject() {
-		return CoreModel.getDefault().getCModel()
-				.getCProject(getProject().getName());
+		return CoreModel.getDefault().getCModel().getCProject(getProject().getName());
 	}
 
 	/**
@@ -256,16 +249,15 @@ public class ModelManager {
 	}
 
 	/**
-	 * Gets the resource set accordingly to the reference URI passed into
-	 * parameter.
-	 * 
+	 * Gets the resource set accordingly to the reference URI passed into parameter.
+	 *
 	 * @param diagramURI
 	 *            The reference URI for which the resource set must be found.
-	 * @return the resource set on which the diagram model is already loaded,
-	 *         otherwise a new default resource set is instantiated.
+	 * @return the resource set on which the diagram model is already loaded, otherwise a new default resource
+	 *         set is instantiated.
 	 */
 	protected ResourceSet getResourceSet(URI diagramURI) {
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// Modeler activeModeler = findModeler(diagramURI);
 		// if (activeModeler != null)
 		// {
@@ -278,7 +270,7 @@ public class ModelManager {
 		// }
 	}
 
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	// /**
 	// * Finds the UML modeler among all already opened.
 	// *
@@ -319,27 +311,25 @@ public class ModelManager {
 	// }
 
 	/**
-	 * Finds a package into the current loaded UML model. Inspects the
-	 * preference store and browse the loaded UML model.
-	 * 
+	 * Finds a package into the current loaded UML model. Inspects the preference store and browse the loaded
+	 * UML model.
+	 *
 	 * @param pkgConstante
 	 *            The name of the package to locate
 	 * @return The package found or null if not found
 	 */
 	private Package findPackage(String pkgConstante) {
-		IPreferenceStore store = PreferenceStoreManager
-				.getPreferenceStore(project);
+		IPreferenceStore store = PreferenceStoreManager.getPreferenceStore(project);
 		String packToLocate = store.getString(pkgConstante);
-		Collection<Package> packages = UMLUtil
-				.<Package> findNamedElements(modelResource, packToLocate,
-						false, UMLPackage.Literals.PACKAGE);
+		Collection<Package> packages = UMLUtil.<Package> findNamedElements(modelResource, packToLocate,
+				false, UMLPackage.Literals.PACKAGE);
 		return packages.isEmpty() ? null : packages.toArray(new Package[0])[0];
 	}
 
 	/**
-	 * Finds the package into the current UML model where <b>created classes and
-	 * interfaces (reversed code)</b> will be stored.
-	 * 
+	 * Finds the package into the current UML model where <b>created classes and interfaces (reversed
+	 * code)</b> will be stored.
+	 *
 	 * @param manager
 	 *            The model manager
 	 * @return The identified package
@@ -352,9 +342,8 @@ public class ModelManager {
 	}
 
 	/**
-	 * Finds the package into the current UML model where <b>created types</b>
-	 * will be stored.
-	 * 
+	 * Finds the package into the current UML model where <b>created types</b> will be stored.
+	 *
 	 * @param manager
 	 *            The model manager
 	 * @return The identified package
@@ -367,9 +356,8 @@ public class ModelManager {
 	}
 
 	/**
-	 * Finds the package into the current UML model where <b>external
-	 * interfaces</b> will be stored.
-	 * 
+	 * Finds the package into the current UML model where <b>external interfaces</b> will be stored.
+	 *
 	 * @param manager
 	 *            The model manager
 	 * @return The identified package
@@ -382,54 +370,47 @@ public class ModelManager {
 	}
 
 	/**
-	 * Finds a type in the current loaded UML model provided by the model
-	 * manager. This search is not limited to the type package, so it means that
-	 * the type can be found into any classifier of the model. However, the
-	 * visibility of the returned element should be public.
-	 * 
+	 * Finds a type in the current loaded UML model provided by the model manager. This search is not limited
+	 * to the type package, so it means that the type can be found into any classifier of the model. However,
+	 * the visibility of the returned element should be public.
+	 *
 	 * @param typeName
 	 *            The type name to find
 	 * @return The type or null if not found
 	 */
 	public DataType findDataType(final String typeName) {
-		TreeIterator<DataType> allDataTypes = UML2Util
-				.<DataType> getAllContents(model, false, false);
-		return (DataType) UML2Util.findEObject(allDataTypes,
-				new EObjectMatcher() {
+		TreeIterator<DataType> allDataTypes = UML2Util.<DataType> getAllContents(model, false, false);
+		return (DataType)UML2Util.findEObject(allDataTypes, new EObjectMatcher() {
 
-					public boolean matches(EObject eObject) {
-						if (eObject instanceof DataType) {
-							DataType type = (DataType) eObject;
-							String name = type.getName();
-							VisibilityKind visibility = type.getVisibility();
-							return typeName.equals(name)
-									&& visibility == VisibilityKind.PUBLIC_LITERAL;
-						}
-						return false;
-					}
-				});
+			public boolean matches(EObject eObject) {
+				if (eObject instanceof DataType) {
+					DataType type = (DataType)eObject;
+					String name = type.getName();
+					VisibilityKind visibility = type.getVisibility();
+					return typeName.equals(name) && visibility == VisibilityKind.PUBLIC_LITERAL;
+				}
+				return false;
+			}
+		});
 	}
 
 	/**
 	 * Finds a given type into a given classifier.
-	 * 
+	 *
 	 * @param dataTypeName
 	 *            : the name of the DataType we want to find
 	 * @return the UML DataType Class found
 	 */
 	public DataType findDataTypeInTypesPck(String dataTypeName) {
-		String qualifier = getTypePackage().getQualifiedName().concat(
-				"::" + dataTypeName); //$NON-NLS-1$
-		Collection<DataType> dataTypes = UMLUtil.<DataType> findNamedElements(
-				modelResource, qualifier, false, UMLPackage.Literals.DATA_TYPE);
-		return dataTypes.isEmpty() ? null
-				: dataTypes.toArray(new DataType[0])[0];
+		String qualifier = getTypePackage().getQualifiedName().concat("::" + dataTypeName); //$NON-NLS-1$
+		Collection<DataType> dataTypes = UMLUtil.<DataType> findNamedElements(modelResource, qualifier,
+				false, UMLPackage.Literals.DATA_TYPE);
+		return dataTypes.isEmpty() ? null : dataTypes.toArray(new DataType[0])[0];
 	}
 
 	/**
-	 * Try to locate a given type. If the type is not found, it is created into
-	 * the defined 'Types' packages.
-	 * 
+	 * Try to locate a given type. If the type is not found, it is created into the defined 'Types' packages.
+	 *
 	 * @param typeName
 	 *            The type name to find or create
 	 * @return a type corresponding to the search.
@@ -444,7 +425,7 @@ public class ModelManager {
 
 	/**
 	 * Create a new type into the Type package of the model.
-	 * 
+	 *
 	 * @param pckType
 	 *            The Type package provided by the model manager
 	 * @param typeName
@@ -456,8 +437,7 @@ public class ModelManager {
 		if (ModelUtil.primitiveTypes.contains(typeName)) {
 			newType = getTypePackage().createOwnedPrimitiveType(typeName);
 		} else {
-			newType = (DataType) getTypePackage().createOwnedType(typeName,
-					UMLPackage.Literals.DATA_TYPE);
+			newType = (DataType)getTypePackage().createOwnedType(typeName, UMLPackage.Literals.DATA_TYPE);
 			setSuperDataType(newType);
 		}
 		newType.setVisibility(VisibilityKind.PUBLIC_LITERAL);
@@ -465,9 +445,9 @@ public class ModelManager {
 	}
 
 	/**
-	 * Compute the dependency hierarchy between types. Interemediate types that
-	 * are not necessarly used are also created if needed.
-	 * 
+	 * Compute the dependency hierarchy between types. Interemediate types that are not necessarly used are
+	 * also created if needed.
+	 *
 	 * @param pointerType
 	 *            A pointer type containing at least one star character.
 	 */
@@ -505,7 +485,7 @@ public class ModelManager {
 		 * @see org.eclipse.ui.IPartListener#partClosed(org.eclipse.ui.IWorkbenchPart)
 		 */
 		public void partClosed(IWorkbenchPart part) {
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// if (part instanceof Modeler)
 			// {
 			// Modeler modeler = (Modeler) part;
@@ -541,7 +521,7 @@ public class ModelManager {
 		 * @see org.eclipse.ui.IPartListener#partOpened(org.eclipse.ui.IWorkbenchPart)
 		 */
 		public void partOpened(IWorkbenchPart part) {
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// if (part instanceof Modeler)
 			// {
 			// Modeler modeler = (Modeler) part;

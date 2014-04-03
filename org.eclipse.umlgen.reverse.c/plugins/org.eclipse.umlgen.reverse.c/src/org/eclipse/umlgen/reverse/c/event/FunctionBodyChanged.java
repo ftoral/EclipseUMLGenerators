@@ -42,7 +42,7 @@ public class FunctionBodyChanged extends FunctionBodyEvent {
 					String oldBody = getOldBody();
 					String newBoby = cleanInvalidXmlChars(getBody());
 					if (!oldBody.equals(newBoby)) {
-						// FIXME MIGRATION reference to org.topcased.facilities
+						// FIXME MIGRATION reference to facilities
 						// EMFMarkerUtil.removeMarkerFor(function);
 
 						// removes the former function body
@@ -50,7 +50,7 @@ public class FunctionBodyChanged extends FunctionBodyEvent {
 						// sets the new function body
 						function.getBodies().add(newBoby);
 
-						// FIXME MIGRATION reference to org.topcased.facilities
+						// FIXME MIGRATION reference to facilities
 						// EMFMarkerUtil.addMarkerFor(function,
 						// "Function behavior body has changed. Existing Activity diagrams need to be reversed.",
 						// IMarker.SEVERITY_WARNING);

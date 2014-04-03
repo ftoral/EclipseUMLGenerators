@@ -2,14 +2,14 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_H-Y7bY9NEd-oLb5vzpYSNg" name="enum" visibility="private">
-      <eAnnotations xmi:id="_H-Y7bo9NEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_H-Y7bo9NEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_H-Y7b49NEd-oLb5vzpYSNg" key="C_FILENAME" value="/testenumC/enum.c"/>
       </eAnnotations>
-      <eAnnotations xmi:id="_IpwL8I9NEd-oLb5vzpYSNg" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_IpwL8I9NEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_IpwL8Y9NEd-oLb5vzpYSNg" key="C_FILENAME" value="/*&#xD;&#xA; * file.c&#xD;&#xA; *&#xD;&#xA; *  Created on: 23 juin 2010&#xD;&#xA; *      Author: clecamus&#xD;&#xA; */&#xA;"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_IoaIII9NEd-oLb5vzpYSNg" name="" visibility="private">
-        <eAnnotations xmi:id="_IoaIIY9NEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_IoaIIY9NEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_IoaIIo9NEd-oLb5vzpYSNg" key="C_FILENAME" value="/testenumC/enum.c"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_IotDEI9NEd-oLb5vzpYSNg" name="AUCUNE"/>
@@ -22,7 +22,7 @@
         <ownedLiteral xmi:id="_IotDE49NEd-oLb5vzpYSNg" name="MICRO_FLUO"/>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_IpJvAI9NEd-oLb5vzpYSNg" name="LOCAL_MICRO_EN_COURS" visibility="private" redefinedClassifier="_IoaIII9NEd-oLb5vzpYSNg">
-        <eAnnotations xmi:id="_IpJvBY9NEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_IpJvBY9NEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_IpJvBo9NEd-oLb5vzpYSNg" key="C_FILENAME" value="/testenumC/enum.c"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_IpJvAY9NEd-oLb5vzpYSNg" name="AUCUNE"/>

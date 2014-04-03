@@ -103,7 +103,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 				try {
 					dialog.run(true, true, new IRunnableWithProgress() {
 						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-								InterruptedException {
+						InterruptedException {
 							monitor.beginTask(
 									Messages.getString("GenerateActivityDiagrams.JobTitle"), totalOfWork); //$NON-NLS-1$
 							generate((EObject)obj, mm, monitor);
@@ -150,7 +150,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 				}
 			}
 
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// if (obj instanceof Diagram)
 			// {
 			// generate(mm, monitor);
@@ -162,7 +162,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 
 	private void generate(Package pack, ModelManager mm, IProgressMonitor monitor) throws CoreException {
 		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
+		// FIXME reference to facilities
 		// EMFMarkerUtil.removeMarkerFor(pack);
 
 		for (Iterator<EObject> it = pack.eAllContents(); it.hasNext();) {
@@ -176,7 +176,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 
 	private void generate(Class pack, ModelManager mm, IProgressMonitor monitor) throws CoreException {
 		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
+		// FIXME reference to facilities
 		// EMFMarkerUtil.removeMarkerFor(pack);
 
 		for (Iterator<EObject> it = pack.eAllContents(); it.hasNext();) {
@@ -191,7 +191,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 	private void generate(final Operation operation, ModelManager mm, IProgressMonitor monitor)
 			throws CoreException {
 		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
+		// FIXME reference to facilities
 		// EMFMarkerUtil.removeMarkerFor(operation);
 
 		Behavior behavior = operation.getClass_().getOwnedBehavior(operation.getName());
@@ -214,7 +214,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 	private void generate(final Activity activity, ModelManager mm, IProgressMonitor monitor)
 			throws CoreException {
 		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
+		// FIXME reference to facilities
 		// EMFMarkerUtil.removeMarkerFor(activity);
 
 		BehavioredClassifier behavioredClassifier = activity.getContext();
@@ -223,26 +223,26 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		String behavioredClassifierName = behavioredClassifier.getName() != null ? behavioredClassifier
 				.getName() : ""; //$NON-NLS-1$
 
-				if (behavioredClassifier instanceof OpaqueBehavior && behavioredClassifierName.equals(activityName)) {
-					generate((OpaqueBehavior)behavioredClassifier, mm, monitor);
-				} else {
-					Display.getDefault().syncExec(new Runnable() {
-						public void run() {
-							String title = String.format(
-									Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
-							String msg = String.format(
-									Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
-							MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
-							Activator.log(msg, IStatus.WARNING);
-						}
-					});
+		if (behavioredClassifier instanceof OpaqueBehavior && behavioredClassifierName.equals(activityName)) {
+			generate((OpaqueBehavior)behavioredClassifier, mm, monitor);
+		} else {
+			Display.getDefault().syncExec(new Runnable() {
+				public void run() {
+					String title = String.format(
+							Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
+					String msg = String.format(
+							Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
+					MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
+					Activator.log(msg, IStatus.WARNING);
 				}
+			});
+		}
 	}
 
 	private void generate(OpaqueBehavior behavior, ModelManager mm, IProgressMonitor monitor)
 			throws CoreException {
 		// try to remove existing Markers from this model object
-		// FIXME reference to org.topcased.facilities
+		// FIXME reference to facilities
 		// EMFMarkerUtil.removeMarkerFor(behavior);
 
 		try {
@@ -268,7 +268,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 							}
 							behavior.getOwnedBehaviors().add(activity);
 
-							// FIXME MIGRATION reference to org.topcased.modeler
+							// FIXME MIGRATION reference to modeler
 							// Diagram diagram = createDiagram(activity,
 							// previousActivity, mm.getDiagramsModel(),
 							// UML_ACTIVITYDIAGRAM_ID, activity.getName());
@@ -290,7 +290,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		} catch (CoreException e) {
 			Activator.log(e);
 		}
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// catch (IOException e)
 		// {
 		// Activator.log(e);
@@ -307,7 +307,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		}
 	}
 
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	// private void importObjects(final Diagram diagram, final IProgressMonitor
 	// monitor)
 	// {

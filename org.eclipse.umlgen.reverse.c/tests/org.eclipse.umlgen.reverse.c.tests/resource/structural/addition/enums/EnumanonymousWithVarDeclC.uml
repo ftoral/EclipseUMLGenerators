@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_nej3a49FEd-gjOqnges3MA" name="anonymousWithVarDecl" visibility="private">
-      <eAnnotations xmi:id="_netnkI9FEd-gjOqnges3MA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_netnkI9FEd-gjOqnges3MA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_netnkY9FEd-gjOqnges3MA" key="C_FILENAME" value="/testEnumanonymousWithVarDeclC/anonymousWithVarDecl.c"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_oIu08I9FEd-gjOqnges3MA" name="color_var1" visibility="private" type="_oH2EII9FEd-gjOqnges3MA">
-        <eAnnotations xmi:id="_oIu08Y9FEd-gjOqnges3MA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_oIu08Y9FEd-gjOqnges3MA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_oIu08o9FEd-gjOqnges3MA" key="C_FILE_POSITION_DECLARATION" value="33"/>
           <details xmi:id="_oIu0849FEd-gjOqnges3MA" key="C_FILENAME" value="/testEnumanonymousWithVarDeclC/anonymousWithVarDecl.c"/>
         </eAnnotations>
@@ -21,7 +21,7 @@
         </eAnnotations>
       </ownedAttribute>
       <ownedAttribute xmi:id="_oJCW8I9FEd-gjOqnges3MA" name="color_var2" visibility="private" type="_oH2EII9FEd-gjOqnges3MA">
-        <eAnnotations xmi:id="_oJCW8Y9FEd-gjOqnges3MA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_oJCW8Y9FEd-gjOqnges3MA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_oJCW8o9FEd-gjOqnges3MA" key="C_FILE_POSITION_DECLARATION" value="45"/>
           <details xmi:id="_oJCW849FEd-gjOqnges3MA" key="C_FILENAME" value="/testEnumanonymousWithVarDeclC/anonymousWithVarDecl.c"/>
         </eAnnotations>
@@ -36,7 +36,7 @@
         </eAnnotations>
       </ownedAttribute>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_oH2EII9FEd-gjOqnges3MA" name="" visibility="private">
-        <eAnnotations xmi:id="_oH_OEI9FEd-gjOqnges3MA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_oH_OEI9FEd-gjOqnges3MA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_oH_OEY9FEd-gjOqnges3MA" key="C_FILENAME" value="/testEnumanonymousWithVarDeclC/anonymousWithVarDecl.c"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_oH_OEo9FEd-gjOqnges3MA" name="red"/>

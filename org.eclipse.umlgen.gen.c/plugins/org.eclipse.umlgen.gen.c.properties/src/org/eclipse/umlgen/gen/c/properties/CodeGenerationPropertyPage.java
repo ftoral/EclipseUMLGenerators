@@ -64,8 +64,8 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 	/* generate main */
 	private Button genMainButton;
 
-	/* topcased checkstyle */
-	private Button useTopcasedChkstButton;
+	/* checkstyle */
+	private Button useChkstButton;
 
 	/* force static */
 	private Button forceStaticButton;
@@ -196,14 +196,14 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		data.top = new FormAttachment(genArrayMethodsButton, 5);
 		genMainButton.setLayoutData(data);
 
-		// Topcased checkstyle
-		useTopcasedChkstButton = new Button(parent, SWT.CHECK);
-		useTopcasedChkstButton.setText("Generate code conform to Topcased coding style");
+		// checkstyle
+		useChkstButton = new Button(parent, SWT.CHECK);
+		useChkstButton.setText("Generate code conform to coding style");
 		data = new FormData();
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(100, -5);
 		data.top = new FormAttachment(genMainButton, 5);
-		useTopcasedChkstButton.setLayoutData(data);
+		useChkstButton.setLayoutData(data);
 
 		// Stop if warning
 		stopIfWarningButton = new Button(parent, SWT.CHECK);
@@ -211,7 +211,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		data = new FormData();
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(100, -5);
-		data.top = new FormAttachment(useTopcasedChkstButton, 5);
+		data.top = new FormAttachment(useChkstButton, 5);
 		stopIfWarningButton.setLayoutData(data);
 
 		// Force static
@@ -288,10 +288,9 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		}
 
 		try {
-			useTopcasedChkstButton.setSelection(CodeGenerationProperties.getUseTopcasedChkstProperty(model));
+			useChkstButton.setSelection(CodeGenerationProperties.getUseChkstProperty(model));
 		} catch (CoreException e) {
-			useTopcasedChkstButton
-			.setSelection(CodeGenerationProperties.getDefaultUseTopcasedChkstProperty());
+			useChkstButton.setSelection(CodeGenerationProperties.getDefaultUseChkstProperty());
 		}
 
 		try {
@@ -333,7 +332,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 		genAccessorsButton.setSelection(CodeGenerationProperties.getDefaultGenAccessorsProperty());
 		genArrayMethodsButton.setSelection(CodeGenerationProperties.getDefaultGenArrayMethodsProperty());
 		genMainButton.setSelection(CodeGenerationProperties.getDefaultGenMainProperty());
-		useTopcasedChkstButton.setSelection(CodeGenerationProperties.getDefaultUseTopcasedChkstProperty());
+		useChkstButton.setSelection(CodeGenerationProperties.getDefaultUseChkstProperty());
 		stopIfWarningButton.setSelection(CodeGenerationProperties.getDefaultStopIfWarningProperty());
 		forceStaticButton.setSelection(CodeGenerationProperties.getDefaultForceStaticProperty());
 		authorText.setText(CodeGenerationProperties.getDefaultAuthorNameProperty());
@@ -356,8 +355,7 @@ public class CodeGenerationPropertyPage extends PropertyPage {
 			CodeGenerationProperties.setGenAccessorsProperty(model, genAccessorsButton.getSelection());
 			CodeGenerationProperties.setGenArrayMethodsProperty(model, genArrayMethodsButton.getSelection());
 			CodeGenerationProperties.setGenMainProperty(model, genMainButton.getSelection());
-			CodeGenerationProperties
-			.setUseTopcasedChkstProperty(model, useTopcasedChkstButton.getSelection());
+			CodeGenerationProperties.setUseChkstProperty(model, useChkstButton.getSelection());
 			CodeGenerationProperties.setStopIfWarningProperty(model, stopIfWarningButton.getSelection());
 			CodeGenerationProperties.setForceStaticProperty(model, forceStaticButton.getSelection());
 			CodeGenerationProperties.setAuthorNameProperty(model, authorText.getText());

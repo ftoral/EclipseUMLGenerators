@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Mikael Barbero (Obeo) - initial API and implementation
  *     Sebastien Gabel (CS) - Bug fix on deconfigure project
@@ -31,10 +31,9 @@ import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
 
 /**
- * Configures and deconfigures the synchronized C project in adding/removing the
- * dedicated <b>org.eclipse.umlgen.reverse.c.builder</b> builder to the current
- * project nature.
- * 
+ * Configures and deconfigures the synchronized C project in adding/removing the dedicated
+ * <b>org.eclipse.umlgen.reverse.c.builder</b> builder to the current project nature.
+ *
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael BARBERO</a>
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
@@ -77,7 +76,7 @@ public class C2UMLSyncNature implements IProjectNature {
 		project = value;
 	}
 
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	// /**
 	// * Updates the template
 	// *
@@ -103,16 +102,14 @@ public class C2UMLSyncNature implements IProjectNature {
 	// }
 
 	/**
-	 * Opens a selection dialog to choose an existing UML model to reverse.
-	 * Before returning the resource, the selection is checked. If the selected
-	 * resource is not an UML model then null is returned.
-	 * 
+	 * Opens a selection dialog to choose an existing UML model to reverse. Before returning the resource, the
+	 * selection is checked. If the selected resource is not an UML model then null is returned.
+	 *
 	 * @return The selected file chosen by the user.
 	 */
 	public static IFile selectExistingUMLModel(IProject project) {
-		ResourceSelectionDialog dialog = new ResourceSelectionDialog(Display
-				.getCurrent().getActiveShell(), project,
-				Messages.getString("C2UMLSyncNature.select.resource")) //$NON-NLS-1$
+		ResourceSelectionDialog dialog = new ResourceSelectionDialog(Display.getCurrent().getActiveShell(),
+				project, Messages.getString("C2UMLSyncNature.select.resource")) //$NON-NLS-1$
 		{
 			@Override
 			public void checkStateChanged(CheckStateChangedEvent event) {
@@ -127,9 +124,8 @@ public class C2UMLSyncNature implements IProjectNature {
 				// take only the first value
 				Object firstObj = results[0];
 				if (firstObj instanceof IFile) {
-					IFile selectedFile = (IFile) firstObj;
-					if (BundleConstants.UML_EXTENSION.equals(selectedFile
-							.getFileExtension())) {
+					IFile selectedFile = (IFile)firstObj;
+					if (BundleConstants.UML_EXTENSION.equals(selectedFile.getFileExtension())) {
 						return selectedFile;
 					}
 				}
@@ -140,51 +136,44 @@ public class C2UMLSyncNature implements IProjectNature {
 
 	/**
 	 * Creates a couple of UML/UMLDI models to start reversing the source code.
-	 * 
+	 *
 	 * @return The UML model as reference
 	 * @throws CoreException
 	 *             If something fails during the creation operation.
 	 */
-	public static IFile createUMLanUMLDIFromTemplates(IProject project)
-			throws CoreException {
+	public static IFile createUMLanUMLDIFromTemplates(IProject project) throws CoreException {
 		IFolder modelFolder = project.getFolder(BundleConstants.MODELS_FOLDER);
 		if (!modelFolder.isAccessible()) {
 			modelFolder.create(false, true, null);
 		}
 
 		if (ProjectUtil.hasNature(project, BundleConstants.NATURE_ID)) {
-			ICProjectDescription description = CoreModel.getDefault()
-					.createProjectDescription(project, true);
-			ICConfigurationDescription defaultConfiguration = description
-					.getActiveConfiguration();
+			ICProjectDescription description = CoreModel.getDefault().createProjectDescription(project, true);
+			ICConfigurationDescription defaultConfiguration = description.getActiveConfiguration();
 
 			try {
-				ICSourceEntry[] newEntries = CDataUtil.setExcluded(
-						modelFolder.getFullPath(),
-						(modelFolder instanceof IFolder), true,
-						defaultConfiguration.getSourceEntries());
+				ICSourceEntry[] newEntries = CDataUtil.setExcluded(modelFolder.getFullPath(),
+						modelFolder instanceof IFolder, true, defaultConfiguration.getSourceEntries());
 				defaultConfiguration.setSourceEntries(newEntries);
 				description.setActiveConfiguration(defaultConfiguration);
-				CoreModel.getDefault().setProjectDescription(project,
-						description);
+				CoreModel.getDefault().setProjectDescription(project, description);
 			} catch (CoreException e) {
 				Activator.log(e);
 			}
 		}
 
-		String modelFileName = project.getFullPath()
-				.addFileExtension(BundleConstants.UML_EXTENSION).lastSegment();
+		String modelFileName = project.getFullPath().addFileExtension(BundleConstants.UML_EXTENSION)
+				.lastSegment();
 		IFile modelFile = modelFolder.getFile(modelFileName);
 		if (modelFile.exists()) {
-			boolean result = MessageDialog.openQuestion(Display.getCurrent()
-					.getActiveShell(), Messages
+			boolean result = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), Messages
 					.getString("C2UMLSyncNature.dialog.title"), //$NON-NLS-1$
 					Messages.getString("C2UMLSyncNature.dialog.question")); //$NON-NLS-1$
 			if (!result) {
 				return null;
 			}
 		} else {
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// Template template =
 			// TemplatesManager.getInstance().find(BundleConstants.TEMPLATE_ID).getTemplateModel();
 			// template.setDestination((IContainer) modelFolder);
@@ -197,11 +186,11 @@ public class C2UMLSyncNature implements IProjectNature {
 			// TemplatesManager.getInstance().find(BundleConstants.TEMPLATE_ID).getTemplateDI();
 			// updateTemplate(templateDi, modelFolder, project.getName());
 		}
-		String diagramFileName = project.getFullPath()
-				.addFileExtension(BundleConstants.UML_EXTENSION).lastSegment();
+		String diagramFileName = project.getFullPath().addFileExtension(BundleConstants.UML_EXTENSION)
+				.lastSegment();
 		IFile diagramFile = modelFolder.getFile(diagramFileName);
 		if (!diagramFile.exists()) {
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 			// Template templateDi =
 			// TemplatesManager.getInstance().find(BundleConstants.TEMPLATE_ID).getTemplateDI();
 			// updateTemplate(templateDi, modelFolder, project.getName());

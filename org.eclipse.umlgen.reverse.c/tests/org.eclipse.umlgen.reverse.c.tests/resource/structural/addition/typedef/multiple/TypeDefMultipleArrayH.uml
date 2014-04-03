@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Interface" xmi:id="_Q5nnwaw4Ed-5HrbSGJ9U9A" name="array">
-      <eAnnotations xmi:id="_Q5nnwqw4Ed-5HrbSGJ9U9A" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Q5nnwqw4Ed-5HrbSGJ9U9A" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Q5nnw6w4Ed-5HrbSGJ9U9A" key="H_FILENAME" value="/testTypeDefMultipleArrayH/array.h"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_Rk1usaw4Ed-5HrbSGJ9U9A" name="intarray">
-        <eAnnotations xmi:id="_Rk1utaw4Ed-5HrbSGJ9U9A" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_Rk1utaw4Ed-5HrbSGJ9U9A" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Rk1utqw4Ed-5HrbSGJ9U9A" key="H_FILENAME" value="/testTypeDefMultipleArrayH/array.h"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_Rk1usqw4Ed-5HrbSGJ9U9A" name="size" type="_Rk1usKw4Ed-5HrbSGJ9U9A"/>
@@ -18,7 +18,7 @@
         </ownedAttribute>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_RlbkkKw4Ed-5HrbSGJ9U9A" name="intarray2">
-        <eAnnotations xmi:id="_RlbklKw4Ed-5HrbSGJ9U9A" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_RlbklKw4Ed-5HrbSGJ9U9A" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Rlbklaw4Ed-5HrbSGJ9U9A" key="H_FILENAME" value="/testTypeDefMultipleArrayH/array.h"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_Rlbkkaw4Ed-5HrbSGJ9U9A" name="size" type="_Rk1usKw4Ed-5HrbSGJ9U9A"/>

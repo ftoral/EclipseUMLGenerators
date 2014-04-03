@@ -6,7 +6,7 @@
       <body>printf(&quot;A&quot;);&#xA;// Before 1&#xA;int i = 10;</body>
     </node>
     <node xmi:type="uml:DecisionNode" xmi:id="_T1PtUn-REd-6c9ayJWK75w" name="if (/*inline 1*/ i &lt; 5)" outgoing="_T1PtW3-REd-6c9ayJWK75w _T1PtZH-REd-6c9ayJWK75w" incoming="_T1PtZ3-REd-6c9ayJWK75w">
-      <eAnnotations xmi:id="_T1PtU3-REd-6c9ayJWK75w" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_T1PtU3-REd-6c9ayJWK75w" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_T1PtVH-REd-6c9ayJWK75w" key="COMMENT_BEFORE" value="// Before 2"/>
         <details xmi:id="_T1PtVX-REd-6c9ayJWK75w" key="COMMENT_INLINE" value="/*inline 1*/"/>
       </eAnnotations>
@@ -23,7 +23,7 @@
     <node xmi:type="uml:InitialNode" xmi:id="_T1PtWX-REd-6c9ayJWK75w" outgoing="_T1PtbX-REd-6c9ayJWK75w"/>
     <node xmi:type="uml:ActivityFinalNode" xmi:id="_T1PtWn-REd-6c9ayJWK75w" incoming="_T1PtcH-REd-6c9ayJWK75w"/>
     <edge xmi:type="uml:ControlFlow" xmi:id="_T1PtW3-REd-6c9ayJWK75w" source="_T1PtUn-REd-6c9ayJWK75w" target="_T1PtV3-REd-6c9ayJWK75w">
-      <eAnnotations xmi:id="_T1PtXH-REd-6c9ayJWK75w" source="http://www.topcased.org/documentation">
+      <eAnnotations xmi:id="_T1PtXH-REd-6c9ayJWK75w" source="http://www.eclipse.org/umlgen/documentation">
         <details xmi:id="_T1PtXX-REd-6c9ayJWK75w" key="COMMENT_SAME_LINE" value="// Same line 1"/>
         <details xmi:id="_T1PtXn-REd-6c9ayJWK75w" key="COMMENT_LAST_LINE" value="// Last line of then clause"/>
       </eAnnotations>

@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_Qc77S6uTEd-OKYOerM7ncA" name="functionDefinitionBOTH" visibility="private">
-      <eAnnotations xmi:id="_Qc77TKuTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Qc77TKuTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Qc77TauTEd-OKYOerM7ncA" key="C_FILENAME" value="/testfunctionDefinitionBOTH/functionDefinitionBOTH.c"/>
       </eAnnotations>
       <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_RI5BgauTEd-OKYOerM7ncA" name="acquisitionStatusSL" visibility="private">
-        <eAnnotations xmi:id="_RI5BgquTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_RI5BgquTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_RI5Bg6uTEd-OKYOerM7ncA" key="C_FILENAME" value="/testfunctionDefinitionBOTH/functionDefinitionBOTH.c"/>
         </eAnnotations>
         <ownedParameter xmi:id="_RI5BhKuTEd-OKYOerM7ncA" name="Status" type="_RI5BgKuTEd-OKYOerM7ncA" direction="inout"/>
@@ -16,7 +16,7 @@
       </ownedBehavior>
     </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_RXMjQKuTEd-OKYOerM7ncA" name="functionDefinitionBOTH">
-      <eAnnotations xmi:id="_RXMjQauTEd-OKYOerM7ncA" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_RXMjQauTEd-OKYOerM7ncA" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_RXMjQquTEd-OKYOerM7ncA" key="H_FILENAME" value="/testfunctionDefinitionBOTH/functionDefinitionBOTH.h"/>
       </eAnnotations>
     </packagedElement>

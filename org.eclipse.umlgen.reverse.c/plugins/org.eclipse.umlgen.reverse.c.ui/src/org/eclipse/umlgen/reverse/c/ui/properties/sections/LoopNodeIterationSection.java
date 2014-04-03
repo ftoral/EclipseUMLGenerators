@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -24,17 +24,13 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
  * Section for adding an <i>Iteration</i> field to the edited {@link LoopNode}.<br>
- * 
  * Creation : 21 june 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("LoopNode.Iteration"); //$NON-NLS-1$
@@ -42,21 +38,20 @@ public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 
 	/**
 	 * Gets the {@link OpaqueAction} corresponding to the iteration.
-	 * 
-	 * @return the corresponding or null if the opaque action does not still
-	 *         exist.
+	 *
+	 * @return the corresponding or null if the opaque action does not still exist.
 	 */
 	@Override
 	public OpaqueAction getOpaqueAction() {
-		LoopNode loopNode = (LoopNode) getEObject();
+		LoopNode loopNode = (LoopNode)getEObject();
 		// Take the first one by default
-		OutputPin outputPin = !loopNode.getLoopVariables().isEmpty() ? loopNode
-				.getLoopVariables().get(0) : null;
+		OutputPin outputPin = !loopNode.getLoopVariables().isEmpty() ? loopNode.getLoopVariables().get(0)
+				: null;
 
-		if (outputPin != null && outputPin.eContainer() instanceof OpaqueAction) {
-			return (OpaqueAction) outputPin.eContainer();
-		}
-		return null;
+				if (outputPin != null && outputPin.eContainer() instanceof OpaqueAction) {
+					return (OpaqueAction)outputPin.eContainer();
+				}
+				return null;
 	}
 
 	/**
@@ -75,7 +70,7 @@ public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 		LiteralNull literalNull = UMLFactory.eINSTANCE.createLiteralNull();
 		pin.setUpperBound(literalNull);
 
-		LoopNode loop = (LoopNode) getEObject();
+		LoopNode loop = (LoopNode)getEObject();
 		loop.getLoopVariables().add(pin);
 
 		return opaqueAction;
@@ -83,7 +78,7 @@ public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 
 	/**
 	 * Removes an {@link OpaqueAction} into the current {@link LoopNode}.
-	 * 
+	 *
 	 * @param newObj
 	 *            The new object to add to the model
 	 */
@@ -95,9 +90,6 @@ public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#handleModelChanged(org.eclipse.emf.common.notify.Notification)
-	 */
 	@Override
 	protected void handleModelChanged(Notification msg) {
 		if (msg.getEventType() == LoopNodeKindSection.UI_CHANGE_KIND) {
@@ -105,8 +97,7 @@ public class LoopNodeIterationSection extends AbstractLoopNodeSection {
 				removeOpaqueExpression(getOpaqueAction());
 			}
 			refresh();
-			getButton().setEnabled(
-					msg.getNewStringValue().equals(LoopNodeKindSection.FOR));
+			getButton().setEnabled(msg.getNewStringValue().equals(LoopNodeKindSection.FOR));
 		}
 	}
 

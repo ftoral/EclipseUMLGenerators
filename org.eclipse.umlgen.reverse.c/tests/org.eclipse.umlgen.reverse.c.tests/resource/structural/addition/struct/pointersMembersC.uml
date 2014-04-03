@@ -2,17 +2,17 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_40Bpxo9MEd-oLb5vzpYSNg" name="pointersMembers" visibility="private">
-      <eAnnotations xmi:id="_40Bpx49MEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_40Bpx49MEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_40BpyI9MEd-oLb5vzpYSNg" key="C_FILENAME" value="/testpointersMembersC/pointersMembers.c"/>
       </eAnnotations>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_5Wv78I9MEd-oLb5vzpYSNg" name="mystruct1" visibility="private">
-        <eAnnotations xmi:id="_5Wv78Y9MEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_5Wv78Y9MEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_5Wv78o9MEd-oLb5vzpYSNg" key="C_FILENAME" value="/testpointersMembersC/pointersMembers.c"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_5Wv79I9MEd-oLb5vzpYSNg" name="c" type="_5Wv7849MEd-oLb5vzpYSNg"/>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:DataType" xmi:id="_5Xfi0I9MEd-oLb5vzpYSNg" name="mystruct2" visibility="private">
-        <eAnnotations xmi:id="_5Xfi0Y9MEd-oLb5vzpYSNg" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_5Xfi0Y9MEd-oLb5vzpYSNg" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_5Xfi0o9MEd-oLb5vzpYSNg" key="C_FILENAME" value="/testpointersMembersC/pointersMembers.c"/>
         </eAnnotations>
         <ownedAttribute xmi:id="_5Xfi1I9MEd-oLb5vzpYSNg" name="*a" type="_5Xfi049MEd-oLb5vzpYSNg"/>

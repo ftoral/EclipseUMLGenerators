@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_lV3mm4-HEd-fU_NG7C7fkQ" name="namedWithArrayVarDeclAndInit" visibility="private">
-      <eAnnotations xmi:id="_lV3mnI-HEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_lV3mnI-HEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_lV3mnY-HEd-fU_NG7C7fkQ" key="C_FILENAME" value="/testnamedWithArrayVarDeclAndInitC/namedWithArrayVarDeclAndInit.c"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_l__g0I-HEd-fU_NG7C7fkQ" name="color_var1" visibility="private" type="_l_ZD4I-HEd-fU_NG7C7fkQ">
-        <eAnnotations xmi:id="_l__g0Y-HEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_l__g0Y-HEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_l__g0o-HEd-fU_NG7C7fkQ" key="C_FILE_POSITION_DECLARATION" value="40"/>
           <details xmi:id="_l__g04-HEd-fU_NG7C7fkQ" key="C_FILENAME" value="/testnamedWithArrayVarDeclAndInitC/namedWithArrayVarDeclAndInit.c"/>
         </eAnnotations>
@@ -28,7 +28,7 @@
         </qualifier>
       </ownedAttribute>
       <ownedAttribute xmi:id="_mASbwI-HEd-fU_NG7C7fkQ" name="color_var2" visibility="private" type="_l_ZD4I-HEd-fU_NG7C7fkQ">
-        <eAnnotations xmi:id="_mASbwY-HEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_mASbwY-HEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_mASbwo-HEd-fU_NG7C7fkQ" key="C_FILE_POSITION_DECLARATION" value="70"/>
           <details xmi:id="_mASbw4-HEd-fU_NG7C7fkQ" key="C_FILENAME" value="/testnamedWithArrayVarDeclAndInitC/namedWithArrayVarDeclAndInit.c"/>
         </eAnnotations>
@@ -50,7 +50,7 @@
         </qualifier>
       </ownedAttribute>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_l_ZD4I-HEd-fU_NG7C7fkQ" name="colors" visibility="private">
-        <eAnnotations xmi:id="_l_i04I-HEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_l_i04I-HEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_l_i04Y-HEd-fU_NG7C7fkQ" key="C_FILENAME" value="/testnamedWithArrayVarDeclAndInitC/namedWithArrayVarDeclAndInit.c"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_l_i04o-HEd-fU_NG7C7fkQ" name="red"/>

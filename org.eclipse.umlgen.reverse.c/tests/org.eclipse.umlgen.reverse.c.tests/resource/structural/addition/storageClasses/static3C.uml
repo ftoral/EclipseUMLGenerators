@@ -2,11 +2,11 @@
 <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4UHtsIBoEduoHLDxP0HEYA" name="Logical View">
   <packagedElement xmi:type="uml:Package" xmi:id="_LLvlME0uEd-ONPwW9OyryA" name="Source Artefacts">
     <packagedElement xmi:type="uml:Class" xmi:id="_Lz6Z24-IEd-fU_NG7C7fkQ" name="static3" visibility="private">
-      <eAnnotations xmi:id="_Lz6Z3I-IEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+      <eAnnotations xmi:id="_Lz6Z3I-IEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
         <details xmi:id="_Lz6Z3Y-IEd-fU_NG7C7fkQ" key="C_FILENAME" value="/teststatic3C/static3.c"/>
       </eAnnotations>
       <ownedAttribute xmi:id="_MfN_0I-IEd-fU_NG7C7fkQ" name="a" visibility="private" isStatic="true" type="_MeoJ8I-IEd-fU_NG7C7fkQ">
-        <eAnnotations xmi:id="_MfN_0Y-IEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_MfN_0Y-IEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_MfN_0o-IEd-fU_NG7C7fkQ" key="C_FILE_POSITION_DECLARATION" value="39"/>
           <details xmi:id="_MfN_04-IEd-fU_NG7C7fkQ" key="C_FILENAME" value="/teststatic3C/static3.c"/>
         </eAnnotations>
@@ -21,7 +21,7 @@
         </eAnnotations>
       </ownedAttribute>
       <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_MeoJ8I-IEd-fU_NG7C7fkQ" name="x" visibility="private">
-        <eAnnotations xmi:id="_Mex68I-IEd-fU_NG7C7fkQ" source="http://www.topcased.org/reverse">
+        <eAnnotations xmi:id="_Mex68I-IEd-fU_NG7C7fkQ" source="http://www.eclipse.org/umlgen/reverse/c">
           <details xmi:id="_Mex68Y-IEd-fU_NG7C7fkQ" key="C_FILENAME" value="/teststatic3C/static3.c"/>
         </eAnnotations>
         <ownedLiteral xmi:id="_Mex68o-IEd-fU_NG7C7fkQ" name="a"/>

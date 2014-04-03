@@ -36,19 +36,14 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class StandardLibrarySection extends AbstractBooleanPropertySection {
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getLabelText()
-	 */
+
 	@Override
 	protected String getLabelText() {
 		return "Is a standard library inclusion";
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return EcorePackage.eINSTANCE.getEAnnotation_Details();
@@ -67,10 +62,6 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 		return null;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#createCommand(java.lang.Object,
-	 *      java.lang.Object)
-	 */
 	@Override
 	protected void createCommand(Object oldValue, Object newValue) {
 		boolean equals = oldValue == null ? false : oldValue.equals(newValue);
@@ -125,9 +116,6 @@ public class StandardLibrarySection extends AbstractBooleanPropertySection {
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractBooleanPropertySection#getFeatureValue()
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean getFeatureValue() {

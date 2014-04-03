@@ -38,7 +38,7 @@ public final class DiagramUtil {
 		// undoable.
 		CompoundCommand cc = new CompoundCommand(Messages.getString("DiagramUtil.cmd.title")); //$NON-NLS-1$
 
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// for (GraphElement elt :
 		// Utils.getGraphElements(mngr.getDiagramsModel(), object))
 		// {

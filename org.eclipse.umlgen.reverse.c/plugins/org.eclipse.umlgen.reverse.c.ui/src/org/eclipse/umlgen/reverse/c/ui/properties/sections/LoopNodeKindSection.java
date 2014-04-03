@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -22,16 +22,13 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section for {@link LoopNode} kind that can be a <i>For</i>, a <i>While</i> or
- * a <i>Do while</i>.<br>
- * Changing one of these values impacts the structural feature 'isTestedFirst'
- * of the {@link LoopNode}<br>
- * 
+ * Section for {@link LoopNode} kind that can be a <i>For</i>, a <i>While</i> or a <i>Do while</i>.<br>
+ * Changing one of these values impacts the structural feature 'isTestedFirst' of the {@link LoopNode}<br>
  * Creation : 20 may 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class LoopNodeKindSection extends AbstractRadioButtonPropertySection {
 
 	public static final String FOR = "For"; //$NON-NLS-1$
@@ -43,23 +40,18 @@ public class LoopNodeKindSection extends AbstractRadioButtonPropertySection {
 	public static int UI_CHANGE_KIND = 12;
 
 	/**
-	 * This string stores the current value of the structure kind selected.
-	 * Default value is DO_WHILE
+	 * This string stores the current value of the structure kind selected. Default value is DO_WHILE
 	 */
 	private String selectedKind = DO_WHILE;
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractRadioButtonPropertySection#setInitialState()
-	 */
 	@Override
 	protected void setInitialState() {
 		Button toSelect = null;
-		LoopNode loop = (LoopNode) getEObject();
+		LoopNode loop = (LoopNode)getEObject();
 		if (!loop.isTestedFirst()) {
 			toSelect = getButton(DO_WHILE);
 		} else {
-			if (loop.getLoopVariables().isEmpty()
-					&& loop.getSetupParts().isEmpty()) {
+			if (loop.getLoopVariables().isEmpty() && loop.getSetupParts().isEmpty()) {
 				toSelect = getButton(WHILE);
 			} else {
 				toSelect = getButton(FOR);
@@ -72,56 +64,42 @@ public class LoopNodeKindSection extends AbstractRadioButtonPropertySection {
 			}
 
 			// send the fake notification to update other related UI
-			loop.eNotify(new ENotificationImpl((InternalEObject) loop,
-					UI_CHANGE_KIND, null, selectedKind, toSelect.getText()));
+			loop.eNotify(new ENotificationImpl((InternalEObject)loop, UI_CHANGE_KIND, null, selectedKind,
+					toSelect.getText()));
 			selectedKind = toSelect.getText();
 		}
 
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractRadioButtonPropertySection#getButtonLabels()
-	 */
 	@Override
 	public String[] getButtonLabels() {
-		return new String[] { FOR, WHILE, DO_WHILE };
+		return new String[] {FOR, WHILE, DO_WHILE };
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getFeature()
-	 */
 	@Override
 	protected EStructuralFeature getFeature() {
 		return UMLPackage.eINSTANCE.getLoopNode_IsTestedFirst();
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("LoopNode.Kind"); //$NON-NLS-1$
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractRadioButtonPropertySection#createSelectionListener()
-	 */
 	@Override
 	protected SelectionListener createSelectionListener() {
 		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (e.widget instanceof Button) {
-					Button btn = (Button) e.widget;
-					LoopNode node = (LoopNode) getEObject();
-					createCommand(
-							node.isTestedFirst(),
-							FOR.equals(btn.getText())
-									|| WHILE.equals(btn.getText()));
+					Button btn = (Button)e.widget;
+					LoopNode node = (LoopNode)getEObject();
+					createCommand(node.isTestedFirst(), FOR.equals(btn.getText())
+							|| WHILE.equals(btn.getText()));
 
 					// send the fake notification to update other related UI
-					node.eNotify(new ENotificationImpl((InternalEObject) node,
-							UI_CHANGE_KIND, null, selectedKind, btn.getText()));
+					node.eNotify(new ENotificationImpl((InternalEObject)node, UI_CHANGE_KIND, null,
+							selectedKind, btn.getText()));
 
 					selectedKind = btn.getText();
 				}

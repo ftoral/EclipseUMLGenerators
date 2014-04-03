@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *      Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.comments;
@@ -38,22 +38,15 @@ public class CommentBuilder {
 		}
 
 		if (commentInfo.hasBefore()) {
-			action.getBodies().set(
-					0,
-					commentInfo.getBefore() + BundleConstants.LINE_SEPARATOR
-							+ action.getBodies().get(0));
+			action.getBodies().set(0,
+					commentInfo.getBefore() + BundleConstants.LINE_SEPARATOR + action.getBodies().get(0));
 		}
 		if (commentInfo.hasSameLine()) {
-			action.getBodies()
-					.set(0,
-							action.getBodies().get(0) + " "
-									+ commentInfo.getSameLine());
+			action.getBodies().set(0, action.getBodies().get(0) + " " + commentInfo.getSameLine());
 		}
 		if (commentInfo.hasLastLine()) {
-			action.getBodies().set(
-					0,
-					action.getBodies().get(0) + BundleConstants.LINE_SEPARATOR
-							+ commentInfo.getLastLine());
+			action.getBodies().set(0,
+					action.getBodies().get(0) + BundleConstants.LINE_SEPARATOR + commentInfo.getLastLine());
 		}
 	}
 
@@ -67,7 +60,7 @@ public class CommentBuilder {
 
 	private EAnnotation createCommentAnnotation(CommentInfo commentInfo) {
 		return null;
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 		// EAnnotation ann =
 		// factory.createEAnnotation(IAnnotationConstants.DOCUMENTATION_SOURCE);
 		// if (commentInfo.hasBefore())

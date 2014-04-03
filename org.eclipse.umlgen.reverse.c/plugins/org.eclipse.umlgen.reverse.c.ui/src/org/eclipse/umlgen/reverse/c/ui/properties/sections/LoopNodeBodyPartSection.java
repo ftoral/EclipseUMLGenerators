@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
@@ -31,51 +31,39 @@ import org.eclipse.umlgen.reverse.c.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Section for creating or referencing a <i>'body part'</i> section to a
- * {@link LoopNode}.<br>
- * 
+ * Section for creating or referencing a <i>'body part'</i> section to a {@link LoopNode}.<br>
  * Creation : 21 june 2010<br>
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.tabbedproperties
+// FIXME MIGRATION reference to tabbedproperties
 public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 
-	/**
-	 * @see org.eclipse.umlgen.reverse.c.ui.properties.sections.AbstractLoopNodeSection#createCommand(java.lang.Object,
-	 *      java.lang.Object)
-	 */
 	@Override
 	protected void createCommand(Object oldValue, Object newValue) {
 		boolean equals = oldValue == null ? false : oldValue.equals(newValue);
 		if (!equals) {
 			EditingDomain editingDomain = getEditingDomain();
-			CompoundCommand cc = new CompoundCommand(
-					Messages.getString("AbstractLoopNodeSection.PropertyValueChange")); //$NON-NLS-1$
-			cc.appendIfCanExecute(SetCommand.create(editingDomain,
-					getOpaqueAction(), getFeature(),
+			CompoundCommand cc = new CompoundCommand(Messages
+					.getString("AbstractLoopNodeSection.PropertyValueChange")); //$NON-NLS-1$
+			cc.appendIfCanExecute(SetCommand.create(editingDomain, getOpaqueAction(), getFeature(),
 					Collections.singletonList(newValue)));
 
 			String formattedName = "";
 			if (newValue.toString().length() > 0) {
-				int length = Math.min(
-						BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH, newValue
-								.toString().length());
+				int length = Math.min(BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH, newValue.toString()
+						.length());
 				formattedName = newValue.toString().substring(0, length)
 						+ (newValue.toString().length() > BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH ? "..."
 								: "");
 			}
 
-			cc.appendIfCanExecute(SetCommand.create(editingDomain,
-					getOpaqueAction(),
-					UMLPackage.eINSTANCE.getNamedElement_Name(), formattedName));
+			cc.appendIfCanExecute(SetCommand.create(editingDomain, getOpaqueAction(), UMLPackage.eINSTANCE
+					.getNamedElement_Name(), formattedName));
 			editingDomain.getCommandStack().execute(cc);
 		}
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTabbedPropertySection#getLabelText()
-	 */
 	@Override
 	protected String getLabelText() {
 		return Messages.getString("LoopNode.BodyPart"); //$NON-NLS-1$
@@ -91,8 +79,7 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 		ControlFlow controlFlow = createControlFlow(body, finalNode);
 		// use a compound command to manage creation of OpaqueAction,
 		// ControlFlow and FlowFinalFlow
-		CompoundCommand cc = new CompoundCommand(
-				Messages.getString("AbstractLoopNodeSection.CmdTitle")); //$NON-NLS-1$
+		CompoundCommand cc = new CompoundCommand(Messages.getString("AbstractLoopNodeSection.CmdTitle")); //$NON-NLS-1$
 		addOpaqueAction(body, cc);
 		addFlowFinalNode(finalNode, cc);
 		addControlFlow(controlFlow, cc);
@@ -104,15 +91,14 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 	 */
 	@Override
 	protected OpaqueAction getOpaqueAction() {
-		LoopNode loopNode = (LoopNode) getEObject();
+		LoopNode loopNode = (LoopNode)getEObject();
 		// Take the first one by default
-		ExecutableNode node = !loopNode.getBodyParts().isEmpty() ? loopNode
-				.getBodyParts().get(0) : null;
+		ExecutableNode node = !loopNode.getBodyParts().isEmpty() ? loopNode.getBodyParts().get(0) : null;
 
-		if (node instanceof OpaqueAction) {
-			return (OpaqueAction) node;
-		}
-		return null;
+				if (node instanceof OpaqueAction) {
+					return (OpaqueAction)node;
+				}
+				return null;
 	}
 
 	/**
@@ -129,7 +115,7 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 
 	/**
 	 * Creates a new flow final node named "continue".
-	 * 
+	 *
 	 * @return The newly flow final node.
 	 */
 	protected FlowFinalNode createNewFlowFinalNode() {
@@ -140,21 +126,19 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 
 	/**
 	 * Creates the {@link ControlFlow} between two {@link ActivityNode}s.
-	 * 
+	 *
 	 * @param source
 	 *            The source activity node.
 	 * @param target
 	 *            The target activity node.
 	 * @return The newly control flow.
 	 */
-	protected ControlFlow createControlFlow(ActivityNode source,
-			ActivityNode target) {
+	protected ControlFlow createControlFlow(ActivityNode source, ActivityNode target) {
 		ControlFlow flow = UMLFactory.eINSTANCE.createControlFlow();
 		flow.setSource(source);
 		flow.setTarget(target);
 
-		LiteralBoolean literalBool = UMLFactory.eINSTANCE
-				.createLiteralBoolean();
+		LiteralBoolean literalBool = UMLFactory.eINSTANCE.createLiteralBoolean();
 		literalBool.setValue(true);
 		flow.setGuard(literalBool);
 
@@ -172,39 +156,34 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 	@Override
 	protected void addOpaqueAction(OpaqueAction newObj, CompoundCommand cc) {
 		super.addOpaqueAction(newObj, cc);
-		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(),
-				getEObject(), UMLPackage.eINSTANCE.getLoopNode_BodyPart(),
-				Collections.singletonList(newObj)));
+		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(), getEObject(), UMLPackage.eINSTANCE
+				.getLoopNode_BodyPart(), Collections.singletonList(newObj)));
 	}
 
 	/**
 	 * Adds a {@link FlowFinalNode} into the current {@link LoopNode}.
-	 * 
+	 *
 	 * @param newObj
 	 *            The new object to add to the model
 	 * @param cc
-	 *            The compound command in which all the commands of this
-	 *            assistant must be stored.
+	 *            The compound command in which all the commands of this assistant must be stored.
 	 */
 	protected void addFlowFinalNode(FlowFinalNode newObj, CompoundCommand cc) {
-		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(),
-				getEObject(),
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Node(), newObj));
+		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(), getEObject(), UMLPackage.eINSTANCE
+				.getStructuredActivityNode_Node(), newObj));
 	}
 
 	/**
 	 * Adds a {@link ControlFlow} into the current {@link LoopNode}.
-	 * 
+	 *
 	 * @param newObj
 	 *            The new object to add to the model.
 	 * @param cc
-	 *            The compound command in which all the commands of this
-	 *            assistant must be stored.
+	 *            The compound command in which all the commands of this assistant must be stored.
 	 */
 	protected void addControlFlow(ControlFlow newObj, CompoundCommand cc) {
-		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(),
-				getEObject(),
-				UMLPackage.eINSTANCE.getStructuredActivityNode_Edge(), newObj));
+		cc.appendIfCanExecute(AddCommand.create(getEditingDomain(), getEObject(), UMLPackage.eINSTANCE
+				.getStructuredActivityNode_Edge(), newObj));
 	}
 
 	/**
@@ -215,9 +194,6 @@ public class LoopNodeBodyPartSection extends AbstractLoopNodeSection {
 		return true;
 	}
 
-	/**
-	 * @see org.topcased.tabbedproperties.sections.AbstractTextPropertySection#getStyle()
-	 */
 	@Override
 	protected int getStyle() {
 		return SWT.MULTI;

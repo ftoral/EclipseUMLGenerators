@@ -48,7 +48,6 @@
                </entry>
              </entries>
 			<jars>
-               <jar>p2.eclipse-plugin:org.obeonetwork.pim.uml2.gen.java</jar>
                <jar>org.eclipse.umlgen.gen.autojava:org.eclipse.umlgen.gen.autojava.autojava.generator</jar>
              </jars>
            </acceleoProject>
