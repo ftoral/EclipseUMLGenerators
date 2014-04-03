@@ -19,11 +19,11 @@ import org.eclipse.acceleo.engine.service.properties.BundleAcceleoPropertiesLoad
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.umlgen.gen.autojava.Activator;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.packageadmin.PackageAdmin;
-import org.eclipse.umlgen.gen.autojava.Activator;
 
 public class ObeoNetworkBundlePropertiesLoaderService extends BundleAcceleoPropertiesLoaderService {
 	

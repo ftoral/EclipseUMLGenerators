@@ -10,11 +10,12 @@
  *******************************************************************************/
 package org.eclipse.umlgen.dsl.eth.impl;
 
+import static org.eclipse.umlgen.dsl.eth.EthPackage.CONTAINER;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.umlgen.dsl.asl.AslPackage;

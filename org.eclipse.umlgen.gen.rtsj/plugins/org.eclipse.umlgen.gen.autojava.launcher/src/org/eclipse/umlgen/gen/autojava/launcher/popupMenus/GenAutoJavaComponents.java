@@ -35,8 +35,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
-import org.eclipse.umlgen.gen.autojava.main.Uml2autojava;
 import org.eclipse.umlgen.gen.autojava.launcher.Activator;
+import org.eclipse.umlgen.gen.autojava.main.Uml2autojava;
 
 /**
  * UML to Autojava components code generation.
