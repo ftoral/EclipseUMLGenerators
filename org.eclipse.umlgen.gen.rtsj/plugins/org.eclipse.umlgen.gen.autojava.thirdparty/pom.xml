@@ -16,17 +16,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.eclipse.umlgen.gen.autojava</groupId>
-    <artifactId>org.eclipse.umlgen.gen.autojava.parent</artifactId>
-    <version>2.1.6.qualifier</version>
-    <relativePath>../org.eclipse.umlgen.gen.autojava.parent</relativePath>
+    <groupId>org.eclipse.umlgen</groupId>
+    <artifactId>org.eclipse.umlgen.parent</artifactId>
+    <version>0.9.0.qualifier</version>
+    <relativePath>../../../releng/org.eclipse.umlgen.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.umlgen.gen.autojava.thirdparty</artifactId>
-  <version>2.1.6.qualifier</version>
+  <version>0.9.0.qualifier</version>
   <packaging>eclipse-plugin</packaging>
 
-  <name>Third Party</name>
+  <name>Eclipse UML2 to Component Autojava Third Party</name>
 
   <!-- workaround for https://issues.sonatype.org/browse/TYCHO-168 -->
   <build>

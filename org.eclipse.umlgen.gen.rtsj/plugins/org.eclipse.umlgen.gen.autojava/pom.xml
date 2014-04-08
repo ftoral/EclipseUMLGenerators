@@ -10,56 +10,58 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
  <modelVersion>4.0.0</modelVersion>
+  
   <parent>
-    <groupId>org.eclipse.umlgen.gen.autojava</groupId>
-    <artifactId>org.eclipse.umlgen.gen.autojava.parent</artifactId>
-    <version>2.1.6.qualifier</version>
-    <relativePath>../org.eclipse.umlgen.gen.autojava.parent</relativePath>
+    <groupId>org.eclipse.umlgen</groupId>
+    <artifactId>org.eclipse.umlgen.parent</artifactId>
+    <version>0.9.0.qualifier</version>
+    <relativePath>../../../releng/org.eclipse.umlgen.parent</relativePath>
   </parent>
   
  <artifactId>org.eclipse.umlgen.gen.autojava</artifactId>
- <version>2.1.6-SNAPSHOT</version>
+ <version>0.9.0.qualifier</version> <!-- This version should match the version of your project in the MANIFEST.MF-->
  <packaging>eclipse-plugin</packaging>
- <name>Autojava Component Generator</name>
+ 
+ <name>Eclipse UML2 to Autojava Component Generator</name>
+ 
+ <pluginRepositories>
+    <pluginRepository>
+      <id>Eclipse - Acceleo Snapshots</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-snapshots</url>
+    </pluginRepository>
+	<pluginRepository>
+      <id>Eclipse - Acceleo Release</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+    </pluginRepository>
+  </pluginRepositories>
    
  <build>
-     <plugins>
-       <plugin>
-         <groupId>org.eclipse.acceleo</groupId>
-         <artifactId>maven</artifactId>
-         <version>3.2.1</version>
-         <executions>
-           <execution>
-             <phase>compile</phase>
-             <goals>
-                <goal>acceleo-compile</goal>
-              </goals>
-           </execution>
-         </executions>
-         <configuration>
-           <useBinaryResources>false</useBinaryResources>
-           <usePlatformResourcePath>true</usePlatformResourcePath>
-           <acceleoProject>
-             <root>${project.basedir}</root>
-             <entries>
-               <entry>
-                 <input>src</input>
-                 <output>target/classes</output>
-               </entry>
-             </entries>
-			<jars>
-               <jar>org.eclipse.umlgen.gen.autojava:org.eclipse.umlgen.gen.autojava.autojava.generator</jar>
-             </jars>
-           </acceleoProject>
-           <packagesToRegister>
-           		<packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
-             	<packageToRegister>org.eclipse.uml2.uml.UMLPackage</packageToRegister>
-             	<packageToRegister>org.eclipse.umlgen.dsl.asl.AslPackage</packageToRegister>
-             	<packageToRegister>org.eclipse.umlgen.dsl.eth.EthPackage</packageToRegister>
-           </packagesToRegister>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.acceleo</groupId>
+        <artifactId>org.eclipse.acceleo.maven</artifactId>
+        <version>3.5.0-SNAPSHOT</version>
+        <configuration>
+		  <failOnError>true</failOnError>
+          <useBinaryResources>false</useBinaryResources>
+          <usePlatformResourcePath>true</usePlatformResourcePath>
+          <acceleoProject>
+            <root>${project.basedir}</root>
+            <entries>
+              <entry>
+                <input>src</input>
+                <output>target/classes</output>
+              </entry>
+            </entries>
+          </acceleoProject>
+          <packagesToRegister>
+		    <packageToRegister>org.eclipse.uml2.uml.UMLPackage</packageToRegister>
+			<packageToRegister>org.eclipse.umlgen.dsl.asl.AslPackage</packageToRegister>
+		    <packageToRegister>org.eclipse.umlgen.dsl.eth.EthPackage</packageToRegister>
+          </packagesToRegister>
           <uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
-          </configuration>
-       </plugin>
-     </plugins>
-   </build>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
