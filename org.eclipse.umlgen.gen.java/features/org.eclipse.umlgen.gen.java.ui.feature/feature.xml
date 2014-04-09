@@ -7,7 +7,7 @@
   http://www.eclipse.org/legal/epl-v10.html
 
   Contributors:
-       Obeo - Migration to Eclipse
+       Obeo - Intial API and implementation
 -->
 <feature
       id="org.eclipse.umlgen.gen.java.ui.feature"
