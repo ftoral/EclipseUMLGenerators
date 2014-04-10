@@ -17,10 +17,6 @@
             commandId="org.eclipse.umlgen.reverse.c.ui.reverseCode"
             icon="icons/reverse_code.gif">
       </image>
-      <image
-            commandId="org.eclipse.umlgen.reverse.c.ui.generateCode"
-            icon="icons/generate_code.gif">
-      </image>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -58,10 +54,6 @@
                </test>
             </iterate>
          </activeWhen>
-      </handler>
-      <handler
-            class="org.eclipse.umlgen.reverse.c.ui.internal.handler.GenerateCCodeFromUML"
-            commandId="org.eclipse.umlgen.reverse.c.ui.generateCode">
       </handler>
       <handler
             class="org.eclipse.umlgen.reverse.c.ui.internal.handler.GenerateActivityDiagrams"
@@ -274,33 +266,7 @@
          </command>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.propertyPages">
-      <!-- FIXME MIGRATION reference to facilities -->   
-      <page
-            category="PreferencePage"
-            class="org.eclipse.umlgen.reverse.c.ui.properties.C2UMLPropertyPage"
-            id="org.eclipse.umlgen.reverse.c.BuilderPropertyPage"
-            name="C to UML">
-         <filter
-               name="open"
-               value="true">
-         </filter>
-         <enabledWhen>
-            <and>
-               <instanceof
-                     value="org.eclipse.core.resources.IProject">
-               </instanceof>
-               <test
-                     forcePluginActivation="true"
-                     property="org.eclipse.core.resources.projectNature"
-                     value="org.eclipse.umlgen.reverse.c.syncNature">
-               </test>
-            </and>
-         </enabledWhen>
-      </page>
-   </extension>
-<!-- FIXME MIGRATION reference to modeler -->   
+<!-- FIXME MIGRATION reference to org.topcased.modeler -->   
 <!--   <extension
          point="templates">
       <template
@@ -320,13 +286,6 @@
             namespace="org.eclipse.umlgen.reverse.c.ui"
             properties="hasNature"
             type="org.eclipse.jface.viewers.ISelection">
-      </propertyTester>
-      <propertyTester
-            class="org.eclipse.umlgen.reverse.c.ui.internal.tester.ObjectTypePropertyTester"
-            id="org.eclipse.umlgen.reverse.c.ui.objectTypePropertyTester"
-            namespace="org.eclipse.umlgen.reverse.c.ui"
-            properties="objectType"
-            type="org.eclipse.emf.ecore.EObject">
       </propertyTester>
    </extension>
    <extension

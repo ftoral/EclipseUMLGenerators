@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.ui.internal.tester;
+package org.eclipse.umlgen.gen.c.ui.internal.tester;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;

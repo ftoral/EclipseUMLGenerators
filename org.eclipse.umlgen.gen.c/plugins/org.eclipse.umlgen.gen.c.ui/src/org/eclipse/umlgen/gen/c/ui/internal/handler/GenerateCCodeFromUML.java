@@ -10,7 +10,7 @@
  *     Mikael Barbero (Obeo) 	- evolutions
  *     Sebastien Gabel (CS)     - evolutions
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.ui.internal.handler;
+package org.eclipse.umlgen.gen.c.ui.internal.handler;
 
 import java.io.IOException;
 import java.util.Collections;
