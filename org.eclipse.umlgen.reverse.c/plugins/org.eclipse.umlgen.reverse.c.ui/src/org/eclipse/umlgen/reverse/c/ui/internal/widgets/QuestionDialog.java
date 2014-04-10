@@ -14,7 +14,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

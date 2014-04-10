@@ -19,16 +19,16 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.AnnotationUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.util.AnnotationUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 
 public class VariableDeclarationAdded extends VariableDeclarationEvent {
 
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

@@ -38,8 +38,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.resource.PreferenceStoreManager;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.PreferenceStoreManager;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

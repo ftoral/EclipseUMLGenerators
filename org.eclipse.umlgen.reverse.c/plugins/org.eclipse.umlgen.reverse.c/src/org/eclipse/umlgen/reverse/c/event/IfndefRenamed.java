@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
 
 /**
  * Event related to a renaming of an Ifndef declaration.
@@ -19,7 +19,7 @@ import org.eclipse.umlgen.reverse.c.resource.ModelManager;
  */
 public class IfndefRenamed extends IfndefEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.uml.LoopNode;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

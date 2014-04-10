@@ -18,11 +18,11 @@ import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.model.IFunction;
 import org.eclipse.cdt.core.model.IStructure;
 import org.eclipse.cdt.core.model.ITranslationUnit;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.IfndefAdded;
 import org.eclipse.umlgen.reverse.c.event.IfndefRemoved;
 import org.eclipse.umlgen.reverse.c.event.StructAdded;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 
 /**
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>

@@ -17,10 +17,10 @@ import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 
 /**
  * Event related to an addition of a macro.

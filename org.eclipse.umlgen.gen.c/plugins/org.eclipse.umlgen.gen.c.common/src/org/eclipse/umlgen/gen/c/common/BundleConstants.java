@@ -11,7 +11,7 @@
  *     Sebastien GABEL (CS) - evolutions
  *     Stephane Thibaudeau (Obeo) - evolutions
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c;
+package org.eclipse.umlgen.gen.c.common;
 
 import org.eclipse.uml2.uml.OpaqueAction;
 

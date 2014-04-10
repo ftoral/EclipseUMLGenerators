@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.util;
+package org.eclipse.umlgen.gen.c.common.util;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -47,8 +47,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
 
 public final class ModelUtil {
 	public static Set<String> primitiveTypes = new HashSet<String>(
@@ -603,84 +602,85 @@ public final class ModelUtil {
 	 */
 	public static void deleteAllVisibleObjects(Classifier startingPoint,
 			VisibilityKind visibility, ModelManager manager) {
-		EList<Element> elementsToDestroy = new BasicEList<Element>();
-		// retrieve first all the associations the element is the source
-		for (DirectedRelationship link : startingPoint
-				.getSourceDirectedRelationships()) {
-			if (((NamedElement) link).getVisibility().equals(visibility)) {
-				for (Element target : link.getTargets()) {
-					if (target.getTargetDirectedRelationships().size() == 1) {
-						if (target.getTargetDirectedRelationships().size() > 0) {
-							DirectedRelationship relation = target
-									.getTargetDirectedRelationships().get(0);
-							if (relation.getSources().size() > 0) {
-								if (relation.getSources().get(0)
-										.equals(startingPoint)) {
-									DiagramUtil.removeGraphicalRepresentation(
-											target, manager);
-									if (!startingPoint.equals(target)) {
-										// Avoid Circular reference
-										elementsToDestroy.add(target);
-									}
-								}
-							}
-						}
-					}
-				}
-				DiagramUtil.removeGraphicalRepresentation(link, manager);
-				link.destroy();
-			}
-		}
-
-		if (startingPoint instanceof Class) {
-			for (Behavior function : ((Class) startingPoint)
-					.getOwnedBehaviors()) {
-				if (function instanceof OpaqueBehavior) {
-					for (Parameter parameter : function.getOwnedParameters()) {
-						elementsToDestroy.add(parameter);
-					}
-				}
-			}
-		}
-		if (startingPoint instanceof Class
-				|| startingPoint instanceof Interface) {
-			for (Property property : startingPoint.getAttributes()) {
-				elementsToDestroy.add(property);
-			}
-			for (Operation operation : startingPoint.getOperations()) {
-				for (Parameter parameter : operation.getOwnedParameters()) {
-					elementsToDestroy.add(parameter);
-				}
-			}
-		}
-		int sizeList = elementsToDestroy.size();
-
-		for (int i = sizeList - 1; i > -1; i--) {
-			elementsToDestroy.get(i).destroy();
-		}
-
-		Package typesPackage = manager.getTypePackage();
-		EList<Element> types = typesPackage.getOwnedElements();
-		int size = types.size();
-		for (int i = size - 1; i > -1; i--) {
-			if (types.get(i) instanceof Type) {
-				if (isNotReferencedAnymore(types.get(i))) {
-					types.get(i).destroy();
-				}
-			}
-		}
-
-		for (NamedElement elt : EcoreUtil.<NamedElement> getObjectsByType(
-				startingPoint.eContents(),
-				UMLPackage.eINSTANCE.getNamedElement())) {
-			if (elt.getVisibility().equals(visibility)) {
-				// remove graphically the element...
-				DiagramUtil.removeGraphicalRepresentation(elt, manager);
-
-				// ...then the model part.
-				elt.destroy();
-			}
-		}
+		// FIXME MIGRATION reference to org.topcased.modeler
+//		EList<Element> elementsToDestroy = new BasicEList<Element>();
+//		// retrieve first all the associations the element is the source
+//		for (DirectedRelationship link : startingPoint
+//				.getSourceDirectedRelationships()) {
+//			if (((NamedElement) link).getVisibility().equals(visibility)) {
+//				for (Element target : link.getTargets()) {
+//					if (target.getTargetDirectedRelationships().size() == 1) {
+//						if (target.getTargetDirectedRelationships().size() > 0) {
+//							DirectedRelationship relation = target
+//									.getTargetDirectedRelationships().get(0);
+//							if (relation.getSources().size() > 0) {
+//								if (relation.getSources().get(0)
+//										.equals(startingPoint)) {
+//									DiagramUtil.removeGraphicalRepresentation(
+//											target, manager);
+//									if (!startingPoint.equals(target)) {
+//										// Avoid Circular reference
+//										elementsToDestroy.add(target);
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//				DiagramUtil.removeGraphicalRepresentation(link, manager);
+//				link.destroy();
+//			}
+//		}
+//
+//		if (startingPoint instanceof Class) {
+//			for (Behavior function : ((Class) startingPoint)
+//					.getOwnedBehaviors()) {
+//				if (function instanceof OpaqueBehavior) {
+//					for (Parameter parameter : function.getOwnedParameters()) {
+//						elementsToDestroy.add(parameter);
+//					}
+//				}
+//			}
+//		}
+//		if (startingPoint instanceof Class
+//				|| startingPoint instanceof Interface) {
+//			for (Property property : startingPoint.getAttributes()) {
+//				elementsToDestroy.add(property);
+//			}
+//			for (Operation operation : startingPoint.getOperations()) {
+//				for (Parameter parameter : operation.getOwnedParameters()) {
+//					elementsToDestroy.add(parameter);
+//				}
+//			}
+//		}
+//		int sizeList = elementsToDestroy.size();
+//
+//		for (int i = sizeList - 1; i > -1; i--) {
+//			elementsToDestroy.get(i).destroy();
+//		}
+//
+//		Package typesPackage = manager.getTypePackage();
+//		EList<Element> types = typesPackage.getOwnedElements();
+//		int size = types.size();
+//		for (int i = size - 1; i > -1; i--) {
+//			if (types.get(i) instanceof Type) {
+//				if (isNotReferencedAnymore(types.get(i))) {
+//					types.get(i).destroy();
+//				}
+//			}
+//		}
+//
+//		for (NamedElement elt : EcoreUtil.<NamedElement> getObjectsByType(
+//				startingPoint.eContents(),
+//				UMLPackage.eINSTANCE.getNamedElement())) {
+//			if (elt.getVisibility().equals(visibility)) {
+//				// remove graphically the element...
+//				DiagramUtil.removeGraphicalRepresentation(elt, manager);
+//
+//				// ...then the model part.
+//				elt.destroy();
+//			}
+//		}
 	}
 
 	public static Interface findInterfaceFromPackage(Package packageRef,

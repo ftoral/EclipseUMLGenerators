@@ -12,8 +12,8 @@ package org.eclipse.umlgen.reverse.c.util;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 /**
  * Defines a set of static method for working on the diagram model.

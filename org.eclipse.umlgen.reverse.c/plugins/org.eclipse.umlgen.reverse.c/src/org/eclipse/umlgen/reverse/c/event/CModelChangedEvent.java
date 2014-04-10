@@ -13,7 +13,7 @@
 package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.cdt.core.model.ITranslationUnit;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
 
 /**
  * Represents the hightest event level. All instantiated events inherit this abstract class.

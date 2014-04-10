@@ -38,7 +38,9 @@ import org.eclipse.cdt.core.model.IVariable;
 import org.eclipse.cdt.core.model.IVariableDeclaration;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.EnumerationAdded;
 import org.eclipse.umlgen.reverse.c.event.EnumerationRemoved;
@@ -66,8 +68,6 @@ import org.eclipse.umlgen.reverse.c.event.VariableDeclarationRemoved;
 import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.util.ASTUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * The abstract reconciler having the shared behavior betwwen C and H units.<br>

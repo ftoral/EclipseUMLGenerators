@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.resource;
+package org.eclipse.umlgen.gen.c.common;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 
 /**
  * Manager to set default and current values into the corresponding preference
@@ -128,10 +126,10 @@ public final class PreferenceStoreManager {
 		IPersistentPreferenceStore store;
 		if (project != null) {
 			store = new ScopedPreferenceStore(new ProjectScope(project),
-					Activator.PLUGIN_ID);
+					Activator.getBundleId());
 		} else {
-			store = new ScopedPreferenceStore(new InstanceScope(),
-					Activator.PLUGIN_ID);
+			store = new ScopedPreferenceStore(InstanceScope.INSTANCE,
+					Activator.getBundleId());
 		}
 		return store;
 	}

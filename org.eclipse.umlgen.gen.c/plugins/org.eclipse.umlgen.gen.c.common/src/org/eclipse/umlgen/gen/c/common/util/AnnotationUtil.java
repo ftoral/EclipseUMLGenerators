@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien GABEL (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.util;
+package org.eclipse.umlgen.gen.c.common.util;
 
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.resources.IProject;
@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Usage;
-import org.eclipse.umlgen.reverse.c.AnnotationConstants;
+import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
 
 /**
  * Utility class helping to work with annotations and detail entries.<br>

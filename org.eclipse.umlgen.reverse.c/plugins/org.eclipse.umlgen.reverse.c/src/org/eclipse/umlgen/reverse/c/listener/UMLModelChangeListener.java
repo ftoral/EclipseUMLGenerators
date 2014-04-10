@@ -13,9 +13,9 @@
 package org.eclipse.umlgen.reverse.c.listener;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
 import org.eclipse.umlgen.reverse.c.StructuralBuilder;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 public class UMLModelChangeListener implements ICModelChangeListener {
 	/** The associated model manager **/

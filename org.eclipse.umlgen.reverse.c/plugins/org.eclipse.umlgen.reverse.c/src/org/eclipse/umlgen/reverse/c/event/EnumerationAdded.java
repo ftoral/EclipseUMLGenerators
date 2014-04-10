@@ -20,13 +20,13 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 
 public class EnumerationAdded extends EnumerationEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

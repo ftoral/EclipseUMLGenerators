@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.util;
+package org.eclipse.umlgen.gen.c.common.util;
 
 /**
  * 

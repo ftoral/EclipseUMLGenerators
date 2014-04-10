@@ -12,10 +12,10 @@ package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.util.DiagramUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to a deletion of a macro.

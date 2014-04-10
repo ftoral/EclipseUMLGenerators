@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.ui.ide.IDEEncoding;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.umlgen.reverse.c.AnnotationConstants;
+import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

@@ -15,9 +15,9 @@ package org.eclipse.umlgen.reverse.c.event;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 
 /**
  * Event related to changes performed on a function body.
@@ -27,7 +27,7 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil;
  */
 public class FunctionBodyChanged extends FunctionBodyEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

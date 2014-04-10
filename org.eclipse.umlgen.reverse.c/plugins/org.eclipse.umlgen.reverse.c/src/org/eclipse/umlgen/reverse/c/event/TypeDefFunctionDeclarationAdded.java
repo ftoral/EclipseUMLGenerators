@@ -24,11 +24,11 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * Event related to addition of a type definition for a function declaration.
@@ -38,7 +38,7 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
  */
 public class TypeDefFunctionDeclarationAdded extends TypeDefFunctionDeclarationEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

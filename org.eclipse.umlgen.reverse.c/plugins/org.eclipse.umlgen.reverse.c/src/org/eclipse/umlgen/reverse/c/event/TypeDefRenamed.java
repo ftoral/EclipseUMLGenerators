@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
 
 /**
  * Event related to addition of a type definition.
@@ -20,7 +20,7 @@ import org.eclipse.umlgen.reverse.c.resource.ModelManager;
  */
 public class TypeDefRenamed extends TypeDefEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

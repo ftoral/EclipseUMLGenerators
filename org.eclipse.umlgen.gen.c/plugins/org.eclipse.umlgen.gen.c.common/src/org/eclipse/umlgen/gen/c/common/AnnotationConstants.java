@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c;
+package org.eclipse.umlgen.gen.c.common;
 
 /**
  * Set of constants related to annotation management.<br>

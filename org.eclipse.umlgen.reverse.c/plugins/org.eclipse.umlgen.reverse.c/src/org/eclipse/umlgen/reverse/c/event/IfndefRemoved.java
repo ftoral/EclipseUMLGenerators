@@ -12,9 +12,9 @@ package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.umlgen.reverse.c.AnnotationConstants;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
+import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
 
 /**
  * Event related to a deletion of an Ifndef declaration.
@@ -24,7 +24,7 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 public class IfndefRemoved extends IfndefEvent {
 
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
