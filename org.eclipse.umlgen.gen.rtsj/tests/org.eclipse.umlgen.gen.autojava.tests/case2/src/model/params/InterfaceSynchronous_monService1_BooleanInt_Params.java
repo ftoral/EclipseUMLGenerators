@@ -5,8 +5,8 @@
  */
 package model.params;
 
-import fwk.ArgsBuffer;
-import fwk.ParameterSet;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ParameterSet;
 
 public class InterfaceSynchronous_monService1_BooleanInt_Params implements ParameterSet {
 	public int param1;

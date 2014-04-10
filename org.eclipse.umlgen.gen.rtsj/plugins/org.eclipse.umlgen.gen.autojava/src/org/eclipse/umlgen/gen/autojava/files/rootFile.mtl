@@ -23,7 +23,8 @@
 [template public genRootBody(aContainer : Container, aClass : Class)]
 [aContainer.genRootPackagePath().genPackageDeclaration()/]
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 [for (aProp : Property | minimize(aContainer.get('components'))->filter(Property))]
 import [aProp.genDecoratorPackagePath()/].[aProp.type.oclAsType(Class).genName()/];
 [/for]

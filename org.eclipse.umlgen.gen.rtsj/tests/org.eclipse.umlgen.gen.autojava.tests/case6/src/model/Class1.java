@@ -4,12 +4,13 @@
  * File generated from the  uml Class
  */
 package model;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.ArgsBuffer;
-import fwk.MBuffer;
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.MBuffer;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.eventdata.receiver.Class1_Port3_ReceiverEventData;
 import model.Interface2;
 import model.SharedData;

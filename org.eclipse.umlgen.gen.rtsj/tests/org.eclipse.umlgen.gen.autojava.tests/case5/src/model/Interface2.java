@@ -6,9 +6,9 @@
 package model;
 
 import A.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 
 /**
  * Description of the interface Interface2.

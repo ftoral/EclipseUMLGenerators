@@ -23,11 +23,11 @@
 [template public genFileBody(anOperation : BehavioralFeature)]
 [anOperation.genParamPackagePath().genPackageDeclaration()/]
 
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 [for (aType : Type | anOperation.getParams()->select(itT : TypedElement | itT.type <> null and not itT.type.isJavaPrimitive() and not itT.type.oclIsKindOf(Enumeration)).type)]
 import [aType.genPackagePath() + '.' + aType.genName()/];
 [/for]
-import fwk.ParameterSet;
+import org.eclipse.umlgen.rtsj.framework.ParameterSet;
 
 public class [anOperation.genClassParamsName()/] implements ParameterSet {
 [for (aParameter : TypedElement | anOperation.getParams())]

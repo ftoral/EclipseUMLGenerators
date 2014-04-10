@@ -23,7 +23,8 @@
 [template public genEventDataEmitterBody(anInterface : Interface, aPort : Port)]
 [aPort.genFilePath().genPackageDeclaration()/]
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import [anInterface.genPackagePath()/].[anInterface.name/];
 [for (aType : Type | minimize(get('ownedReception')->filter(Reception).get('ownedElement')->filter(TypedElement)->select(itT : TypedElement | not itT.type.isJavaPrimitive() and not itT.type.oclIsKindOf(Enumeration)).type)->filter(Type))]
 import [aType.genDecoratorPackagePath() + '.' + aType.genName()/];

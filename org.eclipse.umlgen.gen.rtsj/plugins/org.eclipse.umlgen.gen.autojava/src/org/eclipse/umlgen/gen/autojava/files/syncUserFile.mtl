@@ -22,7 +22,8 @@
 [template public genSyncUserFileBody(anInterface : Interface, aPort : Port)]
 [aPort.genFilePath().genPackageDeclaration()/]
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 [if (anInterface.getOperationsWithParameters()->notEmpty())]
 import [anInterface.getOperationsWithParameters()->first().eContainer(Type).genPackagePath()/].params.*;
 [/if]

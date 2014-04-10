@@ -24,7 +24,8 @@
 [template public genAsyncUserFileBody(anInterface : Interface, aPort : Port)]
 [aPort.genFilePath().genPackageDeclaration()/]
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import [anInterface.genPackagePath()/].[anInterface.name/];
 [if (anInterface.getReceptionsWithParameters()->notEmpty())]
 import [anInterface.genPackagePath()/].params.*;

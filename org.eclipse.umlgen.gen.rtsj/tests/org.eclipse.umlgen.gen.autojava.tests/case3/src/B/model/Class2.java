@@ -5,10 +5,11 @@
  */
 package B.model;
 import B.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import B.model.async.users.Class2_monPort2_UserAsync;
 import model.*;
 

@@ -24,8 +24,9 @@
 [aPort.genFilePath().genPackageDeclaration()/]
 
 import [anInterface.genPackagePath()/].[anInterface.name/];
-import fwk.*;
-import fwk.Async.PortProviderAsync;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
+import org.eclipse.umlgen.rtsj.framework.async.PortProviderAsync;
 [if (anInterface.getReceptionsWithParameters()->notEmpty())]
 import [anInterface.genPackagePath()/].params.*;
 [/if]

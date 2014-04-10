@@ -5,7 +5,8 @@
  */
 package model.sync.users;
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.params.*;
 import model.SharedData;
 import model.InterfaceSynchronous;

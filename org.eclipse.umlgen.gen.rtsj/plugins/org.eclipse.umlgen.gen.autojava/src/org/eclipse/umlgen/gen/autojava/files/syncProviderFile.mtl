@@ -24,8 +24,9 @@
 [aPort.genFilePath().genPackageDeclaration()/]
 
 import [anInterface.genPackagePath()/].[anInterface.name/];
-import fwk.*;
-import fwk.Sync.PortProviderSync;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
+import org.eclipse.umlgen.rtsj.framework.sync.PortProviderSync;
 [for (aType : Type | minimize(anInterface.getAllOperations().ownedParameter->select(aParam : uml::Parameter | aParam.direction = ParameterDirectionKind::return and aParam.type <> null and not aParam.type.isJavaPrimitive() and not aParam.type.oclIsKindOf(Enumeration)).type)->filter(Type))]
 import [aType.genPackagePath() + '.' + aType.genName()/];
 [/for]

@@ -23,7 +23,8 @@
 [aPort.genFilePath().genPackageDeclaration()/]
 
 import [anInterface.genPackagePath()/].[anInterface.name/];
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 [for (aType : Type | minimize(anInterface.getAllReceptions().get('ownedElement')->filter(Property)->select(aProp : Property | aProp.type <> null and not aProp.type.isJavaPrimitive() and not aProp.type.oclIsKindOf(Enumeration)).type)->filter(Type))]
 import [aType.genDecoratorPackagePath() + '.' +  aType.genName()/];
 [/for]

@@ -5,12 +5,13 @@
  */
 package C.model;
 import B.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.ArgsBuffer;
-import fwk.MBuffer;
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.MBuffer;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import C.model.async.providers.Class3_monPort1_ProviderAsync;
 import model.InterfaceAsynchronous;
 import model.SharedData;

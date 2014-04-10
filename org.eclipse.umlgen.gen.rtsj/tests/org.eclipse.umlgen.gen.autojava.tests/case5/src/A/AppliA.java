@@ -5,7 +5,8 @@
  */
 package A;
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import A.model.Class1;
 import A.model.communication.EthernetComClass1;
 

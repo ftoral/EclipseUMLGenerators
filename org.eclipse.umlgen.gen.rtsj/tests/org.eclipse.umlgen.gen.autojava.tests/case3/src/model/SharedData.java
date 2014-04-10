@@ -5,10 +5,11 @@
  */
 package model;
 import B.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.*;
 
 // Start of user code to add imports for SharedData

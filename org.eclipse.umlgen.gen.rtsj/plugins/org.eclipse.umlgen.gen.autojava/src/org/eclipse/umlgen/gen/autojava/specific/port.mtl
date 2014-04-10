@@ -96,12 +96,12 @@ public void [aSignal.genName()/]([aSignal.get('ownedAttribute')->filter(Property
 
 [comment generates imports for signals /]
 [template public genSignalImport(aClass : Class)]
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 [/template]
 
 [comment generates imports for buffer /]
 [template public genBufferImport(aClass : Class)]
-import fwk.MBuffer;
+import org.eclipse.umlgen.rtsj.framework.MBuffer;
 [/template]
 
 [comment generates static memory buffer attributes if needed /]

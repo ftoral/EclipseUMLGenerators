@@ -5,7 +5,8 @@
  */
 package model.async.users;
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.InterfaceAsynchronous;
 import model.params.*;
 import model.SharedData;

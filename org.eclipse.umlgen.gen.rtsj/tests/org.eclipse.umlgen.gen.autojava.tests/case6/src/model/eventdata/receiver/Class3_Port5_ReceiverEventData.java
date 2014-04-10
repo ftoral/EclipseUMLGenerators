@@ -6,7 +6,8 @@
 package model.eventdata.receiver;
 
 import model.Interface2;
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.SharedData;
 
 public class Class3_Port5_ReceiverEventData implements EventDataPort {

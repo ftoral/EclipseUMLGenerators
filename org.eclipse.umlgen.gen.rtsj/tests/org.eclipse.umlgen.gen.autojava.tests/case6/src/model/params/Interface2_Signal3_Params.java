@@ -5,8 +5,8 @@
  */
 package model.params;
 
-import fwk.ArgsBuffer;
-import fwk.ParameterSet;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ParameterSet;
 
 public class Interface2_Signal3_Params implements ParameterSet {
 	public int paramInteger;

@@ -5,7 +5,8 @@
  */
 package B.model.eventdata.emitter;
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.Interface2;
 import model.SharedData;
 

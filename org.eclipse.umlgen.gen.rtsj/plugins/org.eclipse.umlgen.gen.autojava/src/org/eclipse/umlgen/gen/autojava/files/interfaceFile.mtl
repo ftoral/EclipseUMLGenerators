@@ -26,7 +26,7 @@
 
 [comment Generate import of interface /]
 [anInterface.genImport()/]
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 
 [comment Generate comment of interface if exist /]
 [anInterface.genCommentBis()/]

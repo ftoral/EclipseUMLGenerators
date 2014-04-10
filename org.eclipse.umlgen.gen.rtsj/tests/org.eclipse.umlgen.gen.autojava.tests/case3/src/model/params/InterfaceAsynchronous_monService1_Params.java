@@ -5,8 +5,8 @@
  */
 package model.params;
 
-import fwk.ArgsBuffer;
-import fwk.ParameterSet;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ParameterSet;
 
 public class InterfaceAsynchronous_monService1_Params implements ParameterSet {
 	public int param1;

@@ -26,6 +26,6 @@ import [prop.genDecoratorPackagePath()/].*;
 	[/for]
 [/for]
 [if (getProperty('gen.annotations') = 'true')]
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 [/if]
 [/template]

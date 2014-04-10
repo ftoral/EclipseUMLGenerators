@@ -6,8 +6,9 @@
 package C.model.sync.providers;
 
 import model.InterfaceSynchronous;
-import fwk.*;
-import fwk.Sync.PortProviderSync;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
+import org.eclipse.umlgen.rtsj.framework.sync.PortProviderSync;
 import model.params.*;
 
 public class Class3_monPort1_ProviderSync implements PortProviderSync {

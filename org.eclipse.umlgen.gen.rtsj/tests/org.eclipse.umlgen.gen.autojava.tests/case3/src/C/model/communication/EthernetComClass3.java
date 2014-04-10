@@ -8,11 +8,11 @@ package C.model.communication;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.*;
-import fwk.CommunicationLayer;
-import fwk.Ethernet.ComProtocol;
-import fwk.Ethernet.ServerThread;
+import org.eclipse.umlgen.rtsj.framework.CommunicationLayer;
+import org.eclipse.umlgen.rtsj.framework.ethernet.ComProtocol;
+import org.eclipse.umlgen.rtsj.framework.ethernet.ServerThread;
 
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 
 public class EthernetComClass3 implements ComProtocol {
 

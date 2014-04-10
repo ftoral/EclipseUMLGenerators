@@ -5,10 +5,11 @@
  */
 package B.model;
 import B.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import model.*;
 import B.model.communication.EthernetComClass2;
 import C.model.communication.EthernetComClass3;

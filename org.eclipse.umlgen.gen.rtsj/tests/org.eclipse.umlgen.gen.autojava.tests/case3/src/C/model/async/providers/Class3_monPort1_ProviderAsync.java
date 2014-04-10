@@ -6,8 +6,9 @@
 package C.model.async.providers;
 
 import model.InterfaceAsynchronous;
-import fwk.*;
-import fwk.Async.PortProviderAsync;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
+import org.eclipse.umlgen.rtsj.framework.async.PortProviderAsync;
 import model.params.*;
 
 public class Class3_monPort1_ProviderAsync implements PortProviderAsync {

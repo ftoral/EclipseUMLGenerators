@@ -5,9 +5,9 @@
  */
 package model.params;
 
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 import model.SharedData;
-import fwk.ParameterSet;
+import org.eclipse.umlgen.rtsj.framework.ParameterSet;
 
 public class Interface2_Signal2_Params implements ParameterSet {
 	public SharedData param;

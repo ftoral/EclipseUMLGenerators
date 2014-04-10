@@ -5,10 +5,11 @@
  */
 package B.model;
 import A.model.*;
-import annotation.*;
+import org.eclipse.umlgen.rtsj.annotations.*;
 
 
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 import B.model.eventdata.emitter.Class2_Port4_EmitterEventData;
 import model.*;
 

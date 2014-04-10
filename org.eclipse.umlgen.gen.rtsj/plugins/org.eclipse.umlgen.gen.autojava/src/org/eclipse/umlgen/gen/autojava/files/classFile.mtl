@@ -44,7 +44,8 @@
 [if (aClass.needsBuffer())]
 [aClass.genBufferImport()/]
 [/if]
-import fwk.*;
+import org.eclipse.umlgen.rtsj.framework.*;
+import org.eclipse.umlgen.rtsj.framework.types.*;
 [for (port : Port | aClass.get('ownedPort')->filter(Port)->union(aClass.getParents()->select(c : Classifier | c.isAbstract).get('ownedPort')->filter(Port)))]
 	[for (interface : Interface | port.getAllPortInterfaces())]
 import [port.genFilePath()/].[interface.genClassPortName(port)/];
@@ -377,6 +378,6 @@ public void remove[aProperty.name.toUpperFirst()/]([aProperty.genTypeName()/] [a
 [comment generates message import /]
 [template protected genMessageImport(aClass : Class)]
 [if (isMessage())]
-import fwk.ArgsBuffer;
+import org.eclipse.umlgen.rtsj.framework.ArgsBuffer;
 [/if]
 [/template]
