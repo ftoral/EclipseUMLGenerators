@@ -42,7 +42,14 @@ public final class AnnotationUtil {
 	 * @return The new reverse annotation
 	 */
 	private static EAnnotation getReverseAnnotation(Element element) {
-		return UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
+		EAnnotation annot = UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
+		
+		// In order to maintain backward compatibilty with Topcased designed models, try get the EAnnotation with Topcased Source string.
+		if (annot.getContents().isEmpty()) {
+			annot = UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS_TOPCASED, true);
+		}
+		
+		return annot;
 	}
 
 	private static void removeDetailEntry(EAnnotation annotation, String entryKey) {
