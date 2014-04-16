@@ -14,7 +14,7 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 
 public class CommentInfo {
 	private static final int BEFORE = 0;

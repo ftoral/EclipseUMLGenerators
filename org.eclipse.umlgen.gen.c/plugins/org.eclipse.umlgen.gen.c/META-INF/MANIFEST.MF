@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.uml2.uml,
  org.eclipse.ocl.ecore,
  org.eclipse.acceleo.engine,
- org.eclipse.umlgen.gen.c.common
+ org.eclipse.umlgen.c.common
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

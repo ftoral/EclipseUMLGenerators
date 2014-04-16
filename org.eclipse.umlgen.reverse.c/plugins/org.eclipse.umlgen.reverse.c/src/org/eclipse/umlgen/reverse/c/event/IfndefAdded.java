@@ -11,9 +11,9 @@
 package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.umlgen.gen.c.common.util.AnnotationUtil;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
-import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.c.common.util.AnnotationUtil;
+import org.eclipse.umlgen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
 
 /**
  * Event related to an addition of an Ifndef declaration.
@@ -23,7 +23,7 @@ import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
 public class IfndefAdded extends IfndefEvent {
 
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

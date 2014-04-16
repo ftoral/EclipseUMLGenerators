@@ -24,5 +24,5 @@ Require-Bundle: org.eclipse.cdt.core,
  com.google.guava,
  org.eclipse.ui.workbench,
  org.eclipse.ui.ide,
- org.eclipse.umlgen.gen.c.common
+ org.eclipse.umlgen.c.common
 

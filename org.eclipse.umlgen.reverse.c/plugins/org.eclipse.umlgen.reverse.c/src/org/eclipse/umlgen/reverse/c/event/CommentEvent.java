@@ -15,8 +15,8 @@ package org.eclipse.umlgen.reverse.c.event;
 import org.eclipse.cdt.core.dom.ast.IASTComment;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
-import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
-import org.eclipse.umlgen.gen.c.common.util.CommentFormatter;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.c.common.util.CommentFormatter;
 
 public abstract class CommentEvent extends CModelChangedEvent {
 	private String body;

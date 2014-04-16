@@ -1,9 +1,9 @@
-package org.eclipse.umlgen.gen.c.common;
+package org.eclipse.umlgen.c.common;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.umlgen.gen.c.common.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.umlgen.c.common.messages"; //$NON-NLS-1$
 	public static String ModelManager_0;
 	static {
 		// initialize resource bundle

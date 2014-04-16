@@ -32,8 +32,8 @@ import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
-import org.eclipse.umlgen.gen.c.common.PreferenceStoreManager;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.PreferenceStoreManager;
 
 public class UML2Services {
 

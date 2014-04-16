@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.gen.c.common.util;
+package org.eclipse.umlgen.c.common.util;
 
 /**
  * 

@@ -26,7 +26,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
 

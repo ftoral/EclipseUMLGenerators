@@ -9,7 +9,7 @@
  *     Christophe Le Camus (CS-SI) - initial API and implementation
  *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
-package org.eclipse.umlgen.gen.c.common.util;
+package org.eclipse.umlgen.c.common.util;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,9 +41,9 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.util.UMLUtil;
-import org.eclipse.umlgen.gen.c.common.Activator;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
-import org.eclipse.umlgen.gen.c.common.PreferenceStoreManager;
+import org.eclipse.umlgen.c.common.Activator;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.PreferenceStoreManager;
 
 /**
  * The model manager is in charge of loading/unloading synchronized models when it is necessary.
@@ -199,7 +199,7 @@ public class ModelManager {
 			}
 		} catch (Exception e) {
 			IStatus status = null;
-			status = new Status(IStatus.ERROR, Activator.getBundleId(), IStatus.OK, org.eclipse.umlgen.gen.c.common.Messages.ModelManager_0 + e.getMessage(), e);
+			status = new Status(IStatus.ERROR, Activator.getBundleId(), IStatus.OK, org.eclipse.umlgen.c.common.Messages.ModelManager_0 + e.getMessage(), e);
 			Activator.getDefault().getLog().log(status); 
 		}
 	}

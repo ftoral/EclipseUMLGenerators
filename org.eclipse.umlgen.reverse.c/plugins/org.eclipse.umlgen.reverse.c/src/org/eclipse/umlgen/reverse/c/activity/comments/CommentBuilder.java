@@ -13,7 +13,7 @@ package org.eclipse.umlgen.reverse.c.activity.comments;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OpaqueAction;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.activity.beans.CommentInfo;
 import org.eclipse.umlgen.reverse.c.activity.util.UMLActivityFactory;
 

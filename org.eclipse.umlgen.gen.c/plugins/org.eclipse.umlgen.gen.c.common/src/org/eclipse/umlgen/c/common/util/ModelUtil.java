@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.gen.c.common.util;
+package org.eclipse.umlgen.c.common.util;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -47,7 +47,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 
 public final class ModelUtil {
 	public static Set<String> primitiveTypes = new HashSet<String>(

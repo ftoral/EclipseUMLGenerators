@@ -14,14 +14,14 @@ package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
-import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
-import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
+import org.eclipse.umlgen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.util.DiagramUtil;
 
 public class EnumerationRemoved extends EnumerationEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

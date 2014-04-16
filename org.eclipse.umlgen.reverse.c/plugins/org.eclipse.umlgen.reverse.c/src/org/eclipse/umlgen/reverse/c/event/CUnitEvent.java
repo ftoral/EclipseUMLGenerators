@@ -15,7 +15,7 @@ package org.eclipse.umlgen.reverse.c.event;
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 
 public abstract class CUnitEvent extends CModelChangedEvent {
 	private IPath previousName;

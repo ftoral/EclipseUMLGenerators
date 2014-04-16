@@ -23,10 +23,10 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
-import org.eclipse.umlgen.gen.c.common.util.ModelUtil;
-import org.eclipse.umlgen.gen.c.common.util.ModelUtil.EventType;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
 
 /**
@@ -35,7 +35,7 @@ import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
 public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

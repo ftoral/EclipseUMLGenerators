@@ -41,7 +41,7 @@ import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.CommentAdded;
 import org.eclipse.umlgen.reverse.c.event.CommentRemoved;

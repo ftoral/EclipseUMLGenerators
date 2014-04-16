@@ -8,7 +8,7 @@
  * Contributors:
  *     Fabien Toral (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.gen.c.common;
+package org.eclipse.umlgen.c.common;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

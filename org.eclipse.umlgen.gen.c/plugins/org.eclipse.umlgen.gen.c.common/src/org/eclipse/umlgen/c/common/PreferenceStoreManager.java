@@ -8,7 +8,7 @@
  * Contributors:
  *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.gen.c.common;
+package org.eclipse.umlgen.c.common;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;

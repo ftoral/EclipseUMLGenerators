@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 
 /**
  * Event related to renaming of a structure.
@@ -20,7 +20,7 @@ import org.eclipse.umlgen.gen.c.common.util.ModelManager;
  */
 public class TypeDefStructRenamed extends TypeDefStructEvent {
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.gen.c.common.util.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.event.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

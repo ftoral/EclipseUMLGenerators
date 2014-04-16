@@ -11,7 +11,7 @@
 package org.eclipse.umlgen.reverse.c.event;
 
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 
 /**
  * Event related to an addition of an array.

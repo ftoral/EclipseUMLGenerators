@@ -12,7 +12,7 @@ package org.eclipse.umlgen.reverse.c.util;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
 
 /**
