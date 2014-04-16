@@ -60,7 +60,7 @@ import org.eclipse.umlgen.gen.c.ui.internal.bundle.Messages;
  *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
-// FIXME MIGRATION reference to org.topcased.facilities
+// FIXME MIGRATION reference to facilities
 public class UML2CPropertyPage extends PreferencePage implements 
 IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 

@@ -266,7 +266,7 @@
          </command>
       </menuContribution>
    </extension>
-<!-- FIXME MIGRATION reference to org.topcased.modeler -->   
+<!-- FIXME MIGRATION reference to modeler -->   
 <!--   <extension
          point="templates">
       <template

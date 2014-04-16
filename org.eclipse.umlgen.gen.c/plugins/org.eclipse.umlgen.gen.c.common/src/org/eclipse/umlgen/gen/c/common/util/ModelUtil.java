@@ -602,7 +602,7 @@ public final class ModelUtil {
 	 */
 	public static void deleteAllVisibleObjects(Classifier startingPoint,
 			VisibilityKind visibility, ModelManager manager) {
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 //		EList<Element> elementsToDestroy = new BasicEList<Element>();
 //		// retrieve first all the associations the element is the source
 //		for (DirectedRelationship link : startingPoint

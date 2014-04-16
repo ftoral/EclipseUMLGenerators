@@ -56,12 +56,12 @@ public class ModelManager {
 
 	private Resource modelResource;
 
-// FIXME MIGRATION reference to org.topcased.modeler
+// FIXME MIGRATION reference to modeler
 //	private Resource diResource;
 
 	private EObject model;
 
-// FIXME MIGRATION reference to org.topcased.modeler
+// FIXME MIGRATION reference to modeler
 //	private EObject di;
 
 	private IPartListener editorPartListener;
@@ -152,7 +152,7 @@ public class ModelManager {
 		modelResource = rscSet.getResource(modelURI, true);
 		model = modelResource.getContents().get(0);
 
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 //		diResource = rscSet.getResource(diagramURI, true);
 //		di = diResource.getContents().get(0);
 	}
@@ -165,7 +165,7 @@ public class ModelManager {
 		typesPackage = null;
 		libsPackage = null;
 		model = null;
-		// FIXME MIGRATION reference to org.topcased.modeler
+		// FIXME MIGRATION reference to modeler
 //		di = null;
 
 		if (!loadedFromModeler) {
@@ -174,7 +174,7 @@ public class ModelManager {
 				modelResource.unload();
 				modelResource = null;
 			}
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 //			if (diResource != null) {
 //				diResource.unload();
 //				diResource = null;
@@ -190,7 +190,7 @@ public class ModelManager {
 		try {
 			options.put(XMLResource.OPTION_ENCODING,
 					project.getDefaultCharset(true));
-			// FIXME MIGRATION reference to org.topcased.modeler
+			// FIXME MIGRATION reference to modeler
 //			if (diResource != null) {
 //				diResource.save(options);
 //			}
@@ -254,7 +254,7 @@ public class ModelManager {
 	 * @return the diResource
 	 */
 	public Resource getDiResource() {
-	// FIXME MIGRATION reference to org.topcased.modeler
+	// FIXME MIGRATION reference to modeler
 	//	return diResource;
 		return null;
 	}

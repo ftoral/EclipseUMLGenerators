@@ -81,7 +81,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
-      <!-- FIXME MIGRATION reference to org.topcased.facilities -->   
+      <!-- FIXME MIGRATION reference to facilities -->   
       <page
             class="org.eclipse.umlgen.gen.c.ui.UML2CPropertyPage"
             id="org.eclipse.umlgen.gen.c.PropertyPage"
