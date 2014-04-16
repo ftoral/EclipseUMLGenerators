@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  * 
  * Contributors:
  * 	   Mikael BARBERO (Obeo) - initial API and implementation
- *     Christophe LE CAMUS (CS) - initial API and implementation
- *     Sebastien Gabel (CS) - initialize default values to preference store value.
+ *     Christophe LE CAMUS (CS-SI) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initialize default values to preference store value.
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.ui.internal.handler;
 

@@ -7,7 +7,7 @@
  * 
  * Contributors: 
  *      Obeo - initial API and implementation
- *      Communication & Systems
+ *      CS Systèmes d'Information (CS-SI)
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.internal.bundle;
 

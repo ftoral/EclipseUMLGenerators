@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * 	   Christophe LE CAMUS (CS) - initial API and implementation
- *     Sebastien Gabel (CS) - initial API and implementation
+ * 	   Christophe LE CAMUS (CS-SI) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *     Thierry NAULEAU (CS)
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;

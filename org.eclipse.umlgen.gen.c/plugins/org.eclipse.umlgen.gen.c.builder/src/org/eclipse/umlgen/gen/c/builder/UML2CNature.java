@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *      Mikael Barbero (Obeo) - initial API and implementation
- *      Sebastien GABEL (CS) - Bug fix on deconfigure project
+ *      Sebastien GABEL (CS-SI) - Bug fix on deconfigure project
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.builder;
 

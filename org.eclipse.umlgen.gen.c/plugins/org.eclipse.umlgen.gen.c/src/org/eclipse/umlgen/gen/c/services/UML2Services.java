@@ -7,7 +7,7 @@
  *
  * Contributors:
  *     Mikael BARBERO (Obeo) - initial API and implementation
- *     Sebastien GABEL (CS) - evolution
+ *     Sebastien GABEL (CS-SI) - evolution
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.services;
 

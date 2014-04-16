@@ -7,7 +7,7 @@
  * 
  * Contributors: 
  *      Obeo - initial API and implementation
- *      Communication & Systems - evolutions  
+ *      CS Systèmes d'Information (CS-SI) - evolutions  
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.reconciler;
 
