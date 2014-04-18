@@ -61,13 +61,12 @@ import org.eclipse.umlgen.gen.c.ui.internal.bundle.Messages;
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 // FIXME MIGRATION reference to facilities
-public class UML2CPropertyPage extends PreferencePage implements 
-IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
+public class UML2CPropertyPage extends PreferencePage implements IWorkbenchPreferencePage, IWorkbenchPropertyPage {
 
-    private IProject project;
-    
-	// FIXME MIGRATION 
-	//private RadioGroupFieldEditor syncModeEditor;
+	private IProject project;
+
+	// FIXME MIGRATION
+	// private RadioGroupFieldEditor syncModeEditor;
 
 	// FIXME MIGRATION reference to facilities
 	// private ResourceFieldEditor diagramPath;
@@ -76,15 +75,15 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 
 	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor srcPath;
-	 private StringFieldEditor srcPath;
+	private StringFieldEditor srcPath;
 
 	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor typePath;
-	 private StringFieldEditor typePath;
+	private StringFieldEditor typePath;
 
 	// FIXME MIGRATION reference to facilities
 	// private EObjectFieldEditor extPath;
-	 private StringFieldEditor extPath;
+	private StringFieldEditor extPath;
 
 	private ResourceSet rscSet;
 
@@ -110,7 +109,7 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 
 	@Override
 	public void setElement(IAdaptable element) {
-		project = (IProject) element.getAdapter(IResource.class);		
+		project = (IProject)element.getAdapter(IResource.class);
 		PreferenceStoreManager.setInitialValues(project);
 		PreferenceStoreManager.setDefaultValues(project);
 	}
@@ -123,8 +122,8 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 	/**
 	 * @see org.eclipse.jface.preference.PreferencePage#doGetPreferenceStore()
 	 */
-	protected IPreferenceStore doGetPreferenceStore() 
-	{
+	@Override
+	protected IPreferenceStore doGetPreferenceStore() {
 		return PreferenceStoreManager.getPreferenceStore(project);
 	}
 
@@ -141,10 +140,10 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 		layout.marginWidth = 0;
 		mainComposite.setLayout(layout);
 
-		// FIXME MIGRATION 
+		// FIXME MIGRATION
 		// create the top group related to define the synchronization mode when
 		// a new project has been started
-		//		createSyncModeGroup(mainComposite);
+		// createSyncModeGroup(mainComposite);
 
 		// create the second group related to model paths
 		createModelsGroup(mainComposite);
@@ -157,25 +156,25 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 		return mainComposite;
 	}
 
-// FIXME MIGRATION 
-//	/**
-//	 * Creates the first group on which synchronization policy is defined (from
-//	 * C source or from UML model).
-//	 * 
-//	 * @param parent
-//	 *            The composite parent
-//	 */
-//	private void createSyncModeGroup(Composite parent) {
-//		String[][] data = new String[2][2];
-//		data[0] = new String[] {
-//				Messages.getString("UML2CPropertyPage.4"), BundleConstants.SYNC_SOURCE_VALUE }; //$NON-NLS-1$
-//		data[1] = new String[] {
-//				Messages.getString("UML2CPropertyPage.5"), BundleConstants.SYNC_MODEL_VALUE }; //$NON-NLS-1$
-//		syncModeEditor = new RadioGroupFieldEditor(
-//				BundleConstants.SYNC_AT_STARTING,
-//				Messages.getString("UML2CPropertyPage.6"), 2, data, parent, true); //$NON-NLS-1$
-//		syncModeEditor.setPreferenceStore(getPreferenceStore());
-//	}
+	// FIXME MIGRATION
+	// /**
+	// * Creates the first group on which synchronization policy is defined (from
+	// * C source or from UML model).
+	// *
+	// * @param parent
+	// * The composite parent
+	// */
+	// private void createSyncModeGroup(Composite parent) {
+	// String[][] data = new String[2][2];
+	// data[0] = new String[] {
+	//				Messages.getString("UML2CPropertyPage.4"), BundleConstants.SYNC_SOURCE_VALUE }; //$NON-NLS-1$
+	// data[1] = new String[] {
+	//				Messages.getString("UML2CPropertyPage.5"), BundleConstants.SYNC_MODEL_VALUE }; //$NON-NLS-1$
+	// syncModeEditor = new RadioGroupFieldEditor(
+	// BundleConstants.SYNC_AT_STARTING,
+	//				Messages.getString("UML2CPropertyPage.6"), 2, data, parent, true); //$NON-NLS-1$
+	// syncModeEditor.setPreferenceStore(getPreferenceStore());
+	// }
 
 	/**
 	 * Creates the second group on which access paths to models must be specified.
@@ -189,12 +188,12 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 		mainGroup.setLayout(new GridLayout());
 		mainGroup.setLayoutData(new GridData(SWT.FILL, SWT.NONE, true, false));
 
-		// FIXME MIGRATION 
+		// FIXME MIGRATION
 		// Composite for the diagram path
-//		final Composite diagramComposite = new Composite(mainGroup, SWT.NONE);
-//		diagramComposite.setLayout(new GridLayout());
-//		diagramComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
-//				true, 0, 0));
+		// final Composite diagramComposite = new Composite(mainGroup, SWT.NONE);
+		// diagramComposite.setLayout(new GridLayout());
+		// diagramComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+		// true, 0, 0));
 
 		// FIXME MIGRATION reference to facilities
 		// Access to UMLDI Model path
@@ -242,50 +241,47 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 
 		// Access to UML Model path
 		modelPath = new StringButtonFieldEditor() {
-			
+
 			{
 				init(BundleConstants.UML_MODEL_PATH, Messages.getString("C2UMLPropertyPage.3")); //$NON-NLS-1$
 				createControl(modelComposite);
 			}
-			
-			ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), new WorkbenchLabelProvider(), new BaseWorkbenchContentProvider());
-			
+
+			ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(),
+					new WorkbenchLabelProvider(), new BaseWorkbenchContentProvider());
+
 			@Override
 			protected String changePressed() {
-		        IFile d = null;
-		        dialog.setInput(getElement());
-		        if (dialog.open() == Window.OK)
-		        {
-		            Object[] result = dialog.getResult();
-		            // sanity check
-		            if (result.length == 1)
-		            {
-		                if (result[0] instanceof IFile)
-		                {
-		                    d = (IFile) result[0];
-		                }
-		            }
-		        }
-		        
-		        if (d == null)
-		        {
-		            return null;
-		        }
+				IFile d = null;
+				dialog.setInput(getElement());
+				if (dialog.open() == Window.OK) {
+					Object[] result = dialog.getResult();
+					// sanity check
+					if (result.length == 1) {
+						if (result[0] instanceof IFile) {
+							d = (IFile)result[0];
+						}
+					}
+				}
 
-		        URI uri = URI.createPlatformResourceURI(d.getFullPath().toString(), false);
-		        return URI.decode(uri.toString());
+				if (d == null) {
+					return null;
+				}
+
+				URI uri = URI.createPlatformResourceURI(d.getFullPath().toString(), false);
+				return URI.decode(uri.toString());
 			}
 		};
-		
+
 		modelPath.setPreferenceName(BundleConstants.UML_MODEL_PATH);
 		modelPath.setLabelText(Messages.getString("UML2CPropertyPage.3")); //$NON-NLS-1$
 		modelPath.setEnabled(true, modelComposite);
-		
-		// FIXME MIGRATION 
-		//	modelPath = new ResourceFieldEditor(BundleConstants.UML_MODEL_PATH,
+
+		// FIXME MIGRATION
+		// modelPath = new ResourceFieldEditor(BundleConstants.UML_MODEL_PATH,
 		// Messages.getString("UML2CPropertyPage.3"), modelComposite); //$NON-NLS-1$
-		//	modelPath.setEnabled(false, modelComposite);
-		//	modelPath.getLabelControl(modelComposite).setEnabled(true);
+		// modelPath.setEnabled(false, modelComposite);
+		// modelPath.getLabelControl(modelComposite).setEnabled(true);
 		modelPath.setPreferenceStore(getPreferenceStore());
 		modelPath.setPage(this);
 		modelPath.setEmptyStringAllowed(false);
@@ -322,12 +318,11 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 						.hasNext();) {
 					collection.add(iterator.next());
 				}
-				packages = EcoreUtil.getObjectsByType(collection,
-						UMLPackage.Literals.PACKAGE).toArray();
-				// FIXME MIGRATION 
-//				srcPath.setCandidates(packages);
-//				typePath.setCandidates(packages);
-//				extPath.setCandidates(packages);
+				packages = EcoreUtil.getObjectsByType(collection, UMLPackage.Literals.PACKAGE).toArray();
+				// FIXME MIGRATION
+				// srcPath.setCandidates(packages);
+				// typePath.setCandidates(packages);
+				// extPath.setCandidates(packages);
 			}
 		} catch (Exception e) {
 			// nothing to do
@@ -348,13 +343,16 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 		settingsGroup.setText(Messages.getString("UML2CPropertyPage.7")); //$NON-NLS-1$
 
 		// Intermediate composite to permit to get inner borders
-		final Composite intermediateComposite = new Composite(settingsGroup,	SWT.NONE);
+		final Composite intermediateComposite = new Composite(settingsGroup, SWT.NONE);
 		intermediateComposite.setLayout(new GridLayout());
 		intermediateComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-		srcPath = createStringFieldEditor(intermediateComposite, BundleConstants.SRC_PCK_NAME, Messages.getString("UML2CPropertyPage.2")); //$NON-NLS-1$
-		typePath = createStringFieldEditor(intermediateComposite, BundleConstants.TYPE_PCK_NAME, Messages.getString("UML2CPropertyPage.9")); //$NON-NLS-1$
-		extPath = createStringFieldEditor(intermediateComposite, BundleConstants.EXT_PCK_NAME, Messages.getString("UML2CPropertyPage.10")); //$NON-NLS-1$
+		srcPath = createStringFieldEditor(intermediateComposite, BundleConstants.SRC_PCK_NAME, Messages
+				.getString("UML2CPropertyPage.2")); //$NON-NLS-1$
+		typePath = createStringFieldEditor(intermediateComposite, BundleConstants.TYPE_PCK_NAME, Messages
+				.getString("UML2CPropertyPage.9")); //$NON-NLS-1$
+		extPath = createStringFieldEditor(intermediateComposite, BundleConstants.EXT_PCK_NAME, Messages
+				.getString("UML2CPropertyPage.10")); //$NON-NLS-1$
 	}
 
 	// FIXME MIGRATION reference to facilities
@@ -378,29 +376,29 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 	// return fieldEditor;
 	// }
 
-	 /**
-	 * Creates the string button field editor for selecting one model element
-	 among a set.
+	/**
+	 * Creates the string button field editor for selecting one model element among a set.
 	 *
-	 * @param parent The parent composite hosting this field editor.
-	 * @param key The key to retrieve value inside the preference store.
-	 * @param label The label to display before the text field.
+	 * @param parent
+	 *            The parent composite hosting this field editor.
+	 * @param key
+	 *            The key to retrieve value inside the preference store.
+	 * @param label
+	 *            The label to display before the text field.
 	 */
-	 protected StringFieldEditor createStringFieldEditor(Composite parent,
-	 String key, String label)
-	 {
-		 StringFieldEditor fieldEditor = new StringFieldEditor(key, label, parent);
-		 fieldEditor.setPage(this);
-		 fieldEditor.setPreferenceStore(getPreferenceStore());
-		 return fieldEditor;
-	 }
+	protected StringFieldEditor createStringFieldEditor(Composite parent, String key, String label) {
+		StringFieldEditor fieldEditor = new StringFieldEditor(key, label, parent);
+		fieldEditor.setPage(this);
+		fieldEditor.setPreferenceStore(getPreferenceStore());
+		return fieldEditor;
+	}
 
 	/**
 	 * Loads the preferences
 	 */
 	private void loadPreferences() {
-//		syncModeEditor.load();
-//		diagramPath.load();
+		// syncModeEditor.load();
+		// diagramPath.load();
 		modelPath.load();
 		srcPath.load();
 		typePath.load();
@@ -413,8 +411,8 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 	 * Stores the preferences
 	 */
 	private void storePreferences() {
-//		syncModeEditor.store();
-//		diagramPath.store();
+		// syncModeEditor.store();
+		// diagramPath.store();
 		modelPath.store();
 		srcPath.store();
 		typePath.store();
@@ -425,8 +423,8 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 	 * Loads the default preferences
 	 */
 	private void loadDefaultPreferences() {
-//		syncModeEditor.loadDefault();
-//		diagramPath.loadDefault();
+		// syncModeEditor.loadDefault();
+		// diagramPath.loadDefault();
 		modelPath.loadDefault();
 		srcPath.loadDefault();
 		typePath.loadDefault();
@@ -452,14 +450,6 @@ IWorkbenchPreferencePage, IWorkbenchPropertyPage  {
 		loadDefaultPreferences();
 		super.performDefaults();
 	}
-
-//	/**
-//	 * @SEE ORG.TOPCASED.FACILITIES.PREFERENCES.ABSTRACTTOPCASEDPREFERENCEPAGE#GETBUNDLEID()
-//	 */
-//	@OVERRIDE
-//	PROTECTED STRING GETBUNDLEID() {
-//		RETURN BUNDLECONSTANTS.BUNDLE_ID;
-//	}
 
 	/**
 	 * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
