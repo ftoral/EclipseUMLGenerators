@@ -21,12 +21,7 @@ public final class AnnotationConstants {
 	/**
 	 * Key to identify annotations for ifndef statements in .h file
 	 */
-	public static final String REVERSE_PROCESS = "http://www.eclipse.org/umlgen/reverse/c";
-
-	/**
-	 * Maintain backward compatibility : Key to identify annotations in Topcased Models for ifndef statements in .h file 
-	 */
-	public static final String REVERSE_PROCESS_TOPCASED = "http://www.topcased.org/reverse";
+	public static final String REVERSE_PROCESS = "http://www.eclipse.org/umlgen/annotation/c";
 
 	/**
 	 * Key to identify the project charset.

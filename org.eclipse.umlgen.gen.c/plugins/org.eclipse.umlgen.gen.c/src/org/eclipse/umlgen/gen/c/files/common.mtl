@@ -26,12 +26,12 @@
 	endif
 /]
 
-[query public getAnnotation(e : EModelElement, sourceP : String, keyP : String) : Sequence(String) = 
+[query public getGenericAnnotation(e : EModelElement, sourceP : String, keyP : String) : Sequence(String) = 
 	if (e.eAnnotations->notEmpty()) then
-		if (e.eAnnotations->select(source = 'http://www.eclipse.org/' + sourceP)->notEmpty()) then
-			if (e.eAnnotations->select(source = 'http://www.eclipse.org/' + sourceP).details->notEmpty()) then
-				if (e.eAnnotations->select(source = 'http://www.eclipse.org/' + sourceP).details->select(key = keyP)->notEmpty()) then
-					e.eAnnotations->select(source = 'http://www.eclipse.org/' + sourceP).details->select(key = keyP).value->asSequence()
+		if (e.eAnnotations->select(source = 'http://www.eclipse.org/umlgen/annotation/c' + sourceP)->notEmpty()) then
+			if (e.eAnnotations->select(source = 'http://www.eclipse.org/umlgen/annotation/c' + sourceP).details->notEmpty()) then
+				if (e.eAnnotations->select(source = 'http://www.eclipse.org/umlgen/annotation/c' + sourceP).details->select(key = keyP)->notEmpty()) then
+					e.eAnnotations->select(source = 'http://www.eclipse.org/umlgen/annotation/c' + sourceP).details->select(key = keyP).value->asSequence()
 				else
 					Sequence{}
 				endif
@@ -39,25 +39,20 @@
 				Sequence{}
 			endif
 		else
-			if (e.eAnnotations->select(source = 'http://www.topcased.org/' + sourceP)->notEmpty()) then
-				if (e.eAnnotations->select(source = 'http://www.topcased.org/' + sourceP).details->notEmpty()) then
-					if (e.eAnnotations->select(source = 'http://www.topcased.org/' + sourceP).details->select(key = keyP)->notEmpty()) then
-						e.eAnnotations->select(source = 'http://www.topcased.org/' + sourceP).details->select(key = keyP).value->asSequence()
-					else
-						Sequence{}
-					endif
-				else
-					Sequence{}
-				endif
-			else
-				Sequence{}
-			endif
+			Sequence{}
 		endif
 	else
 		Sequence{}
 	endif
 /]
 
+[query public getDocAnnotation(e : EModelElement, keyP : String) : Sequence(String) =
+	e.getGenericAnnotation('/documentation', keyP)
+/]
+
+[query public getAnnotation(e : EModelElement, keyP : String) : Sequence(String) =
+	e.getGenericAnnotation(null, keyP)
+/]
 
 [query public getReturnType(op : Operation) : Type = 
 op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().type 
@@ -98,8 +93,8 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 /]
 
 [query private isStdLibraryInclusion(e : Usage) : Boolean =
-	if (e.getAnnotation('reverse', 'STD_LIBRARY')->notEmpty())
-	  then e.getAnnotation('reverse', 'STD_LIBRARY')->any(true) = 'true'
+	if (e.getAnnotation('STD_LIBRARY')->notEmpty())
+	  then e.getAnnotation('STD_LIBRARY')->any(true) = 'true'
 	  else false
 	endif
 /]
@@ -109,19 +104,19 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 /]
 
 [query public IfNDefConditionAnnotation(e : Classifier) : Sequence(String) = 
-	e.getAnnotation('reverse', 'IFNDEF')
+	e.getAnnotation('IFNDEF')
 /]
 
 [query public isRegister(e : NamedElement) : Boolean = 
-	if (e.getAnnotation('reverse', 'REGISTER')->notEmpty())
-		then e.getAnnotation('reverse', 'REGISTER')->any(true) = 'true'
+	if (e.getAnnotation('REGISTER')->notEmpty())
+		then e.getAnnotation('REGISTER')->any(true) = 'true'
 		else false
 	endif
 /]
 
 [query public isVolatile(e : NamedElement) : Boolean = 
-	if (e.getAnnotation('reverse', 'VOLATILE')->notEmpty())
-		then e.getAnnotation('reverse', 'VOLATILE')->any(true) = 'true'
+	if (e.getAnnotation('VOLATILE')->notEmpty())
+		then e.getAnnotation('VOLATILE')->any(true) = 'true'
 		else false
 	endif
 /]
@@ -148,11 +143,11 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 [comment === Common part for source code comments === /]
 
 [query private getCommentAfter(e : EModelElement) : String = 
-	if e.getAnnotation('documentation', 'C_INLINE_COMMENT_AFTER_DECLARATION')->notEmpty() then
-		e.getAnnotation('documentation', 'C_INLINE_COMMENT_AFTER_DECLARATION')->any(true)
+	if e.getDocAnnotation('C_INLINE_COMMENT_AFTER_DECLARATION')->notEmpty() then
+		e.getDocAnnotation('C_INLINE_COMMENT_AFTER_DECLARATION')->any(true)
 	else
-		if e.getAnnotation('documentation', 'H_INLINE_COMMENT_AFTER_DECLARATION')->notEmpty() then
-			e.getAnnotation('documentation', 'H_INLINE_COMMENT_AFTER_DECLARATION')->any(true)
+		if e.getDocAnnotation('H_INLINE_COMMENT_AFTER_DECLARATION')->notEmpty() then
+			e.getDocAnnotation('H_INLINE_COMMENT_AFTER_DECLARATION')->any(true)
 		else
 			''
 		endif
@@ -160,11 +155,11 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 /]
 
 [query private getCommentBefore(e : EModelElement) : String = 
-	if e.getAnnotation('documentation', 'C_INLINE_COMMENT_BEFORE_DECLARATION')->notEmpty() then
-		e.getAnnotation('documentation', 'C_INLINE_COMMENT_BEFORE_DECLARATION')->any(true)
+	if e.getDocAnnotation('C_INLINE_COMMENT_BEFORE_DECLARATION')->notEmpty() then
+		e.getDocAnnotation('C_INLINE_COMMENT_BEFORE_DECLARATION')->any(true)
 	else
-		if e.getAnnotation('documentation', 'H_INLINE_COMMENT_BEFORE_DECLARATION')->notEmpty() then
-			e.getAnnotation('documentation', 'H_INLINE_COMMENT_BEFORE_DECLARATION')->any(true)
+		if e.getDocAnnotation('H_INLINE_COMMENT_BEFORE_DECLARATION')->notEmpty() then
+			e.getDocAnnotation('H_INLINE_COMMENT_BEFORE_DECLARATION')->any(true)
 		else
 			''
 		endif
@@ -173,10 +168,10 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 
 [comment Check for comments for e, keep a compatibility for topcased users  /]
 [query public hasComment(e : EModelElement) : Boolean = 
-	if e.getAnnotation('documentation', 'documentation')->notEmpty() then
+	if e.getDocAnnotation('documentation')->notEmpty() then
 		true
 	else
-		if e.getAnnotation('documentation', 'documentation')->notEmpty() then
+		if e.getDocAnnotation('documentation')->notEmpty() then
 			true
 		else
 			false
@@ -187,7 +182,7 @@ op.ownedParameter->select(direction <> ParameterDirectionKind::return)->first().
 [comment get the comment for e, keep a compatibility for topcased users  /]
 [query public getComment(e : EModelElement) : String = 
 	if hasComment(e) then
-		e.getAnnotation('documentation', 'documentation')->any(true)
+		e.getDocAnnotation('documentation')->any(true)
 	else
 		''
 	endif

@@ -42,8 +42,8 @@
 [comment]Gets the project charset to apply during the genration. 
 This information is stored at the root level within a dedicated annotation[/comment]
 [query private getCharset(e : Model) : String = 
-	if e.getAnnotation('reverse', 'PROJECT_CHARSET')->notEmpty() 
-		then e.getAnnotation('reverse', 'PROJECT_CHARSET')->any(true)
+	if e.getAnnotation('PROJECT_CHARSET')->notEmpty() 
+		then e.getAnnotation('PROJECT_CHARSET')->any(true)
 		else 'UTF-8'
 	endif
 /]

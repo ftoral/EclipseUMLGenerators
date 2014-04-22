@@ -43,12 +43,7 @@ public final class AnnotationUtil {
 	 */
 	private static EAnnotation getReverseAnnotation(Element element) {
 		EAnnotation annot = UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
-		
-		// In order to maintain backward compatibilty with Topcased designed models, try get the EAnnotation with Topcased Source string.
-		if (annot.getContents().isEmpty()) {
-			annot = UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS_TOPCASED, true);
-		}
-		
+
 		return annot;
 	}
 
