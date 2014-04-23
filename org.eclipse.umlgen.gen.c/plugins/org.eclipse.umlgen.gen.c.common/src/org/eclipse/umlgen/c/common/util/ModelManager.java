@@ -1,15 +1,15 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Christophe Le Camus (CS) - initial API and implementation
- *     Sebastien Gabel (CS) - evolutions
+ *     Christophe Le Camus (CS-SI) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.resource;
+package org.eclipse.umlgen.c.common.util;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,6 +20,7 @@ import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -40,10 +41,9 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.util.UMLUtil;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
-import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
+import org.eclipse.umlgen.c.common.Activator;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.PreferenceStoreManager;
 
 /**
  * The model manager is in charge of loading/unloading synchronized models when it is necessary.
@@ -56,11 +56,13 @@ public class ModelManager {
 
 	private Resource modelResource;
 
-	private Resource diResource;
+// FIXME MIGRATION reference to modeler
+//	private Resource diResource;
 
 	private EObject model;
 
-	private EObject di;
+// FIXME MIGRATION reference to modeler
+//	private EObject di;
 
 	private IPartListener editorPartListener;
 
@@ -150,8 +152,9 @@ public class ModelManager {
 		modelResource = rscSet.getResource(modelURI, true);
 		model = modelResource.getContents().get(0);
 
-		diResource = rscSet.getResource(diagramURI, true);
-		di = diResource.getContents().get(0);
+		// FIXME MIGRATION reference to modeler
+//		diResource = rscSet.getResource(diagramURI, true);
+//		di = diResource.getContents().get(0);
 	}
 
 	/**
@@ -162,7 +165,8 @@ public class ModelManager {
 		typesPackage = null;
 		libsPackage = null;
 		model = null;
-		di = null;
+		// FIXME MIGRATION reference to modeler
+//		di = null;
 
 		if (!loadedFromModeler) {
 			// resources are unloaded
@@ -170,10 +174,11 @@ public class ModelManager {
 				modelResource.unload();
 				modelResource = null;
 			}
-			if (diResource != null) {
-				diResource.unload();
-				diResource = null;
-			}
+			// FIXME MIGRATION reference to modeler
+//			if (diResource != null) {
+//				diResource.unload();
+//				diResource = null;
+//			}
 		}
 	}
 
@@ -183,15 +188,19 @@ public class ModelManager {
 	public void saveModels() {
 		Map<String, String> options = new HashMap<String, String>();
 		try {
-			options.put(XMLResource.OPTION_ENCODING, project.getDefaultCharset(true));
-			if (diResource != null) {
-				diResource.save(options);
-			}
+			options.put(XMLResource.OPTION_ENCODING,
+					project.getDefaultCharset(true));
+			// FIXME MIGRATION reference to modeler
+//			if (diResource != null) {
+//				diResource.save(options);
+//			}
 			if (modelResource != null) {
 				modelResource.save(options);
 			}
 		} catch (Exception e) {
-			Activator.log(Messages.getString("ModelManager.error.msg") + e.getMessage(), IStatus.ERROR, e); //$NON-NLS-1$
+			IStatus status = null;
+			status = new Status(IStatus.ERROR, Activator.getBundleId(), IStatus.OK, org.eclipse.umlgen.c.common.Messages.ModelManager_0 + e.getMessage(), e);
+			Activator.getDefault().getLog().log(status); 
 		}
 	}
 
@@ -245,7 +254,9 @@ public class ModelManager {
 	 * @return the diResource
 	 */
 	public Resource getDiResource() {
-		return diResource;
+	// FIXME MIGRATION reference to modeler
+	//	return diResource;
+		return null;
 	}
 
 	/**

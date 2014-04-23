@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Sebastien Gabel (CS) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.ui.properties.sections;
 
@@ -27,7 +27,7 @@ import org.eclipse.uml2.uml.LoopNode;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

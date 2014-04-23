@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  * 
  * Contributors:
  *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS) - initial API and implementation 
- *     Sebastien Gabel (CS) - evolutions
+ *     Christophe Le Camus (CS-SI) - initial API and implementation 
+ *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
@@ -24,10 +24,10 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
 import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 
 /**
  * Event related to a function definition add.
@@ -37,7 +37,7 @@ import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 
 	/**
-	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.reverse.c.resource.ModelManager)
+	 * @see org.eclipse.umlgen.reverse.c.CModelChangedEvent#notifyChanges(org.eclipse.umlgen.c.common.util.ModelManager)
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {

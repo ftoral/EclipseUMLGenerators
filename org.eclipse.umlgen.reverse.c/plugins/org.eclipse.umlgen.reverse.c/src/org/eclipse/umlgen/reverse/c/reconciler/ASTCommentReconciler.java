@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Christophe LE CAMUS (CS) - initial API and implementation
- *     Sebastien GABEL (CS) - evolutions
+ *     Christophe LE CAMUS (CS-SI) - initial API and implementation
+ *     Sebastien GABEL (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.reconciler;
 
@@ -41,7 +41,7 @@ import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.CommentAdded;
 import org.eclipse.umlgen.reverse.c.event.CommentRemoved;

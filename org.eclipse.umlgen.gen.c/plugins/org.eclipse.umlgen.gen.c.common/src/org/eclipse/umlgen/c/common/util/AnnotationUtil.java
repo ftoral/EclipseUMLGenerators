@@ -1,14 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Sebastien GABEL (CS) - initial API and implementation
+ *     Sebastien GABEL (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c.util;
+package org.eclipse.umlgen.c.common.util;
 
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.core.resources.IProject;
@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Usage;
-import org.eclipse.umlgen.reverse.c.AnnotationConstants;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
 
 /**
  * Utility class helping to work with annotations and detail entries.<br>
@@ -42,7 +42,9 @@ public final class AnnotationUtil {
 	 * @return The new reverse annotation
 	 */
 	private static EAnnotation getReverseAnnotation(Element element) {
-		return UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
+		EAnnotation annot = UML2Util.getEAnnotation(element, AnnotationConstants.REVERSE_PROCESS, true);
+
+		return annot;
 	}
 
 	private static void removeDetailEntry(EAnnotation annotation, String entryKey) {

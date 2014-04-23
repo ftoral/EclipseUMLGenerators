@@ -1,14 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Sebastien Gabel (CS) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
-package org.eclipse.umlgen.reverse.c;
+package org.eclipse.umlgen.c.common;
 
 /**
  * Set of constants related to annotation management.<br>
@@ -21,7 +21,7 @@ public final class AnnotationConstants {
 	/**
 	 * Key to identify annotations for ifndef statements in .h file
 	 */
-	public static final String REVERSE_PROCESS = "http://www.eclipse.org/umlgen/reverse/c";
+	public static final String REVERSE_PROCESS = "http://www.eclipse.org/umlgen/annotation/c";
 
 	/**
 	 * Key to identify the project charset.

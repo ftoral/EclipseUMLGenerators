@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- *     Sebastien Gabel (CS) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.internal.reconciler;
 
@@ -18,11 +18,11 @@ import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.model.IFunction;
 import org.eclipse.cdt.core.model.IStructure;
 import org.eclipse.cdt.core.model.ITranslationUnit;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.IfndefAdded;
 import org.eclipse.umlgen.reverse.c.event.IfndefRemoved;
 import org.eclipse.umlgen.reverse.c.event.StructAdded;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
 
 /**
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>

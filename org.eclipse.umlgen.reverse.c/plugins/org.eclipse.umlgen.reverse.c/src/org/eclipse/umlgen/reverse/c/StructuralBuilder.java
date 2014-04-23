@@ -7,7 +7,7 @@
  * 
  * Contributors: 
  *      Obeo - initial API and implementation
- *      Communication & Systems
+ *      CS Systèmes d'Information (CS-SI)
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c;
 
@@ -55,6 +55,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.CUnitAdded;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *     Mikael BARBERO (Obeo) - initial API and implementation
- *     Sebastien GABEL (CS) - evolution
+ *     Sebastien GABEL (CS-SI) - evolution
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.services;
 
@@ -32,8 +32,8 @@ import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
-import org.eclipse.umlgen.reverse.c.resource.PreferenceStoreManager;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.PreferenceStoreManager;
 
 public class UML2Services {
 

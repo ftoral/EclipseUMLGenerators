@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *     Mikael Barbero (Obeo) - initial API and implementation
- *     Sebastien Gabel (CS) - Bug fix on deconfigure project
+ *     Sebastien Gabel (CS-SI) - Bug fix on deconfigure project
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.resource;
 
@@ -26,7 +26,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Messages;
 

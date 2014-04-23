@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  * 
  * Contributors:
  * 	   Mikael BARBERO (Obeo) - initial API and implementation
- *     Christophe LE CAMUS (CS) - initial API and implementation
- *     Sebastien Gabel (CS) - initialize default values to preference store value.
+ *     Christophe LE CAMUS (CS-SI) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initialize default values to preference store value.
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.ui.internal.handler;
 
@@ -24,10 +24,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.umlgen.gen.c.builder.UML2CBuilder;
 import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.gen.c.common.PreferenceStoreManager;
 import org.eclipse.umlgen.reverse.c.StructuralBuilder;
 import org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature;
-import org.eclipse.umlgen.reverse.c.resource.PreferenceStoreManager;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 import org.eclipse.umlgen.reverse.c.ui.internal.widgets.QuestionDialog;

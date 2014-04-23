@@ -54,7 +54,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;

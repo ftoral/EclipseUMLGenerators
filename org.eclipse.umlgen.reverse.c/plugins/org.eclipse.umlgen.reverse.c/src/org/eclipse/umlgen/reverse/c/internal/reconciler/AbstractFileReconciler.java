@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 Communication & Systems.
+ * Copyright (c) 2010, 2014 CS Systèmes d'Information (CS-SI).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     	Sebastien GABEL (CS) - initial API and implementation
+ *     	Sebastien GABEL (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.internal.reconciler;
 
@@ -38,7 +38,9 @@ import org.eclipse.cdt.core.model.IVariable;
 import org.eclipse.cdt.core.model.IVariableDeclaration;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.umlgen.reverse.c.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.util.ModelUtil;
+import org.eclipse.umlgen.c.common.util.ModelUtil.EventType;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.event.EnumerationAdded;
 import org.eclipse.umlgen.reverse.c.event.EnumerationRemoved;
@@ -66,8 +68,6 @@ import org.eclipse.umlgen.reverse.c.event.VariableDeclarationRemoved;
 import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
 import org.eclipse.umlgen.reverse.c.internal.bundle.Activator;
 import org.eclipse.umlgen.reverse.c.util.ASTUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil;
-import org.eclipse.umlgen.reverse.c.util.ModelUtil.EventType;
 
 /**
  * The abstract reconciler having the shared behavior betwwen C and H units.<br>
