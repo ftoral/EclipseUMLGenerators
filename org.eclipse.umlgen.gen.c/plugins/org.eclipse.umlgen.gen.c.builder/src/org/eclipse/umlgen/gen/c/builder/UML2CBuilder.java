@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Obeo - initial API and implementation
- *      CS Systèmes d'Information (CS-SI) - evolutions
+ *      Mikael Barbero (Obeo) - initial API and implementation
+ *      Sebastien GABEL (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.builder;
 

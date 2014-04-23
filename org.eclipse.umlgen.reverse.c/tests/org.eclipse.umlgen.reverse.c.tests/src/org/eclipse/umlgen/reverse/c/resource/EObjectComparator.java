@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.resource;
 
@@ -51,17 +51,16 @@ public class EObjectComparator implements Comparator<EObject> {
 		result = new Integer(refs1.size()).compareTo(new Integer(refs2.size()));
 
 		if (result == 0) { // Lists sizes are the same, let's compare elements
-							// in lists
+			// in lists
 			int i = 0;
 			int size = refs1.size();
 			while (result == 0 && i < size) {
 				Object ref1 = o1.eGet(refs1.get(i), false);
 				Object ref2 = o2.eGet(refs2.get(i), false);
 				if (ref1 instanceof EObject && ref2 instanceof EObject) {
-					result = compareObjects((EObject) ref1, (EObject) ref2);
+					result = compareObjects((EObject)ref1, (EObject)ref2);
 				} else if (ref1 instanceof List<?> && ref2 instanceof List<?>) {
-					result = compareLists((List<EObject>) ref1,
-							(List<EObject>) ref2);
+					result = compareLists((List<EObject>)ref1, (List<EObject>)ref2);
 				}
 				i++;
 			}
@@ -76,7 +75,7 @@ public class EObjectComparator implements Comparator<EObject> {
 		result = new Integer(list1.size()).compareTo(new Integer(list2.size()));
 
 		if (result == 0) { // Lists sizes are the same, let's compare elements
-							// in lists
+			// in lists
 			// Sort the first list
 			EList<EObject> l1 = new BasicEList<EObject>(list1);
 			ECollections.sort(l1, this);
@@ -96,7 +95,7 @@ public class EObjectComparator implements Comparator<EObject> {
 	}
 
 	private String extractComparisonString(EObject object) {
-		return object.toString().replaceAll(object.getClass().getName(), "")
-				.replaceAll(Integer.toHexString(object.hashCode()), "");
+		return object.toString().replaceAll(object.getClass().getName(), "").replaceAll(
+				Integer.toHexString(object.hashCode()), "");
 	}
 }

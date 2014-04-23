@@ -1,13 +1,14 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
- *      CS Systèmes d'Information (CS-SI) - evolutions  
+ *
+ * Contributors:
+ *		Christophe Le Camus (CS) - initial API and implementation
+ *      Mikael Barbero (Obeo) - evolutions
+ *      Sebastien Gabel - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.reconciler;
 
@@ -23,21 +24,17 @@ import org.eclipse.umlgen.reverse.c.listener.ICModelChangeListener;
 
 public interface IReconciler {
 
-	void removedElement(IASTTranslationUnit originalTranslationUnit,
-			IASTTranslationUnit newTranslationUnit,
-			ITranslationUnit workingcopy, ICElement coreElement)
+	void removedElement(IASTTranslationUnit originalTranslationUnit, IASTTranslationUnit newTranslationUnit,
+			ITranslationUnit workingcopy, ICElement coreElement) throws CoreException;
+
+	void addedElement(IASTTranslationUnit originalTranslationUnit, IASTTranslationUnit newTranslationUnit,
+			ITranslationUnit workingcopy, ICElement coreElement) throws CoreException;
+
+	void removedElement(ITranslationUnit originalUnit, IWorkingCopy workingUnit, ICElement element)
 			throws CoreException;
 
-	void addedElement(IASTTranslationUnit originalTranslationUnit,
-			IASTTranslationUnit newTranslationUnit,
-			ITranslationUnit workingcopy, ICElement coreElement)
+	void addedElement(ITranslationUnit originalUnit, IWorkingCopy workingUnit, ICElement element)
 			throws CoreException;
-
-	void removedElement(ITranslationUnit originalUnit,
-			IWorkingCopy workingUnit, ICElement element) throws CoreException;
-
-	void addedElement(ITranslationUnit originalUnit, IWorkingCopy workingUnit,
-			ICElement element) throws CoreException;
 
 	void removeModelChangeListener(ICModelChangeListener modelChangeListener);
 

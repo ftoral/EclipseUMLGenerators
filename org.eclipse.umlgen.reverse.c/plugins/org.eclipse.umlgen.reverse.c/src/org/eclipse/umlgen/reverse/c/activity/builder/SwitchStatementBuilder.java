@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.builder;
 
@@ -39,13 +39,12 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 
 	private static final String DEFAULT = "default";
 
-	public SwitchStatementBuilder(UMLActivityBuilder activityBuilder,
-			UMLActivityFactory factory, CommentBuilder commentBuilder) {
+	public SwitchStatementBuilder(UMLActivityBuilder activityBuilder, UMLActivityFactory factory,
+			CommentBuilder commentBuilder) {
 		super(activityBuilder, factory, commentBuilder);
 	}
 
-	public ActivityNodesPins buildSwitchStatement(IASTSwitchStatement stmt,
-			ActivityContext currentContext) {
+	public ActivityNodesPins buildSwitchStatement(IASTSwitchStatement stmt, ActivityContext currentContext) {
 		ConditionalNode condNode = createConditionnalNode(stmt, currentContext);
 
 		// Attach comments to the ConditionalNode
@@ -54,8 +53,7 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 		ActivityContext condNodeContext = new ActivityContext(condNode);
 
 		// Create an OpaqueAction containing the test for the whole switch
-		OpaqueAction switchTestAction = factory.createOpaqueAction(
-				getTestName(stmt), condNodeContext);
+		OpaqueAction switchTestAction = factory.createOpaqueAction(getTestName(stmt), condNodeContext);
 		switchTestAction.setName("test");
 
 		Clause previousClause = null;
@@ -63,21 +61,17 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 		List<Clause> clausesWithoutBody = Lists.newArrayList();
 
 		// Build nodes and collect info on every case clause (group)
-		List<List<IASTNode>> groups = ASTUtilities
-				.getStatementsGroupedByClause(stmt);
+		List<List<IASTNode>> groups = ASTUtilities.getStatementsGroupedByClause(stmt);
 		for (List<IASTNode> group : groups) {
-			OpaqueAction testAction = buildTestActionForCaseGroup(group,
-					condNodeContext);
-			ExecutableNode bodyAction = buildBodyActionForCaseGroup(group,
-					condNodeContext);
+			OpaqueAction testAction = buildTestActionForCaseGroup(group, condNodeContext);
+			ExecutableNode bodyAction = buildBodyActionForCaseGroup(group, condNodeContext);
 			boolean hasBreak = ASTUtilities.hasBreakStatement(group);
 			boolean hasReturn = ASTUtilities.hasReturnStatement(group);
 
 			Clause clause = factory.createClause(condNode, testAction);
 
 			// Attach comments to the clause
-			commentBuilder.buildComment(clause,
-					getCommentInfo((IASTStatement) group.get(0)));
+			commentBuilder.buildComment(clause, getCommentInfo((IASTStatement)group.get(0)));
 
 			if (bodyAction == null) {
 				// Store the clause in the clauses without body list (to handle
@@ -118,49 +112,40 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 		// Complete the pending flow if there's still one
 		if (pendingFlow != null) {
 			// FlowFinalNode
-			FlowFinalNode flowFinal = factory
-					.getFlowFinalNodeForEndOfSwitch(condNodeContext);
+			FlowFinalNode flowFinal = factory.getFlowFinalNodeForEndOfSwitch(condNodeContext);
 			pendingFlow.setTarget(flowFinal);
 		}
 
 		return new ActivityNodesPins(condNode, condNode);
 	}
 
-	public ActivityNodesPins buildCaseStatement(IASTCaseStatement stmt,
-			ActivityContext currentContext) {
-		String actionBody = stmt.getExpression() == null ? "" : stmt
-				.getExpression().getRawSignature();
+	public ActivityNodesPins buildCaseStatement(IASTCaseStatement stmt, ActivityContext currentContext) {
+		String actionBody = stmt.getExpression() == null ? "" : stmt.getExpression().getRawSignature();
 		String actionName = CASE + " " + actionBody;
 
-		OpaqueAction opaqueAction = buildActionForClauseStatement(actionName,
-				actionBody, currentContext);
+		OpaqueAction opaqueAction = buildActionForClauseStatement(actionName, actionBody, currentContext);
 		return new ActivityNodesPins(opaqueAction, opaqueAction);
 	}
 
-	public ActivityNodesPins buildDefaultStatement(IASTDefaultStatement stmt,
+	public ActivityNodesPins buildDefaultStatement(IASTDefaultStatement stmt, ActivityContext currentContext) {
+		OpaqueAction opaqueAction = buildActionForClauseStatement(DEFAULT, DEFAULT, currentContext);
+		return new ActivityNodesPins(opaqueAction, opaqueAction);
+	}
+
+	private OpaqueAction buildActionForClauseStatement(String actionName, String actionBody,
 			ActivityContext currentContext) {
-		OpaqueAction opaqueAction = buildActionForClauseStatement(DEFAULT,
-				DEFAULT, currentContext);
-		return new ActivityNodesPins(opaqueAction, opaqueAction);
-	}
-
-	private OpaqueAction buildActionForClauseStatement(String actionName,
-			String actionBody, ActivityContext currentContext) {
-		OpaqueAction opaqueAction = factory.createOpaqueAction(actionBody,
-				currentContext);
+		OpaqueAction opaqueAction = factory.createOpaqueAction(actionBody, currentContext);
 		opaqueAction.setName(factory.sanitizeString(actionName));
 		opaqueAction.getOutputValues().add(factory.createOutputPin());
 		return opaqueAction;
 	}
 
-	private ConditionalNode createConditionnalNode(IASTSwitchStatement stmt,
-			ActivityContext currentContext) {
+	private ConditionalNode createConditionnalNode(IASTSwitchStatement stmt, ActivityContext currentContext) {
 		// Name of the node
 		String nodeName = getConditionalNodeName(stmt);
 
 		// Creation of the node
-		ConditionalNode condNode = factory.createConditionalNode(nodeName,
-				currentContext);
+		ConditionalNode condNode = factory.createConditionalNode(nodeName, currentContext);
 
 		// IsAssured and IsDeterminate
 		boolean hasDefaultStmt = ASTUtilities.hasDefaultStatement(stmt);
@@ -178,25 +163,22 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 		return name.substring(0, bodyOffset - stmtOffset).trim();
 	}
 
-	private OpaqueAction buildTestActionForCaseGroup(List<IASTNode> group,
-			ActivityContext currentContext) {
+	private OpaqueAction buildTestActionForCaseGroup(List<IASTNode> group, ActivityContext currentContext) {
 		IASTStatement stmt = null;
 		// A test action must be created for the CaseStatement of the group
 		// this statement must be the first
 		IASTNode node = group.get(0);
 		if (node instanceof IASTCaseStatement) {
-			stmt = (IASTCaseStatement) node;
+			stmt = (IASTCaseStatement)node;
 		} else if (node instanceof IASTDefaultStatement) {
-			stmt = (IASTDefaultStatement) node;
+			stmt = (IASTDefaultStatement)node;
 		}
 
-		ActivityNodesPins nodes = activityBuilder.buildNodes(stmt,
-				currentContext);
-		return (OpaqueAction) nodes.getStartNode();
+		ActivityNodesPins nodes = activityBuilder.buildNodes(stmt, currentContext);
+		return (OpaqueAction)nodes.getStartNode();
 	}
 
-	private ExecutableNode buildBodyActionForCaseGroup(List<IASTNode> group,
-			ActivityContext currentContext) {
+	private ExecutableNode buildBodyActionForCaseGroup(List<IASTNode> group, ActivityContext currentContext) {
 		// If the group contains only 1 statement it means it's a fallthrough,
 		// for example
 		// case 1 :
@@ -211,19 +193,16 @@ public class SwitchStatementBuilder extends AbstractBuilder {
 		ActivityNode previousNode = null;
 		for (int i = 1; i < group.size(); i++) {
 			IASTNode astNode = group.get(i);
-			ActivityNodesPins nodes = activityBuilder.buildNodes(
-					(IASTStatement) astNode, currentContext);
+			ActivityNodesPins nodes = activityBuilder.buildNodes((IASTStatement)astNode, currentContext);
 			if (i == 1) {
 				firstNode = nodes.getStartNode();
 			}
 			if (previousNode != null) {
-				factory.createControlFlow(previousNode, nodes.getStartNode(),
-						currentContext);
+				factory.createControlFlow(previousNode, nodes.getStartNode(), currentContext);
 			}
 			previousNode = nodes.getEndNode();
 		}
-		bodyAction = factory.ensureStartNodeIsExecutable(firstNode,
-				currentContext);
+		bodyAction = factory.ensureStartNodeIsExecutable(firstNode, currentContext);
 
 		return bodyAction;
 	}

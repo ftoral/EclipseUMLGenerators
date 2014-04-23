@@ -4,11 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
- *     Sebastien Gabel (CS-SI) - evolutions
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
@@ -31,7 +29,7 @@ import org.eclipse.umlgen.reverse.c.internal.beans.FunctionParameter;
 
 /**
  * Event related to a function definition add.
- * 
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
@@ -41,16 +39,13 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Class myClass = ModelUtil.findClassInPackage(
-				manager.getSourcePackage(), getUnitName());
+		Class myClass = ModelUtil.findClassInPackage(manager.getSourcePackage(), getUnitName());
 
-		OpaqueBehavior function = (OpaqueBehavior) myClass.getOwnedBehavior(
-				getCurrentName(), false, UMLPackage.Literals.OPAQUE_BEHAVIOR,
-				false);
+		OpaqueBehavior function = (OpaqueBehavior)myClass.getOwnedBehavior(getCurrentName(), false,
+				UMLPackage.Literals.OPAQUE_BEHAVIOR, false);
 		// only if the function does not exist yet.
 		if (function == null) {
-			function = (OpaqueBehavior) myClass.getOwnedBehavior(
-					getCurrentName(), false,
+			function = (OpaqueBehavior)myClass.getOwnedBehavior(getCurrentName(), false,
 					UMLPackage.Literals.OPAQUE_BEHAVIOR, true);
 		}
 
@@ -60,8 +55,7 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 		// update/create the body content
 		if (function.getLanguages().contains(BundleConstants.C_LANGUAGE)) {
 			// update
-			int index = function.getLanguages().indexOf(
-					BundleConstants.C_LANGUAGE);
+			int index = function.getLanguages().indexOf(BundleConstants.C_LANGUAGE);
 			function.getBodies().set(index, cleanInvalidXmlChars(getBody()));
 		} else {
 			// create
@@ -77,17 +71,14 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 
 			// try to find first the operation into the current classifier,
 			// otherwise explore the dependency graph.
-			Operation operation = ModelUtil.getReferredOperation(myClass,
-					getCurrentName(), typesList, new BasicEList<Element>());
+			Operation operation = ModelUtil.getReferredOperation(myClass, getCurrentName(), typesList,
+					new BasicEList<Element>());
 			if (operation == null) {
 				// create the operation with the private status (seen as an
 				// internal function declaration)
-				FunctionDeclarationAdded event = FunctionDeclarationAdded
-						.builder().isStatic(getIsStatic())
-						.setParameters(getParameters())
-						.setReturnType(getReturnType())
-						.currentName(getCurrentName())
-						.translationUnit(getTranslationUnit()).build();
+				FunctionDeclarationAdded event = FunctionDeclarationAdded.builder().isStatic(getIsStatic())
+						.setParameters(getParameters()).setReturnType(getReturnType()).currentName(
+								getCurrentName()).translationUnit(getTranslationUnit()).build();
 				event.notifyChanges(manager);
 			} else {
 				function.setSpecification(operation);
@@ -102,15 +93,14 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 
 	/**
 	 * Initializes a list or 'types' defining the global function signature.
-	 * 
+	 *
 	 * @param manager
 	 *            The current model manager
 	 * @param matchingClassifier
 	 *            The classifier in which the function is declarated
 	 * @return The ordered list of UML parameter types
 	 */
-	private EList<Type> computeTypes(ModelManager manager,
-			Classifier matchingClassifier) {
+	private EList<Type> computeTypes(ModelManager manager, Classifier matchingClassifier) {
 		EList<Type> types = new BasicEList<Type>();
 		for (FunctionParameter aParameter : getParameters()) {
 			types.add(manager.getDataType(aParameter.getType()));
@@ -123,18 +113,15 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 
 	/**
 	 * Creates the parameters for a given operation.
-	 * 
+	 *
 	 * @param manager
 	 *            The model manager
 	 * @param classifier
 	 *            The classifier on which the operation is added
 	 * @param operation
-	 *            The current operation
-	 * 
-	 *            TODO : see how to destroy properly type.
+	 *            The current operation TODO : see how to destroy properly type.
 	 */
-	private void handleParameters(ModelManager manager, Classifier classifier,
-			OpaqueBehavior behavior) {
+	private void handleParameters(ModelManager manager, Classifier classifier, OpaqueBehavior behavior) {
 		// first, all existing parameters are destroyed and eventually unused
 		// types.
 		for (int i = behavior.getOwnedParameters().size(); i > 0; i--) {
@@ -146,8 +133,7 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 		for (FunctionParameter aParam : getParameters()) {
 			// find the UML type
 			Type realType = manager.getDataType(aParam.getType());
-			Parameter parameter = behavior.createOwnedParameter(
-					aParam.getName(), realType);
+			Parameter parameter = behavior.createOwnedParameter(aParam.getName(), realType);
 
 			// adjust the parameter direction
 			if (!aParam.isConst() && aParam.isPointer()) {
@@ -157,24 +143,21 @@ public class FunctionDefinitionAdded extends FunctionDefinitionEvent {
 			}
 			// handle initialization if defined
 			if (aParam.getInitilizer() != null) {
-				OpaqueExpression defaultExpression = (OpaqueExpression) parameter
-						.createDefaultValue("default", null,
-								UMLPackage.Literals.OPAQUE_EXPRESSION);
-				defaultExpression.getLanguages()
-						.add(BundleConstants.C_LANGUAGE);
+				OpaqueExpression defaultExpression = (OpaqueExpression)parameter.createDefaultValue(
+						"default", null, UMLPackage.Literals.OPAQUE_EXPRESSION);
+				defaultExpression.getLanguages().add(BundleConstants.C_LANGUAGE);
 				defaultExpression.getBodies().add(aParam.getInitilizer());
 			}
 		}
 
 		// create the return type
-		Parameter returnParam = behavior.createOwnedParameter("",
-				manager.getDataType(getReturnType()));
+		Parameter returnParam = behavior.createOwnedParameter("", manager.getDataType(getReturnType()));
 		returnParam.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<FunctionDefinitionAdded> builder() {

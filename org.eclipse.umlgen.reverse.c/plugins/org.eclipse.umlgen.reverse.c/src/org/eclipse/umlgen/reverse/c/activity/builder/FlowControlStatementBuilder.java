@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.builder;
 
@@ -24,43 +24,35 @@ import org.eclipse.umlgen.reverse.c.activity.util.UMLActivityFactory;
 
 public class FlowControlStatementBuilder extends AbstractBuilder {
 
-	public FlowControlStatementBuilder(UMLActivityBuilder activityBuilder,
-			UMLActivityFactory factory, CommentBuilder commentBuilder) {
+	public FlowControlStatementBuilder(UMLActivityBuilder activityBuilder, UMLActivityFactory factory,
+			CommentBuilder commentBuilder) {
 		super(activityBuilder, factory, commentBuilder);
 	}
 
-	public ActivityNodesPins buildBreakStatement(IASTBreakStatement stmt,
-			ActivityContext currentContext) {
+	public ActivityNodesPins buildBreakStatement(IASTBreakStatement stmt, ActivityContext currentContext) {
 		// Create a flow towards a flow final node named "break"
-		FlowFinalNode flowFinal = factory
-				.getFlowFinalNodeForBreak(currentContext);
+		FlowFinalNode flowFinal = factory.getFlowFinalNodeForBreak(currentContext);
 		// Attach comments
 		commentBuilder.buildComment(flowFinal, getCommentInfo(stmt));
 		return new ActivityNodesPins(flowFinal, flowFinal);
 	}
 
-	public ActivityNodesPins buildContinueStatement(IASTContinueStatement stmt,
-			ActivityContext currentContext) {
+	public ActivityNodesPins buildContinueStatement(IASTContinueStatement stmt, ActivityContext currentContext) {
 		// Create a flow towards a flow final node named "continue"
-		FlowFinalNode flowFinal = factory
-				.getFlowFinalNodeForContinue(currentContext);
+		FlowFinalNode flowFinal = factory.getFlowFinalNodeForContinue(currentContext);
 		// Attach comments
 		commentBuilder.buildComment(flowFinal, getCommentInfo(stmt));
 		return new ActivityNodesPins(flowFinal, flowFinal);
 	}
 
-	public ActivityNodesPins buildReturnStatement(IASTReturnStatement stmt,
-			ActivityContext currentContext) {
+	public ActivityNodesPins buildReturnStatement(IASTReturnStatement stmt, ActivityContext currentContext) {
 		// Create an action for the return statement
 		// and a flow towards the activity final node
-		OpaqueAction returnAction = factory.createOpaqueAction(
-				stmt.getRawSignature(), currentContext);
+		OpaqueAction returnAction = factory.createOpaqueAction(stmt.getRawSignature(), currentContext);
 		commentBuilder.buildComment(returnAction, getCommentInfo(stmt));
 
-		ActivityFinalNode finalNode = factory
-				.createActivityFinalNode(currentContext);
-		factory.addFlowTowardsActivityFinalNode(returnAction, finalNode,
-				currentContext);
+		ActivityFinalNode finalNode = factory.createActivityFinalNode(currentContext);
+		factory.addFlowTowardsActivityFinalNode(returnAction, finalNode, currentContext);
 		return new ActivityNodesPins(returnAction, finalNode);
 	}
 }

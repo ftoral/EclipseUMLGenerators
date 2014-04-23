@@ -4,10 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
+ *     Christophe Le Camus (CS-SI) - initial API and implementation
  *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -30,20 +29,18 @@ public class EnumerationAdded extends EnumerationEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
-		Enumeration myEnumeration = ModelUtil.findEnumerationInClassifier(
-				matchingClassifier, getCurrentName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
+		Enumeration myEnumeration = ModelUtil.findEnumerationInClassifier(matchingClassifier,
+				getCurrentName());
 
 		if (myEnumeration == null) {
 			if (matchingClassifier instanceof Class) {
-				myEnumeration = (Enumeration) ((Class) matchingClassifier)
-						.getNestedClassifier(getCurrentName(), false,
-								UMLPackage.Literals.ENUMERATION, true);
+				myEnumeration = (Enumeration)((Class)matchingClassifier).getNestedClassifier(
+						getCurrentName(), false, UMLPackage.Literals.ENUMERATION, true);
 			} else if (matchingClassifier instanceof Interface) {
-				myEnumeration = (Enumeration) ((Interface) matchingClassifier)
-						.getNestedClassifier(getCurrentName(), false,
-								UMLPackage.Literals.ENUMERATION, true);
+				myEnumeration = (Enumeration)((Interface)matchingClassifier).getNestedClassifier(
+						getCurrentName(), false, UMLPackage.Literals.ENUMERATION, true);
 			}
 		} else {
 			/* On supprime tous les attributs avant de les reconstruire */
@@ -52,33 +49,29 @@ public class EnumerationAdded extends EnumerationEvent {
 
 		createEnumerators(myEnumeration);
 
-		ModelUtil.setVisibility(myEnumeration, getTranslationUnit(),
-				EventType.ADD);
+		ModelUtil.setVisibility(myEnumeration, getTranslationUnit(), EventType.ADD);
 	}
 
 	/**
 	 * Creates the enumerators (content of the enumeration).
-	 * 
+	 *
 	 * @param enumeration
 	 *            The enumeration
 	 */
 	private void createEnumerators(Enumeration enumeration) {
 		for (IASTEnumerator enumerator : getEnumerators()) {
-			EnumerationLiteral literal = enumeration
-					.createOwnedLiteral(enumerator.getName().toString());
+			EnumerationLiteral literal = enumeration.createOwnedLiteral(enumerator.getName().toString());
 			if (enumerator.getValue() != null) {
-				LiteralString defaultExpression = (LiteralString) literal
-						.createSpecification("initialisationValue", null,
-								UMLPackage.Literals.LITERAL_STRING);
-				defaultExpression.setValue(enumerator.getValue()
-						.getRawSignature());
+				LiteralString defaultExpression = (LiteralString)literal.createSpecification(
+						"initialisationValue", null, UMLPackage.Literals.LITERAL_STRING);
+				defaultExpression.setValue(enumerator.getValue().getRawSignature());
 			}
 		}
 	}
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<EnumerationAdded> builder() {

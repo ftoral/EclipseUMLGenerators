@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.comments;
 
@@ -29,8 +29,7 @@ import org.eclipse.cdt.core.dom.ast.IASTWhileStatement;
 import org.eclipse.umlgen.reverse.c.activity.beans.CommentInfo;
 
 public class CommentsReconciler {
-	private Map<IASTNode, NodeLocationInfo> nodesLocationInfo = Maps
-			.newHashMap();
+	private Map<IASTNode, NodeLocationInfo> nodesLocationInfo = Maps.newHashMap();
 
 	public Map<IASTNode, CommentInfo> reconcile(IASTFunctionDefinition function) {
 		// First, we collect all the interesting statements
@@ -42,23 +41,21 @@ public class CommentsReconciler {
 		return buildNodesAndComments(commentsToAnalyze, interestingNodes);
 	}
 
-	private Map<IASTNode, CommentInfo> buildNodesAndComments(
-			List<IASTComment> commentsToAnalyze, List<IASTNode> interestingNodes) {
+	private Map<IASTNode, CommentInfo> buildNodesAndComments(List<IASTComment> commentsToAnalyze,
+			List<IASTNode> interestingNodes) {
 		Map<IASTNode, CommentInfo> nodesAndComments = Maps.newHashMap();
 
 		for (IASTComment comment : commentsToAnalyze) {
 			IASTNode node = getNodeForComment(comment, interestingNodes);
 			if (node != null) {
-				CommentInfo info = buildCommentInfo(node, comment,
-						nodesAndComments.get(node));
+				CommentInfo info = buildCommentInfo(node, comment, nodesAndComments.get(node));
 				nodesAndComments.put(node, info);
 			}
 		}
 		return nodesAndComments;
 	}
 
-	private CommentInfo buildCommentInfo(IASTNode node, IASTComment comment,
-			CommentInfo existingInfo) {
+	private CommentInfo buildCommentInfo(IASTNode node, IASTComment comment, CommentInfo existingInfo) {
 		CommentInfo info = existingInfo;
 		if (info == null) {
 			info = new CommentInfo();
@@ -91,31 +88,28 @@ public class CommentsReconciler {
 		return info;
 	}
 
-	private List<IASTComment> collectCommentsForFunction(
-			IASTFunctionDefinition function) {
+	private List<IASTComment> collectCommentsForFunction(IASTFunctionDefinition function) {
 		int startingOffset = getStartingOffset(function);
 		int endingOffset = getEndingOffset(function);
 		List<IASTComment> commentsWithoutStatements = Lists.newArrayList();
 		for (IASTComment comment : function.getTranslationUnit().getComments()) {
 			int cmtStartingOffset = getStartingOffset(comment);
 			int cmtEndingOffset = getEndingOffset(comment);
-			if ((cmtStartingOffset >= startingOffset)
-					&& (cmtEndingOffset <= endingOffset)) {
+			if (cmtStartingOffset >= startingOffset && cmtEndingOffset <= endingOffset) {
 				commentsWithoutStatements.add(comment);
 			}
 		}
 		return commentsWithoutStatements;
 	}
 
-	private IASTNode getNodeForComment(IASTComment comment,
-			List<IASTNode> interestingNodes) {
+	private IASTNode getNodeForComment(IASTComment comment, List<IASTNode> interestingNodes) {
 		int cmtStartingOffset = getStartingOffset(comment);
 		int cmtEndingOffset = getEndingOffset(comment);
 		int cmtStartingLine = getStartingLine(comment);
 
 		/*
-		 * We try to determinate : - the nearest enclosing node - the nearest
-		 * following node - the nearest node on the same line
+		 * We try to determinate : - the nearest enclosing node - the nearest following node - the nearest
+		 * node on the same line
 		 */
 
 		IASTNode nearestEnclosingNode = null;
@@ -135,42 +129,39 @@ public class CommentsReconciler {
 			int stmtStartingLine = getStartingLine(node);
 
 			// Nearest enclosing statement
-			if ((stmtStartingOffset < cmtStartingOffset)
-					&& (stmtEndingOffset > cmtEndingOffset)
-					&& (stmtStartingOffset > nearestEnclosingNodeOffset)) {
+			if (stmtStartingOffset < cmtStartingOffset && stmtEndingOffset > cmtEndingOffset
+					&& stmtStartingOffset > nearestEnclosingNodeOffset) {
 				nearestEnclosingNodeOffset = stmtStartingOffset;
 				nearestEnclosingNode = node;
 			}
 
 			// Nearest following statement
-			if ((stmtStartingOffset > cmtEndingOffset)
-					&& (stmtStartingOffset < nearestFollowingNodeOffset)) {
+			if (stmtStartingOffset > cmtEndingOffset && stmtStartingOffset < nearestFollowingNodeOffset) {
 				nearestFollowingNodeOffset = stmtStartingOffset;
 				nearestFollowingNode = node;
 			}
 
 			// Nearest statement on same line
-			if ((cmtStartingOffset > stmtEndingOffset)
-					&& (stmtStartingLine == cmtStartingLine)
-					&& (stmtEndingOffset > nearestNodeOnSameLineOffset)) {
+			if (cmtStartingOffset > stmtEndingOffset && stmtStartingLine == cmtStartingLine
+					&& stmtEndingOffset > nearestNodeOnSameLineOffset) {
 				nearestNodeOnSameLineOffset = stmtEndingOffset;
 				nearestNodeOnSameLine = node;
 			}
 
 		}
 
-		IASTNode bestNode = pickBestNode(cmtStartingLine, nearestEnclosingNode,
-				nearestFollowingNode, nearestNodeOnSameLine);
+		IASTNode bestNode = pickBestNode(cmtStartingLine, nearestEnclosingNode, nearestFollowingNode,
+				nearestNodeOnSameLine);
 		return bestNode;
 	}
 
 	private boolean isInlined(IASTComment comment, IASTNode node) {
-		return (getStartingOffset(comment) >= getStartingOffsetForInline(node) && getEndingOffset(comment) <= getEndingOffsetForInline(node));
+		return getStartingOffset(comment) >= getStartingOffsetForInline(node)
+				&& getEndingOffset(comment) <= getEndingOffsetForInline(node);
 	}
 
-	private IASTNode pickBestNode(int cmtStartingLine,
-			IASTNode nearestEnclosingNode, IASTNode nearestFollowingNode,
-			IASTNode nearestNodeOnSameLine) {
+	private IASTNode pickBestNode(int cmtStartingLine, IASTNode nearestEnclosingNode,
+			IASTNode nearestFollowingNode, IASTNode nearestNodeOnSameLine) {
 		IASTNode bestNode = null;
 
 		// We choose the best one among the closest nodes
@@ -201,11 +192,9 @@ public class CommentsReconciler {
 					int startOffset2 = getStartingOffset(nearestEnclosingNode);
 					int endOffset2 = getEndingOffset(nearestEnclosingNode);
 					int startLine2 = getStartingLine(nearestEnclosingNode);
-					if (startLine2 == cmtStartingLine
-							&& startLine1 != cmtStartingLine) {
+					if (startLine2 == cmtStartingLine && startLine1 != cmtStartingLine) {
 						bestNode = nearestEnclosingNode;
-					} else if (startOffset1 > startOffset2
-							&& endOffset1 < endOffset2) {
+					} else if (startOffset1 > startOffset2 && endOffset1 < endOffset2) {
 						bestNode = nearestFollowingNode;
 					} else {
 						bestNode = nearestEnclosingNode;
@@ -218,8 +207,7 @@ public class CommentsReconciler {
 		return bestNode;
 	}
 
-	private List<IASTNode> collectInterestingNodes(
-			IASTFunctionDefinition function) {
+	private List<IASTNode> collectInterestingNodes(IASTFunctionDefinition function) {
 		List<IASTNode> result = Lists.newArrayList();
 		result.add(function.getBody());
 		collectNodes(function.getBody(), result);
@@ -232,23 +220,23 @@ public class CommentsReconciler {
 		}
 		if (node instanceof IASTSwitchStatement) {
 			nodes.add(node);
-			IASTSwitchStatement a = (IASTSwitchStatement) node;
+			IASTSwitchStatement a = (IASTSwitchStatement)node;
 			collectNodes(a.getBody(), nodes);
 		} else if (node instanceof IASTForStatement) {
 			nodes.add(node);
-			IASTForStatement a = (IASTForStatement) node;
+			IASTForStatement a = (IASTForStatement)node;
 			collectNodes(a.getBody(), nodes);
 		} else if (node instanceof IASTWhileStatement) {
 			nodes.add(node);
-			IASTWhileStatement a = (IASTWhileStatement) node;
+			IASTWhileStatement a = (IASTWhileStatement)node;
 			collectNodes(a.getBody(), nodes);
 		} else if (node instanceof IASTDoStatement) {
 			nodes.add(node);
-			IASTDoStatement a = (IASTDoStatement) node;
+			IASTDoStatement a = (IASTDoStatement)node;
 			collectNodes(a.getBody(), nodes);
 		} else if (node instanceof IASTIfStatement) {
 			nodes.add(node);
-			IASTIfStatement a = (IASTIfStatement) node;
+			IASTIfStatement a = (IASTIfStatement)node;
 			nodes.add(a.getThenClause());
 			collectNodes(a.getThenClause(), nodes);
 			if (a.getElseClause() != null) {
@@ -256,7 +244,7 @@ public class CommentsReconciler {
 				collectNodes(a.getElseClause(), nodes);
 			}
 		} else if (node instanceof IASTCompoundStatement) {
-			IASTCompoundStatement a = (IASTCompoundStatement) node;
+			IASTCompoundStatement a = (IASTCompoundStatement)node;
 			for (IASTStatement st : a.getStatements()) {
 				collectNodes(st, nodes);
 			}

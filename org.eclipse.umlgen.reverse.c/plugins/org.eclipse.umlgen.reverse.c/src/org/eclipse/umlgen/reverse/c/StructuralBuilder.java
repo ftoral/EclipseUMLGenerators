@@ -1,13 +1,13 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
- *      CS Systèmes d'Information (CS-SI)
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
+ *      Christophe Le Camus, Sebastien GABEL, Fabien Toral  (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c;
 
@@ -93,14 +93,13 @@ public class StructuralBuilder {
 	private int filesCount(IResource[] members, int count) {
 		for (IResource rsc : members) {
 			if (rsc instanceof IFile
-					&& (BundleConstants.C_EXTENSION
-							.equalsIgnoreCase(((IFile) rsc).getFileExtension()) || BundleConstants.H_EXTENSION
-							.equalsIgnoreCase(((IFile) rsc).getFileExtension()))) {
+					&& (BundleConstants.C_EXTENSION.equalsIgnoreCase(((IFile)rsc).getFileExtension()) || BundleConstants.H_EXTENSION
+							.equalsIgnoreCase(((IFile)rsc).getFileExtension()))) {
 				count = count + 1;
 			} else {
 				if (rsc instanceof IFolder) {
 					try {
-						count = filesCount(((IFolder) rsc).members(), count);
+						count = filesCount(((IFolder)rsc).members(), count);
 					} catch (CoreException e) {
 						Activator.log(e);
 					}
@@ -111,31 +110,26 @@ public class StructuralBuilder {
 	}
 
 	public void build() throws CoreException {
-		final ICProject cProject = CoreModel.getDefault().getCModel()
-				.getCProject(resource.getProject().getName());
-		final IWorkspaceRoot wsRoot = cProject.getResource().getWorkspace()
-				.getRoot();
+		final ICProject cProject = CoreModel.getDefault().getCModel().getCProject(
+				resource.getProject().getName());
+		final IWorkspaceRoot wsRoot = cProject.getResource().getWorkspace().getRoot();
 		final int nbWorks = filesCount(resource.getProject().members(), 0);
 
-		ProgressMonitorDialog dialog = new ProgressMonitorDialog(Display
-				.getCurrent().getActiveShell());
+		ProgressMonitorDialog dialog = new ProgressMonitorDialog(Display.getCurrent().getActiveShell());
 		try {
 			dialog.run(true, true, new IRunnableWithProgress() {
 
-				public void run(final IProgressMonitor monitor)
-						throws InvocationTargetException, InterruptedException {
+				public void run(final IProgressMonitor monitor) throws InvocationTargetException,
+						InterruptedException {
 					monitor.beginTask(
 							"Reversing code contained in project " + resource.getProject().getName() + ".", nbWorks); //$NON-NLS-1$
 
 					try {
 						cProject.accept(new ICElementVisitor() {
-							public boolean visit(ICElement element)
-									throws CoreException {
+							public boolean visit(ICElement element) throws CoreException {
 								if (monitor.isCanceled()) {
-									throw new CoreException(
-											new Status(IStatus.INFO, Activator
-													.getId(),
-													"Reverse process interrupted by user"));
+									throw new CoreException(new Status(IStatus.INFO, Activator.getId(),
+											"Reverse process interrupted by user"));
 								}
 
 								// element received must be instance of
@@ -144,15 +138,14 @@ public class StructuralBuilder {
 								if (element instanceof ITranslationUnit
 										&& wsRoot.findMember(element.getPath()) != null) {
 									switch (element.getElementType()) {
-									case ICElement.C_UNIT:
-										monitor.subTask("Reversing file "
-												+ element.getPath());
-										ITranslationUnit translationUnit = (ITranslationUnit) element;
-										build(translationUnit, true);
-										monitor.worked(1);
-										return false;
-									default:
-										break;
+										case ICElement.C_UNIT:
+											monitor.subTask("Reversing file " + element.getPath());
+											ITranslationUnit translationUnit = (ITranslationUnit)element;
+											build(translationUnit, true);
+											monitor.worked(1);
+											return false;
+										default:
+											break;
 									}
 								}
 								return true;
@@ -172,23 +165,20 @@ public class StructuralBuilder {
 		}
 	}
 
-	public void build(ITranslationUnit translationUnit) throws CoreException,
-			CModelException {
+	public void build(ITranslationUnit translationUnit) throws CoreException, CModelException {
 		build(translationUnit, false);
 	}
 
-	public void build(ITranslationUnit translationUnit, boolean fullBuild)
-			throws CoreException, CModelException {
-		Activator.log("Reversing file : " + translationUnit.getPath(),
-				IStatus.INFO);
+	public void build(ITranslationUnit translationUnit, boolean fullBuild) throws CoreException,
+			CModelException {
+		Activator.log("Reversing file : " + translationUnit.getPath(), IStatus.INFO);
 
 		if (!fullBuild) {
 			preBuild(translationUnit);
 		}
 
 		IASTTranslationUnit ast = translationUnit.getAST();
-		IASTDeclaration[] declarationsArray = translationUnit.getAST()
-				.getDeclarations(includeInactiveNode);
+		IASTDeclaration[] declarationsArray = translationUnit.getAST().getDeclarations(includeInactiveNode);
 
 		// needed for Binding Resolver
 		// FIXME MIGRATION use of Google API
@@ -201,12 +191,9 @@ public class StructuralBuilder {
 		if (cRsc != null) {
 			umlModelChangeListener = getUMLModelChangeListener(cRsc);
 
-			CModelChangedEvent event = CUnitAdded
-					.builder()
-					.translationUnit(translationUnit)
-					.currentName(translationUnit.getElementName())
-					.setModelMananager(umlModelChangeListener.getModelManager())
-					.build();
+			CModelChangedEvent event = CUnitAdded.builder().translationUnit(translationUnit).currentName(
+					translationUnit.getElementName()).setModelMananager(
+					umlModelChangeListener.getModelManager()).build();
 
 			umlModelChangeListener.notifyChanges(event, false);
 
@@ -242,7 +229,7 @@ public class StructuralBuilder {
 
 	/**
 	 * Gets the UML model change listener that is instantiated only one time.
-	 * 
+	 *
 	 * @param rsc
 	 *            The IResouce currently processed
 	 * @return The instantiated UML model change listener
@@ -255,8 +242,8 @@ public class StructuralBuilder {
 	}
 
 	/**
-	 * Disposes the structural builder after a build : the UML model change
-	 * listener is disposed, itself it disposes the model manager.
+	 * Disposes the structural builder after a build : the UML model change listener is disposed, itself it
+	 * disposes the model manager.
 	 */
 	public void dispose() {
 		// The UML model change listener can be null when no source code is set
@@ -267,32 +254,26 @@ public class StructuralBuilder {
 		}
 	}
 
-	private void postBuild(ITranslationUnit translationUnit)
-			throws CoreException {
+	private void postBuild(ITranslationUnit translationUnit) throws CoreException {
 		ProjectUtil.addToBuildSpec(translationUnit.getCProject().getProject(),
 				BundleConstants.UML2C_BUILDER_ID);
 	}
 
-	private void preBuild(ITranslationUnit translationUnit)
-			throws CoreException {
+	private void preBuild(ITranslationUnit translationUnit) throws CoreException {
 		// Temporally removing UML2C builder to avoid workspace building after
 		// each reverse during the structural build
-		ProjectUtil.removeFromBuildSpec(translationUnit.getCProject()
-				.getProject(), BundleConstants.UML2C_BUILDER_ID);
+		ProjectUtil.removeFromBuildSpec(translationUnit.getCProject().getProject(),
+				BundleConstants.UML2C_BUILDER_ID);
 	}
 
-	private void addComments(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) {
+	private void addComments(ITranslationUnit translationUnit, IASTTranslationUnit ast) {
 		try {
 			IWorkingCopy workingUnit = translationUnit.getWorkingCopy();
 			commentReconciler.addModelChangeListener(umlModelChangeListener);
-			commentReconciler.reconcile(workingUnit, null,
-					new IASTDeclaration[1]);
+			commentReconciler.reconcile(workingUnit, null, new IASTDeclaration[1]);
 			commentReconciler.removeModelChangeListener(umlModelChangeListener);
 		} catch (Exception e) {
-			Activator
-					.log("Error during the Addition of Comments : "
-							+ e.getMessage(), IStatus.ERROR);
+			Activator.log("Error during the Addition of Comments : " + e.getMessage(), IStatus.ERROR);
 		}
 	}
 
@@ -300,10 +281,9 @@ public class StructuralBuilder {
 		return tu.isHeaderUnit() ? hFileReconciler : cFileReconciler;
 	}
 
-	private void addIncludes(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
-		IASTPreprocessorIncludeStatement[] includesArray = ast
-				.getIncludeDirectives();
+	private void addIncludes(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
+		IASTPreprocessorIncludeStatement[] includesArray = ast.getIncludeDirectives();
 
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTPreprocessorIncludeStatement> filteredInclusions =
@@ -311,14 +291,12 @@ public class StructuralBuilder {
 		// SameFileLocation(ast));
 		Collection<IASTPreprocessorIncludeStatement> filteredInclusions = Collections.EMPTY_LIST;
 		for (IASTPreprocessorIncludeStatement include : filteredInclusions) {
-			CModelChangedEvent event = getFileReconciler(ast).addElement(
-					include, translationUnit);
+			CModelChangedEvent event = getFileReconciler(ast).addElement(include, translationUnit);
 			umlModelChangeListener.notifyChanges(event, false);
 		}
 	}
 
-	private void addMacros(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
+	private void addMacros(ITranslationUnit translationUnit, IASTTranslationUnit ast) throws CModelException {
 		IASTPreprocessorMacroDefinition[] macros = ast.getMacroDefinitions();
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTPreprocessorMacroDefinition> filteredMacros =
@@ -326,16 +304,13 @@ public class StructuralBuilder {
 		// SameFileLocation(ast));
 		Collection<IASTPreprocessorMacroDefinition> filteredMacros = Collections.EMPTY_LIST;
 		for (IASTPreprocessorMacroDefinition macro : filteredMacros) {
-			CModelChangedEvent event = getFileReconciler(ast).addElement(macro,
-					translationUnit);
+			CModelChangedEvent event = getFileReconciler(ast).addElement(macro, translationUnit);
 			umlModelChangeListener.notifyChanges(event, false);
 		}
 	}
 
-	private void addIfNDef(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) {
-		IASTPreprocessorStatement[] prerocStmts = ast
-				.getAllPreprocessorStatements();
+	private void addIfNDef(ITranslationUnit translationUnit, IASTTranslationUnit ast) {
+		IASTPreprocessorStatement[] prerocStmts = ast.getAllPreprocessorStatements();
 		// FIXME MIGRATION use of Google API
 		// Collection<IASTPreprocessorStatement> filteredPreprocStmts =
 		// Collections2.filter(ImmutableList.of(prerocStmts), new
@@ -345,22 +320,17 @@ public class StructuralBuilder {
 		// may be no declaration in the ast
 		if (ast.getFileLocation() != null) {
 			int firstNodePosition = ast.getFileLocation().getNodeLength();
-			if (ast.getDeclarations().length > 0
-					&& ast.getDeclarations()[0] instanceof IASTNode) {
+			if (ast.getDeclarations().length > 0 && ast.getDeclarations()[0] instanceof IASTNode) {
 				firstNodePosition = ast.getFileLocation().getNodeLength();
 			}
 			// avoid to treat multiple #ifndef
 			boolean first = true;
 
 			for (IASTPreprocessorStatement preprocStmt : filteredPreprocStmts) {
-				if (preprocStmt instanceof IASTPreprocessorIfndefStatement
-						&& first) {
-					if (((IASTPreprocessorIfndefStatement) preprocStmt)
-							.getFileLocation().getNodeOffset() < firstNodePosition) {
-						CModelChangedEvent event = getFileReconciler(ast)
-								.addElement(
-										(IASTPreprocessorIfndefStatement) preprocStmt,
-										translationUnit);
+				if (preprocStmt instanceof IASTPreprocessorIfndefStatement && first) {
+					if (((IASTPreprocessorIfndefStatement)preprocStmt).getFileLocation().getNodeOffset() < firstNodePosition) {
+						CModelChangedEvent event = getFileReconciler(ast).addElement(
+								(IASTPreprocessorIfndefStatement)preprocStmt, translationUnit);
 						umlModelChangeListener.notifyChanges(event, false);
 						first = false;
 					}
@@ -371,215 +341,183 @@ public class StructuralBuilder {
 
 	/**
 	 * Adds a <b>Variable Declaration</b>
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addVariableDeclarations(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_VARIABLE_DECLARATION)) {
-			IVariableDeclaration varDecl = (IVariableDeclaration) element;
-			IASTSimpleDeclaration simpleDeclaration = BindingResolver
-					.resolveBindingIASTSimpleDeclaration(declarations, varDecl);
-			CModelChangedEvent event = getFileReconciler(ast).addElement(
-					simpleDeclaration, varDecl);
+	private void addVariableDeclarations(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_VARIABLE_DECLARATION)) {
+			IVariableDeclaration varDecl = (IVariableDeclaration)element;
+			IASTSimpleDeclaration simpleDeclaration = BindingResolver.resolveBindingIASTSimpleDeclaration(
+					declarations, varDecl);
+			CModelChangedEvent event = getFileReconciler(ast).addElement(simpleDeclaration, varDecl);
 			umlModelChangeListener.notifyChanges(event, false);
 		}
 	}
 
 	/**
 	 * Adds a <b>Simple Variable</b>
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addVariables(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_VARIABLE)) {
-			IVariable var = (IVariable) element;
-			IASTSimpleDeclaration simpleDeclaration = BindingResolver
-					.resolveBindingIASTSimpleDeclaration(declarations, var);
-			CModelChangedEvent event = getFileReconciler(ast).addElement(
-					simpleDeclaration, var);
+	private void addVariables(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_VARIABLE)) {
+			IVariable var = (IVariable)element;
+			IASTSimpleDeclaration simpleDeclaration = BindingResolver.resolveBindingIASTSimpleDeclaration(
+					declarations, var);
+			CModelChangedEvent event = getFileReconciler(ast).addElement(simpleDeclaration, var);
 			umlModelChangeListener.notifyChanges(event, false);
 		}
 	}
 
 	/**
 	 * Adds a <b>Function Declaration</b>
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addFunctionDeclarations(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_FUNCTION_DECLARATION)) {
-			IFunctionDeclaration coreElement = (IFunctionDeclaration) element;
-			IASTSimpleDeclaration declaration = BindingResolver
-					.resolveBindingIASTFunctionDeclarator(declarations,
-							coreElement);
+	private void addFunctionDeclarations(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_FUNCTION_DECLARATION)) {
+			IFunctionDeclaration coreElement = (IFunctionDeclaration)element;
+			IASTSimpleDeclaration declaration = BindingResolver.resolveBindingIASTFunctionDeclarator(
+					declarations, coreElement);
 			if (declaration != null) {
-				CModelChangedEvent event = getFileReconciler(ast)
-						.addElement(
-								((IASTFunctionDeclarator) (declaration)
-										.getDeclarators()[0]),
-								coreElement);
+				CModelChangedEvent event = getFileReconciler(ast).addElement(
+						(IASTFunctionDeclarator)declaration.getDeclarators()[0], coreElement);
 				umlModelChangeListener.notifyChanges(event, false);
 			} else {
 				Activator
-						.log("Undefined declaration : "
-								+ coreElement.getElementName()
-								+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
-								IStatus.WARNING);
+				.log("Undefined declaration : "
+						+ coreElement.getElementName()
+						+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
+						IStatus.WARNING);
 			}
 		}
 	}
 
 	/**
 	 * Adds a <b>Function Definition</b>
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addFunctionDefinitions(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_FUNCTION)) {
-			IFunction coreElement = (IFunction) element;
-			IASTFunctionDefinition functionDefinition = BindingResolver
-					.resolveBindingIASTFunctionDefinition(declarations,
-							coreElement);
-			CModelChangedEvent event = getFileReconciler(ast).addElement(
-					functionDefinition, coreElement);
+	private void addFunctionDefinitions(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_FUNCTION)) {
+			IFunction coreElement = (IFunction)element;
+			IASTFunctionDefinition functionDefinition = BindingResolver.resolveBindingIASTFunctionDefinition(
+					declarations, coreElement);
+			CModelChangedEvent event = getFileReconciler(ast).addElement(functionDefinition, coreElement);
 			umlModelChangeListener.notifyChanges(event, false);
 		}
 	}
 
 	/**
 	 * Adds a structure
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addStructures(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
+	private void addStructures(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
 		int anonymousRanking = 1;
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_STRUCT)) {
-			IStructure coreElement = (IStructure) element;
-			IASTSimpleDeclaration simpleDeclaration = BindingResolver
-					.resolveBindingIASTStructure(declarations, coreElement,
-							anonymousRanking);
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_STRUCT)) {
+			IStructure coreElement = (IStructure)element;
+			IASTSimpleDeclaration simpleDeclaration = BindingResolver.resolveBindingIASTStructure(
+					declarations, coreElement, anonymousRanking);
 			if (simpleDeclaration != null) {
-				CModelChangedEvent event = getFileReconciler(ast)
-						.addElement(
-								(IASTCompositeTypeSpecifier) simpleDeclaration
-										.getDeclSpecifier(),
-								coreElement);
+				CModelChangedEvent event = getFileReconciler(ast).addElement(
+						(IASTCompositeTypeSpecifier)simpleDeclaration.getDeclSpecifier(), coreElement);
 				umlModelChangeListener.notifyChanges(event, false);
 				if ("".equals(coreElement.getElementName())) {
 					anonymousRanking++;
 				}
 			} else {
 				Activator
-						.log("Undefined Structure : "
-								+ coreElement.getElementName()
-								+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
-								IStatus.WARNING);
+				.log("Undefined Structure : "
+						+ coreElement.getElementName()
+						+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
+						IStatus.WARNING);
 			}
 		}
 	}
 
 	/**
 	 * Adds an enumeration
-	 * 
+	 *
 	 * @param translationUnit
 	 * @param ast
 	 * @throws CModelException
 	 */
-	private void addEnumerations(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
+	private void addEnumerations(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
 		int anonymousRanking = 1;
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_ENUMERATION)) {
-			IEnumeration coreElement = (IEnumeration) element;
-			IASTSimpleDeclaration simpleDeclaration = BindingResolver
-					.resolveBindingIASTEnumeration(declarations, coreElement,
-							anonymousRanking);
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_ENUMERATION)) {
+			IEnumeration coreElement = (IEnumeration)element;
+			IASTSimpleDeclaration simpleDeclaration = BindingResolver.resolveBindingIASTEnumeration(
+					declarations, coreElement, anonymousRanking);
 			if (simpleDeclaration != null) {
-				CModelChangedEvent event = getFileReconciler(ast)
-						.addElement(
-								(IASTEnumerationSpecifier) simpleDeclaration
-										.getDeclSpecifier(),
-								coreElement);
+				CModelChangedEvent event = getFileReconciler(ast).addElement(
+						(IASTEnumerationSpecifier)simpleDeclaration.getDeclSpecifier(), coreElement);
 				umlModelChangeListener.notifyChanges(event, false);
 				if ("".equals(coreElement.getElementName())) {
 					anonymousRanking++;
 				}
 			} else {
 				Activator
-						.log("Undefined Enumeration : "
-								+ coreElement.getElementName()
-								+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
-								IStatus.WARNING);
+				.log("Undefined Enumeration : "
+						+ coreElement.getElementName()
+						+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
+						IStatus.WARNING);
 			}
 		}
 	}
 
-	private void addTypeDefs(ITranslationUnit translationUnit,
-			IASTTranslationUnit ast) throws CModelException {
+	private void addTypeDefs(ITranslationUnit translationUnit, IASTTranslationUnit ast)
+			throws CModelException {
 		CModelChangedEvent event = null;
-		for (ICElement element : translationUnit
-				.getChildrenOfType(ICElement.C_TYPEDEF)) {
-			ITypeDef coreElement = (ITypeDef) element;
-			IASTSimpleDeclaration simpleDeclaration = BindingResolver
-					.resolveBindingIASTypeDefDeclaration(declarations,
-							coreElement);
+		for (ICElement element : translationUnit.getChildrenOfType(ICElement.C_TYPEDEF)) {
+			ITypeDef coreElement = (ITypeDef)element;
+			IASTSimpleDeclaration simpleDeclaration = BindingResolver.resolveBindingIASTypeDefDeclaration(
+					declarations, coreElement);
 
-			if (simpleDeclaration != null
-					&& simpleDeclaration.getFileLocation() != null) {
+			if (simpleDeclaration != null && simpleDeclaration.getFileLocation() != null) {
 				if (simpleDeclaration.getDeclSpecifier() instanceof IASTEnumerationSpecifier) {
-					event = getFileReconciler(ast)
-							.addElement(
-									(IASTEnumerationSpecifier) simpleDeclaration
-											.getDeclSpecifier(), coreElement);
+					event = getFileReconciler(ast).addElement(
+							(IASTEnumerationSpecifier)simpleDeclaration.getDeclSpecifier(), coreElement);
 				} else if (simpleDeclaration.getDeclSpecifier() instanceof IASTCompositeTypeSpecifier) {
-					event = getFileReconciler(ast)
-							.addElement(
-									(IASTCompositeTypeSpecifier) simpleDeclaration
-											.getDeclSpecifier(), coreElement);
+					event = getFileReconciler(ast).addElement(
+							(IASTCompositeTypeSpecifier)simpleDeclaration.getDeclSpecifier(), coreElement);
 				} else if (simpleDeclaration.getDeclSpecifier() instanceof IASTElaboratedTypeSpecifier) {
-					event = getFileReconciler(ast)
-							.addElement(
-									(IASTElaboratedTypeSpecifier) simpleDeclaration
-											.getDeclSpecifier(), coreElement);
+					event = getFileReconciler(ast).addElement(
+							(IASTElaboratedTypeSpecifier)simpleDeclaration.getDeclSpecifier(), coreElement);
 				} else if (simpleDeclaration.getDeclSpecifier() instanceof IASTNamedTypeSpecifier) {
-					event = getFileReconciler(ast).addElement(
-							simpleDeclaration.getDeclarators()[0], coreElement);
+					event = getFileReconciler(ast).addElement(simpleDeclaration.getDeclarators()[0],
+							coreElement);
 				} else if (simpleDeclaration.getDeclSpecifier() instanceof IASTSimpleDeclSpecifier) {
-					event = getFileReconciler(ast).addElement(
-							simpleDeclaration.getDeclarators()[0], coreElement);
+					event = getFileReconciler(ast).addElement(simpleDeclaration.getDeclarators()[0],
+							coreElement);
 				} else if (simpleDeclaration.getDeclarators()[0] instanceof IASTFunctionDeclarator) {
-					event = getFileReconciler(ast).addElement(
-							((simpleDeclaration.getDeclarators()[0])),
+					event = getFileReconciler(ast).addElement(simpleDeclaration.getDeclarators()[0],
 							coreElement);
 				}
 
 				umlModelChangeListener.notifyChanges(event, false);
 			} else {
 				Activator
-						.log("Undefined TypedDef : "
-								+ coreElement.getElementName()
-								+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
-								IStatus.ERROR);
+				.log("Undefined TypedDef : "
+						+ coreElement.getElementName()
+						+ ". The Type is defined outside and the Declaration is not found even in includes dependencies. Module is not already defined.",
+						IStatus.ERROR);
 			}
 		}
 	}

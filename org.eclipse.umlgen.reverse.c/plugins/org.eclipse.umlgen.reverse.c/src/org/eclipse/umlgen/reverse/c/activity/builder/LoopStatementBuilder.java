@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.builder;
 
@@ -27,19 +27,17 @@ import org.eclipse.umlgen.reverse.c.activity.util.UMLActivityFactory;
 
 public class LoopStatementBuilder extends AbstractBuilder {
 
-	public LoopStatementBuilder(UMLActivityBuilder activityBuilder,
-			UMLActivityFactory factory, CommentBuilder commentBuilder) {
+	public LoopStatementBuilder(UMLActivityBuilder activityBuilder, UMLActivityFactory factory,
+			CommentBuilder commentBuilder) {
 		super(activityBuilder, factory, commentBuilder);
 	}
 
-	public ActivityNodesPins buildLoopStatement(
-			LoopStatementWrapper wrapperStmt, ActivityContext currentContext) {
-		LoopNode loopNode = factory.createLoopNode(
-				wrapperStmt.getLoopNodeName(), wrapperStmt.isTestedFirst(),
-				currentContext);
+	public ActivityNodesPins buildLoopStatement(LoopStatementWrapper wrapperStmt,
+			ActivityContext currentContext) {
+		LoopNode loopNode = factory.createLoopNode(wrapperStmt.getLoopNodeName(),
+				wrapperStmt.isTestedFirst(), currentContext);
 		// Attach comments to the LoopNode
-		commentBuilder.buildComment(loopNode,
-				getCommentInfo(wrapperStmt.getWrappedStatement()));
+		commentBuilder.buildComment(loopNode, getCommentInfo(wrapperStmt.getWrappedStatement()));
 
 		ActivityContext loopNodeContext = new ActivityContext(loopNode);
 		createInitializer(loopNode, wrapperStmt, loopNodeContext);
@@ -49,68 +47,58 @@ public class LoopStatementBuilder extends AbstractBuilder {
 		return new ActivityNodesPins(loopNode, loopNode);
 	}
 
-	private void createInitializer(LoopNode loopNode,
-			LoopStatementWrapper stmt, ActivityContext currentContext) {
+	private void createInitializer(LoopNode loopNode, LoopStatementWrapper stmt,
+			ActivityContext currentContext) {
 		IASTStatement initializerStmt = stmt.getInitializerStatement();
 		if (initializerStmt != null) {
 			String initializerBody = initializerStmt.getRawSignature();
 			// Remove the trailing ';'
-			initializerBody = initializerBody.substring(0,
-					initializerBody.length() - 1);
-			OpaqueAction setupAction = factory.createOpaqueAction(
-					initializerBody, currentContext);
+			initializerBody = initializerBody.substring(0, initializerBody.length() - 1);
+			OpaqueAction setupAction = factory.createOpaqueAction(initializerBody, currentContext);
 			loopNode.getSetupParts().add(setupAction);
 		}
 	}
 
-	private void createTest(LoopNode loopNode, LoopStatementWrapper stmt,
-			ActivityContext currentContext) {
+	private void createTest(LoopNode loopNode, LoopStatementWrapper stmt, ActivityContext currentContext) {
 		String testBody = "";
 		if (stmt.getConditionExpression() != null) {
 			testBody = stmt.getConditionExpression().getRawSignature();
 		}
 
-		OpaqueAction testAction = factory.createOpaqueAction(testBody,
-				currentContext);
+		OpaqueAction testAction = factory.createOpaqueAction(testBody, currentContext);
 		OutputPin decider = factory.createOutputPin();
 		testAction.getOutputValues().add(decider);
 		loopNode.getTests().add(testAction);
 		loopNode.setDecider(decider);
 	}
 
-	private void createIteration(LoopNode loopNode, LoopStatementWrapper stmt,
-			ActivityContext currentContext) {
+	private void createIteration(LoopNode loopNode, LoopStatementWrapper stmt, ActivityContext currentContext) {
 		if (stmt.isFor()) {
 			String iterationBody = "";
 			if (stmt.getIterationExpression() != null) {
 				iterationBody = stmt.getIterationExpression().getRawSignature();
 			}
 
-			OpaqueAction iterationAction = factory.createOpaqueAction(
-					iterationBody, currentContext);
+			OpaqueAction iterationAction = factory.createOpaqueAction(iterationBody, currentContext);
 			OutputPin loopVariable = factory.createOutputPin();
 			iterationAction.getOutputValues().add(loopVariable);
 			loopNode.getLoopVariables().add(loopVariable);
 		}
 	}
 
-	private void createBody(LoopNode loopNode, LoopStatementWrapper stmt,
-			ActivityContext currentContext) {
+	private void createBody(LoopNode loopNode, LoopStatementWrapper stmt, ActivityContext currentContext) {
 		if (!(stmt.getBody() instanceof IASTNullStatement)) {
-			ActivityNodesPins bodyNodes = activityBuilder.buildNodes(
-					stmt.getBody(), currentContext);
+			ActivityNodesPins bodyNodes = activityBuilder.buildNodes(stmt.getBody(), currentContext);
 			ActivityNode firstNode = bodyNodes.getStartNode();
 			ActivityNode lastNode = bodyNodes.getEndNode();
 
 			// Ensure the first node is a subtype of ExecutableNode and attach
 			// this node as bodyPart
-			ExecutableNode bodyFirstNode = factory.ensureStartNodeIsExecutable(
-					firstNode, currentContext);
+			ExecutableNode bodyFirstNode = factory.ensureStartNodeIsExecutable(firstNode, currentContext);
 			loopNode.getBodyParts().add(bodyFirstNode);
 
 			// Add a ControlFlow towards a FlowFinalNode
-			FlowFinalNode flowFinal = factory
-					.getFlowFinalNodeForEndOfLoop(currentContext);
+			FlowFinalNode flowFinal = factory.getFlowFinalNodeForEndOfLoop(currentContext);
 			factory.createControlFlow(lastNode, flowFinal, currentContext);
 		}
 	}

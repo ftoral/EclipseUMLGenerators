@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -24,11 +24,9 @@ public class TestDefine extends AbstractTest {
 	@Test
 	public void testDefineEmptyInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testdefineemptyC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testdefineemptyC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -38,18 +36,15 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/defineemptyC.uml");
+		testModel(project, "/resource/structural/addition/define/defineemptyC.uml");
 	}
 
 	@Test
 	public void testDefineIntInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testintDefineC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testintDefineC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -59,19 +54,15 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/intDefineC.uml");
+		testModel(project, "/resource/structural/addition/define/intDefineC.uml");
 	}
 
 	@Test
-	public void testDefineStringInC() throws CoreException,
-			InterruptedException {
+	public void testDefineStringInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("teststringDefineC",
-				new NullProgressMonitor());
+		IProject project = createIProject("teststringDefineC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -81,18 +72,15 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/stringDefineC.uml");
+		testModel(project, "/resource/structural/addition/define/stringDefineC.uml");
 	}
 
 	@Test
 	public void testDefineEmptyInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testdefineemptyH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testdefineemptyH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -102,18 +90,15 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/defineemptyH.uml");
+		testModel(project, "/resource/structural/addition/define/defineemptyH.uml");
 	}
 
 	@Test
 	public void testDefineIntInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testintDefineH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testintDefineH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -123,19 +108,15 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/intDefineH.uml");
+		testModel(project, "/resource/structural/addition/define/intDefineH.uml");
 	}
 
 	@Test
-	public void testDefineStringInH() throws CoreException,
-			InterruptedException {
+	public void testDefineStringInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("teststringDefineH",
-				new NullProgressMonitor());
+		IProject project = createIProject("teststringDefineH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -145,7 +126,6 @@ public class TestDefine extends AbstractTest {
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/define/stringDefineH.uml");
+		testModel(project, "/resource/structural/addition/define/stringDefineH.uml");
 	}
 }

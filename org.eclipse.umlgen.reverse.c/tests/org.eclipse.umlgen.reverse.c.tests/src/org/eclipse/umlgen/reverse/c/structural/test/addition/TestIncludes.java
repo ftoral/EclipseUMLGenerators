@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -24,88 +24,66 @@ import org.junit.Test;
 public class TestIncludes extends AbstractTest {
 
 	@Test
-	public void testIncludesStdLibInC() throws CoreException,
-			InterruptedException {
-		IProject project = createIProject("testincludesExtC",
-				new NullProgressMonitor());
+	public void testIncludesStdLibInC() throws CoreException, InterruptedException {
+		IProject project = createIProject("testincludesExtC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("file.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("file.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 		setEditorContent(editor, " ");
-		setEditorContent(
-				editor,
-				getResourceInputStream("/resource/structural/addition/includes/file.c"));
+		setEditorContent(editor, getResourceInputStream("/resource/structural/addition/includes/file.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/includes/includesExtC.uml");
+		testModel(project, "/resource/structural/addition/includes/includesExtC.uml");
 	}
 
 	@Test
-	public void testIncludesStdLibInH() throws CoreException,
-			InterruptedException {
-		IProject project = createIProject("testincludesExtH",
-				new NullProgressMonitor());
+	public void testIncludesStdLibInH() throws CoreException, InterruptedException {
+		IProject project = createIProject("testincludesExtH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("file.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("file.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 		setEditorContent(editor, " ");
-		setEditorContent(
-				editor,
-				getResourceInputStream("/resource/structural/addition/includes/file.h"));
+		setEditorContent(editor, getResourceInputStream("/resource/structural/addition/includes/file.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/includes/includesExtH.uml");
+		testModel(project, "/resource/structural/addition/includes/includesExtH.uml");
 	}
 
 	@Test
-	public void testsameNameExternalInC() throws CoreException,
-			InterruptedException {
+	public void testsameNameExternalInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testsameNameExternalC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testsameNameExternalC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("sameNameExternal.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("sameNameExternal.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 		setEditorContent(editor, " ");
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/includes/sameNameExternal.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/includes/sameNameExternalC.uml");
+		testModel(project, "/resource/structural/addition/includes/sameNameExternalC.uml");
 	}
 
 	@Test
-	public void testsameNameInternalInC() throws CoreException,
-			InterruptedException {
+	public void testsameNameInternalInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testsameNameInternalC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testsameNameInternalC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("sameNameInternal.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("sameNameInternal.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 		setEditorContent(editor, " ");
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/includes/sameNameInternal.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/includes/sameNameInternalC.uml");
+		testModel(project, "/resource/structural/addition/includes/sameNameInternalC.uml");
 	}
 }

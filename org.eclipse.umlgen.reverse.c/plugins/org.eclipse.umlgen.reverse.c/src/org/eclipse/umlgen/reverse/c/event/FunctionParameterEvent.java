@@ -4,11 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * 	   Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
- *     Sebastien Gabel (CS-SI) - evolutions
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
+ *     Christophe Le Camus (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
@@ -38,8 +37,7 @@ public abstract class FunctionParameterEvent extends CModelChangedEvent {
 		this.parameters = parameters;
 	}
 
-	public static abstract class Builder<T extends FunctionParameterEvent>
-			extends CModelChangedEvent.Builder<T> {
+	public static abstract class Builder<T extends FunctionParameterEvent> extends CModelChangedEvent.Builder<T> {
 		public Builder<T> setParameters(List<FunctionParameter> parameters) {
 			getEvent().setParameters(parameters);
 			return this;

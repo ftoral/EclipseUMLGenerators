@@ -1,13 +1,13 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
- *      CS Systèmes d'Information (CS-SI) - evolutions
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
+ *      Sebastien GABEL (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c;
 
@@ -53,27 +53,23 @@ public class ElementChangedListener implements IElementChangedListener {
 		// to the workspace.
 		if ((element instanceof ITranslationUnit || element instanceof ICModel)
 				&& wsRoot.findMember(element.getPath()) != null) {
-			Job job = new WorkspaceJob(
-					"Synchronizing C code and UML Model from : ".concat(element
-							.getElementName())) {
+			Job job = new WorkspaceJob("Synchronizing C code and UML Model from : ".concat(element
+					.getElementName())) {
 
 				@Override
-				public IStatus runInWorkspace(IProgressMonitor monitor)
-						throws CoreException {
+				public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
 					switch (elementType) {
-					case ICElement.C_UNIT:
-						if (C2UMLSyncNature.isC2UMLSynchProject(element
-								.getCProject())) {
-							if (element instanceof IWorkingCopy
-									&& ((IWorkingCopy) element)
-											.hasUnsavedChanges()) {
-								workingCopyChanged(delta);
+						case ICElement.C_UNIT:
+							if (C2UMLSyncNature.isC2UMLSynchProject(element.getCProject())) {
+								if (element instanceof IWorkingCopy
+										&& ((IWorkingCopy)element).hasUnsavedChanges()) {
+									workingCopyChanged(delta);
+								}
 							}
-						}
-						break;
-					case ICElement.C_MODEL:
-						cModelChanged(delta);
-						break;
+							break;
+						case ICElement.C_MODEL:
+							cModelChanged(delta);
+							break;
 					}
 					return Status.OK_STATUS;
 				}
@@ -87,24 +83,23 @@ public class ElementChangedListener implements IElementChangedListener {
 		ICElement element = delta.getElement();
 		int elementType = element.getElementType();
 
-		if (elementType == ICElement.C_UNIT
-				&& C2UMLSyncNature.isC2UMLSynchProject(element.getCProject())) {
+		if (elementType == ICElement.C_UNIT && C2UMLSyncNature.isC2UMLSynchProject(element.getCProject())) {
 			if (!(element instanceof IWorkingCopy)) {
 				switch (delta.getKind()) {
-				case ICElementDelta.ADDED:
-					cUnitAdded(delta, element);
-					break;
-				case ICElementDelta.REMOVED:
-					cUnitRemoved(element);
-					break;
-				case ICElementDelta.CHANGED:
-					cUnitChanged(delta, element);
-					break;
+					case ICElementDelta.ADDED:
+						cUnitAdded(delta, element);
+						break;
+					case ICElementDelta.REMOVED:
+						cUnitRemoved(element);
+						break;
+					case ICElementDelta.CHANGED:
+						cUnitChanged(delta, element);
+						break;
 				}
 			}
 		} else {
-			for (int i = 0; i < children.length; i++) {
-				cModelChanged(children[i]);
+			for (ICElementDelta element2 : children) {
+				cModelChanged(element2);
 			}
 		}
 	}
@@ -117,19 +112,16 @@ public class ElementChangedListener implements IElementChangedListener {
 
 	private void cUnitRemoved(ICElement element) {
 		CModelChangedEvent event;
-		event = CUnitRemoved.builder()
-				.translationUnit((ITranslationUnit) element)
-				.currentName(((ITranslationUnit) element).getElementName())
-				.build();
+		event = CUnitRemoved.builder().translationUnit((ITranslationUnit)element).currentName(
+				((ITranslationUnit)element).getElementName()).build();
 		cASTReconciler.notifyListeners(event, true);
 	}
 
 	private void cUnitAdded(ICElementDelta delta, ICElement element) {
 
-		StructuralBuilder builder = new StructuralBuilder(
-				((ITranslationUnit) element).getResource());
+		StructuralBuilder builder = new StructuralBuilder(((ITranslationUnit)element).getResource());
 		try {
-			builder.build((ITranslationUnit) element);
+			builder.build((ITranslationUnit)element);
 		} catch (Exception e) {
 			Activator.log(e);
 		} finally {
@@ -137,13 +129,13 @@ public class ElementChangedListener implements IElementChangedListener {
 		}
 
 		final ICElementDelta[] affectedChildren = delta.getAffectedChildren();
-		for (int i = 0; i < affectedChildren.length; ++i) {
-			cModelChanged(affectedChildren[i]);
+		for (ICElementDelta element2 : affectedChildren) {
+			cModelChanged(element2);
 		}
 	}
 
 	private void workingCopyChanged(ICElementDelta delta) throws CoreException {
-		IWorkingCopy workingUnit = (IWorkingCopy) delta.getElement();
+		IWorkingCopy workingUnit = (IWorkingCopy)delta.getElement();
 		ITranslationUnit originalUnit = workingUnit.getOriginalElement();
 		boolean reconcile = false;
 
@@ -155,22 +147,22 @@ public class ElementChangedListener implements IElementChangedListener {
 		int j = 0;
 		// insert the Includes in first position so client and supplier are not
 		// removed first
-		for (int i = 0; i < removedChildrenInVrac.length; i++) {
-			if (removedChildrenInVrac[i].getElement().getElementType() != ICElement.C_ENUMERATION
-					&& removedChildrenInVrac[i].getElement().getElementType() != ICElement.C_STRUCT
-					&& removedChildrenInVrac[i].getElement().getElementType() != ICElement.C_TYPEDEF
-					&& removedChildrenInVrac[i].getElement().getElementType() != ICElement.C_INCLUDE) {
-				removedChildren[j] = removedChildrenInVrac[i];
+		for (ICElementDelta element : removedChildrenInVrac) {
+			if (element.getElement().getElementType() != ICElement.C_ENUMERATION
+					&& element.getElement().getElementType() != ICElement.C_STRUCT
+					&& element.getElement().getElementType() != ICElement.C_TYPEDEF
+					&& element.getElement().getElementType() != ICElement.C_INCLUDE) {
+				removedChildren[j] = element;
 				j = j + 1;
 			}
 		}
 		// continue to fill the removedChildren from the j position
-		for (int i = 0; i < removedChildrenInVrac.length; i++) {
-			if (removedChildrenInVrac[i].getElement().getElementType() == ICElement.C_ENUMERATION
-					|| removedChildrenInVrac[i].getElement().getElementType() == ICElement.C_STRUCT
-					|| removedChildrenInVrac[i].getElement().getElementType() == ICElement.C_TYPEDEF
-					|| removedChildrenInVrac[i].getElement().getElementType() == ICElement.C_INCLUDE) {
-				removedChildren[j] = removedChildrenInVrac[i];
+		for (ICElementDelta element : removedChildrenInVrac) {
+			if (element.getElement().getElementType() == ICElement.C_ENUMERATION
+					|| element.getElement().getElementType() == ICElement.C_STRUCT
+					|| element.getElement().getElementType() == ICElement.C_TYPEDEF
+					|| element.getElement().getElementType() == ICElement.C_INCLUDE) {
+				removedChildren[j] = element;
 				j = j + 1;
 			}
 		}
@@ -180,8 +172,7 @@ public class ElementChangedListener implements IElementChangedListener {
 			cASTReconciler.reconcile(originalUnit, workingUnit);
 			reconcile = true;
 		} else if (children.length == 0) { // WORKING_UNIT [?]: {FINE GRAINED}
-			if (workingUnit.getBuffer().hasUnsavedChanges()
-					|| originalUnit.getBuffer().hasUnsavedChanges()) {
+			if (workingUnit.getBuffer().hasUnsavedChanges() || originalUnit.getBuffer().hasUnsavedChanges()) {
 				cASTReconciler.reconcile(originalUnit, workingUnit);
 				reconcile = true;
 			} else {
@@ -191,18 +182,15 @@ public class ElementChangedListener implements IElementChangedListener {
 			}
 		} else {
 			int removedOrder = 0;
-			for (int i = 0; i < children.length; i++) {
-				ICElementDelta child = children[i];
+			for (ICElementDelta child : children) {
 				ICElement childElement = child.getElement();
 
-				Activator.log("Traitrement de : ".concat(childElement
-						.getElementName()), IStatus.INFO);
+				Activator.log("Traitrement de : ".concat(childElement.getElementName()), IStatus.INFO);
 				if (child.getKind() == ICElementDelta.ADDED) {
 					elementAdded(workingUnit, originalUnit, childElement);
 				} else if (child.getKind() == ICElementDelta.REMOVED) {
 					// we know that all the removed children will be treated
-					elementRemoved(workingUnit, originalUnit,
-							removedChildren[removedOrder].getElement());
+					elementRemoved(workingUnit, originalUnit, removedChildren[removedOrder].getElement());
 					removedOrder = removedOrder + 1;
 				}
 			}
@@ -214,29 +202,23 @@ public class ElementChangedListener implements IElementChangedListener {
 		workingUnit.getBuffer().save(new NullProgressMonitor(), true);
 	}
 
-	private void elementRemoved(IWorkingCopy workingUnit,
-			ITranslationUnit originalUnit, ICElement element)
+	private void elementRemoved(IWorkingCopy workingUnit, ITranslationUnit originalUnit, ICElement element)
 			throws CoreException {
-		if (element.getElementType() == ICElement.C_INCLUDE
-				|| element.getElementType() == ICElement.C_MACRO) {
+		if (element.getElementType() == ICElement.C_INCLUDE || element.getElementType() == ICElement.C_MACRO) {
 			cASTReconciler.removedElement(originalUnit, workingUnit, element);
 		} else {
-			cASTReconciler.removedElement(originalUnit.getAST(),
-					workingUnit.getAST(), workingUnit.getOriginalElement(),
-					element);
+			cASTReconciler.removedElement(originalUnit.getAST(), workingUnit.getAST(), workingUnit
+					.getOriginalElement(), element);
 		}
 	}
 
-	private void elementAdded(IWorkingCopy workingUnit,
-			ITranslationUnit originalUnit, ICElement element)
+	private void elementAdded(IWorkingCopy workingUnit, ITranslationUnit originalUnit, ICElement element)
 			throws CoreException {
-		if (element.getElementType() == ICElement.C_INCLUDE
-				|| element.getElementType() == ICElement.C_MACRO) {
+		if (element.getElementType() == ICElement.C_INCLUDE || element.getElementType() == ICElement.C_MACRO) {
 			cASTReconciler.addedElement(originalUnit, workingUnit, element);
 		} else {
-			cASTReconciler.addedElement(originalUnit.getAST(),
-					workingUnit.getAST(), workingUnit.getOriginalElement(),
-					element);
+			cASTReconciler.addedElement(originalUnit.getAST(), workingUnit.getAST(), workingUnit
+					.getOriginalElement(), element);
 		}
 	}
 

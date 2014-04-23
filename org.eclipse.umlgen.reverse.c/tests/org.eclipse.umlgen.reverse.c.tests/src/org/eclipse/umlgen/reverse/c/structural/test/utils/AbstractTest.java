@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.utils;
 
@@ -80,17 +80,15 @@ public class AbstractTest {
 		rs = null;
 	}
 
-	protected void testModel(IProject project, String expectedUMLFilePath)
-			throws InterruptedException {
+	protected void testModel(IProject project, String expectedUMLFilePath) throws InterruptedException {
 		Model actualSourceModel = getActual(getResourceSet(), project);
-		Model expectedSourceModel = getExpected(getResourceSet(),
-				expectedUMLFilePath);
+		Model expectedSourceModel = getExpected(getResourceSet(), expectedUMLFilePath);
 		// now way to build the expected model with the good name of actual as
 		// we do not create Model in expected
 		expectedSourceModel.setName(actualSourceModel.getName());
 
-		org.eclipse.umlgen.reverse.c.activity.test.utils.TestUtils
-				.assertEquals(expectedSourceModel, actualSourceModel);
+		org.eclipse.umlgen.reverse.c.activity.test.utils.TestUtils.assertEquals(expectedSourceModel,
+				actualSourceModel);
 	}
 
 	protected ResourceSet getResourceSet() {
@@ -98,8 +96,7 @@ public class AbstractTest {
 	}
 
 	protected TextEditor openEditor(IFile cFile) {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"openEditor"));
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "openEditor"));
 		OpenEditorRunnable runnable = new OpenEditorRunnable();
 		runnable.setIFile(cFile);
 		Display.getDefault().syncExec(runnable);
@@ -112,6 +109,7 @@ public class AbstractTest {
 	private static class OpenEditorRunnable implements Runnable {
 
 		private IFile iFile;
+
 		private TextEditor editor;
 
 		public void setIFile(IFile iFile) {
@@ -126,13 +124,11 @@ public class AbstractTest {
 		}
 
 		public void run() {
-			IWorkbenchPage page = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
-			IEditorDescriptor desc = PlatformUI.getWorkbench()
-					.getEditorRegistry().getDefaultEditor(iFile.getName());
+			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+			IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
+					iFile.getName());
 			try {
-				editor = (TextEditor) page.openEditor(
-						new FileEditorInput(iFile), desc.getId());
+				editor = (TextEditor)page.openEditor(new FileEditorInput(iFile), desc.getId());
 			} catch (PartInitException e) {
 				throw new RuntimeException(e);
 			}
@@ -142,20 +138,18 @@ public class AbstractTest {
 	/**
 	 * Closes the given editor. The editor must belong to this workbench page.
 	 * <p>
-	 * If the editor has unsaved content and <code>save</code> is
-	 * <code>true</code>, the user will be given the opportunity to save it.
+	 * If the editor has unsaved content and <code>save</code> is <code>true</code>, the user will be given
+	 * the opportunity to save it.
 	 * </p>
-	 * 
+	 *
 	 * @param editor
 	 *            the editor to close
 	 * @param save
-	 *            <code>true</code> to save the editor contents if required
-	 *            (recommended), and <code>false</code> to discard any unsaved
-	 *            changes
+	 *            <code>true</code> to save the editor contents if required (recommended), and
+	 *            <code>false</code> to discard any unsaved changes
 	 */
 	protected void closeEditor(TextEditor editor, boolean saveBeforeClose) {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"closeEditor"));
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "closeEditor"));
 		CloseEditorRunnable runnable = new CloseEditorRunnable();
 		runnable.setEditor(editor);
 		runnable.saveBeforeClose(saveBeforeClose);
@@ -167,6 +161,7 @@ public class AbstractTest {
 	private static class CloseEditorRunnable implements Runnable {
 
 		private TextEditor editor;
+
 		private boolean saveBeforeClose;
 
 		public void setEditor(TextEditor editor) {
@@ -178,8 +173,7 @@ public class AbstractTest {
 		}
 
 		public void run() {
-			IWorkbenchPage page = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
+			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 
 			if (saveBeforeClose) {
 				page.saveEditor(editor, false);
@@ -192,8 +186,7 @@ public class AbstractTest {
 	}
 
 	protected void saveEditor(TextEditor editor) {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"closeEditor"));
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "closeEditor"));
 		SaveEditorRunnable runnable = new SaveEditorRunnable();
 		runnable.setEditor(editor);
 		Display.getDefault().syncExec(runnable);
@@ -210,31 +203,26 @@ public class AbstractTest {
 		}
 
 		public void run() {
-			IWorkbenchPage page = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
+			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 
 			page.saveEditor(editor, false);
 		}
 	}
 
 	/**
-	 * Set the document view of the editor input to the content of the given
-	 * {@link InputStream}.
-	 * 
-	 * This stream is closed after the end of the call.
-	 * 
+	 * Set the document view of the editor input to the content of the given {@link InputStream}. This stream
+	 * is closed after the end of the call.
+	 *
 	 * @param textEditor
 	 * @param is
 	 */
-	public void setEditorContent(final TextEditor textEditor,
-			final InputStream is) {
+	public void setEditorContent(final TextEditor textEditor, final InputStream is) {
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "UTF-8"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 			StringBuilder sb = new StringBuilder();
 			int ch;
 			while ((ch = reader.read()) != -1) {
-				sb.append((char) ch);
+				sb.append((char)ch);
 			}
 			setEditorContent(textEditor, sb.toString());
 		} catch (UnsupportedEncodingException e) {
@@ -250,30 +238,27 @@ public class AbstractTest {
 		}
 	}
 
-	private void reconcile(final TextEditor editor,
-			IProgressMonitor progressMonitor) {
+	private void reconcile(final TextEditor editor, IProgressMonitor progressMonitor) {
 		sleep(1200);
-		IWorkingCopyManager fManager = CUIPlugin.getDefault()
-				.getWorkingCopyManager();
+		IWorkingCopyManager fManager = CUIPlugin.getDefault().getWorkingCopyManager();
 		boolean computeAST = editor instanceof ICReconcilingListener;
 		IASTTranslationUnit ast = null;
-		IWorkingCopy workingCopy = fManager.getWorkingCopy(editor
-				.getEditorInput());
+		IWorkingCopy workingCopy = fManager.getWorkingCopy(editor.getEditorInput());
 		if (workingCopy == null) {
 			return;
 		}
 		boolean forced = false;
 		try {
 			// reconcile
-			synchronized (workingCopy) {
+			synchronized(workingCopy) {
 				forced = workingCopy.isConsistent();
 				ast = workingCopy.reconcile(computeAST, true, progressMonitor);
 			}
 		} catch (OperationCanceledException oce) {
 			// document was modified while parsing
 		} catch (CModelException e) {
-			IStatus status = new Status(IStatus.ERROR, CUIPlugin.PLUGIN_ID,
-					IStatus.OK, "Error in CDT UI during reconcile", e); //$NON-NLS-1$
+			IStatus status = new Status(IStatus.ERROR, CUIPlugin.PLUGIN_ID, IStatus.OK,
+					"Error in CDT UI during reconcile", e); //$NON-NLS-1$
 			CUIPlugin.log(status);
 		} finally {
 			if (computeAST) {
@@ -284,20 +269,17 @@ public class AbstractTest {
 				try {
 					final boolean canceled = progressMonitor.isCanceled();
 					if (ast == null || canceled) {
-						((ICReconcilingListener) editor).reconciled(null,
-								forced, progressMonitor);
+						((ICReconcilingListener)editor).reconciled(null, forced, progressMonitor);
 					} else {
-						synchronized (ast) {
-							((ICReconcilingListener) editor).reconciled(ast,
-									forced, progressMonitor);
+						synchronized(ast) {
+							((ICReconcilingListener)editor).reconciled(ast, forced, progressMonitor);
 						}
 					}
 					if (canceled) {
 						aboutToBeReconciled(editor);
 					}
 				} catch (Exception e) {
-					IStatus status = new Status(IStatus.ERROR,
-							CUIPlugin.PLUGIN_ID, IStatus.OK,
+					IStatus status = new Status(IStatus.ERROR, CUIPlugin.PLUGIN_ID, IStatus.OK,
 							"Error in CDT UI during reconcile", e); //$NON-NLS-1$
 					CUIPlugin.log(status);
 				} finally {
@@ -311,19 +293,16 @@ public class AbstractTest {
 
 	private void aboutToBeReconciled(final TextEditor editor) {
 		if (editor instanceof ICReconcilingListener) {
-			((ICReconcilingListener) editor).aboutToBeReconciled();
+			((ICReconcilingListener)editor).aboutToBeReconciled();
 		}
 	}
 
 	public void setEditorContent(final TextEditor textEditor, final String is) {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"setEditorContent"));
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "setEditorContent"));
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
-				FileEditorInput editorInput = (FileEditorInput) textEditor
-						.getEditorInput();
-				IDocument document = textEditor.getDocumentProvider()
-						.getDocument(editorInput);
+				FileEditorInput editorInput = (FileEditorInput)textEditor.getEditorInput();
+				IDocument document = textEditor.getDocumentProvider().getDocument(editorInput);
 				document.set(is);
 			}
 		});
@@ -341,8 +320,7 @@ public class AbstractTest {
 		}
 	}
 
-	public IProject createIProject(final String name, IProgressMonitor monitor)
-			throws CoreException {
+	public IProject createIProject(final String name, IProgressMonitor monitor) throws CoreException {
 		IProject projectHandle = createUnsynchronizedProject(name, monitor);
 
 		ProjectUtil.addNature(projectHandle, BundleConstants.NATURE_ID);
@@ -354,20 +332,18 @@ public class AbstractTest {
 		return TestUtils.root.getProject(name);
 	}
 
-	public IProject createUnsynchronizedProject(final String name,
-			IProgressMonitor monitor) throws CoreException {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"create IProject"));
+	public IProject createUnsynchronizedProject(final String name, IProgressMonitor monitor)
+			throws CoreException {
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "create IProject"));
 		final IProject newProjectHandle = TestUtils.root.getProject(name);
 
 		if (!newProjectHandle.exists()) {
-			IProjectDescription description = TestUtils.workspace
-					.newProjectDescription(newProjectHandle.getName());
-			CCorePlugin.getDefault().createCDTProject(description,
-					newProjectHandle, new SubProgressMonitor(monitor, 25));
+			IProjectDescription description = TestUtils.workspace.newProjectDescription(newProjectHandle
+					.getName());
+			CCorePlugin.getDefault().createCDTProject(description, newProjectHandle,
+					new SubProgressMonitor(monitor, 25));
 		} else {
-			Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-					"refreshLocal"));
+			Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "refreshLocal"));
 			newProjectHandle.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		}
 
@@ -376,22 +352,17 @@ public class AbstractTest {
 			newProjectHandle.open(new SubProgressMonitor(monitor, 25));
 		}
 
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"CProjectNature.addCNature"));
-		CProjectNature.addCNature(newProjectHandle, new SubProgressMonitor(
-				monitor, 1));
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "CProjectNature.addCNature"));
+		CProjectNature.addCNature(newProjectHandle, new SubProgressMonitor(monitor, 1));
 
 		monitor.done();
 		return TestUtils.root.getProject(name);
 	}
 
-	public IFile createIFile(IProject iProject, IPath path,
-			IProgressMonitor monitor) throws CoreException {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"create IFile"));
+	public IFile createIFile(IProject iProject, IPath path, IProgressMonitor monitor) throws CoreException {
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "create IFile"));
 		IFile cFile = iProject.getFile(path);
-		cFile.create(new ByteArrayInputStream("".getBytes()), true,
-				new SubProgressMonitor(monitor, 25));
+		cFile.create(new ByteArrayInputStream("".getBytes()), true, new SubProgressMonitor(monitor, 25));
 		monitor.done();
 
 		sleep(1200);
@@ -399,13 +370,11 @@ public class AbstractTest {
 		return cFile;
 	}
 
-	public IFile createIFile(IProject iProject, IPath path, String contents,
-			IProgressMonitor monitor) throws CoreException {
-		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID,
-				"create IFile"));
+	public IFile createIFile(IProject iProject, IPath path, String contents, IProgressMonitor monitor)
+			throws CoreException {
+		Activator.log(new Status(IStatus.INFO, BundleConstants.BUNDLE_ID, "create IFile"));
 		IFile cFile = iProject.getFile(path);
-		cFile.create(new ByteArrayInputStream(contents.getBytes()), true,
-				new SubProgressMonitor(monitor, 25));
+		cFile.create(new ByteArrayInputStream(contents.getBytes()), true, new SubProgressMonitor(monitor, 25));
 		monitor.done();
 
 		sleep(1200);

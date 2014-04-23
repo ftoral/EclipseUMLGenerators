@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Sebastien Gabel (CSI) - initial API and implementation
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.ui;
 

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
@@ -17,14 +17,12 @@ public class TestComment extends AbstractTest {
 
 	@Test
 	public void commentDuplicataClass() {
-		testStructuralFiles("comment", "commentDuplicataClass",
-				"commentDuplicataClassE");
+		testStructuralFiles("comment", "commentDuplicataClass", "commentDuplicataClassE");
 	}
 
 	@Test
 	public void duplicataOperation() {
-		testStructuralFiles("comment", "commentDuplicataOperation",
-				"commentDuplicataOperationN");
+		testStructuralFiles("comment", "commentDuplicataOperation", "commentDuplicataOperationN");
 	}
 
 	@Test

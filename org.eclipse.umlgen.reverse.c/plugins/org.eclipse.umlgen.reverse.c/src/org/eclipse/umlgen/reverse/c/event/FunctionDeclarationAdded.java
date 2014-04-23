@@ -4,10 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
+ *     Christophe Le Camus (CS-SI) - initial API and implementation
  *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -39,19 +38,17 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(
-				manager.getSourcePackage(), getUnitName());
+		Classifier matchingClassifier = ModelUtil.findClassifierInPackage(manager.getSourcePackage(),
+				getUnitName());
 		// Get the operation by name if already existing otherwise create it
-		Operation operation = matchingClassifier.getOperation(getCurrentName(),
-				null, null);
+		Operation operation = matchingClassifier.getOperation(getCurrentName(), null, null);
 		if (operation == null) {
 			// opeartion is created without parameters, this will be done
 			// later...
 			if (matchingClassifier instanceof Class) {
-				operation = ((Class) matchingClassifier).createOwnedOperation(
-						getCurrentName(), null, null);
+				operation = ((Class)matchingClassifier).createOwnedOperation(getCurrentName(), null, null);
 			} else if (matchingClassifier instanceof Interface) {
-				operation = ((Interface) matchingClassifier)
+				operation = ((Interface)matchingClassifier)
 						.createOwnedOperation(getCurrentName(), null, null);
 			}
 		}
@@ -63,8 +60,7 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 		if (operation.getMethod(getCurrentName()) == null) {
 			// if a behavior exists, we link the current operation to the
 			// behavior found during the search
-			OpaqueBehavior fctBehavior = ModelUtil.getReferredBehavior(
-					matchingClassifier, getCurrentName(),
+			OpaqueBehavior fctBehavior = ModelUtil.getReferredBehavior(matchingClassifier, getCurrentName(),
 					new BasicEList<Classifier>());
 			if (fctBehavior != null) {
 				// // At this stage, a private visibility means we have
@@ -90,24 +86,20 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 		ModelUtil.setVisibility(operation, getTranslationUnit(), EventType.ADD);
 
 		// set the visibility of the behavior associated with this operation
-		ModelUtil.setVisibility(operation.getMethod(getCurrentName()),
-				getTranslationUnit(), EventType.ADD);
+		ModelUtil.setVisibility(operation.getMethod(getCurrentName()), getTranslationUnit(), EventType.ADD);
 	}
 
 	/**
 	 * Creates the parameters for a given operation.
-	 * 
+	 *
 	 * @param manager
 	 *            The model manager
 	 * @param classifier
 	 *            The classifier on which the operation is added
 	 * @param operation
-	 *            The current operation
-	 * 
-	 *            TODO : see how to destroy properly type.
+	 *            The current operation TODO : see how to destroy properly type.
 	 */
-	private void handleParameters(ModelManager manager, Classifier classifier,
-			Operation operation) {
+	private void handleParameters(ModelManager manager, Classifier classifier, Operation operation) {
 		// first, all existing parameters are destroyed and eventually unused
 		// types.
 		for (int i = operation.getOwnedParameters().size(); i > 0; i--) {
@@ -125,8 +117,7 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 		for (FunctionParameter aParam : getParameters()) {
 			// find the UML type
 			Type realType = manager.getDataType(aParam.getType());
-			Parameter parameter = operation.createOwnedParameter(
-					aParam.getName(), realType);
+			Parameter parameter = operation.createOwnedParameter(aParam.getName(), realType);
 
 			// adjust the parameter direction
 			if (!aParam.isConst() && aParam.isPointer()) {
@@ -136,11 +127,9 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 			}
 			// handle initialization if defined
 			if (aParam.getInitilizer() != null) {
-				OpaqueExpression defaultExpression = (OpaqueExpression) parameter
-						.createDefaultValue("default", null,
-								UMLPackage.Literals.OPAQUE_EXPRESSION);
-				defaultExpression.getLanguages()
-						.add(BundleConstants.C_LANGUAGE);
+				OpaqueExpression defaultExpression = (OpaqueExpression)parameter.createDefaultValue(
+						"default", null, UMLPackage.Literals.OPAQUE_EXPRESSION);
+				defaultExpression.getLanguages().add(BundleConstants.C_LANGUAGE);
 				defaultExpression.getBodies().add(aParam.getInitilizer());
 			}
 		}
@@ -151,7 +140,7 @@ public class FunctionDeclarationAdded extends FunctionDeclarationEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<FunctionDeclarationAdded> builder() {

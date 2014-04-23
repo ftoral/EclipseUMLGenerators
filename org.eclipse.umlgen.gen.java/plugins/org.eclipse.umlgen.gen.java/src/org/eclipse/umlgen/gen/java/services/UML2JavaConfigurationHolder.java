@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.services;
 
@@ -24,7 +24,7 @@ import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * This class contains the properties of the generation.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */
@@ -37,7 +37,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Puts a new entry into the configuration.
-	 * 
+	 *
 	 * @param key
 	 *            The key of the entry
 	 * @param value
@@ -49,7 +49,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the absolute location of the folder in which the code will be generated.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The absolute location of the folder in which the code will be generated.
@@ -60,7 +60,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the default project name.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The default project name.
@@ -71,7 +71,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the source folder path.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The source folder path.
@@ -82,7 +82,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the output folder path.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The output folder path.
@@ -93,7 +93,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the JRE execution environment.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The JRE execution environment.
@@ -105,7 +105,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the list of packages name that should not be generated.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The list of packages name that should not be generated.
@@ -117,7 +117,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the list of packages name that should be ignored during the import computation.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The list of packages name that should be ignored during the import computation.
@@ -129,7 +129,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Indicates if we should generate getters and setters.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return <code>true</code> if we should generate getters and setters, <code>false</code> otherwise.
@@ -141,7 +141,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Indicates if we should generate getters for collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return <code>true</code> if we should generate getters for collections, <code>false</code> otherwise.
@@ -153,7 +153,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Indicates if we should generate setters for collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return <code>true</code> if we should generate setters for collections, <code>false</code> otherwise.
@@ -165,7 +165,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Indicates if we should generate advanced accessors for collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return <code>true</code> if we should generate advanced accessors for collections, <code>false</code>
@@ -178,7 +178,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the author.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The author.
@@ -189,7 +189,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the version.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The version.
@@ -200,7 +200,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the copyright and the license.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The copyright and the license.
@@ -211,7 +211,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the list of the components that should be ignored.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The list of the components that should be ignored.
@@ -223,7 +223,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the kind of component-based architecture to use.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The kind of component-based architecture to use.
@@ -235,7 +235,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the bundle provider.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The bundle provider.
@@ -246,7 +246,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the type of the ordered and unique collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The type of the ordered and unique collections.
@@ -257,7 +257,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the type of the ordered and not unique collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The type of the ordered and not unique collections.
@@ -269,7 +269,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the type of the not ordered and unique collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The type of the not ordered and unique collections.
@@ -281,7 +281,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the type of the not ordered and not unique collections.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The type of the not ordered and not unique collections.
@@ -294,7 +294,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 	/**
 	 * Returns <code>true</code> if we should ignore the Java types during the generation, <code>false</code>
 	 * otherwise.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return <code>true</code> if we should ignore the Java types during the generation, <code>false</code>
@@ -307,7 +307,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the list of the types to ignore during the generation.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The list of the types to ignore during the generation.
@@ -319,7 +319,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the list of the types to ignore during the import.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The list of the types to ignore during the import.
@@ -331,7 +331,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns the configuration holder for the given model element.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @return The configuration holder for the given model element.
@@ -352,7 +352,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns a string value from the given key.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @param key
@@ -373,7 +373,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns a boolean value from the given key.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @param key
@@ -396,7 +396,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns a list of strings from the given key.
-	 * 
+	 *
 	 * @param eObject
 	 *            The model element
 	 * @param key
@@ -428,7 +428,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * Returns a value for the given key.
-	 * 
+	 *
 	 * @param key
 	 *            The key
 	 * @return A value for the given key.
@@ -439,7 +439,7 @@ public class UML2JavaConfigurationHolder extends AdapterImpl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#isAdapterForType(java.lang.Object)
 	 */
 	@Override

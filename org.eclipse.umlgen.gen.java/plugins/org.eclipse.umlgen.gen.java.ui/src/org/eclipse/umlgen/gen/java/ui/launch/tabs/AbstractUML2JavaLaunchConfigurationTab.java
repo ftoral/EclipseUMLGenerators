@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.ui.launch.tabs;
 
@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * The common superclass of all UML2Java launch configuration tabs.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */
@@ -32,7 +32,7 @@ public abstract class AbstractUML2JavaLaunchConfigurationTab extends AbstractLau
 
 	/**
 	 * Creates a Group widget.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent composite to add this group to
 	 * @param text
@@ -60,7 +60,7 @@ public abstract class AbstractUML2JavaLaunchConfigurationTab extends AbstractLau
 
 	/**
 	 * Creates a help button.
-	 * 
+	 *
 	 * @param parent
 	 *            The composite parent
 	 * @param helpMessage

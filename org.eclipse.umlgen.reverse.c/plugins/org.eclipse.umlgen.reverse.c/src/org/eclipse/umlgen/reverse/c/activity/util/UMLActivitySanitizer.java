@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.util;
 
@@ -36,24 +36,19 @@ public class UMLActivitySanitizer {
 		while (contentIterator.hasNext()) {
 			EObject content = contentIterator.next();
 			if (content instanceof OpaqueAction) {
-				setOpaqueActionName((OpaqueAction) content);
+				setOpaqueActionName((OpaqueAction)content);
 			}
 		}
 	}
 
 	private void setOpaqueActionName(OpaqueAction opaqueAction) {
 		if (opaqueAction.getName() == null) {
-			String body = opaqueAction
-					.getBodies()
-					.get(opaqueAction.getLanguages().indexOf(
-							BundleConstants.C_LANGUAGE)).trim();
+			String body = opaqueAction.getBodies().get(
+					opaqueAction.getLanguages().indexOf(BundleConstants.C_LANGUAGE)).trim();
 			if (body.length() > 0) {
-				int length = Math.min(
-						BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH,
-						body.length());
+				int length = Math.min(BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH, body.length());
 				String name = body.substring(0, length)
-						+ (body.length() > BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH ? "..."
-								: "");
+						+ (body.length() > BundleConstants.OPAQUE_ACTION_NAME_MAX_LENGTH ? "..." : "");
 				opaqueAction.setName(name);
 			}
 		}
@@ -63,8 +58,8 @@ public class UMLActivitySanitizer {
 		ControlFlow cf = null;
 		while ((cf = getNextControlFlowToMerge(activity)) != null) {
 			// Merge du contenu
-			OpaqueAction sourceOA = (OpaqueAction) cf.getSource();
-			OpaqueAction targetOA = (OpaqueAction) cf.getTarget();
+			OpaqueAction sourceOA = (OpaqueAction)cf.getSource();
+			OpaqueAction targetOA = (OpaqueAction)cf.getTarget();
 
 			String followingBody = targetOA.getBodies().get(0);
 			if (followingBody != null && !followingBody.equals("")) {
@@ -91,14 +86,12 @@ public class UMLActivitySanitizer {
 			EObject content = contentIterator.next();
 
 			if (content instanceof ControlFlow) {
-				cf = (ControlFlow) content;
-				if ((cf.getGuard() instanceof LiteralBoolean)
-						&& (cf.getGuard().booleanValue() == true)
-						&& (cf.getSource() instanceof OpaqueAction)
-						&& (cf.getTarget() instanceof OpaqueAction)
-						&& (cf.getSource().getOutgoings().size() == 1)
-						&& (cf.getTarget().getIncomings().size() == 1)
-						&& (!isActionAttachedToClause(cf.getTarget(), activity))) {
+				cf = (ControlFlow)content;
+				if (cf.getGuard() instanceof LiteralBoolean && cf.getGuard().booleanValue() == true
+						&& cf.getSource() instanceof OpaqueAction && cf.getTarget() instanceof OpaqueAction
+						&& cf.getSource().getOutgoings().size() == 1
+						&& cf.getTarget().getIncomings().size() == 1
+						&& !isActionAttachedToClause(cf.getTarget(), activity)) {
 					return cf;
 				}
 				cf = null;
@@ -108,25 +101,24 @@ public class UMLActivitySanitizer {
 	}
 
 	@SuppressWarnings("serial")
-	private boolean isActionAttachedToClause(ActivityNode action,
-			Activity activity) {
-		Collection<EStructuralFeature.Setting> references = new EcoreUtil.UsageCrossReferencer(
-				activity) {
-			protected boolean crossReference(EObject eObject,
-					EReference eReference, EObject referencedObj) {
+	private boolean isActionAttachedToClause(ActivityNode action, Activity activity) {
+		Collection<EStructuralFeature.Setting> references = new EcoreUtil.UsageCrossReferencer(activity) {
+			@Override
+			protected boolean crossReference(EObject eObject, EReference eReference, EObject referencedObj) {
 				return super.crossReference(eObject, eReference, referencedObj)
 						&& eReference == UMLPackage.Literals.CLAUSE__BODY;
 			}
 
+			@Override
 			protected boolean containment(EObject eObject) {
 				return !(eObject instanceof OpaqueAction);
 			}
 
-			public Collection<EStructuralFeature.Setting> findUsage(
-					EObject eObject) {
+			@Override
+			public Collection<EStructuralFeature.Setting> findUsage(EObject eObject) {
 				return super.findUsage(eObject);
 			}
 		}.findUsage(action);
-		return (references.size() > 0);
+		return references.size() > 0;
 	}
 }

@@ -7,7 +7,7 @@
   http://www.eclipse.org/legal/epl-v10.html
 
   Contributors:
-       Obeo - initial API and implementation
+       Stephane Begaudeau (Obeo) - initial API and implementation
 -->
 <feature
       id="org.eclipse.umlgen.gen.java.feature"

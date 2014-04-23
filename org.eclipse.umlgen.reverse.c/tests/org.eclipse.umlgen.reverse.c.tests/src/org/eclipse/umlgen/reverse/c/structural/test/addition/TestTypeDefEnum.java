@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -27,47 +27,39 @@ public class TestTypeDefEnum extends AbstractTest {
 	@Test
 	public void testTypeDefEnumInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testenumC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testenumC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("enum.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("enum.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/enumeration/enum.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/enumeration/enumC.uml");
+		testModel(project, "/resource/structural/addition/typedef/enumeration/enumC.uml");
 	}
 
 	@Test
 	public void testTypeDefEnumInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testenumH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testenumH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("enum.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("enum.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/enumeration/enum.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/enumeration/enumH.uml");
+		testModel(project, "/resource/structural/addition/typedef/enumeration/enumH.uml");
 	}
 
 }

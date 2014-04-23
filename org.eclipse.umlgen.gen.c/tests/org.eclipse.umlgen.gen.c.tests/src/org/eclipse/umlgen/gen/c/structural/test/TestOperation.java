@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
@@ -32,61 +32,51 @@ public class TestOperation extends AbstractTest {
 
 	@Test
 	public void testfunctionDefinitionC() {
-		testStructuralCFile("operation", "functionDefinition",
-				"functionDefinitionC");
+		testStructuralCFile("operation", "functionDefinition", "functionDefinitionC");
 	}
 
 	@Test
 	public void testfunctionDefinitionH() {
-		testStructuralHFile("operation", "functionDefinition",
-				"functionDefinitionH");
+		testStructuralHFile("operation", "functionDefinition", "functionDefinitionH");
 	}
 
 	@Test
 	public void testSimpleParameterC() {
-		testStructuralCFile("operation", "simpleParameters",
-				"simpleParametersC");
+		testStructuralCFile("operation", "simpleParameters", "simpleParametersC");
 	}
 
 	@Test
 	public void testSimpleParameterH() {
-		testStructuralHFile("operation", "simpleParameters",
-				"simpleParametersH");
+		testStructuralHFile("operation", "simpleParameters", "simpleParametersH");
 	}
 
 	@Test
 	public void testWithoutParameterC() {
-		testStructuralCFile("operation", "withoutParameter",
-				"withoutParameterC");
+		testStructuralCFile("operation", "withoutParameter", "withoutParameterC");
 	}
 
 	@Test
 	public void testWithoutParameterH() {
-		testStructuralHFile("operation", "withoutParameter",
-				"withoutParameterH");
+		testStructuralHFile("operation", "withoutParameter", "withoutParameterH");
 	}
 
 	@Test
 	public void testWithoutReturnTypeC() {
-		testStructuralCFile("operation", "withoutReturnType",
-				"withoutReturnTypeC");
+		testStructuralCFile("operation", "withoutReturnType", "withoutReturnTypeC");
 	}
 
 	@Test
 	public void testWithoutReturnTypeH() {
-		testStructuralHFile("operation", "withoutReturnType",
-				"withoutReturnTypeH");
+		testStructuralHFile("operation", "withoutReturnType", "withoutReturnTypeH");
 	}
 
 	@Test
 	public void testMultipleReferencesC() {
-		testStructuralCFile("operation", "multipleReferences",
-				"multipleReferencesC");
+		testStructuralCFile("operation", "multipleReferences", "multipleReferencesC");
 	}
 
 	@Test
 	public void testMultipleReferencesH() {
-		testStructuralHFile("operation", "multipleReferences",
-				"multipleReferencesH");
+		testStructuralHFile("operation", "multipleReferences", "multipleReferencesH");
 	}
 }

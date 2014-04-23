@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 CNES.
+ * Copyright (c) 2008, 2014 CNES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Cedric Notot (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.autojava.launcher.popupMenus;
 
@@ -27,7 +27,7 @@ public class GenOnlyCommunication extends GenAutoJavaComponents {
 	protected Uml2autojava getGenerator(URI modelURI, String sDecorators, File target) throws IOException {
 		return new CommunicationOnly(modelURI, target, Collections.EMPTY_LIST, sDecorators);
 	}
-	
+
 	@Override
 	protected String getModuleQualifiedName() {
 		return "org.eclipse.umlgen.gen.autojava.main.CommunicationOnly";

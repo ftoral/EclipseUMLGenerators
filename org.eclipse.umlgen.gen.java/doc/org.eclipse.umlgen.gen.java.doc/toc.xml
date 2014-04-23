@@ -8,7 +8,7 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
 
 Contributors:
-    Obeo - initial API and implementation
+    Stephane Begaudeau (Obeo) - initial API and implementation
 -->
 <toc label="UML to Java Documentation" topic="pages/index.html">
  <topic href="pages/features/index.html" label="Features">

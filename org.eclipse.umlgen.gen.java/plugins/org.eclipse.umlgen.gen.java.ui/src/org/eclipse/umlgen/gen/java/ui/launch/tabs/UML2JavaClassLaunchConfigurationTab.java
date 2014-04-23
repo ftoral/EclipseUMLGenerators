@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.ui.launch.tabs;
 
@@ -35,7 +35,7 @@ import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The class tab of the launch configuration.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */
@@ -88,7 +88,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControl(Composite parent) {
@@ -110,7 +110,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * Creates the group containing the generation options of the class generation.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite containing the group
 	 * @param font
@@ -142,7 +142,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		gd.horizontalSpan = 1;
 		this.packagesToIgnoreDuringTheGenerationText.setLayoutData(gd);
 		this.packagesToIgnoreDuringTheGenerationText
-				.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_GENERATION);
+		.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_GENERATION);
 		this.packagesToIgnoreDuringTheGenerationText.addModifyListener(new ModifyListener() {
 
 			public void modifyText(ModifyEvent e) {
@@ -164,7 +164,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		gd.horizontalSpan = 1;
 		this.packagesToIgnoreDuringTheImportText.setLayoutData(gd);
 		this.packagesToIgnoreDuringTheImportText
-				.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_IMPORTS);
+		.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_IMPORTS);
 		this.packagesToIgnoreDuringTheImportText.addModifyListener(new ModifyListener() {
 
 			public void modifyText(ModifyEvent e) {
@@ -178,7 +178,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * Creates the group containing the accessors options of the class generation.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite containing the group
 	 * @param font
@@ -208,7 +208,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		this.generateGettersAndSettersButton.setText(UML2JavaMessages
 				.getString("UML2JavaClassLaunchConfigurationTab.GenerateGettersAndSettersLabel"));
 		this.generateGettersAndSettersButton
-				.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_AND_SETTERS);
+		.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_AND_SETTERS);
 		this.generateGettersAndSettersButton.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				update();
@@ -231,7 +231,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		this.generateGettersForCollectionsButton.setText(UML2JavaMessages
 				.getString("UML2JavaClassLaunchConfigurationTab.GenerateGettersForCollectionsLabel"));
 		this.generateGettersForCollectionsButton
-				.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_COLLECTIONS);
+		.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_COLLECTIONS);
 		this.generateGettersForCollectionsButton.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				update();
@@ -254,7 +254,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		this.generateSettersForCollectionsButton.setText(UML2JavaMessages
 				.getString("UML2JavaClassLaunchConfigurationTab.GenerateSettersForCollectionsLabel"));
 		this.generateSettersForCollectionsButton
-				.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_SETTERS_COLLECTIONS);
+		.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_SETTERS_COLLECTIONS);
 		this.generateSettersForCollectionsButton.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				update();
@@ -275,10 +275,10 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		gd.horizontalSpan = 1;
 		this.generateAdvancedAccessorsForCollectionsButton.setLayoutData(gd);
 		this.generateAdvancedAccessorsForCollectionsButton
-				.setText(UML2JavaMessages
-						.getString("UML2JavaClassLaunchConfigurationTab.GenerateAdvancedAccessorsForCollectionsLabel"));
+		.setText(UML2JavaMessages
+				.getString("UML2JavaClassLaunchConfigurationTab.GenerateAdvancedAccessorsForCollectionsLabel"));
 		this.generateAdvancedAccessorsForCollectionsButton
-				.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_ADVANCED_ACCESSORS_COLLECTIONS);
+		.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_ADVANCED_ACCESSORS_COLLECTIONS);
 		this.generateAdvancedAccessorsForCollectionsButton.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				update();
@@ -295,7 +295,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * Creates the group containing the documentation options of the class generation.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite containing the group
 	 * @param font
@@ -388,7 +388,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
@@ -397,7 +397,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_GENERATION);
 		if (this.packagesToIgnoreDuringTheGenerationText != null) {
 			this.packagesToIgnoreDuringTheGenerationText
-					.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_GENERATION);
+			.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_GENERATION);
 		}
 
 		// packages to ignore during the import computation
@@ -405,7 +405,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_IMPORTS);
 		if (this.packagesToIgnoreDuringTheImportText != null) {
 			this.packagesToIgnoreDuringTheImportText
-					.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_IMPORTS);
+			.setText(IUML2JavaConstants.Default.DEFAULT_PACKAGES_TO_IGNORE_DURING_IMPORTS);
 		}
 
 		// generate getters and setters
@@ -413,7 +413,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_AND_SETTERS);
 		if (this.generateGettersAndSettersButton != null) {
 			this.generateGettersAndSettersButton
-					.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_AND_SETTERS);
+			.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_AND_SETTERS);
 		}
 
 		// generate getters for collections
@@ -421,7 +421,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_COLLECTIONS);
 		if (this.generateGettersForCollectionsButton != null) {
 			this.generateGettersForCollectionsButton
-					.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_COLLECTIONS);
+			.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_GETTERS_COLLECTIONS);
 		}
 
 		// generate setters for collections
@@ -429,7 +429,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_GENERATE_SETTERS_COLLECTIONS);
 		if (this.generateSettersForCollectionsButton != null) {
 			this.generateSettersForCollectionsButton
-					.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_SETTERS_COLLECTIONS);
+			.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_SETTERS_COLLECTIONS);
 		}
 
 		// generate advanced accessors for collections
@@ -437,7 +437,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 				IUML2JavaConstants.Default.DEFAULT_GENERATE_ADVANCED_ACCESSORS_COLLECTIONS);
 		if (this.generateAdvancedAccessorsForCollectionsButton != null) {
 			this.generateAdvancedAccessorsForCollectionsButton
-					.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_ADVANCED_ACCESSORS_COLLECTIONS);
+			.setSelection(IUML2JavaConstants.Default.DEFAULT_GENERATE_ADVANCED_ACCESSORS_COLLECTIONS);
 		}
 
 		// author
@@ -462,7 +462,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	public void initializeFrom(ILaunchConfiguration configuration) {
@@ -524,7 +524,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
@@ -541,7 +541,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 		// Generate getters and setters
 		boolean generateGettersAndSetters = this.generateGettersAndSettersButton.getSelection();
 		configuration
-				.setAttribute(IUML2JavaConstants.GENERATE_GETTERS_AND_SETTERS, generateGettersAndSetters);
+		.setAttribute(IUML2JavaConstants.GENERATE_GETTERS_AND_SETTERS, generateGettersAndSetters);
 
 		// Generate getters for collections
 		boolean generateGettersForCollections = this.generateGettersForCollectionsButton.getSelection();
@@ -574,7 +574,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#isValid(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	@Override
@@ -584,7 +584,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
 	 */
 	public String getName() {
@@ -593,7 +593,7 @@ public class UML2JavaClassLaunchConfigurationTab extends AbstractUML2JavaLaunchC
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#getImage()
 	 */
 	@Override

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.beans;
 
@@ -18,8 +18,11 @@ import org.eclipse.umlgen.c.common.BundleConstants;
 
 public class CommentInfo {
 	private static final int BEFORE = 0;
+
 	private static final int INLINE = 1;
+
 	private static final int LAST_LINE = 2;
+
 	private static final int SAME_LINE = 3;
 
 	private Map<Integer, String> info = Maps.newHashMap();
@@ -39,7 +42,7 @@ public class CommentInfo {
 
 	private boolean hasInfo(int infoType) {
 		String content = getInfo(infoType);
-		return (content != null && !content.equals(""));
+		return content != null && !content.equals("");
 	}
 
 	public String getBefore() {

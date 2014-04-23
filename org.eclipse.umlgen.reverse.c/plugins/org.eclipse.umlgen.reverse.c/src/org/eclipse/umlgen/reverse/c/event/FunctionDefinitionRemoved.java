@@ -4,11 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
- *     Sebastien Gabel (CS-SI) - evolutions
+ *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 
@@ -30,13 +28,11 @@ public class FunctionDefinitionRemoved extends FunctionDeclarationEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Class matchingClassifier = ModelUtil.findClassInPackage(
-				manager.getSourcePackage(), getUnitName());
-		assert (matchingClassifier != null);
+		Class matchingClassifier = ModelUtil.findClassInPackage(manager.getSourcePackage(), getUnitName());
+		assert matchingClassifier != null;
 
-		OpaqueBehavior function = (OpaqueBehavior) matchingClassifier
-				.getOwnedBehavior(getCurrentName(), false,
-						UMLPackage.Literals.OPAQUE_BEHAVIOR, false);
+		OpaqueBehavior function = (OpaqueBehavior)matchingClassifier.getOwnedBehavior(getCurrentName(),
+				false, UMLPackage.Literals.OPAQUE_BEHAVIOR, false);
 		if (function != null) {
 			if (ModelUtil.isRemovable(function)) {
 				function.destroy();
@@ -44,8 +40,7 @@ public class FunctionDefinitionRemoved extends FunctionDeclarationEvent {
 
 				// deduce if the parameter types can be deleted from the model
 				for (FunctionParameter aParameter : getParameters()) {
-					DataType parameterType = manager.getDataType(aParameter
-							.getType());
+					DataType parameterType = manager.getDataType(aParameter.getType());
 					if (ModelUtil.isNotReferencedAnymore(parameterType)) {
 						ModelUtil.destroy(parameterType);
 					}
@@ -61,7 +56,7 @@ public class FunctionDefinitionRemoved extends FunctionDeclarationEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<FunctionDefinitionRemoved> builder() {

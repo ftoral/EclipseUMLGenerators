@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.utils;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.uml.PackageableElement;
 public class TestUtils {
 
 	static IWorkspace workspace = ResourcesPlugin.getWorkspace();
+
 	static IWorkspaceRoot root = null;
 
 	static {
@@ -62,12 +63,12 @@ public class TestUtils {
 
 	@SuppressWarnings("restriction")
 	static void addBuilders(IProject iProject) throws CoreException {
-		ICProjectDescriptionManager mgr = CoreModel.getDefault()
-				.getProjectDescriptionManager();
+		ICProjectDescriptionManager mgr = CoreModel.getDefault().getProjectDescriptionManager();
 		ICProjectDescription des = mgr.getProjectDescription(iProject, true);
 
-		if (des != null)
+		if (des != null) {
 			return; // C project description already exists
+		}
 
 		des = mgr.createProjectDescription(iProject, true);
 
@@ -77,14 +78,11 @@ public class TestUtils {
 
 		IProjectType projType = null;
 		if (osName.indexOf("win") > 0) {
-			projType = ManagedBuildManager
-					.getExtensionProjectType("cdt.managedbuild.target.gnu.cygwin.exe");
+			projType = ManagedBuildManager.getExtensionProjectType("cdt.managedbuild.target.gnu.cygwin.exe");
 		} else if (osName.indexOf("mac") > 0) {
-			projType = ManagedBuildManager
-					.getExtensionProjectType("cdt.managedbuild.target.macosx.exe");
+			projType = ManagedBuildManager.getExtensionProjectType("cdt.managedbuild.target.macosx.exe");
 		} else {
-			projType = ManagedBuildManager
-					.getExtensionProjectType("cdt.managedbuild.target.gnu.exe");
+			projType = ManagedBuildManager.getExtensionProjectType("cdt.managedbuild.target.gnu.exe");
 		}
 
 		IToolChain toolChain = null;
@@ -102,21 +100,19 @@ public class TestUtils {
 		ManagedProject mProj = new ManagedProject(iProject, projType);
 		info.setManagedProject(mProj);
 
-		IConfiguration[] configs = ManagedBuildManager
-				.getExtensionConfigurations(toolChain, projType);
+		IConfiguration[] configs = ManagedBuildManager.getExtensionConfigurations(toolChain, projType);
 
 		for (IConfiguration icf : configs) {
 			if (!(icf instanceof Configuration)) {
 				continue;
 			}
-			Configuration cf = (Configuration) icf;
+			Configuration cf = (Configuration)icf;
 
 			String id = ManagedBuildManager.calculateChildId(cf.getId(), null);
 			Configuration config = new Configuration(mProj, cf, id, false, true);
 
 			ICConfigurationDescription cfgDes = des.createConfiguration(
-					ManagedBuildManager.CFG_DATA_PROVIDER_ID,
-					config.getConfigurationData());
+					ManagedBuildManager.CFG_DATA_PROVIDER_ID, config.getConfigurationData());
 			config.setConfigurationDescription(cfgDes);
 			config.exportArtifactInfo();
 
@@ -133,23 +129,19 @@ public class TestUtils {
 	}
 
 	public static Model getActual(ResourceSet rs, IProject project) {
-		IFile umlFile = project.getFolder("Model").getFile(
-				project.getName() + ".uml");
-		URI umlResourceURI = URI.createPlatformResourceURI(umlFile
-				.getFullPath().toString(), true);
+		IFile umlFile = project.getFolder("Model").getFile(project.getName() + ".uml");
+		URI umlResourceURI = URI.createPlatformResourceURI(umlFile.getFullPath().toString(), true);
 		Resource umlResource = rs.getResource(umlResourceURI, true);
-		Model umlModel = (Model) umlResource.getContents().get(0);
+		Model umlModel = (Model)umlResource.getContents().get(0);
 		return umlModel;
 	}
 
-	private static Package findFirstPackageWithName(Model umlModel,
-			String packageName) {
+	private static Package findFirstPackageWithName(Model umlModel, String packageName) {
 		TreeIterator<EObject> tit = umlModel.eAllContents();
 		while (tit.hasNext()) {
 			EObject current = tit.next();
-			if (current instanceof Package
-					&& packageName.equals(((Package) current).getName())) {
-				return (Package) current;
+			if (current instanceof Package && packageName.equals(((Package)current).getName())) {
+				return (Package)current;
 			} else if (current instanceof Classifier) {
 				tit.prune();
 			}
@@ -158,33 +150,28 @@ public class TestUtils {
 	}
 
 	private static Model getTemplate(ResourceSet rs) {
-		ImmutableMap<String, String> variables = ImmutableMap
-				.<String, String> builder().put("name", "expected").build();
+		ImmutableMap<String, String> variables = ImmutableMap.<String, String> builder().put("name",
+				"expected").build();
 
 		final URI platformPluginURI = URI
-				.createPlatformPluginURI(
-						getProcessedString(
-								"/org.eclipse.umlgen.reverse.c.ui/templates/SynchronizedNeptune/%name%.uml",
-								variables), true);
+				.createPlatformPluginURI(getProcessedString(
+						"/org.eclipse.umlgen.reverse.c.ui/templates/SynchronizedNeptune/%name%.uml",
+						variables), true);
 		Resource modelResource = rs.createResource(platformPluginURI);
 		try {
 			InputStream resourceInputStream = getResourceInputStream("resource/structural/%name%.uml");
-			resourceInputStream = getProcessedStream(resourceInputStream,
-					"UTF-8", variables);
+			resourceInputStream = getProcessedStream(resourceInputStream, "UTF-8", variables);
 			modelResource.load(resourceInputStream, Collections.emptyMap());
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		return (Model) modelResource.getContents().get(0);
+		return (Model)modelResource.getContents().get(0);
 	}
 
-	private static Model mergeTemplateWithSourcePackage(Model template,
-			Package pack) {
-		Package templatePackage = findFirstPackageWithName(template,
-				pack.getName());
-		Package superPackage = (Package) templatePackage.eContainer();
-		final EList<PackageableElement> packagedElements = superPackage
-				.getPackagedElements();
+	private static Model mergeTemplateWithSourcePackage(Model template, Package pack) {
+		Package templatePackage = findFirstPackageWithName(template, pack.getName());
+		Package superPackage = (Package)templatePackage.eContainer();
+		final EList<PackageableElement> packagedElements = superPackage.getPackagedElements();
 		int indexOfPack = packagedElements.indexOf(templatePackage);
 		packagedElements.remove(indexOfPack);
 		packagedElements.add(indexOfPack, pack);
@@ -192,8 +179,8 @@ public class TestUtils {
 	}
 
 	public static Model getExpected(ResourceSet rs, String umlFilePath) {
-		final URI platformPluginURI = URI.createPlatformPluginURI(
-				"/org.eclipse.umlgen.reverse.c.tests" + umlFilePath, true);
+		final URI platformPluginURI = URI.createPlatformPluginURI("/org.eclipse.umlgen.reverse.c.tests"
+				+ umlFilePath, true);
 
 		Resource modelResource = rs.getResource(platformPluginURI, true);
 		Model ret = null;
@@ -202,15 +189,12 @@ public class TestUtils {
 		if (contents.size() > 0) {
 			EObject content = contents.get(0);
 			if (content instanceof Package) {
-				ret = mergeTemplateWithSourcePackage(getTemplate(rs),
-						(Package) content);
+				ret = mergeTemplateWithSourcePackage(getTemplate(rs), (Package)content);
 			} else {
-				throw new IllegalArgumentException(
-						"first element of the resource is not a UML Package");
+				throw new IllegalArgumentException("first element of the resource is not a UML Package");
 			}
 		} else {
-			throw new IllegalArgumentException(
-					"no content in the given resource");
+			throw new IllegalArgumentException("no content in the given resource");
 		}
 
 		return ret;
@@ -218,8 +202,7 @@ public class TestUtils {
 
 	public static URL getResource(String resourceName) {
 		URL url = TestUtils.class.getClassLoader().getResource(resourceName);
-		Preconditions.checkArgument(url != null, "resource %s not found.",
-				resourceName);
+		Preconditions.checkArgument(url != null, "resource %s not found.", resourceName);
 		return url;
 	}
 
@@ -231,8 +214,7 @@ public class TestUtils {
 		}
 	}
 
-	private static String getProcessedString(String source,
-			Map<String, String> variables) {
+	private static String getProcessedString(String source, Map<String, String> variables) {
 		if (source.indexOf('%') == -1) {
 			return source;
 		}
@@ -259,8 +241,8 @@ public class TestUtils {
 		return buffer.toString();
 	}
 
-	private static InputStream getProcessedStream(InputStream stream,
-			String charset, Map<String, String> variables) throws IOException {
+	private static InputStream getProcessedStream(InputStream stream, String charset,
+			Map<String, String> variables) throws IOException {
 		InputStreamReader reader = new InputStreamReader(stream);
 		int bufsize = 1024;
 		char[] cbuffer = new char[bufsize];

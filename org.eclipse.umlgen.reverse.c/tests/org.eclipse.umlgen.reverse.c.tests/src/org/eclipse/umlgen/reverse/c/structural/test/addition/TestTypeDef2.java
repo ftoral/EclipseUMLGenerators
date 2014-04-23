@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -26,146 +26,116 @@ import org.junit.Test;
 public class TestTypeDef2 extends AbstractTest {
 
 	@Test
-	public void testMultipleSimpleInC() throws CoreException,
-			InterruptedException {
+	public void testMultipleSimpleInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultipleSimpleC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultipleSimpleC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("simple.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("simple.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/simple.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultipleSimpleC.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultipleSimpleC.uml");
 	}
 
 	@Test
-	public void testMultipleSimpleInH() throws CoreException,
-			InterruptedException {
+	public void testMultipleSimpleInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultipleSimpleH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultipleSimpleH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("simple.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("simple.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/simple.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultipleSimpleH.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultipleSimpleH.uml");
 	}
 
 	@Test
-	public void testMultipleArrayInC() throws CoreException,
-			InterruptedException {
+	public void testMultipleArrayInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultipleArrayC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultipleArrayC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("array.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("array.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/array.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultipleArrayC.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultipleArrayC.uml");
 	}
 
 	@Test
-	public void testMultipleArrayInH() throws CoreException,
-			InterruptedException {
+	public void testMultipleArrayInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultipleArrayH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultipleArrayH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("array.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("array.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/array.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultipleArrayH.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultipleArrayH.uml");
 	}
 
 	@Test
-	public void testMultiplePointerInC() throws CoreException,
-			InterruptedException {
+	public void testMultiplePointerInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultiplePointerC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultiplePointerC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("pointer.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("pointer.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/pointer.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultiplePointerC.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultiplePointerC.uml");
 	}
 
 	@Test
-	public void testMultiplePointerInH() throws CoreException,
-			InterruptedException {
+	public void testMultiplePointerInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefMultiplePointerH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefMultiplePointerH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("pointer.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("pointer.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/multiple/pointer.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/multiple/TypeDefMultiplePointerH.uml");
+		testModel(project, "/resource/structural/addition/typedef/multiple/TypeDefMultiplePointerH.uml");
 	}
 }

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -23,11 +23,9 @@ public class TestIncludeGuard extends AbstractTest {
 
 	@Test
 	public void testIncludeGuard() throws CoreException, InterruptedException {
-		IProject project = createIProject("testincludeGuard1",
-				new NullProgressMonitor());
+		IProject project = createIProject("testincludeGuard1", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -37,8 +35,7 @@ public class TestIncludeGuard extends AbstractTest {
 
 		setEditorContent(editor, sb.toString());
 
-		testModel(project,
-				"/resource/structural/addition/includeGuard/includeGuard1.uml");
+		testModel(project, "/resource/structural/addition/includeGuard/includeGuard1.uml");
 
 		closeEditor(editor, true);
 
@@ -47,11 +44,9 @@ public class TestIncludeGuard extends AbstractTest {
 	@Test
 	public void testIncludeGuard2() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testincludeGuard2",
-				new NullProgressMonitor());
+		IProject project = createIProject("testincludeGuard2", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -65,8 +60,7 @@ public class TestIncludeGuard extends AbstractTest {
 
 		setEditorContent(editor, sb.toString());
 
-		testModel(project,
-				"/resource/structural/addition/includeGuard/includeGuard2.uml");
+		testModel(project, "/resource/structural/addition/includeGuard/includeGuard2.uml");
 
 		closeEditor(editor, true);
 
@@ -75,11 +69,9 @@ public class TestIncludeGuard extends AbstractTest {
 	@Test
 	public void testIncludeGuard3() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testincludeGuard3",
-				new NullProgressMonitor());
+		IProject project = createIProject("testincludeGuard3", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -97,8 +89,7 @@ public class TestIncludeGuard extends AbstractTest {
 
 		setEditorContent(editor, sb.toString());
 
-		testModel(project,
-				"/resource/structural/addition/includeGuard/includeGuard3.uml");
+		testModel(project, "/resource/structural/addition/includeGuard/includeGuard3.uml");
 
 		closeEditor(editor, true);
 
@@ -107,11 +98,9 @@ public class TestIncludeGuard extends AbstractTest {
 	@Test
 	public void testIncludeGuard4() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testincludeGuard4",
-				new NullProgressMonitor());
+		IProject project = createIProject("testincludeGuard4", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("aFile.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("aFile.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
@@ -133,8 +122,7 @@ public class TestIncludeGuard extends AbstractTest {
 
 		setEditorContent(editor, sb.toString());
 
-		testModel(project,
-				"/resource/structural/addition/includeGuard/includeGuard4.uml");
+		testModel(project, "/resource/structural/addition/includeGuard/includeGuard4.uml");
 
 		closeEditor(editor, true);
 	}

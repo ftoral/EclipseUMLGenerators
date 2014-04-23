@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.test.utils;
 
@@ -32,8 +32,11 @@ import org.junit.BeforeClass;
 public abstract class AbstractTest {
 
 	private final String UML_EXTENSION = "uml";
+
 	private final String ACTIVITY_TEST_ROOT = "activity/";
+
 	private ResourceSetImpl rs;
+
 	static private List<String> testedFiles = new ArrayList<String>();
 
 	public void testCFile(String cFilePath, boolean saveGeneratedModel) {
@@ -46,24 +49,19 @@ public abstract class AbstractTest {
 		}
 
 		int dotPos = cFileFullPath.lastIndexOf(".");
-		String umlFilePath = cFileFullPath.substring(0, dotPos + 1)
-				+ UML_EXTENSION;
+		String umlFilePath = cFileFullPath.substring(0, dotPos + 1) + UML_EXTENSION;
 
 		IASTTranslationUnit unit = TestUtils.getTranslationUnit(cFileFullPath);
-		Model expectedModel = TestUtils.getUMLModel(getResourceSet(),
-				umlFilePath);
-		Model actualModel = TestUtils.createOutputModel(getResourceSet(),
-				expectedModel);
+		Model expectedModel = TestUtils.getUMLModel(getResourceSet(), umlFilePath);
+		Model actualModel = TestUtils.createOutputModel(getResourceSet(), expectedModel);
 
 		// call here the creation of the activity
-		IASTFunctionDefinition functionUnderTest = TestUtils
-				.getFirstFunctionInUnit(unit);
+		IASTFunctionDefinition functionUnderTest = TestUtils.getFirstFunctionInUnit(unit);
 		Activity activity = UMLActivityBuilder.build(functionUnderTest);
 		actualModel.getPackagedElements().add(activity);
 
 		if (saveGeneratedModel) {
-			System.out.println("Saving generated model for C file : "
-					+ cFileFullPath);
+			System.out.println("Saving generated model for C file : " + cFileFullPath);
 			TestUtils.saveGeneratedModel(actualModel, rs, umlFilePath);
 		}
 
@@ -81,8 +79,8 @@ public abstract class AbstractTest {
 	@Before
 	public void setUp() {
 		rs = new ResourceSetImpl();
-		rs.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put(UML_EXTENSION, UMLResource.Factory.INSTANCE);
+		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UML_EXTENSION,
+				UMLResource.Factory.INSTANCE);
 	}
 
 	@After

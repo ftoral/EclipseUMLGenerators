@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -25,51 +25,41 @@ import org.junit.Test;
 
 public class TestTypeDefEnumNamed extends AbstractTest {
 	@Test
-	public void testTypeDefEnumNamedInC() throws CoreException,
-			InterruptedException {
+	public void testTypeDefEnumNamedInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefEnumNamedC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefEnumNamedC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("namedEnum.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("namedEnum.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/named/enumeration/namedEnum.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/named/enumeration/TypeDefEnumNamedC.uml");
+		testModel(project, "/resource/structural/addition/typedef/named/enumeration/TypeDefEnumNamedC.uml");
 	}
 
 	@Test
-	public void testTypeDefEnumNamedInH() throws CoreException,
-			InterruptedException {
+	public void testTypeDefEnumNamedInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testTypeDefEnumNamedH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testTypeDefEnumNamedH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("namedEnum.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("namedEnum.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/typedef/named/enumeration/namedEnum.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/typedef/named/enumeration/TypeDefEnumNamedH.uml");
+		testModel(project, "/resource/structural/addition/typedef/named/enumeration/TypeDefEnumNamedH.uml");
 	}
 
 }

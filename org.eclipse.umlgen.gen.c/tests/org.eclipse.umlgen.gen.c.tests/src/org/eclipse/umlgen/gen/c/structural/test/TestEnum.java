@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
@@ -27,38 +27,32 @@ public class TestEnum extends AbstractTest {
 
 	@Test
 	public void testAnonymousWithVarDeclC() {
-		testStructuralCFile("enums", "anonymousWithVarDecl",
-				"EnumanonymousWithVarDeclC");
+		testStructuralCFile("enums", "anonymousWithVarDecl", "EnumanonymousWithVarDeclC");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclH() {
-		testStructuralHFile("enums", "anonymousWithVarDecl",
-				"EnumanonymousWithVarDeclH");
+		testStructuralHFile("enums", "anonymousWithVarDecl", "EnumanonymousWithVarDeclH");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclAndInitC() {
-		testStructuralCFile("enums", "anonymousWithVarDeclAndInit",
-				"EnumanonymousWithVarDeclAndInitC");
+		testStructuralCFile("enums", "anonymousWithVarDeclAndInit", "EnumanonymousWithVarDeclAndInitC");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclAndInitH() {
-		testStructuralHFile("enums", "anonymousWithVarDeclAndInit",
-				"EnumanonymousWithVarDeclAndInitH");
+		testStructuralHFile("enums", "anonymousWithVarDeclAndInit", "EnumanonymousWithVarDeclAndInitH");
 	}
 
 	@Test
 	public void testAnonymousWithArrayVarDeclC() {
-		testStructuralCFile("enums", "anonymousWithArrayVarDecl",
-				"EnumanonymousWithArrayVarDeclC");
+		testStructuralCFile("enums", "anonymousWithArrayVarDecl", "EnumanonymousWithArrayVarDeclC");
 	}
 
 	@Test
 	public void testAnonymousWithArrayVarDeclH() {
-		testStructuralHFile("enums", "anonymousWithArrayVarDecl",
-				"EnumanonymousWithArrayVarDeclH");
+		testStructuralHFile("enums", "anonymousWithArrayVarDecl", "EnumanonymousWithArrayVarDeclH");
 	}
 
 	@Test
@@ -95,61 +89,51 @@ public class TestEnum extends AbstractTest {
 
 	@Test
 	public void testNamedWithVarDeclAndInitC() {
-		testStructuralCFile("enums", "namedWithVarDeclAndInit",
-				"namedWithVarDeclAndInitC");
+		testStructuralCFile("enums", "namedWithVarDeclAndInit", "namedWithVarDeclAndInitC");
 	}
 
 	@Test
 	public void testNamedWithVarDeclAndInitH() {
-		testStructuralHFile("enums", "namedWithVarDeclAndInit",
-				"namedWithVarDeclAndInitH");
+		testStructuralHFile("enums", "namedWithVarDeclAndInit", "namedWithVarDeclAndInitH");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclC() {
-		testStructuralCFile("enums", "namedWithArrayVarDecl",
-				"namedWithArrayVarDeclC");
+		testStructuralCFile("enums", "namedWithArrayVarDecl", "namedWithArrayVarDeclC");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclH() {
-		testStructuralHFile("enums", "namedWithArrayVarDecl",
-				"namedWithArrayVarDeclH");
+		testStructuralHFile("enums", "namedWithArrayVarDecl", "namedWithArrayVarDeclH");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclAndInitC() {
-		testStructuralCFile("enums", "namedWithArrayVarDeclAndInit",
-				"namedWithArrayVarDeclAndInitC");
+		testStructuralCFile("enums", "namedWithArrayVarDeclAndInit", "namedWithArrayVarDeclAndInitC");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclAndInitH() {
-		testStructuralHFile("enums", "namedWithArrayVarDeclAndInit",
-				"namedWithArrayVarDeclAndInitH");
+		testStructuralHFile("enums", "namedWithArrayVarDeclAndInit", "namedWithArrayVarDeclAndInitH");
 	}
 
 	@Test
 	public void testWithAllValuedLiteralC() {
-		testStructuralCFile("enums", "withAllValuedLiteral",
-				"withAllValuedLiteralC");
+		testStructuralCFile("enums", "withAllValuedLiteral", "withAllValuedLiteralC");
 	}
 
 	@Test
 	public void testWithAllValuedLiteralH() {
-		testStructuralHFile("enums", "withAllValuedLiteral",
-				"withAllValuedLiteralH");
+		testStructuralHFile("enums", "withAllValuedLiteral", "withAllValuedLiteralH");
 	}
 
 	@Test
 	public void testWithSomeValuedLiteralC() {
-		testStructuralCFile("enums", "withSomeValuedLiteral",
-				"EnumwithSomeValuedLiteralC");
+		testStructuralCFile("enums", "withSomeValuedLiteral", "EnumwithSomeValuedLiteralC");
 	}
 
 	@Test
 	public void testWithSomeValuedLiteralH() {
-		testStructuralHFile("enums", "withSomeValuedLiteral",
-				"EnumwithSomeValuedLiteralH");
+		testStructuralHFile("enums", "withSomeValuedLiteral", "EnumwithSomeValuedLiteralH");
 	}
 }

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.util;
 
@@ -56,16 +56,14 @@ public class ASTUtilities {
 		return Iterables.any(nodes, hasReturnStatement);
 	}
 
-	static public List<List<IASTNode>> getStatementsGroupedByClause(
-			IASTSwitchStatement switchStmt) {
+	static public List<List<IASTNode>> getStatementsGroupedByClause(IASTSwitchStatement switchStmt) {
 		List<List<IASTNode>> groups = Lists.newArrayList();
 
 		if (switchStmt.getBody() != null) {
 			IASTNode[] nodes = switchStmt.getBody().getChildren();
 			List<IASTNode> group = null;
 			for (IASTNode astNode : nodes) {
-				if (astNode instanceof IASTCaseStatement
-						|| astNode instanceof IASTDefaultStatement) {
+				if (astNode instanceof IASTCaseStatement || astNode instanceof IASTDefaultStatement) {
 					// When we meet a Case or default statement we create a new
 					// group of statements
 					group = Lists.newArrayList();

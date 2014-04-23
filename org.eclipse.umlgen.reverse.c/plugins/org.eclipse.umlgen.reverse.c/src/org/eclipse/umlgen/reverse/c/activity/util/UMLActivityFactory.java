@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.util;
 
@@ -38,11 +38,15 @@ import org.eclipse.umlgen.reverse.c.activity.beans.ActivityContext;
 
 public class UMLActivityFactory {
 	private static final String FLOW_FINAL_END_OF_SWITCH = "end of switch";
+
 	private static final String FLOW_FINAL_BREAK = "break";
+
 	private static final String FLOW_FINAL_CONTINUE = "continue";
+
 	private static final String FLOW_FINAL_END_OF_LOOP = "end of loop";
 
 	private UMLFactory umlFactory;
+
 	private UMLPackage umlPackage;
 
 	public UMLActivityFactory() {
@@ -62,8 +66,7 @@ public class UMLActivityFactory {
 		return initialNode;
 	}
 
-	public ActivityFinalNode createActivityFinalNode(
-			ActivityContext currentContext) {
+	public ActivityFinalNode createActivityFinalNode(ActivityContext currentContext) {
 		ActivityFinalNode finalNode = umlFactory.createActivityFinalNode();
 		currentContext.addNode(finalNode);
 		return finalNode;
@@ -75,16 +78,14 @@ public class UMLActivityFactory {
 		return outputPin;
 	}
 
-	public ConditionalNode createConditionalNode(String nodeName,
-			ActivityContext currentContext) {
+	public ConditionalNode createConditionalNode(String nodeName, ActivityContext currentContext) {
 		ConditionalNode condNode = umlFactory.createConditionalNode();
 		currentContext.addNode(condNode);
 		condNode.setName(sanitizeString(nodeName));
 		return condNode;
 	}
 
-	public DecisionNode createDecisionNode(String nodeName,
-			ActivityContext currentContext) {
+	public DecisionNode createDecisionNode(String nodeName, ActivityContext currentContext) {
 		DecisionNode decisionNode = umlFactory.createDecisionNode();
 		decisionNode.setName(sanitizeString(nodeName));
 
@@ -98,8 +99,7 @@ public class UMLActivityFactory {
 		return mergeNode;
 	}
 
-	public OpaqueAction createOpaqueAction(String body,
-			ActivityContext currentContext) {
+	public OpaqueAction createOpaqueAction(String body, ActivityContext currentContext) {
 		OpaqueAction opaqueAction = umlFactory.createOpaqueAction();
 		currentContext.addNode(opaqueAction);
 		opaqueAction.getLanguages().add(BundleConstants.C_LANGUAGE);
@@ -125,8 +125,7 @@ public class UMLActivityFactory {
 	}
 
 	private String convertLineDelimitors(String code) {
-		return code.replaceAll(BundleConstants.WINDOWS_LINE_SEPARATOR,
-				BundleConstants.LINE_SEPARATOR);
+		return code.replaceAll(BundleConstants.WINDOWS_LINE_SEPARATOR, BundleConstants.LINE_SEPARATOR);
 	}
 
 	private OpaqueExpression createOpaqueExpression() {
@@ -135,8 +134,7 @@ public class UMLActivityFactory {
 		return opaqueExpression;
 	}
 
-	public LoopNode createLoopNode(String nodeName, boolean isTestedFirst,
-			ActivityContext currentContext) {
+	public LoopNode createLoopNode(String nodeName, boolean isTestedFirst, ActivityContext currentContext) {
 		LoopNode loopNode = umlFactory.createLoopNode();
 		loopNode.setName(sanitizeString(nodeName));
 		loopNode.setIsTestedFirst(isTestedFirst);
@@ -144,8 +142,7 @@ public class UMLActivityFactory {
 		return loopNode;
 	}
 
-	private ControlFlow createControlFlow(ValueSpecification guard,
-			ActivityContext currentContext) {
+	private ControlFlow createControlFlow(ValueSpecification guard, ActivityContext currentContext) {
 		ControlFlow controlFlow = umlFactory.createControlFlow();
 		LiteralInteger weight = umlFactory.createLiteralInteger();
 		weight.setValue(1);
@@ -159,26 +156,22 @@ public class UMLActivityFactory {
 		return createControlFlow(trueLiteralBoolean(), currentContext);
 	}
 
-	public ControlFlow createControlFlow(ActivityNode fromNode,
-			ActivityNode toNode, ActivityContext currentContext) {
-		return createControlFlow(fromNode, toNode, trueLiteralBoolean(),
-				currentContext);
+	public ControlFlow createControlFlow(ActivityNode fromNode, ActivityNode toNode,
+			ActivityContext currentContext) {
+		return createControlFlow(fromNode, toNode, trueLiteralBoolean(), currentContext);
 	}
 
-	public ControlFlow createControlFlow(ActivityNode fromNode,
-			ActivityNode toNode, String guard, ActivityContext currentContext) {
+	public ControlFlow createControlFlow(ActivityNode fromNode, ActivityNode toNode, String guard,
+			ActivityContext currentContext) {
 		OpaqueExpression guardExpression = createOpaqueExpression();
 		guardExpression.getBodies().add(sanitizeString(guard));
-		return createControlFlow(fromNode, toNode, guardExpression,
-				currentContext);
+		return createControlFlow(fromNode, toNode, guardExpression, currentContext);
 	}
 
-	private ControlFlow createControlFlow(ActivityNode fromNode,
-			ActivityNode toNode, ValueSpecification guard,
-			ActivityContext currentContext) {
+	private ControlFlow createControlFlow(ActivityNode fromNode, ActivityNode toNode,
+			ValueSpecification guard, ActivityContext currentContext) {
 		ControlFlow controlFlow = null;
-		if (fromNode != null && toNode != null
-				&& (!(fromNode instanceof FinalNode))) {
+		if (fromNode != null && toNode != null && !(fromNode instanceof FinalNode)) {
 			controlFlow = createControlFlow(guard, currentContext);
 			controlFlow.setSource(fromNode);
 			controlFlow.setTarget(toNode);
@@ -190,31 +183,26 @@ public class UMLActivityFactory {
 		return getFlowFinalNode(FLOW_FINAL_BREAK, currentContext);
 	}
 
-	public FlowFinalNode getFlowFinalNodeForContinue(
-			ActivityContext currentContext) {
+	public FlowFinalNode getFlowFinalNodeForContinue(ActivityContext currentContext) {
 		return getFlowFinalNode(FLOW_FINAL_CONTINUE, currentContext);
 	}
 
-	public FlowFinalNode getFlowFinalNodeForEndOfLoop(
-			ActivityContext currentContext) {
+	public FlowFinalNode getFlowFinalNodeForEndOfLoop(ActivityContext currentContext) {
 		return getFlowFinalNode(FLOW_FINAL_END_OF_LOOP, currentContext);
 	}
 
-	public FlowFinalNode getFlowFinalNodeForEndOfSwitch(
-			ActivityContext currentContext) {
+	public FlowFinalNode getFlowFinalNodeForEndOfSwitch(ActivityContext currentContext) {
 		return getFlowFinalNode(FLOW_FINAL_END_OF_SWITCH, currentContext);
 	}
 
-	private FlowFinalNode getFlowFinalNode(String name,
-			ActivityContext currentContext) {
+	private FlowFinalNode getFlowFinalNode(String name, ActivityContext currentContext) {
 		return createFlowFinal(name, currentContext);
 	}
 
-	public ExecutableNode ensureStartNodeIsExecutable(ActivityNode firstNode,
-			ActivityContext currentContext) {
+	public ExecutableNode ensureStartNodeIsExecutable(ActivityNode firstNode, ActivityContext currentContext) {
 		ExecutableNode realFirstNode = null;
 		if (firstNode instanceof ExecutableNode) {
-			return realFirstNode = (ExecutableNode) firstNode;
+			return realFirstNode = (ExecutableNode)firstNode;
 		} else {
 			realFirstNode = createOpaqueAction("", currentContext);
 			createControlFlow(realFirstNode, firstNode, currentContext);
@@ -222,16 +210,15 @@ public class UMLActivityFactory {
 		return realFirstNode;
 	}
 
-	public void addFlowTowardsActivityFinalNode(final ActivityNode fromNode,
-			ActivityNode finalNode, ActivityContext currentContext) {
+	public void addFlowTowardsActivityFinalNode(final ActivityNode fromNode, ActivityNode finalNode,
+			ActivityContext currentContext) {
 		if (fromNode instanceof ActivityFinalNode) {
 			return;
 		}
 		createControlFlow(fromNode, finalNode, currentContext);
 	}
 
-	private FlowFinalNode createFlowFinal(String name,
-			ActivityContext currentContext) {
+	private FlowFinalNode createFlowFinal(String name, ActivityContext currentContext) {
 		FlowFinalNode flowFinalNode = umlFactory.createFlowFinalNode();
 		flowFinalNode.setName(sanitizeString(name));
 		currentContext.addNode(flowFinalNode);

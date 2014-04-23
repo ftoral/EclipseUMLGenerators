@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.services;
 
@@ -20,7 +20,7 @@ import org.eclipse.uml2.uml.TypedElement;
 
 /**
  * Service class to compute the types and their default values.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */

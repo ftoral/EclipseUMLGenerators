@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Mikael Barbero (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.structural.test;
 
@@ -27,38 +27,32 @@ public class TestStruct extends AbstractTest {
 
 	@Test
 	public void testAnonymousWithVarDeclC() {
-		testStructuralCFile("struct", "anonymousWithVarDecl",
-				"StructanonymousWithVarDeclC");
+		testStructuralCFile("struct", "anonymousWithVarDecl", "StructanonymousWithVarDeclC");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclH() {
-		testStructuralHFile("struct", "anonymousWithVarDecl",
-				"StructanonymousWithVarDeclH");
+		testStructuralHFile("struct", "anonymousWithVarDecl", "StructanonymousWithVarDeclH");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclAndInitC() {
-		testStructuralCFile("struct", "anonymousWithVarDeclAndInit",
-				"StructanonymousWithVarDeclAndInitC");
+		testStructuralCFile("struct", "anonymousWithVarDeclAndInit", "StructanonymousWithVarDeclAndInitC");
 	}
 
 	@Test
 	public void testAnonymousWithVarDeclAndInitH() {
-		testStructuralHFile("struct", "anonymousWithVarDeclAndInit",
-				"StructanonymousWithVarDeclAndInitH");
+		testStructuralHFile("struct", "anonymousWithVarDeclAndInit", "StructanonymousWithVarDeclAndInitH");
 	}
 
 	@Test
 	public void testAnonymousWithArrayVarDeclC() {
-		testStructuralCFile("struct", "anonymousWithArrayVarDecl",
-				"StructanonymousWithArrayVarDeclC");
+		testStructuralCFile("struct", "anonymousWithArrayVarDecl", "StructanonymousWithArrayVarDeclC");
 	}
 
 	@Test
 	public void testAnonymousWithArrayVarDeclH() {
-		testStructuralHFile("struct", "anonymousWithArrayVarDecl",
-				"StructanonymousWithArrayVarDeclH");
+		testStructuralHFile("struct", "anonymousWithArrayVarDecl", "StructanonymousWithArrayVarDeclH");
 	}
 
 	@Test
@@ -85,50 +79,42 @@ public class TestStruct extends AbstractTest {
 
 	@Test
 	public void testNamedWithVarDeclC() {
-		testStructuralCFile("struct", "namedWithVarDecl",
-				"StructnamedWithVarDeclC");
+		testStructuralCFile("struct", "namedWithVarDecl", "StructnamedWithVarDeclC");
 	}
 
 	@Test
 	public void testNamedWithVarDeclH() {
-		testStructuralHFile("struct", "namedWithVarDecl",
-				"StructnamedWithVarDeclH");
+		testStructuralHFile("struct", "namedWithVarDecl", "StructnamedWithVarDeclH");
 	}
 
 	@Test
 	public void testNamedWithVarDeclAndInitC() {
-		testStructuralCFile("struct", "namedWithVarDeclAndInit",
-				"StructnamedWithVarDeclAndInitC");
+		testStructuralCFile("struct", "namedWithVarDeclAndInit", "StructnamedWithVarDeclAndInitC");
 	}
 
 	@Test
 	public void testNamedWithVarDeclAndInitH() {
-		testStructuralHFile("struct", "namedWithVarDeclAndInit",
-				"StructnamedWithVarDeclAndInitH");
+		testStructuralHFile("struct", "namedWithVarDeclAndInit", "StructnamedWithVarDeclAndInitH");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclC() {
-		testStructuralCFile("struct", "namedWithArrayVarDecl",
-				"StructnamedWithArrayVarDeclC");
+		testStructuralCFile("struct", "namedWithArrayVarDecl", "StructnamedWithArrayVarDeclC");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclH() {
-		testStructuralHFile("struct", "namedWithArrayVarDecl",
-				"StructnamedWithArrayVarDeclH");
+		testStructuralHFile("struct", "namedWithArrayVarDecl", "StructnamedWithArrayVarDeclH");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclAndInitC() {
-		testStructuralCFile("struct", "namedWithArrayVarDeclAndInit",
-				"StructnamedWithArrayVarDeclAndInitC");
+		testStructuralCFile("struct", "namedWithArrayVarDeclAndInit", "StructnamedWithArrayVarDeclAndInitC");
 	}
 
 	@Test
 	public void testNamedWithArrayVarDeclAndInitH() {
-		testStructuralHFile("struct", "namedWithArrayVarDeclAndInit",
-				"StructnamedWithArrayVarDeclAndInitH");
+		testStructuralHFile("struct", "namedWithArrayVarDeclAndInit", "StructnamedWithArrayVarDeclAndInitH");
 	}
 
 	@Test

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.comments;
 
@@ -20,40 +20,38 @@ import org.eclipse.cdt.core.dom.ast.IASTWhileStatement;
 
 public class NodeLocationInfo {
 	private int startingOffset;
+
 	private int endingOffset;
+
 	private int startingLine;
+
 	private int endingLine;
+
 	private int startingOffsetForInline;
+
 	private int endingOffsetForInline;
 
 	public NodeLocationInfo(IASTNode node) {
 		startingOffset = node.getFileLocation().getNodeOffset();
-		endingOffset = startingOffset + node.getFileLocation().getNodeLength()
-				- 1;
+		endingOffset = startingOffset + node.getFileLocation().getNodeLength() - 1;
 		startingLine = node.getFileLocation().getStartingLineNumber();
 		endingLine = node.getFileLocation().getEndingLineNumber();
 		startingOffsetForInline = startingOffset;
 		if (node instanceof IASTSwitchStatement) {
-			IASTNode nextEnclosedNode = ((IASTSwitchStatement) node).getBody();
-			endingOffsetForInline = nextEnclosedNode.getFileLocation()
-					.getNodeOffset() - 1;
+			IASTNode nextEnclosedNode = ((IASTSwitchStatement)node).getBody();
+			endingOffsetForInline = nextEnclosedNode.getFileLocation().getNodeOffset() - 1;
 		} else if (node instanceof IASTDoStatement) {
-			IASTNode nextEnclosedNode = ((IASTDoStatement) node).getBody();
-			endingOffsetForInline = nextEnclosedNode.getFileLocation()
-					.getNodeOffset() - 1;
+			IASTNode nextEnclosedNode = ((IASTDoStatement)node).getBody();
+			endingOffsetForInline = nextEnclosedNode.getFileLocation().getNodeOffset() - 1;
 		} else if (node instanceof IASTWhileStatement) {
-			IASTNode nextEnclosedNode = ((IASTWhileStatement) node).getBody();
-			endingOffsetForInline = nextEnclosedNode.getFileLocation()
-					.getNodeOffset() - 1;
+			IASTNode nextEnclosedNode = ((IASTWhileStatement)node).getBody();
+			endingOffsetForInline = nextEnclosedNode.getFileLocation().getNodeOffset() - 1;
 		} else if (node instanceof IASTForStatement) {
-			IASTNode nextEnclosedNode = ((IASTForStatement) node).getBody();
-			endingOffsetForInline = nextEnclosedNode.getFileLocation()
-					.getNodeOffset() - 1;
+			IASTNode nextEnclosedNode = ((IASTForStatement)node).getBody();
+			endingOffsetForInline = nextEnclosedNode.getFileLocation().getNodeOffset() - 1;
 		} else if (node instanceof IASTIfStatement) {
-			IASTNode nextEnclosedNode = ((IASTIfStatement) node)
-					.getThenClause();
-			endingOffsetForInline = nextEnclosedNode.getFileLocation()
-					.getNodeOffset() - 1;
+			IASTNode nextEnclosedNode = ((IASTIfStatement)node).getThenClause();
+			endingOffsetForInline = nextEnclosedNode.getFileLocation().getNodeOffset() - 1;
 		} else if (node instanceof IASTCompoundStatement) {
 			endingOffsetForInline = startingOffsetForInline;
 		} else {

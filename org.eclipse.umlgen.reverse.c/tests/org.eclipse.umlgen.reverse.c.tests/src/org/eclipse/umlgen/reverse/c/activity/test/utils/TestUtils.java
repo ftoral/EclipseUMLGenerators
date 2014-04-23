@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.test.utils;
 
@@ -46,8 +46,7 @@ public class TestUtils {
 
 	public static Model getUMLModel(ResourceSet rs, String path) {
 		URL modelURL = getResource(path);
-		Resource modelResource = rs.getResource(
-				URI.createURI(modelURL.getFile()), true);
+		Resource modelResource = rs.getResource(URI.createURI(modelURL.getFile()), true);
 		InputStream inputStream = null;
 		Model ret = null;
 		try {
@@ -58,26 +57,23 @@ public class TestUtils {
 			if (contents.size() > 0) {
 				EObject content0 = contents.get(0);
 				if (content0 instanceof Model) {
-					ret = (Model) content0;
+					ret = (Model)content0;
 				} else {
-					throw new IllegalArgumentException(
-							"first element of the resource is not a UML Model");
+					throw new IllegalArgumentException("first element of the resource is not a UML Model");
 				}
 			} else {
-				throw new IllegalArgumentException(
-						"no content in the given resource");
+				throw new IllegalArgumentException("no content in the given resource");
 			}
 		} catch (IOException e) {
-			throw new IllegalArgumentException(
-					"error while opening the model stream", e);
+			throw new IllegalArgumentException("error while opening the model stream", e);
 		} finally {
-			if (inputStream != null)
+			if (inputStream != null) {
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					throw new IllegalArgumentException(
-							"error while closing the model stream", e);
+					throw new IllegalArgumentException("error while closing the model stream", e);
 				}
+			}
 		}
 
 		return ret;
@@ -91,25 +87,20 @@ public class TestUtils {
 		IASTTranslationUnit ast = null;
 		try {
 			inputStream = tuURL.openStream();
-			ast = lang.getASTTranslationUnit(new CodeReader(tuURL.toURI()
-					.getPath(), inputStream), scanInfo, NullCodeReaderFactory
-					.getInstance(), EmptyCIndex.INSTANCE, logService);
+			ast = lang.getASTTranslationUnit(new CodeReader(tuURL.toURI().getPath(), inputStream), scanInfo,
+					NullCodeReaderFactory.getInstance(), EmptyCIndex.INSTANCE, logService);
 		} catch (CoreException e) {
-			throw new IllegalStateException(
-					"something goes wrong with CoreModel", e);
+			throw new IllegalStateException("something goes wrong with CoreModel", e);
 		} catch (IOException e) {
-			throw new IllegalStateException("can not open input stream of TU",
-					e);
+			throw new IllegalStateException("can not open input stream of TU", e);
 		} catch (URISyntaxException e) {
-			throw new IllegalStateException(
-					"can not convert FilePath into URI", e);
+			throw new IllegalStateException("can not convert FilePath into URI", e);
 		} finally {
 			if (inputStream != null) {
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					throw new IllegalStateException(
-							"can not close input stream of TU", e);
+					throw new IllegalStateException("can not close input stream of TU", e);
 				}
 			}
 		}
@@ -153,18 +144,17 @@ public class TestUtils {
 
 	/**
 	 * Returns the first function in the {@link IASTTranslationUnit}.
-	 * 
+	 *
 	 * @param unit
 	 * @return
 	 */
-	public static IASTFunctionDefinition getFirstFunctionInUnit(
-			IASTTranslationUnit unit) {
+	public static IASTFunctionDefinition getFirstFunctionInUnit(IASTTranslationUnit unit) {
 		IASTDeclaration[] declarations = unit.getDeclarations(true);
 		IASTFunctionDefinition ret = null;
 
-		for (int i = 0; i < declarations.length; i++) {
-			if (declarations[i] instanceof IASTFunctionDefinition) {
-				ret = (IASTFunctionDefinition) declarations[i];
+		for (IASTDeclaration declaration : declarations) {
+			if (declaration instanceof IASTFunctionDefinition) {
+				ret = (IASTFunctionDefinition)declaration;
 				break;
 			}
 		}
@@ -175,28 +165,22 @@ public class TestUtils {
 	public static Model createOutputModel(ResourceSet rs, Model testModel) {
 		Model outputModel = UMLFactory.eINSTANCE.createModel();
 		outputModel.setName(testModel.getName());
-		Resource actualResource = rs
-				.createResource(URI.createURI("actual.uml"));
+		Resource actualResource = rs.createResource(URI.createURI("actual.uml"));
 		actualResource.getContents().add(outputModel);
 		return outputModel;
 	}
 
-	public static void saveGeneratedModel(Model model, ResourceSet resourceSet,
-			String filename) {
-		saveModel(model, resourceSet,
-				"resource/" + getSuffixedFilename(filename, "_actual"));
+	public static void saveGeneratedModel(Model model, ResourceSet resourceSet, String filename) {
+		saveModel(model, resourceSet, "resource/" + getSuffixedFilename(filename, "_actual"));
 	}
 
 	public static String getSuffixedFilename(String filename, String suffix) {
 		int dotPos = filename.lastIndexOf(".");
-		return filename.substring(0, dotPos) + suffix
-				+ filename.substring(dotPos);
+		return filename.substring(0, dotPos) + suffix + filename.substring(dotPos);
 	}
 
-	public static void saveModel(Model model, ResourceSet resourceSet,
-			String filename) {
-		Resource resource = resourceSet.createResource(URI
-				.createFileURI(filename));
+	public static void saveModel(Model model, ResourceSet resourceSet, String filename) {
+		Resource resource = resourceSet.createResource(URI.createFileURI(filename));
 		resource.getContents().add(model);
 		try {
 			resource.save(null);
@@ -230,8 +214,7 @@ public class TestUtils {
 
 	private static URL getResource(String resourceName) {
 		URL url = TestUtils.class.getClassLoader().getResource(resourceName);
-		Preconditions.checkArgument(url != null, "resource %s not found.",
-				resourceName);
+		Preconditions.checkArgument(url != null, "resource %s not found.", resourceName);
 		return url;
 	}
 }

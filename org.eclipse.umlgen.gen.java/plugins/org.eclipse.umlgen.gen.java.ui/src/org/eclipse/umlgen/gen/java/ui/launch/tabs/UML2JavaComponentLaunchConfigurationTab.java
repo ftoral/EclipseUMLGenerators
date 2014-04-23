@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.ui.launch.tabs;
 
@@ -35,7 +35,7 @@ import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The component tab of the launch configuration.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */
@@ -58,7 +58,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControl(Composite parent) {
@@ -79,7 +79,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * Creates the content of the generation group.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite in which the generation group will be created.
 	 * @param font
@@ -129,8 +129,8 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 		componentArtifactsCombo = new Combo(comp, SWT.READ_ONLY);
 		componentArtifactsCombo.setLayoutData(new GridData(GridData.FILL, GridData.CENTER, true, false));
 		componentArtifactsCombo.setItems(new String[] {
-		/* IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_OSGI, */
-		IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_ECLIPSE,
+				/* IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_OSGI, */
+				IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_ECLIPSE,
 				IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_JAVA, });
 		componentArtifactsCombo.select(0);
 		componentArtifactsCombo.addSelectionListener(new SelectionListener() {
@@ -151,7 +151,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * Creates the content of the documentation group.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite in which the documentation group will be created.
 	 * @param font
@@ -206,7 +206,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
@@ -222,7 +222,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 				IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_ECLIPSE);
 		if (this.componentArtifactsCombo != null) {
 			this.componentArtifactsCombo
-					.setText(IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_ECLIPSE);
+			.setText(IUML2JavaConstants.Default.DEFAULT_COMPONENT_ARTIFACTS_TYPE_ECLIPSE);
 		}
 
 		// Bundle provider
@@ -235,7 +235,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	public void initializeFrom(ILaunchConfiguration configuration) {
@@ -262,7 +262,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
@@ -281,7 +281,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#isValid(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	@Override
@@ -291,7 +291,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
 	 */
 	public String getName() {
@@ -300,7 +300,7 @@ public class UML2JavaComponentLaunchConfigurationTab extends AbstractUML2JavaLau
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#getImage()
 	 */
 	@Override

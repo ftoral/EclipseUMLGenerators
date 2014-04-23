@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Stephane Thibaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.activity.builder;
 
@@ -24,16 +24,14 @@ import org.eclipse.umlgen.reverse.c.activity.util.UMLActivityFactory;
 
 public class IfStatementBuilder extends AbstractBuilder {
 
-	public IfStatementBuilder(UMLActivityBuilder activityBuilder,
-			UMLActivityFactory factory, CommentBuilder commentBuilder) {
+	public IfStatementBuilder(UMLActivityBuilder activityBuilder, UMLActivityFactory factory,
+			CommentBuilder commentBuilder) {
 		super(activityBuilder, factory, commentBuilder);
 	}
 
-	public ActivityNodesPins buildIfStatement(IASTIfStatement stmt,
-			ActivityContext currentContext) {
+	public ActivityNodesPins buildIfStatement(IASTIfStatement stmt, ActivityContext currentContext) {
 		String decisionNodeName = getDecisionNodeName(stmt);
-		DecisionNode decisionNode = factory.createDecisionNode(
-				decisionNodeName, currentContext);
+		DecisionNode decisionNode = factory.createDecisionNode(decisionNodeName, currentContext);
 		MergeNode mergeNode = factory.createMergeNode(currentContext);
 
 		// Attach comments to the DecisionNode
@@ -41,17 +39,14 @@ public class IfStatementBuilder extends AbstractBuilder {
 
 		// Create nodes for the "then" clause
 		IASTStatement thenClause = stmt.getThenClause();
-		ActivityNodesPins thenNodes = activityBuilder.buildNodes(thenClause,
-				currentContext);
+		ActivityNodesPins thenNodes = activityBuilder.buildNodes(thenClause, currentContext);
 
 		// Create a flow from decision node to the first node of the "then"
 		// clause
-		ControlFlow thenFlow = factory.createControlFlow(decisionNode,
-				thenNodes.getStartNode(), stmt.getConditionExpression()
-						.getRawSignature(), currentContext);
+		ControlFlow thenFlow = factory.createControlFlow(decisionNode, thenNodes.getStartNode(), stmt
+				.getConditionExpression().getRawSignature(), currentContext);
 		commentBuilder.buildComment(thenFlow, getCommentInfo(thenClause));
-		factory.createControlFlow(thenNodes.getEndNode(), mergeNode,
-				currentContext);
+		factory.createControlFlow(thenNodes.getEndNode(), mergeNode, currentContext);
 
 		IASTStatement elseClause = stmt.getElseClause();
 		ActivityNodesPins elseNodes = null;
@@ -60,8 +55,8 @@ public class IfStatementBuilder extends AbstractBuilder {
 			elseNodes = activityBuilder.buildNodes(elseClause, currentContext);
 			// Create a flow from the decision node to the first node of the
 			// "else" clause"
-			ControlFlow elseFlow = factory.createControlFlow(decisionNode,
-					elseNodes.getStartNode(), "[else]", currentContext);
+			ControlFlow elseFlow = factory.createControlFlow(decisionNode, elseNodes.getStartNode(),
+					"[else]", currentContext);
 			commentBuilder.buildComment(elseFlow, getCommentInfo(elseClause));
 
 			// Create a flow from the last node of the "else" clause to the
@@ -69,20 +64,17 @@ public class IfStatementBuilder extends AbstractBuilder {
 			// if the last node is already a MergeNode, merge the 2 MergeNodes
 			// into one
 			if (elseNodes.getEndNode() instanceof MergeNode) {
-				replaceMergeNode((MergeNode) elseNodes.getEndNode(), mergeNode);
+				replaceMergeNode((MergeNode)elseNodes.getEndNode(), mergeNode);
 			} else {
-				factory.createControlFlow(elseNodes.getEndNode(), mergeNode,
-						currentContext);
+				factory.createControlFlow(elseNodes.getEndNode(), mergeNode, currentContext);
 			}
 		} else {
 			// If there's no "else" clause, create a flow directly from the
 			// decision node to the merge node
-			factory.createControlFlow(decisionNode, mergeNode, "[else]",
-					currentContext);
+			factory.createControlFlow(decisionNode, mergeNode, "[else]", currentContext);
 		}
 
-		if (thenNodes.getEndNode() instanceof ActivityFinalNode
-				&& elseNodes != null
+		if (thenNodes.getEndNode() instanceof ActivityFinalNode && elseNodes != null
 				&& elseNodes.getEndNode() instanceof ActivityFinalNode) {
 			currentContext.getNodes().remove(mergeNode);
 			return new ActivityNodesPins(decisionNode, thenNodes.getEndNode());
@@ -100,10 +92,9 @@ public class IfStatementBuilder extends AbstractBuilder {
 	}
 
 	/**
-	 * Substitute a merge node with another one - copy all incomings - copy all
-	 * outgoings - remove all incomings and outgoings on the replaced node -
-	 * destroy the replaced node
-	 * 
+	 * Substitute a merge node with another one - copy all incomings - copy all outgoings - remove all
+	 * incomings and outgoings on the replaced node - destroy the replaced node
+	 *
 	 * @param toBeReplaced
 	 *            Merge node to be replaced
 	 * @param substitute

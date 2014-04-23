@@ -1,12 +1,14 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
+ *      Mikael Barbero (Obeo) - evolutions
+ *      Sebastien Gabel - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.reconciler;
 
@@ -24,7 +26,7 @@ import org.eclipse.umlgen.reverse.c.listener.ICModelChangeListener;
 
 /**
  * Defines an abstract reconcilier for interpreting changes that can be done.
- * 
+ *
  * @see {@link CASTReconciler}
  * @see {@link ASTCommentReconciler}
  */
@@ -39,16 +41,14 @@ public abstract class AbstractReconciler implements IReconciler {
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#removeModelChangeListener(org.eclipse.umlgen.reverse.c.listener.ICModelChangeListener)
 	 */
-	public synchronized void removeModelChangeListener(
-			ICModelChangeListener listener) {
+	public synchronized void removeModelChangeListener(ICModelChangeListener listener) {
 		modelChangeListeners.remove(listener);
 	}
 
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#addModelChangeListener(org.eclipse.umlgen.reverse.c.listener.ICModelChangeListener)
 	 */
-	public synchronized void addModelChangeListener(
-			ICModelChangeListener listener) {
+	public synchronized void addModelChangeListener(ICModelChangeListener listener) {
 		modelChangeListeners.add(listener);
 	}
 
@@ -76,51 +76,44 @@ public abstract class AbstractReconciler implements IReconciler {
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#addAllModelChangeListeners(java.util.List)
 	 */
-	public synchronized void addAllModelChangeListeners(
-			List<ICModelChangeListener> listeners) {
+	public synchronized void addAllModelChangeListeners(List<ICModelChangeListener> listeners) {
 		modelChangeListeners.addAll(listeners);
 	}
 
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#removedElement(org.eclipse.cdt.core.dom.ast.IASTTranslationUnit,
-	 *      org.eclipse.cdt.core.dom.ast.IASTTranslationUnit,
-	 *      org.eclipse.cdt.core.model.ITranslationUnit,
+	 *      org.eclipse.cdt.core.dom.ast.IASTTranslationUnit, org.eclipse.cdt.core.model.ITranslationUnit,
 	 *      org.eclipse.cdt.core.model.ICElement)
 	 */
 	public void removedElement(IASTTranslationUnit originalTranslationUnit,
-			IASTTranslationUnit newTranslationUnit,
-			ITranslationUnit workingcopy, ICElement coreElement)
+			IASTTranslationUnit newTranslationUnit, ITranslationUnit workingcopy, ICElement coreElement)
 			throws CoreException {
 	}
 
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#addedElement(org.eclipse.cdt.core.dom.ast.IASTTranslationUnit,
-	 *      org.eclipse.cdt.core.dom.ast.IASTTranslationUnit,
-	 *      org.eclipse.cdt.core.model.ITranslationUnit,
+	 *      org.eclipse.cdt.core.dom.ast.IASTTranslationUnit, org.eclipse.cdt.core.model.ITranslationUnit,
 	 *      org.eclipse.cdt.core.model.ICElement)
 	 */
 	public void addedElement(IASTTranslationUnit originalTranslationUnit,
-			IASTTranslationUnit newTranslationUnit,
-			ITranslationUnit workingcopy, ICElement coreElement)
+			IASTTranslationUnit newTranslationUnit, ITranslationUnit workingcopy, ICElement coreElement)
 			throws CoreException {
 	}
 
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#removedElement(org.eclipse.cdt.core.model.ITranslationUnit,
-	 *      org.eclipse.cdt.core.model.IWorkingCopy,
-	 *      org.eclipse.cdt.core.model.ICElement)
+	 *      org.eclipse.cdt.core.model.IWorkingCopy, org.eclipse.cdt.core.model.ICElement)
 	 */
-	public void removedElement(ITranslationUnit originalUnit,
-			IWorkingCopy workingUnit, ICElement element) throws CoreException {
+	public void removedElement(ITranslationUnit originalUnit, IWorkingCopy workingUnit, ICElement element)
+			throws CoreException {
 	}
 
 	/**
 	 * @see org.eclipse.umlgen.reverse.c.reconciler.IReconciler#addedElement(org.eclipse.cdt.core.model.ITranslationUnit,
-	 *      org.eclipse.cdt.core.model.IWorkingCopy,
-	 *      org.eclipse.cdt.core.model.ICElement)
+	 *      org.eclipse.cdt.core.model.IWorkingCopy, org.eclipse.cdt.core.model.ICElement)
 	 */
-	public void addedElement(ITranslationUnit originalUnit,
-			IWorkingCopy workingUnit, ICElement element) throws CoreException {
+	public void addedElement(ITranslationUnit originalUnit, IWorkingCopy workingUnit, ICElement element)
+			throws CoreException {
 	}
 
 }

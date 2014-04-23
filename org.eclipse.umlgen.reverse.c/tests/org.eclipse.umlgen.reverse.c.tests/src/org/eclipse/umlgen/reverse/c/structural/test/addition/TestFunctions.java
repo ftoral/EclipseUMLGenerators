@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2010, 2014 Obeo and others.
- * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *      Obeo - initial API and implementation
+ *
+ * Contributors:
+ *      Christophe Le Camus (CS) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.structural.test.addition;
 
@@ -27,83 +27,69 @@ public class TestFunctions extends AbstractTest {
 	@Test
 	public void testFunctionInC() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testfunctionDefinitionC",
-				new NullProgressMonitor());
+		IProject project = createIProject("testfunctionDefinitionC", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("functionDefinition.c"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("functionDefinition.c"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/operation/functionDefinition.c"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/operation/functionDefinitionC.uml");
+		testModel(project, "/resource/structural/addition/operation/functionDefinitionC.uml");
 	}
 
 	@Test
 	public void testFunctionInH() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testfunctionDefinitionH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testfunctionDefinitionH", new NullProgressMonitor());
 
-		IFile iFile = createIFile(project, new Path("functionDefinition.h"),
-				new NullProgressMonitor());
+		IFile iFile = createIFile(project, new Path("functionDefinition.h"), new NullProgressMonitor());
 
 		TextEditor editor = openEditor(iFile);
 
 		setEditorContent(editor, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editor,
+		setEditorContent(editor,
 				getResourceInputStream("/resource/structural/addition/operation/functionDefinition.h"));
 
 		closeEditor(editor, true);
 
-		testModel(project,
-				"/resource/structural/addition/operation/functionDefinitionH.uml");
+		testModel(project, "/resource/structural/addition/operation/functionDefinitionH.uml");
 	}
 
 	@Test
 	public void testFunctionBoth() throws CoreException, InterruptedException {
 
-		IProject project = createIProject("testfunctionDefinitionBOTH",
-				new NullProgressMonitor());
+		IProject project = createIProject("testfunctionDefinitionBOTH", new NullProgressMonitor());
 
-		IFile iFileC = createIFile(project,
-				new Path("functionDefinitionBOTH.c"), new NullProgressMonitor());
+		IFile iFileC = createIFile(project, new Path("functionDefinitionBOTH.c"), new NullProgressMonitor());
 
 		TextEditor editorC = openEditor(iFileC);
 
 		setEditorContent(editorC, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editorC,
+		setEditorContent(editorC,
 				getResourceInputStream("/resource/structural/addition/operation/functionDefinitionBOTH.c"));
 
 		closeEditor(editorC, true);
 
-		IFile iFileH = createIFile(project,
-				new Path("functionDefinitionBOTH.h"), new NullProgressMonitor());
+		IFile iFileH = createIFile(project, new Path("functionDefinitionBOTH.h"), new NullProgressMonitor());
 
 		TextEditor editorH = openEditor(iFileH);
 
 		setEditorContent(editorH, new ByteArrayInputStream(" ".getBytes()));
 
-		setEditorContent(
-				editorH,
+		setEditorContent(editorH,
 				getResourceInputStream("/resource/structural/addition/operation/functionDefinitionBOTH.h"));
 
 		closeEditor(editorH, true);
 
-		testModel(project,
-				"/resource/structural/addition/operation/functionDefinitionBOTH.uml");
+		testModel(project, "/resource/structural/addition/operation/functionDefinitionBOTH.uml");
 	}
 
 }

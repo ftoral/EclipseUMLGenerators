@@ -6,9 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation
- *     Sebastien Gabel (CS-SI) - evolutions
+ *     Sebastien GABEL (CS) - initial API and implementation
+ *     Christophe Le Camus, Sebastien Gabel (CS) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
 

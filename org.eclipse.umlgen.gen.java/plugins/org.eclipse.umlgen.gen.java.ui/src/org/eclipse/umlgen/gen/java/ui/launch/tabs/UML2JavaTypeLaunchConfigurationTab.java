@@ -4,9 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.java.ui.launch.tabs;
 
@@ -35,7 +35,7 @@ import org.eclipse.umlgen.gen.java.utils.IUML2JavaConstants;
 
 /**
  * The type tab of the launch configuration.
- * 
+ *
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 2.0
  */
@@ -78,7 +78,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControl(Composite parent) {
@@ -99,7 +99,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * Creates the group containing the collection options of the type generation.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite containing the group
 	 * @param font
@@ -207,7 +207,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * Creates the group containing the types to ignore of the type generation.
-	 * 
+	 *
 	 * @param composite
 	 *            The composite containing the group
 	 * @param font
@@ -235,10 +235,10 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 		gd.horizontalSpan = 2;
 		this.ignoreJavaTypesDuringGenerationAndImport.setLayoutData(gd);
 		this.ignoreJavaTypesDuringGenerationAndImport
-				.setText(UML2JavaMessages
-						.getString("UML2JavaTypeLaunchConfigurationTab.IgnoreJavaTypesDuringGenerationAndImportLabel"));
+		.setText(UML2JavaMessages
+				.getString("UML2JavaTypeLaunchConfigurationTab.IgnoreJavaTypesDuringGenerationAndImportLabel"));
 		this.ignoreJavaTypesDuringGenerationAndImport
-				.setSelection(IUML2JavaConstants.Default.DEFAULT_IGNORE_JAVA_TYPES_DURING_GENERATION_AND_IMPORT);
+		.setSelection(IUML2JavaConstants.Default.DEFAULT_IGNORE_JAVA_TYPES_DURING_GENERATION_AND_IMPORT);
 		this.ignoreJavaTypesDuringGenerationAndImport.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				update();
@@ -262,7 +262,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 		gd.horizontalSpan = 1;
 		this.typesToIgnoreDuringTheGenerationText.setLayoutData(gd);
 		this.typesToIgnoreDuringTheGenerationText
-				.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_GENERATION);
+		.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_GENERATION);
 		this.typesToIgnoreDuringTheGenerationText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				update();
@@ -283,7 +283,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 		gd.horizontalSpan = 1;
 		this.typesToIgnoreDuringTheImportText.setLayoutData(gd);
 		this.typesToIgnoreDuringTheImportText
-				.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_IMPORTS);
+		.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_IMPORTS);
 		this.typesToIgnoreDuringTheImportText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				update();
@@ -306,7 +306,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
@@ -336,7 +336,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 				IUML2JavaConstants.Default.DEFAULT_NOT_ORDERED_NOT_UNIQUE);
 		if (this.notOrderedAndNotUniqueText != null) {
 			this.notOrderedAndNotUniqueText
-					.setText(IUML2JavaConstants.Default.DEFAULT_NOT_ORDERED_NOT_UNIQUE);
+			.setText(IUML2JavaConstants.Default.DEFAULT_NOT_ORDERED_NOT_UNIQUE);
 		}
 
 		// Ignore Java types
@@ -344,7 +344,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 				IUML2JavaConstants.Default.DEFAULT_IGNORE_JAVA_TYPES_DURING_GENERATION_AND_IMPORT);
 		if (this.ignoreJavaTypesDuringGenerationAndImport != null) {
 			this.ignoreJavaTypesDuringGenerationAndImport
-					.setSelection(IUML2JavaConstants.Default.DEFAULT_IGNORE_JAVA_TYPES_DURING_GENERATION_AND_IMPORT);
+			.setSelection(IUML2JavaConstants.Default.DEFAULT_IGNORE_JAVA_TYPES_DURING_GENERATION_AND_IMPORT);
 		}
 
 		// Types to ignore during the generation
@@ -352,7 +352,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 				IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_GENERATION);
 		if (this.typesToIgnoreDuringTheGenerationText != null) {
 			this.typesToIgnoreDuringTheGenerationText
-					.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_GENERATION);
+			.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_GENERATION);
 		}
 
 		// Types to ignore during the import
@@ -360,13 +360,13 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 				IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_IMPORTS);
 		if (this.typesToIgnoreDuringTheImportText != null) {
 			this.typesToIgnoreDuringTheImportText
-					.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_IMPORTS);
+			.setText(IUML2JavaConstants.Default.DEFAULT_TYPES_TO_IGNORE_DURING_IMPORTS);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	public void initializeFrom(ILaunchConfiguration configuration) {
@@ -414,7 +414,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
@@ -451,7 +451,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#isValid(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
 	@Override
@@ -461,7 +461,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
 	 */
 	public String getName() {
@@ -470,7 +470,7 @@ public class UML2JavaTypeLaunchConfigurationTab extends AbstractUML2JavaLaunchCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.debug.ui.AbstractLaunchConfigurationTab#getImage()
 	 */
 	@Override

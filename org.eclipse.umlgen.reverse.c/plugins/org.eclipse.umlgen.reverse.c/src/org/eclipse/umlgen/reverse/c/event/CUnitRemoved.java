@@ -4,10 +4,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- *     Obeo - initial API and implementation
- *     Christophe Le Camus (CS-SI) - initial API and implementation 
+ *     Christophe Le Camus (CS-SI) - initial API and implementation
  *     Sebastien Gabel (CS-SI) - evolutions
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.event;
@@ -27,34 +26,28 @@ public class CUnitRemoved extends CUnitEvent {
 	 */
 	@Override
 	public void notifyChanges(ModelManager manager) {
-		Classifier matchingClassifier = ModelUtil.findMatchingClassifier(
-				manager, getTranslationUnit(), getCurrentName()
-						.removeFileExtension().toString());
+		Classifier matchingClassifier = ModelUtil.findMatchingClassifier(manager, getTranslationUnit(),
+				getCurrentName().removeFileExtension().toString());
 		if (matchingClassifier != null) {
 
-			ModelUtil.setVisibility(matchingClassifier, getTranslationUnit(),
-					EventType.REMOVE);
-			AnnotationUtil.removeEAnnotations(matchingClassifier,
-					getTranslationUnit());
+			ModelUtil.setVisibility(matchingClassifier, getTranslationUnit(), EventType.REMOVE);
+			AnnotationUtil.removeEAnnotations(matchingClassifier, getTranslationUnit());
 
 			/*
-			 * check if the class must be destroyed : if we delete only one file
-			 * .c or .h it is not the case
+			 * check if the class must be destroyed : if we delete only one file .c or .h it is not the case
 			 */
 			if (getTranslationUnit().isHeaderUnit()) {
 				// delete all private model objects from this class
-				ModelUtil.deleteAllVisibleObjects(matchingClassifier,
-						VisibilityKind.PUBLIC_LITERAL, manager);
+				ModelUtil.deleteAllVisibleObjects(matchingClassifier, VisibilityKind.PUBLIC_LITERAL, manager);
 			} else if (getTranslationUnit().isSourceUnit()) {
 				// delete all public model objects from this class
-				ModelUtil.deleteAllVisibleObjects(matchingClassifier,
-						VisibilityKind.PRIVATE_LITERAL, manager);
+				ModelUtil
+						.deleteAllVisibleObjects(matchingClassifier, VisibilityKind.PRIVATE_LITERAL, manager);
 			}
 
 			/* only if no details persists then we can delete the class */
 			if (ModelUtil.isRemovable(matchingClassifier)) {
-				DiagramUtil.removeGraphicalRepresentation(matchingClassifier,
-						manager);
+				DiagramUtil.removeGraphicalRepresentation(matchingClassifier, manager);
 				matchingClassifier.destroy();
 			}
 		}
@@ -62,7 +55,7 @@ public class CUnitRemoved extends CUnitEvent {
 
 	/**
 	 * Gets the right builder
-	 * 
+	 *
 	 * @return the builder for this event
 	 */
 	public static Builder<CUnitRemoved> builder() {
