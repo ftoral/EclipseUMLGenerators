@@ -49,9 +49,9 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
-import org.eclipse.umlgen.gen.c.common.util.ModelManager;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 import org.eclipse.umlgen.reverse.c.activity.UMLActivityBuilder;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Activator;
@@ -103,7 +103,7 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 				try {
 					dialog.run(true, true, new IRunnableWithProgress() {
 						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-						InterruptedException {
+								InterruptedException {
 							monitor.beginTask(
 									Messages.getString("GenerateActivityDiagrams.JobTitle"), totalOfWork); //$NON-NLS-1$
 							generate((EObject)obj, mm, monitor);
@@ -223,20 +223,20 @@ public class GenerateActivityDiagrams extends AbstractHandler {
 		String behavioredClassifierName = behavioredClassifier.getName() != null ? behavioredClassifier
 				.getName() : ""; //$NON-NLS-1$
 
-		if (behavioredClassifier instanceof OpaqueBehavior && behavioredClassifierName.equals(activityName)) {
-			generate((OpaqueBehavior)behavioredClassifier, mm, monitor);
-		} else {
-			Display.getDefault().syncExec(new Runnable() {
-				public void run() {
-					String title = String.format(
-							Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
-					String msg = String.format(
-							Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
-					MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
-					Activator.log(msg, IStatus.WARNING);
+				if (behavioredClassifier instanceof OpaqueBehavior && behavioredClassifierName.equals(activityName)) {
+					generate((OpaqueBehavior)behavioredClassifier, mm, monitor);
+				} else {
+					Display.getDefault().syncExec(new Runnable() {
+						public void run() {
+							String title = String.format(
+									Messages.getString("GenerateActivityDiagrams.ActivityTitle"), activity.getName()); //$NON-NLS-1$
+							String msg = String.format(
+									Messages.getString("GenerateActivityDiagrams.ActivityMsg"), activity.getName()); //$NON-NLS-1$
+							MessageDialog.openWarning(Display.getDefault().getActiveShell(), title, msg);
+							Activator.log(msg, IStatus.WARNING);
+						}
+					});
 				}
-			});
-		}
 	}
 
 	private void generate(OpaqueBehavior behavior, ModelManager mm, IProgressMonitor monitor)

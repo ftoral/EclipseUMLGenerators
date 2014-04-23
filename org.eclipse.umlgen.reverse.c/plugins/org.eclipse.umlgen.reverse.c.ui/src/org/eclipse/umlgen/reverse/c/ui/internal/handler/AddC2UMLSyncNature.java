@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * 	   Mikael BARBERO (Obeo) - initial API and implementation
  *     Christophe LE CAMUS (CS-SI) - initial API and implementation
@@ -22,10 +22,10 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.umlgen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.PreferenceStoreManager;
 import org.eclipse.umlgen.gen.c.builder.UML2CBuilder;
 import org.eclipse.umlgen.gen.c.builder.UML2CBundleConstant;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
-import org.eclipse.umlgen.gen.c.common.PreferenceStoreManager;
 import org.eclipse.umlgen.reverse.c.StructuralBuilder;
 import org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature;
 import org.eclipse.umlgen.reverse.c.resource.ProjectUtil;
@@ -33,12 +33,10 @@ import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 import org.eclipse.umlgen.reverse.c.ui.internal.widgets.QuestionDialog;
 
 /**
- * Handler adding the <b>org.eclipse.umlgen.reverse.c.syncNature</b> to the
- * current C project. During this operation a default couple of UML/UMLDI files
- * are created using the <b>Neptune for Synchronized models</b>. Default
- * configuration of the project is also done; C2UML property page is set with
- * default values.
- * 
+ * Handler adding the <b>org.eclipse.umlgen.reverse.c.syncNature</b> to the current C project. During this
+ * operation a default couple of UML/UMLDI files are created using the <b>Neptune for Synchronized models</b>.
+ * Default configuration of the project is also done; C2UML property page is set with default values.
+ *
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael BARBERO</a>
  * @author <a href="mailto:christophe.le-camus@c-s.fr">Christophe LE CAMUS</a>
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
@@ -50,12 +48,11 @@ public class AddC2UMLSyncNature extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
-			IStructuredSelection selection = (IStructuredSelection) HandlerUtil
+			IStructuredSelection selection = (IStructuredSelection)HandlerUtil
 					.getCurrentSelectionChecked(event);
-			IProject project = (IProject) selection.getFirstElement();
+			IProject project = (IProject)selection.getFirstElement();
 
-			IPreferenceStore store = PreferenceStoreManager
-					.getPreferenceStore(project);
+			IPreferenceStore store = PreferenceStoreManager.getPreferenceStore(project);
 			QuestionDialog dialog = new QuestionDialog(
 					Display.getCurrent().getActiveShell(),
 					Messages.getString("AddC2UMLSyncNature.dialogTitle"), Messages.getString("AddC2UMLSyncNature.dialogBody"), //$NON-NLS-1$ //$NON-NLS-2$
@@ -80,15 +77,14 @@ public class AddC2UMLSyncNature extends AbstractHandler {
 			throw new ExecutionException(e.getMessage(), e);
 		}
 		return null; // *MUST* be null (cf.
-						// AbstractHandler.execute(ExecutionEvent))
+		// AbstractHandler.execute(ExecutionEvent))
 	}
 
 	/**
 	 * Start a synchronization from an existing UML model.
-	 * 
+	 *
 	 * @param project
-	 *            The project in which sources must be located, analyzed and
-	 *            reversed.
+	 *            The project in which sources must be located, analyzed and reversed.
 	 * @throws CoreException
 	 *             If something failed during this operation.
 	 */
@@ -105,12 +101,10 @@ public class AddC2UMLSyncNature extends AbstractHandler {
 	}
 
 	/**
-	 * Start a synchronization from a source folder containing a set of C and H
-	 * files.
-	 * 
+	 * Start a synchronization from a source folder containing a set of C and H files.
+	 *
 	 * @param project
-	 *            The project in which sources must be located, analyzed and
-	 *            reversed.
+	 *            The project in which sources must be located, analyzed and reversed.
 	 * @throws CoreException
 	 *             If something failed during this operation.
 	 */
@@ -120,20 +114,17 @@ public class AddC2UMLSyncNature extends AbstractHandler {
 		ProjectUtil.addNature(project, UML2CBundleConstant.NATURE_ID);
 
 		// create the required UML and UMLDI models from templates
-		IFile modelFile = C2UMLSyncNature
-				.createUMLanUMLDIFromTemplates(project);
+		IFile modelFile = C2UMLSyncNature.createUMLanUMLDIFromTemplates(project);
 		if (modelFile != null && modelFile.exists()) {
 			// Temporally removing UML2C builder to avoid workspace building
 			// after each reverse during the structural
 			// build
-			ProjectUtil.removeFromBuildSpec(project,
-					BundleConstants.UML2C_BUILDER_ID);
+			ProjectUtil.removeFromBuildSpec(project, BundleConstants.UML2C_BUILDER_ID);
 			// Instantiate the builder
 			StructuralBuilder sb = new StructuralBuilder(modelFile);
 			sb.build();
 			sb.dispose();
-			ProjectUtil.addToBuildSpec(project,
-					BundleConstants.UML2C_BUILDER_ID);
+			ProjectUtil.addToBuildSpec(project, BundleConstants.UML2C_BUILDER_ID);
 		}
 
 	}

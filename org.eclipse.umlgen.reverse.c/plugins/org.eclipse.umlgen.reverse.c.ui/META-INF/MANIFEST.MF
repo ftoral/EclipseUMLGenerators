@@ -22,4 +22,5 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.umlgen.gen.c.builder,
  org.eclipse.draw2d,
  org.eclipse.gef,
- org.eclipse.umlgen.gen.c
+ org.eclipse.umlgen.gen.c,
+ org.eclipse.umlgen.c.common

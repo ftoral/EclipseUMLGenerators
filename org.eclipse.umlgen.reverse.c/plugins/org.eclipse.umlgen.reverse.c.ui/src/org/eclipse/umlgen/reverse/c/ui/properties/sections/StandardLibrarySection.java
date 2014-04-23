@@ -25,7 +25,7 @@ import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Usage;
-import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

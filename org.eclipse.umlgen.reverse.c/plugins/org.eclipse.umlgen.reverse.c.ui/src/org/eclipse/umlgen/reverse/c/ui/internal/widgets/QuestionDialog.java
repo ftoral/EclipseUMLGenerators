@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Sebastien Gabel (CS-SI) - initial API and implementation
  *******************************************************************************/
@@ -14,15 +14,13 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
- * Dialog asking to user to specify the starting point of the C to UML
- * synchronisation.
- * 
- * Creation : 23 june 2010<br>
- * 
+ * Dialog asking to user to specify the starting point of the C to UML synchronisation. Creation : 23 june
+ * 2010<br>
+ *
  * @author <a href="mailto:sebastien.gabel@c-s.fr">Sebastien GABEL</a>
  */
 public class QuestionDialog extends MessageDialog {
@@ -31,7 +29,7 @@ public class QuestionDialog extends MessageDialog {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param parentShell
 	 *            The parent shell
 	 * @param dialogTitle
@@ -43,16 +41,9 @@ public class QuestionDialog extends MessageDialog {
 	 * @param keyPref
 	 *            The preference key
 	 */
-	public QuestionDialog(Shell parentShell, String dialogTitle,
-			String message, IPreferenceStore pref) {
-		super(
-				parentShell,
-				dialogTitle,
-				null,
-				message,
-				MessageDialog.QUESTION,
-				new String[] {
-						Messages.getString("QuestionDialog.source"), Messages.getString("QuestionDialog.model") }, 0); //$NON-NLS-1$ //$NON-NLS-2$
+	public QuestionDialog(Shell parentShell, String dialogTitle, String message, IPreferenceStore pref) {
+		super(parentShell, dialogTitle, null, message, MessageDialog.QUESTION, new String[] {
+				Messages.getString("QuestionDialog.source"), Messages.getString("QuestionDialog.model") }, 0); //$NON-NLS-1$ //$NON-NLS-2$
 		store = pref;
 	}
 
@@ -63,9 +54,13 @@ public class QuestionDialog extends MessageDialog {
 	protected void buttonPressed(int buttonId) {
 		if (store != null) {
 			// set synchronization mode default value
-			store.setDefault(BundleConstants.SYNC_AT_STARTING,
-					BundleConstants.SYNC_SOURCE_VALUE); // O = from sources ;
-														// 1 = from UML model
+			store.setDefault(BundleConstants.SYNC_AT_STARTING, BundleConstants.SYNC_SOURCE_VALUE); // O = from
+																									// sources
+																									// ;
+																									// 1 =
+																									// from
+																									// UML
+																									// model
 			// set the value chosen by the user
 			store.setValue(BundleConstants.SYNC_AT_STARTING,
 					buttonId == Window.OK ? BundleConstants.SYNC_SOURCE_VALUE

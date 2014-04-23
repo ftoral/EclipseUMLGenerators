@@ -12,8 +12,8 @@ package org.eclipse.umlgen.reverse.c.ui.properties.sections;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
-import org.eclipse.umlgen.gen.c.common.BundleConstants;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.c.common.BundleConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**

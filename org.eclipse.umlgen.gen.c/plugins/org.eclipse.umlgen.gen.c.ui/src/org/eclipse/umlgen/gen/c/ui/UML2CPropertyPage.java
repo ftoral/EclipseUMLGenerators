@@ -107,14 +107,12 @@ public class UML2CPropertyPage extends PreferencePage implements IWorkbenchPrefe
 		defaultLabelProvider = new AdapterFactoryLabelProvider(new UMLItemProviderAdapterFactory());
 	}
 
-	@Override
 	public void setElement(IAdaptable element) {
 		project = (IProject)element.getAdapter(IResource.class);
 		PreferenceStoreManager.setInitialValues(project);
 		PreferenceStoreManager.setDefaultValues(project);
 	}
 
-	@Override
 	public IAdaptable getElement() {
 		return project;
 	}

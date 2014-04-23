@@ -28,11 +28,11 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.umlgen.c.common.util.ModelManager;
 import org.eclipse.umlgen.gen.c.builder.internal.UML2CBuilderBundle;
 import org.eclipse.umlgen.gen.c.files.Generate;
 import org.eclipse.umlgen.reverse.c.event.CModelChangedEvent;
 import org.eclipse.umlgen.reverse.c.resource.C2UMLSyncNature;
-import org.eclipse.umlgen.reverse.c.resource.ModelManager;
 
 public class UML2CBuilder extends IncrementalProjectBuilder {
 

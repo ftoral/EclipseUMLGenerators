@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.umlgen.reverse.c.ui.properties.sections;
 
-import org.eclipse.umlgen.gen.c.common.AnnotationConstants;
+import org.eclipse.umlgen.c.common.AnnotationConstants;
 import org.eclipse.umlgen.reverse.c.ui.internal.bundle.Messages;
 
 /**
