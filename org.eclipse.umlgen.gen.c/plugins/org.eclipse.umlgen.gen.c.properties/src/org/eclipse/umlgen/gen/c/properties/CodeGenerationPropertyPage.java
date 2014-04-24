@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Aurelia Walrawens (Sodifrance) - initial API and implementation
+ *      Topcased contributors and others - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.properties;
 
@@ -29,8 +29,6 @@ import org.eclipse.ui.dialogs.PropertyPage;
 
 /**
  * Property page for common properties of code generators.
- *
- * @author awalrawens
  */
 public class CodeGenerationPropertyPage extends PropertyPage {
 

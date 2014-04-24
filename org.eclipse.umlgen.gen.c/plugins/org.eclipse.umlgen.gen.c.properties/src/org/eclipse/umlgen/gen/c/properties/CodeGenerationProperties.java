@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Aurelia Walrawens (Sodifrance) - initial API and implementation
+ *      Topcased contributors and others - initial API and implementation
  *******************************************************************************/
 package org.eclipse.umlgen.gen.c.properties;
 
@@ -15,9 +15,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.QualifiedName;
 
-/**
- * @author awalrawens
- */
 public class CodeGenerationProperties {
 
 	/** Key for property "Generate author" */
@@ -72,7 +69,7 @@ public class CodeGenerationProperties {
 		if (modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice() != null) {
 			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString().substring(
 					modelPath.removeFirstSegments(workspacePath.segmentCount()).getDevice().toString()
-							.length());
+					.length());
 		} else {
 			s = modelPath.removeFirstSegments(workspacePath.segmentCount()).toString();
 		}
